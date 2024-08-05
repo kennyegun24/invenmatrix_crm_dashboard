@@ -1,0 +1,15 @@
+.second_part {
+  width: 50%;
+  background-image: url(../../public/login.png);
+  color: var(--text_color);
+  position: relative;
+
+  p {
+    position: absolute;
+    width: 70%;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 24px;
+  }
+}

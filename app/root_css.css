@@ -1,0 +1,14 @@
+:root {
+  --main_bg: #102a43;
+  --text_color: #fff;
+}
+
+[color-scheme="dark"] {
+  --main_bg: #102a43;
+  --text_color: #fff;
+}
+
+[color-scheme="light"] {
+  --main_bg: #fff;
+  --text_color: #5c5e64;
+}
