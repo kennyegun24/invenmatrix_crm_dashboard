@@ -1,6 +1,12 @@
 :root {
   --main_bg: #102a43;
   --text_color: #fff;
+  --border_color: #fff;
+  --light_text: #b9b6b9;
+  /* --main_bg: #fff;
+  --text_color: #5c5e64;
+  --border_color: #535353;
+  --light_text: #4e4e4e; */
 }
 
 [color-scheme="dark"] {
@@ -11,4 +17,6 @@
 [color-scheme="light"] {
   --main_bg: #fff;
   --text_color: #5c5e64;
+  --border_color: #fff;
+  --light_text: #b9b6b9;
 }

@@ -11,7 +11,7 @@ const HomeProvider = ({ children }) => {
   return (
     <HomeContext.Provider>
       {/* <NavBar /> */}
-      {children}
+      <div className="layout">{children}</div>
     </HomeContext.Provider>
   );
 };

@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
   // const [data, setData] = useState("Not Found");
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={[inter.className]}>
         <HomeProvider>{children}</HomeProvider>
         {/* <Barcode value="kenny elias" /> */}
         {/* <BarcodeScannerComponent

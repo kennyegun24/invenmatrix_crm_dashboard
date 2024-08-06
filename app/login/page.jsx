@@ -17,7 +17,7 @@ const Page = () => {
           </p>
         </section>
 
-        <section className="flex column gap1rem">
+        <section className="flex column gap1rem login_form">
           <div className="flex column gap075rem">
             <label htmlFor="email">Email</label>
             <input
@@ -32,7 +32,8 @@ const Page = () => {
               className="flex align_center justify_between"
               htmlFor="email"
             >
-              Password <Link href={""}>Forgot your password?</Link>
+              Password{" "}
+              <Link href={"/forget_password"}>Forgot your password?</Link>
             </label>
             <input
               placeholder="Password..."

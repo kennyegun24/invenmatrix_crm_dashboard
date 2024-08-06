@@ -13,3 +13,8 @@
 .opacity08 {
   opacity: 0.8;
 }
+
+.layout {
+  min-height: 100vh;
+  background: var(--main_bg);
+}
