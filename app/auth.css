@@ -31,7 +31,7 @@
 }
 
 .first_part p {
-  font-size: 14px;
+  font-size: 0.75rem;
   color: var(--light_text);
 }
 
@@ -51,7 +51,7 @@
 }
 
 .first_part label {
-  font-size: 15px;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--light_text);
 }
@@ -125,6 +125,11 @@
   .login_form {
     gap: 1.5rem;
   }
+
+  .forgot_password_container {
+    padding: 5rem 1rem;
+    gap: 2rem;
+  }
 }
 
 @media (min-width: 651px) and (max-width: 1150px) {
@@ -145,6 +150,7 @@
     width: 51%;
     justify-content: flex-start;
     padding: 1rem;
+    min-height: 50vh;
 
     > section {
       width: 100%;

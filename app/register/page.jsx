@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import { FcGoogle } from "react-icons/fc";
 import RightSide from "@/components/auth/RightSide";
 import GoogleBtn, { AuthButton } from "@/components/auth/GoogleBtn";
 
