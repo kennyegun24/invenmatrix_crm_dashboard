@@ -2,10 +2,12 @@ import Link from "next/link";
 import React from "react";
 import RightSide from "@/components/auth/RightSide";
 import GoogleBtn, { AuthButton } from "@/components/auth/GoogleBtn";
+import Onboarding from "@/components/auth/onboarding/Onboarding";
 
 const Page = () => {
   return (
     <div className="login_page flex">
+      {<Onboarding />}
       <div className="flex sub_auth">
         <section className="first_part flex align_center justify_center column gap15rem">
           <h1>AJL Logo</h1>

@@ -8,8 +8,16 @@
   display: flex;
 }
 
+.wrap {
+  flex-wrap: wrap;
+}
+
 .column {
   flex-direction: column;
+}
+
+.align_self_center {
+  align-self: center;
 }
 
 .align_center {
@@ -38,6 +46,10 @@
 
 .justify_end {
   justify-content: flex-end;
+}
+
+.text_center {
+  text-align: center;
 }
 
 .gap05rem {
@@ -72,4 +84,24 @@ button {
 a {
   text-decoration: none;
   color: initial;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.relative {
+  position: relative;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.pointer {
+  cursor: pointer;
 }
