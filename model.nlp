@@ -1,0 +1,1166 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "hello": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "hi": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "hey,there": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "day,good": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "good,morn": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "afternoon,good": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "even,good": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "howdi": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "is,up,what": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "hey": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "hiya": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "greet": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "hi,there": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "yo": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "sup": {
+            "intent": "greeting",
+            "domain": "default"
+          },
+          "can,edit,how,i,informaiton,my,person": {
+            "intent": "update_profile",
+            "domain": "default"
+          },
+          "can,edit,how,i,my,name": {
+            "intent": "update_profile",
+            "domain": "default"
+          },
+          "can,chang,how,i,inform,my,person": {
+            "intent": "update_profile",
+            "domain": "default"
+          },
+          "can,chang,go,i,my,pictur,profil,to,where": {
+            "intent": "update_profile",
+            "domain": "default"
+          },
+          "do,how,i,inform,my,profil,updat": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "can,chang,i,my,usernam": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "address,do,email,how,i,my,updat": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "can,chang,how,i,my,pictur,profil": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "can,contact,edit,i,inform,my,where": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "do,how,i,my,number,phone,updat": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "can,chang,i,my,password": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "address,do,how,i,my,updat": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "bill,can,i,inform,my,updat,where": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "add,addit,can,i,inform,my,profil,to": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "account,can,i,link,media,my,profil,social,to": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "account,deactiv,do,how,i,my": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "can,i,my,privat,profil,set,to": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "can,i,my,question,secur,updat,where": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "can,chang,i,my,profil,set,visibl": {
+            "intent": "profile_update",
+            "domain": "default"
+          },
+          "do,how,i,languag,my,prefer,updat": {
+            "intent": "profile_update",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "greeting": "default",
+          "update_profile": "default",
+          "profile_update": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "hello",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey there",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "good day",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "good morning",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "good afternoon",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "good evening",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "howdy",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "what's up",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "hey",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "hiya",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "greetings",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "hi there",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "yo",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "sup",
+            "intent": "greeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "How can I edit my personal informaiton?",
+            "intent": "update_profile"
+          },
+          {
+            "domain": "default",
+            "utterance": "How can I edit my name?",
+            "intent": "update_profile"
+          },
+          {
+            "domain": "default",
+            "utterance": "How can I change my personal information?",
+            "intent": "update_profile"
+          },
+          {
+            "domain": "default",
+            "utterance": "Where can I go to change my profile picture?",
+            "intent": "update_profile"
+          },
+          {
+            "domain": "default",
+            "utterance": "How do I update my profile information?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Can I change my username?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "How do I update my email address?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "How can I change my profile picture?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Where can I edit my contact information?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "How do I update my phone number?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Can I change my password?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "How do I update my address?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Where can I update my billing information?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Can I add additional information to my profile?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Can I link my social media accounts to my profile?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "How do I deactivate my account?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Can I set my profile to private?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Where can I update my security questions?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "Can I change my profile visibility settings?",
+            "intent": "profile_update"
+          },
+          {
+            "domain": "default",
+            "utterance": "How do I update my language preference?",
+            "intent": "profile_update"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "hello": 1,
+              "hi": 1,
+              "hey": 1,
+              "there": 1,
+              "good": 1,
+              "day": 1,
+              "morn": 1,
+              "afternoon": 1,
+              "even": 1,
+              "howdi": 1,
+              "what": 1,
+              "is": 1,
+              "up": 1,
+              "hiya": 1,
+              "greet": 1,
+              "yo": 1,
+              "sup": 1,
+              "how": 1,
+              "can": 1,
+              "i": 1,
+              "edit": 1,
+              "my": 1,
+              "person": 1,
+              "informaiton": 1,
+              "name": 1,
+              "chang": 1,
+              "inform": 1,
+              "where": 1,
+              "go": 1,
+              "to": 1,
+              "profil": 1,
+              "pictur": 1,
+              "do": 1,
+              "updat": 1,
+              "usernam": 1,
+              "email": 1,
+              "address": 1,
+              "contact": 1,
+              "phone": 1,
+              "number": 1,
+              "password": 1,
+              "bill": 1,
+              "add": 1,
+              "addit": 1,
+              "link": 1,
+              "social": 1,
+              "media": 1,
+              "account": 1,
+              "deactiv": 1,
+              "set": 1,
+              "privat": 1,
+              "secur": 1,
+              "question": 1,
+              "visibl": 1,
+              "languag": 1,
+              "prefer": 1
+            },
+            "intents": {
+              "greeting": 1,
+              "update_profile": 1,
+              "profile_update": 1
+            },
+            "intentFeatures": {
+              "greeting": {
+                "hello": 1,
+                "hi": 1,
+                "hey": 1,
+                "there": 1,
+                "good": 1,
+                "day": 1,
+                "morn": 1,
+                "afternoon": 1,
+                "even": 1,
+                "howdi": 1,
+                "what": 1,
+                "is": 1,
+                "up": 1,
+                "hiya": 1,
+                "greet": 1,
+                "yo": 1,
+                "sup": 1
+              },
+              "update_profile": {
+                "how": 1,
+                "can": 1,
+                "i": 1,
+                "edit": 1,
+                "my": 1,
+                "person": 1,
+                "informaiton": 1,
+                "name": 1,
+                "chang": 1,
+                "inform": 1,
+                "where": 1,
+                "go": 1,
+                "to": 1,
+                "profil": 1,
+                "pictur": 1
+              },
+              "profile_update": {
+                "how": 1,
+                "do": 1,
+                "i": 1,
+                "updat": 1,
+                "my": 1,
+                "profil": 1,
+                "inform": 1,
+                "can": 1,
+                "chang": 1,
+                "usernam": 1,
+                "email": 1,
+                "address": 1,
+                "pictur": 1,
+                "where": 1,
+                "edit": 1,
+                "contact": 1,
+                "phone": 1,
+                "number": 1,
+                "password": 1,
+                "bill": 1,
+                "add": 1,
+                "addit": 1,
+                "to": 1,
+                "link": 1,
+                "social": 1,
+                "media": 1,
+                "account": 1,
+                "deactiv": 1,
+                "set": 1,
+                "privat": 1,
+                "secur": 1,
+                "question": 1,
+                "visibl": 1,
+                "languag": 1,
+                "prefer": 1
+              }
+            },
+            "featuresToIntent": {
+              "hello": [
+                "greeting"
+              ],
+              "hi": [
+                "greeting"
+              ],
+              "hey": [
+                "greeting"
+              ],
+              "there": [
+                "greeting"
+              ],
+              "good": [
+                "greeting"
+              ],
+              "day": [
+                "greeting"
+              ],
+              "morn": [
+                "greeting"
+              ],
+              "afternoon": [
+                "greeting"
+              ],
+              "even": [
+                "greeting"
+              ],
+              "howdi": [
+                "greeting"
+              ],
+              "what": [
+                "greeting"
+              ],
+              "is": [
+                "greeting"
+              ],
+              "up": [
+                "greeting"
+              ],
+              "hiya": [
+                "greeting"
+              ],
+              "greet": [
+                "greeting"
+              ],
+              "yo": [
+                "greeting"
+              ],
+              "sup": [
+                "greeting"
+              ],
+              "how": [
+                "update_profile",
+                "profile_update"
+              ],
+              "can": [
+                "update_profile",
+                "profile_update"
+              ],
+              "i": [
+                "update_profile",
+                "profile_update"
+              ],
+              "edit": [
+                "update_profile",
+                "profile_update"
+              ],
+              "my": [
+                "update_profile",
+                "profile_update"
+              ],
+              "person": [
+                "update_profile"
+              ],
+              "informaiton": [
+                "update_profile"
+              ],
+              "name": [
+                "update_profile"
+              ],
+              "chang": [
+                "update_profile",
+                "profile_update"
+              ],
+              "inform": [
+                "update_profile",
+                "profile_update"
+              ],
+              "where": [
+                "update_profile",
+                "profile_update"
+              ],
+              "go": [
+                "update_profile"
+              ],
+              "to": [
+                "update_profile",
+                "profile_update"
+              ],
+              "profil": [
+                "update_profile",
+                "profile_update"
+              ],
+              "pictur": [
+                "update_profile",
+                "profile_update"
+              ],
+              "do": [
+                "profile_update"
+              ],
+              "updat": [
+                "profile_update"
+              ],
+              "usernam": [
+                "profile_update"
+              ],
+              "email": [
+                "profile_update"
+              ],
+              "address": [
+                "profile_update"
+              ],
+              "contact": [
+                "profile_update"
+              ],
+              "phone": [
+                "profile_update"
+              ],
+              "number": [
+                "profile_update"
+              ],
+              "password": [
+                "profile_update"
+              ],
+              "bill": [
+                "profile_update"
+              ],
+              "add": [
+                "profile_update"
+              ],
+              "addit": [
+                "profile_update"
+              ],
+              "link": [
+                "profile_update"
+              ],
+              "social": [
+                "profile_update"
+              ],
+              "media": [
+                "profile_update"
+              ],
+              "account": [
+                "profile_update"
+              ],
+              "deactiv": [
+                "profile_update"
+              ],
+              "set": [
+                "profile_update"
+              ],
+              "privat": [
+                "profile_update"
+              ],
+              "secur": [
+                "profile_update"
+              ],
+              "question": [
+                "profile_update"
+              ],
+              "visibl": [
+                "profile_update"
+              ],
+              "languag": [
+                "profile_update"
+              ],
+              "prefer": [
+                "profile_update"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "hello",
+                "hi",
+                "hey",
+                "there",
+                "good",
+                "day",
+                "morn",
+                "afternoon",
+                "even",
+                "howdi",
+                "what",
+                "is",
+                "up",
+                "hiya",
+                "greet",
+                "yo",
+                "sup",
+                "how",
+                "can",
+                "i",
+                "edit",
+                "my",
+                "person",
+                "informaiton",
+                "name",
+                "chang",
+                "inform",
+                "where",
+                "go",
+                "to",
+                "profil",
+                "pictur",
+                "do",
+                "updat",
+                "usernam",
+                "email",
+                "address",
+                "contact",
+                "phone",
+                "number",
+                "password",
+                "bill",
+                "add",
+                "addit",
+                "link",
+                "social",
+                "media",
+                "account",
+                "deactiv",
+                "set",
+                "privat",
+                "secur",
+                "question",
+                "visibl",
+                "languag",
+                "prefer"
+              ],
+              "intents": [
+                "greeting",
+                "update_profile",
+                "profile_update"
+              ],
+              "perceptrons": [
+                [
+                  2.9041433334350586,
+                  2.8355209827423096,
+                  2.8365094661712646,
+                  0.09163403511047363,
+                  2.3205642700195312,
+                  0.579107403755188,
+                  0.5799117088317871,
+                  0.5806424021720886,
+                  0.5811817646026611,
+                  2.9189746379852295,
+                  0.9675745964050293,
+                  0.9675745964050293,
+                  0.9675745964050293,
+                  2.9100892543792725,
+                  2.907034397125244,
+                  2.9068334102630615,
+                  2.902940273284912,
+                  -2.38102650642395,
+                  -2.5971293449401855,
+                  -3.6386516094207764,
+                  -1.0349406003952026,
+                  -3.6386516094207764,
+                  -0.7815993428230286,
+                  -0.42887163162231445,
+                  -0.33467811346054077,
+                  -1.2879984378814697,
+                  -0.5742562413215637,
+                  -0.48798203468322754,
+                  -0.2536894381046295,
+                  -0.5279551148414612,
+                  -0.8391827940940857,
+                  -0.2536894381046295,
+                  -1.0414751768112183,
+                  -0.8300995230674744,
+                  -0.3653903901576996,
+                  -0.1904221773147583,
+                  -0.2438972294330597,
+                  -0.0034289516042917967,
+                  -0.12336067110300064,
+                  -0.12336067110300064,
+                  -0.2223716527223587,
+                  0,
+                  0,
+                  0,
+                  -0.05278974398970604,
+                  -0.05278974398970604,
+                  -0.05278974398970604,
+                  -0.3774200975894928,
+                  -0.3074820637702942,
+                  -0.07163771986961365,
+                  -0.07163771986961365,
+                  -0.09610670804977417,
+                  -0.09610670804977417,
+                  0,
+                  0,
+                  0,
+                  11.38482465634168
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  3.8914382457733154,
+                  1.6133086681365967,
+                  -0.6360233426094055,
+                  2.4154865741729736,
+                  -0.6360233426094055,
+                  8.082642555236816,
+                  -0.005300004966557026,
+                  7.844615459442139,
+                  1.9834123849868774,
+                  0.15291282534599304,
+                  2.8311517238616943,
+                  8.700704574584961,
+                  6.382258415222168,
+                  -4.69464111328125,
+                  -1.0907843112945557,
+                  -2.2359049320220947,
+                  -2.6750235557556152,
+                  -2.981945514678955,
+                  -0.808052122592926,
+                  -0.808052122592926,
+                  -5.422090530395508,
+                  -0.0065304250456392765,
+                  -0.0065304250456392765,
+                  -2.007591724395752,
+                  -0.3229341208934784,
+                  -0.9268354177474976,
+                  -0.9268354177474976,
+                  -0.5006335377693176,
+                  -0.5006335377693176,
+                  -0.5006335377693176,
+                  -0.5359189510345459,
+                  -0.02152707614004612,
+                  -0.8808442950248718,
+                  -0.8808442950248718,
+                  -0.12954846024513245,
+                  -0.12954846024513245,
+                  0,
+                  0,
+                  0,
+                  -0.31933451143889385
+                ],
+                [
+                  -0.45211970806121826,
+                  -0.48384684324264526,
+                  -0.4922117590904236,
+                  -0.33702558279037476,
+                  -0.6728470921516418,
+                  -0.16822177171707153,
+                  -0.15080159902572632,
+                  -0.13354037702083588,
+                  -0.117373988032341,
+                  -0.4240090548992157,
+                  -0.21747204661369324,
+                  -0.21747204661369324,
+                  -0.21747204661369324,
+                  -0.41152340173721313,
+                  -0.40570494532585144,
+                  -0.39900991320610046,
+                  -0.39399459958076477,
+                  -2.3679771423339844,
+                  2.6252479553222656,
+                  4.973038673400879,
+                  -3.195227861404419,
+                  4.973038673400879,
+                  -9.625899314880371,
+                  -2.4637227058410645,
+                  -7.180001735687256,
+                  -0.9410013556480408,
+                  -0.2511824369430542,
+                  -1.639536738395691,
+                  -9.966854095458984,
+                  -4.889318466186523,
+                  2.6092331409454346,
+                  2.1192049980163574,
+                  2.3408920764923096,
+                  2.1929802894592285,
+                  2.692568302154541,
+                  0.7004383206367493,
+                  1.6813414096832275,
+                  6.668704032897949,
+                  1.083877682685852,
+                  1.083877682685852,
+                  2.6516435146331787,
+                  1.1959950923919678,
+                  1.993445873260498,
+                  1.993445873260498,
+                  0.49351391196250916,
+                  0.49351391196250916,
+                  0.49351391196250916,
+                  2.309624195098877,
+                  1.814627766609192,
+                  1.157888412475586,
+                  2.594562292098999,
+                  0.46284958720207214,
+                  0.46284958720207214,
+                  -1.4402226209640503,
+                  0.9158451557159424,
+                  0.9158451557159424,
+                  0.2937721963383704
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "hello"
+      ],
+      [
+        "en",
+        "hi"
+      ],
+      [
+        "en",
+        "hey there"
+      ],
+      [
+        "en",
+        "good day"
+      ],
+      [
+        "en",
+        "good morning"
+      ],
+      [
+        "en",
+        "good afternoon"
+      ],
+      [
+        "en",
+        "good evening"
+      ],
+      [
+        "en",
+        "howdy"
+      ],
+      [
+        "en",
+        "what's up"
+      ],
+      [
+        "en",
+        "hey"
+      ],
+      [
+        "en",
+        "hiya"
+      ],
+      [
+        "en",
+        "greetings"
+      ],
+      [
+        "en",
+        "hi there"
+      ],
+      [
+        "en",
+        "yo"
+      ],
+      [
+        "en",
+        "sup"
+      ],
+      [
+        "en",
+        "How can I edit my personal informaiton?"
+      ],
+      [
+        "en",
+        "How can I edit my name?"
+      ],
+      [
+        "en",
+        "How can I change my personal information?"
+      ],
+      [
+        "en",
+        "Where can I go to change my profile picture?"
+      ],
+      [
+        "en",
+        "How do I update my profile information?"
+      ],
+      [
+        "en",
+        "Can I change my username?"
+      ],
+      [
+        "en",
+        "How do I update my email address?"
+      ],
+      [
+        "en",
+        "How can I change my profile picture?"
+      ],
+      [
+        "en",
+        "Where can I edit my contact information?"
+      ],
+      [
+        "en",
+        "How do I update my phone number?"
+      ],
+      [
+        "en",
+        "Can I change my password?"
+      ],
+      [
+        "en",
+        "How do I update my address?"
+      ],
+      [
+        "en",
+        "Where can I update my billing information?"
+      ],
+      [
+        "en",
+        "Can I add additional information to my profile?"
+      ],
+      [
+        "en",
+        "Can I link my social media accounts to my profile?"
+      ],
+      [
+        "en",
+        "How do I deactivate my account?"
+      ],
+      [
+        "en",
+        "Can I set my profile to private?"
+      ],
+      [
+        "en",
+        "Where can I update my security questions?"
+      ],
+      [
+        "en",
+        "Can I change my profile visibility settings?"
+      ],
+      [
+        "en",
+        "How do I update my language preference?"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "greeting": [
+          {
+            "answer": "Good evening! How can I assist you?"
+          },
+          {
+            "answer": "Howdy! What can I help you with?"
+          },
+          {
+            "answer": "What's up? How can I assist you?"
+          },
+          {
+            "answer": "Hey! What do you need help with?"
+          },
+          {
+            "answer": "Hiya! How can I be of service?"
+          },
+          {
+            "answer": "Greetings! How may I help you today?"
+          },
+          {
+            "answer": "Hi there! What can I do for you?"
+          },
+          {
+            "answer": "Yo! How can I assist you?"
+          },
+          {
+            "answer": "Sup! How can I help you today?"
+          },
+          {
+            "answer": "Hello there my friend, How may I be of help to you today?"
+          },
+          {
+            "answer": "Hi! How can I assist you today?"
+          },
+          {
+            "answer": "Hey there! What can I do for you?"
+          },
+          {
+            "answer": "Good day! How may I assist you?"
+          },
+          {
+            "answer": "Good morning! How can I help?"
+          },
+          {
+            "answer": "Good afternoon! What can I do for you today?"
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}

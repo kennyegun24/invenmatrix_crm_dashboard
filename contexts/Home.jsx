@@ -10,8 +10,10 @@ const HomeProvider = ({ children }) => {
   // const routesToIgnore=
   return (
     <HomeContext.Provider>
-      {/* <NavBar /> */}
-      <div className="layout">{children}</div>
+      <div className="flex">
+        <NavBar />
+        <div className="layout">{children}</div>
+      </div>
     </HomeContext.Provider>
   );
 };

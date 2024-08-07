@@ -1,14 +1,14 @@
 :root {
-  --main_bg: #102a43;
+  /* --main_bg: #102a43;
   --text_color: #fff;
+  --border_color: #a8a8a8;
+  --light_text: #b9b6b9; */
   --white_color: #fff;
-  --border_color: #fff;
-  --light_text: #b9b6b9;
   --green_color: #22ad01;
-  /* --main_bg: #fff;
+  --main_bg: #fff;
   --text_color: #5c5e64;
-  --border_color: #535353;
-  --light_text: #4e4e4e; */
+  --border_color: #8c8c8c;
+  --light_text: #4e4e4e;
 }
 
 [color-scheme="dark"] {
