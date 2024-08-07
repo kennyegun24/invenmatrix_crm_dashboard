@@ -2,6 +2,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import HomeProvider from "@/contexts/Home";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ThemeProvider } from "@/contexts/DarkMode";
+// import {Appr}
 // import { DataGrid } from "@mui/x-data-grid";
 // import Barcode from "react-barcode";
 // import { useState } from "react";
@@ -19,7 +22,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={[inter.className]}>
-        <HomeProvider>{children}</HomeProvider>
+        <AntdRegistry>
+          <ThemeProvider>
+            <HomeProvider>{children}</HomeProvider>
+          </ThemeProvider>
+        </AntdRegistry>
         {/* <Barcode value="kenny elias" /> */}
         {/* <BarcodeScannerComponent
           width={500}
