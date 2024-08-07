@@ -80,6 +80,18 @@
   gap: 2.5rem;
 }
 
+.gap3rem {
+  gap: 3rem;
+}
+
+.gap35rem {
+  gap: 3.5rem;
+}
+
+.gap4rem {
+  gap: 4rem;
+}
+
 button {
   cursor: pointer;
   border: none;

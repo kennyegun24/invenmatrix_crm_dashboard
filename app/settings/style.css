@@ -1,0 +1,28 @@
+.settings_page {
+  padding: 4rem;
+  hr {
+    border-color: var(--light_border);
+  }
+
+  .settings_arrow_div {
+    border: 2px solid var(--light_border);
+    height: 2rem;
+    width: 2.5rem;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 200px) and (max-width: 650px) {
+  .settings_page {
+    padding: 2rem 1.5rem;
+
+    .settings_arrow_div {
+      svg {
+        font-size: 16px;
+      }
+    }
+  }
+}

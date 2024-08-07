@@ -18,4 +18,8 @@
   min-height: 100vh;
   width: 100%;
   background: var(--main_bg);
+
+  * {
+    color: var(--text_color);
+  }
 }
