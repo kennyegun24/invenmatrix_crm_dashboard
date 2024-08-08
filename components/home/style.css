@@ -11,6 +11,8 @@
 
 .dashboard_cards {
   width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(28%, 1fr));
+  display: grid;
   .dashboard_card {
     height: 7.5rem;
     padding: 0.75rem;
@@ -42,7 +44,8 @@
   width: 60%;
   padding: 1rem;
   border-radius: 0.5rem;
-  height: 100%;
+  min-height: 100%;
+  letter-spacing: 1px;
 
   h3 {
     padding: 0.5rem;
@@ -55,5 +58,141 @@
     padding: 0.5rem;
     border-radius: 0.5rem;
     background: transparent;
+  }
+}
+
+.map_container {
+  width: 40%;
+  height: 100%;
+  border: 2px solid var(--light_border);
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  select {
+    padding: 0.5rem;
+    background: transparent;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  h3 {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    width: fit-content;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  path {
+    fill: #2a354d;
+  }
+
+  .country_sales {
+    padding: 0.5rem 0;
+
+    .country_sale {
+      padding: 1rem 0;
+    }
+    svg,
+    p {
+      color: var(--green_color);
+    }
+  }
+}
+
+.map_dark {
+  path {
+    fill: #fff;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+  .dashboard_header {
+    h2 {
+      padding: 0.5rem 1rem;
+      font-size: 22px;
+      border-bottom: 2px solid var(--light_border);
+    }
+  }
+
+  .dashboard_cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    .dashboard_card {
+      width: 100%;
+      height: auto;
+      gap: 2rem;
+    }
+  }
+
+  .dashboard_chart {
+    width: 100%;
+    height: 400px;
+
+    .dashboard_chart_prices {
+      flex-direction: column;
+      justify-content: initial;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 12px;
+    }
+
+    h2 {
+      font-size: 14px;
+    }
+
+    select {
+      font-size: 11px;
+    }
+  }
+
+  .map_container {
+    width: 100%;
+    padding: 0.5rem;
+    select {
+      font-size: 14px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+
+    .country_sales {
+      padding: 0.5rem 0;
+
+      .country_sale {
+        padding: 0.75rem 0;
+
+        h4 {
+          font-size: 14px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+      svg,
+      p {
+        color: var(--green_color);
+      }
+    }
+  }
+}
+
+@media (min-width: 600px) and (max-width: 999px) {
+  .dashboard_cards {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    .dashboard_card {
+      width: 100%;
+    }
   }
 }

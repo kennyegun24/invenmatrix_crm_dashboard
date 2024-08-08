@@ -12,21 +12,14 @@ const DashboardChart = () => {
       <h3 className="flex align_center gap1rem">
         Total Sales <IoIosArrowDown />
       </h3>
-      <section className="flex align_center justify_between">
+      <section className="flex align_center justify_between dashboard_chart_prices">
         <h2>$50.98M</h2>
         <div className="flex gap05rem align_center">
           <select name="" id="">
-            <option value="">
-              {/* <FaRegCalendarAlt /> */}
-              Jan 1, 2023 - December 31, 2023
-              {/* <IoIosArrowDown /> */}
-            </option>
+            <option value="">Jan 1, 2023 - December 31, 2023</option>
           </select>
           <select name="" id="">
-            <option value="">
-              Monthly
-              {/* <IoIosArrowDown /> */}
-            </option>
+            <option value="">Monthly</option>
           </select>
         </div>
       </section>

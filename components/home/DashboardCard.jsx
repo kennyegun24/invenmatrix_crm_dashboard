@@ -5,7 +5,7 @@ import { MdOutlineShowChart } from "react-icons/md";
 const DashboardCard = () => {
   const arr = Array.from({ length: 3 });
   return (
-    <div className="dashboard_cards flex align_center gap1rem">
+    <div className="dashboard_cards gap1rem">
       {arr.map((each, _) => (
         <section className="dashboard_card flex column justify_between">
           <div className="flex align_center justify_between">

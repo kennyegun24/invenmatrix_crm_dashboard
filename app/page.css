@@ -1,0 +1,19 @@
+.home_page {
+  padding: 1rem;
+  width: 100%;
+  min-height: 100vh;
+  gap: 1rem;
+
+  .home_page_charts {
+    width: 100%;
+    min-height: 500px;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+  .home_page {
+    .home_page_charts {
+      flex-direction: column;
+    }
+  }
+}

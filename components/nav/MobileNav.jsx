@@ -65,11 +65,11 @@ const MobileNav = () => {
             {nav.children && (
               <div className={`nav_drop_down flex column gap1rem`}>
                 {nav.children.map((chil, _) => (
-                  <>
+                  <div key={_}>
                     <li>
                       <Link href={chil?.link}>{chil.label}</Link>
                     </li>
-                  </>
+                  </div>
                 ))}
               </div>
             )}
