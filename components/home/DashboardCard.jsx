@@ -7,7 +7,7 @@ const DashboardCard = () => {
   return (
     <div className="dashboard_cards gap1rem">
       {arr.map((each, _) => (
-        <section className="dashboard_card flex column justify_between">
+        <section key={_} className="dashboard_card flex column justify_between">
           <div className="flex align_center justify_between">
             <GiPriceTag size={20} />
             <p className="dashboard_price_tag flex gap05rem">
