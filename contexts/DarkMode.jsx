@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useEffect, useState } from "react";
-import { Button, Layout, Menu, ConfigProvider } from "antd";
+import { ConfigProvider } from "antd";
 
 export const ThemeContext = createContext();
 
@@ -35,6 +35,13 @@ export const ThemeProvider = ({ children }) => {
               colorText: mode === "dark" ? "#fff" : "#102A43",
               colorTextLabel: mode === "dark" ? "#fff" : "#102A43",
               colorPrimaryText: mode === "dark" ? "#fff" : "#102A43",
+              colorBgElevated: mode === "dark" ? "#000" : "#fff",
+              itemHoverBg: "#22ad01",
+              itemActiveBg: "#22ad01",
+              itemSelectedBg: mode === "dark" ? "#22ad01" : "#53f42b",
+              itemSelectedColor: mode === "dark" ? "#fff" : "#000",
+              itemHoverColor: "#fff",
+              itemTextColor: mode === "dark" ? "#fff" : "#102A43",
             },
           },
         }}

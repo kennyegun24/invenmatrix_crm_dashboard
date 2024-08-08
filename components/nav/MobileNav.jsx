@@ -1,46 +1,15 @@
 import React, { useContext, useState } from "react";
-import { TbChartHistogram } from "react-icons/tb";
-import { BsBarChart } from "react-icons/bs";
-import { PiUserSwitchLight } from "react-icons/pi";
-import { MdOutlineInventory } from "react-icons/md";
-import { IoMegaphoneOutline } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { CloseCircleOutlined } from "@ant-design/icons";
 import { HomeContext } from "@/contexts/Home";
+import Link from "next/link";
+import { mobile_navs } from "@/utils/navs";
 
 const MobileNav = () => {
   const [activeNav, setActiveNav] = useState(null);
   const toggleNav = (key) => {
     setActiveNav(activeNav === key ? null : key);
   };
-
-  const navs = [
-    {
-      key: 1,
-      icon: <TbChartHistogram />,
-      text: "Dashboard",
-    },
-    {
-      key: 2,
-      icon: <BsBarChart />,
-      text: "Sales Performance",
-    },
-    {
-      key: 3,
-      icon: <PiUserSwitchLight />,
-      text: "Customer Insights",
-    },
-    {
-      key: 4,
-      icon: <MdOutlineInventory />,
-      text: "Inventory",
-    },
-    {
-      key: 5,
-      icon: <IoMegaphoneOutline />,
-      text: "Marketing",
-    },
-  ];
 
   const { toggle, collapsed } = useContext(HomeContext);
   return (
@@ -56,7 +25,7 @@ const MobileNav = () => {
         </div>
       </section>
       <section className="flex column gap25rem align_start">
-        {navs.map((nav) => (
+        {mobile_navs.map((nav) => (
           <section
             key={nav.key}
             className={`flex column gap1rem ${
@@ -71,26 +40,36 @@ const MobileNav = () => {
                 <span>{nav.icon}</span>
                 {nav.text}
               </h4>
-              <IoIosArrowDown
-                className={
-                  nav.key === activeNav
-                    ? "dropdown_icon transform"
-                    : "dropdown_icon"
-                }
-              />
+              {nav?.children && (
+                <IoIosArrowDown
+                  className={
+                    nav.key === activeNav
+                      ? "dropdown_icon transform"
+                      : "dropdown_icon"
+                  }
+                />
+              )}
             </div>
-            <div className={`nav_drop_down flex column gap1rem`}>
-              <li>{nav.text} Content 1</li>
-              <li>{nav.text} Content 2</li>
-              <li>{nav.text} Content 3</li>
-            </div>
+            {nav.children && (
+              <div className={`nav_drop_down flex column gap1rem`}>
+                {nav.children.map((chil, _) => (
+                  <>
+                    <li>{chil.label}</li>
+                  </>
+                ))}
+              </div>
+            )}
           </section>
         ))}
       </section>
-      <section className="settings_btn_container sticky">
-        <button className="settings_btn" type="submit">
+      <section className="settings_btn_container sticky flex">
+        <Link
+          href={"/settings"}
+          className="settings_btn text_center"
+          type="submit"
+        >
           Settings
-        </button>
+        </Link>
       </section>
     </div>
   );

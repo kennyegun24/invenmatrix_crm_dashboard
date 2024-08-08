@@ -2,12 +2,11 @@
   height: 100vh;
   overflow-y: auto;
   overflow-x: hidden;
-  /* border-right: 1px solid var(--border_color); */
   z-index: 999;
   position: sticky;
   top: 0;
   box-shadow: 2px 0px 6px -2px rgba(0, 0, 0, 0.75);
-
+  width: 18%;
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -43,6 +42,16 @@
 .navbar_component_mobile {
   display: none;
 }
+
+.active-menu-item {
+  background-color: #1890ff !important;
+  /* color: red !important; */
+}
+
+.active-menu-item .ant-menu-item-icon {
+  color: #fff !important;
+}
+
 @media (min-width: 200px) and (max-width: 650px) {
   .sider {
     display: none;
@@ -64,6 +73,7 @@
     background-color: var(--main_bg);
     color: var(--text_color);
     z-index: 999;
+    height: 100vh;
 
     .nav_header_mobile {
       position: sticky;
@@ -126,10 +136,11 @@
     }
 
     .settings_btn_container {
-      padding: 0 1rem;
-      width: 100%;
+      padding: 1rem;
+      width: 100vw;
       bottom: 0;
       background-color: var(--main_bg);
+      /* background: red; */
       .settings_btn {
         color: var(--text_color);
         width: 100%;

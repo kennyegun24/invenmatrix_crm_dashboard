@@ -1,10 +1,10 @@
 "use client";
-import { Switch } from "@mui/material";
+import { Switch } from "antd";
 import React, { useContext } from "react";
 import { FaChevronRight } from "react-icons/fa6";
 import "./style.css";
 import { ThemeContext } from "@/contexts/DarkMode";
-import { HomeContext } from "@/contexts/Home";
+
 const Page = () => {
   const { toggle, mode } = useContext(ThemeContext);
 
