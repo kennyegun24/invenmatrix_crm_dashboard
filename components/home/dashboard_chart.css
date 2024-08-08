@@ -1,0 +1,47 @@
+.dashboard_chart {
+  border: 2px solid var(--light_border);
+  width: 60%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  min-height: 100%;
+  letter-spacing: 1px;
+
+  h3 {
+    padding: 0.5rem;
+    border: 2px solid var(--light_border);
+    width: fit-content;
+    font-size: 18px;
+  }
+
+  select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+  .dashboard_chart {
+    width: 100%;
+    height: 400px;
+
+    .dashboard_chart_prices {
+      flex-direction: column;
+      justify-content: initial;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 12px;
+    }
+
+    h2 {
+      font-size: 14px;
+    }
+
+    select {
+      font-size: 11px;
+    }
+  }
+}

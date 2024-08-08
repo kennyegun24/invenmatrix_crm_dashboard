@@ -1,0 +1,82 @@
+.map_container {
+  width: 40%;
+  height: 100%;
+  border: 2px solid var(--light_border);
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  select {
+    padding: 0.5rem;
+    background: transparent;
+    width: 100%;
+    font-size: 16px;
+  }
+
+  h3 {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+    width: fit-content;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  path {
+    fill: #2a354d;
+  }
+
+  .country_sales {
+    padding: 0.5rem 0;
+
+    .country_sale {
+      padding: 1rem 0;
+    }
+    svg,
+    p {
+      color: var(--green_color);
+    }
+  }
+}
+
+.map_dark {
+  path {
+    fill: #fff;
+  }
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+  .map_container {
+    width: 100%;
+    padding: 0.5rem;
+    select {
+      font-size: 14px;
+    }
+
+    h3 {
+      font-size: 16px;
+    }
+
+    .country_sales {
+      padding: 0.5rem 0;
+
+      .country_sale {
+        padding: 0.75rem 0;
+
+        h4 {
+          font-size: 14px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+      svg,
+      p {
+        color: var(--green_color);
+      }
+    }
+  }
+}
