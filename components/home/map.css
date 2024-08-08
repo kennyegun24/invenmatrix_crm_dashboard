@@ -51,6 +51,17 @@
   .map_container {
     width: 100%;
     padding: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1110px) {
+  .map_container {
+    width: 50%;
+  }
+}
+
+@media (min-width: 200px) and (max-width: 1110px) {
+  .map_container {
     select {
       font-size: 14px;
     }
@@ -72,10 +83,6 @@
         p {
           font-size: 14px;
         }
-      }
-      svg,
-      p {
-        color: var(--green_color);
       }
     }
   }

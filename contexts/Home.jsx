@@ -22,7 +22,7 @@ const HomeProvider = ({ children }) => {
 
   return (
     <HomeContext.Provider value={{ toggle, collapsed }}>
-      <div className="flex">
+      <div className="flex layout">
         {showNavBar && <NavBar />}
         <div className="layout">
           {showNavBar && <TopNav />}

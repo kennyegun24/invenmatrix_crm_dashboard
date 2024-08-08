@@ -45,3 +45,33 @@
     }
   }
 }
+
+@media (min-width: 768px) and (max-width: 1110px) {
+  .dashboard_chart {
+    height: auto;
+    width: 50%;
+
+    .dashboard_chart_prices {
+      flex-direction: column;
+      justify-content: initial;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      > div {
+        flex-wrap: wrap;
+      }
+    }
+
+    h3 {
+      font-size: 12px;
+    }
+
+    h2 {
+      font-size: 14px;
+    }
+
+    select {
+      font-size: 11px;
+    }
+  }
+}
