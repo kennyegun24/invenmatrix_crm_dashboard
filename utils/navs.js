@@ -87,6 +87,7 @@ export const mobile_navs = [
     key: 1,
     icon: <TbChartHistogram />,
     text: "Dashboard",
+    link: "/",
   },
   {
     key: 2,
@@ -96,18 +97,22 @@ export const mobile_navs = [
       {
         key: "5",
         label: "Charts",
+        link: "/sales/charts",
       },
       {
         key: "6",
         label: "All Products",
+        link: "/sales/products/all",
       },
       {
         key: "7",
         label: "Top Selling Products",
+        link: "/sales/products/top",
       },
       {
         key: "8",
         label: "Add New Product",
+        link: "/sales/products/new",
       },
     ],
   },
@@ -119,10 +124,12 @@ export const mobile_navs = [
       {
         key: "5",
         label: "Charts",
+        link: "/customer/charts",
       },
       {
         key: "6",
         label: "All Customers",
+        link: "/customer/customers/all",
       },
     ],
   },
@@ -134,10 +141,12 @@ export const mobile_navs = [
       {
         key: "5",
         label: "Charts",
+        link: "/inventory/charts",
       },
       {
         key: "6",
         label: "Table",
+        link: "/inventory/table",
       },
     ],
   },
@@ -149,6 +158,7 @@ export const mobile_navs = [
       {
         key: "9",
         label: "Charts",
+        link: "/marketing/charts",
       },
     ],
   },

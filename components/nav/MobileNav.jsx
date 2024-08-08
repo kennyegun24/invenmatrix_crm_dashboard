@@ -36,25 +36,39 @@ const MobileNav = () => {
               className={` flex justify_between align_center pointer`}
               onClick={() => toggleNav(nav.key)}
             >
-              <h4 className="text_start gap05rem align_center flex">
-                <span>{nav.icon}</span>
-                {nav.text}
-              </h4>
-              {nav?.children && (
-                <IoIosArrowDown
-                  className={
-                    nav.key === activeNav
-                      ? "dropdown_icon transform"
-                      : "dropdown_icon"
-                  }
-                />
+              {nav?.children ? (
+                <>
+                  <h4 className="text_start gap05rem align_center flex">
+                    <span>{nav.icon}</span>
+                    {nav.text}
+                  </h4>
+                  <IoIosArrowDown
+                    className={
+                      nav.key === activeNav
+                        ? "dropdown_icon transform"
+                        : "dropdown_icon"
+                    }
+                  />
+                </>
+              ) : (
+                <>
+                  <Link
+                    href={nav.link}
+                    className="text_start gap05rem align_center flex"
+                  >
+                    <span>{nav.icon}</span>
+                    {nav.text}
+                  </Link>
+                </>
               )}
             </div>
             {nav.children && (
               <div className={`nav_drop_down flex column gap1rem`}>
                 {nav.children.map((chil, _) => (
                   <>
-                    <li>{chil.label}</li>
+                    <li>
+                      <Link href={chil?.link}>{chil.label}</Link>
+                    </li>
                   </>
                 ))}
               </div>

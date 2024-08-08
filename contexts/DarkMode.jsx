@@ -42,6 +42,8 @@ export const ThemeProvider = ({ children }) => {
               itemSelectedColor: mode === "dark" ? "#fff" : "#000",
               itemHoverColor: "#fff",
               itemTextColor: mode === "dark" ? "#fff" : "#102A43",
+              // popupBg: mode === "dark" ? "red" : "red",
+              subMenuItemBg: mode === "dark" ? "#0c2033" : "#f4f4f4",
             },
           },
         }}

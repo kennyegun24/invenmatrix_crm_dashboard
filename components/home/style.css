@@ -1,0 +1,59 @@
+.dashboard_header {
+  * {
+    color: var(--text_color);
+  }
+  h2 {
+    padding: 1.5rem 2rem;
+    font-size: 28px;
+    border-bottom: 2px solid var(--light_border);
+  }
+}
+
+.dashboard_cards {
+  width: 100%;
+  .dashboard_card {
+    height: 7.5rem;
+    padding: 0.75rem;
+    border: 2px solid var(--light_border);
+    border-radius: 0.5rem;
+    width: 33%;
+
+    .dashboard_price_tag {
+      color: var(--green_color);
+      font-weight: 600;
+      font-size: 14px;
+      * {
+        color: var(--green_color);
+      }
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+.dashboard_chart {
+  border: 2px solid var(--light_border);
+  width: 60%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  height: 100%;
+
+  h3 {
+    padding: 0.5rem;
+    border: 2px solid var(--light_border);
+    width: fit-content;
+    font-size: 18px;
+  }
+
+  select {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+  }
+}
