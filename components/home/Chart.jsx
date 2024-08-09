@@ -9,12 +9,40 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from "recharts";
 import "./dashboard_chart.css";
 
+const CustomToolkit = ({ payload, active, label }) => {
+  if (payload && label && active) {
+    return (
+      <div>
+        {payload?.map((item) => (
+          <div
+            style={{
+              background: "#000",
+              padding: ".5rem 1rem",
+              borderRadius: 12,
+              fontSize: "14px",
+            }}
+            className="flex column gap05rem"
+            key={item?.payload.uv * Math.floor(Math.random())}
+          >
+            <p style={{ color: "#fff" }}>{label}</p>
+            <div>
+              <p style={{ color: "#fff" }}>Value: {item?.value}</p>
+              <p style={{ color: "#fff" }}>Item name: {item?.payload?.name}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+};
+
 const Chart = () => {
   return (
-    <ResponsiveContainer width="100%" height="80%">
+    <ResponsiveContainer width="100%" height="70%">
       <AreaChart
         width={500}
         height={400}
@@ -33,32 +61,10 @@ const Chart = () => {
           </linearGradient>
         </defs>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" fontSize={12} />
+        <XAxis label={"Months"} angle={-40} dataKey="name" fontSize={12} />
         <YAxis dataKey="amt" fontSize={12} />
-        <Tooltip
-          content={(p) => {
-            return (
-              <div>
-                {p.payload?.map((item) => (
-                  <div
-                    style={{
-                      background: "#000",
-                      padding: ".5rem 1rem",
-                      borderRadius: 12,
-                      fontSize: "14px",
-                    }}
-                    key={item.payload.uv * Math.floor(Math.random())}
-                  >
-                    <p style={{ color: "#fff" }}>Value: {item.value}</p>
-                    <p style={{ color: "#fff" }}>
-                      Item name: {item.payload?.name}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            );
-          }}
-        />
+        <Tooltip content={<CustomToolkit />} />
+        <Legend values="Amount" />
         <Area
           type="monotone"
           dataKey="amt"

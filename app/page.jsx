@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="flex column container gap1rem">
       <DashboardHeader text={"Dashboard"} />
-      <div className="flex gap1rem column">
+      <div className="flex gap1rem column padding1rem">
         <DashboardCard />
 
         <div className="flex gap1rem home_page_charts">
