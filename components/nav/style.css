@@ -24,14 +24,23 @@
   bottom: 1rem;
   left: 2rem;
 
+  .antd_btn {
+    /* color: green; */
+
+    * {
+      color: inherit;
+    }
+  }
+
   button {
     border-color: 1px solid var(--border_color);
-    background-color: #fff;
-    padding: 0.5rem;
+    /* background-color: #fff; */
+    padding: 0.5rem 1rem;
+    border: none;
     width: fit-content;
-    &:hover {
+    /* &:hover {
       background-color: #fff;
-    }
+    } */
   }
 
   svg {

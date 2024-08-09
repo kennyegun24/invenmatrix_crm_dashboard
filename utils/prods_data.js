@@ -360,5 +360,3 @@ export const products = [
     reviews: "4.6/5",
   },
 ];
-
-console.log(products);

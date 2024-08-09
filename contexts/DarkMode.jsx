@@ -6,8 +6,6 @@ export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [mode, setMode] = useState("dark");
-  console.log(mode);
-
   const toggle = () => {
     let mod = mode === "dark" ? "light" : "dark";
     setMode((prev) => (prev === "dark" ? "light" : "dark"));
@@ -44,6 +42,15 @@ export const ThemeProvider = ({ children }) => {
               itemTextColor: mode === "dark" ? "#fff" : "#102A43",
               // popupBg: mode === "dark" ? "red" : "red",
               subMenuItemBg: mode === "dark" ? "#0c2033" : "#f4f4f4",
+            },
+            Button: {
+              // defaultColor: mode === "dark" ? "#102a43" : "#fff",
+              defaultColor: mode === "dark" ? "#102a43" : "#fff",
+              defaultBg: mode === "dark" ? "#fff" : "#102a43",
+              primaryColor: mode === "dark" ? "#fff" : "#102a43",
+              defaultBorderColor: mode === "dark" ? "#f4f4f4" : "#111",
+              defaultHoverBg: mode === "dark" ? "#102a43" : "#fff",
+              defaultHoverColor: mode === "dark" ? "#fff" : "#102a43",
             },
           },
         }}

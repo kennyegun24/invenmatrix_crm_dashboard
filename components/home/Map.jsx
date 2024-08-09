@@ -24,7 +24,6 @@ const Map = () => {
         <Geographies geography={json}>
           {({ geographies }) =>
             geographies.map((geo) => {
-              console.log(geo);
               return (
                 <Geography
                   key={geo.rsmKey}
