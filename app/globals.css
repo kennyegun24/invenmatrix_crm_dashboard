@@ -25,5 +25,10 @@
 
   .sub_layout {
     min-width: 80%;
+    width: 100%;
+
+    .layout_content {
+      width: 100%;
+    }
   }
 }
