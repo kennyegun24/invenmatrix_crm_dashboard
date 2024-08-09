@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import json from "@/features.json";
 import { ThemeContext } from "@/contexts/DarkMode";
@@ -7,10 +7,14 @@ import { RxDotFilled } from "react-icons/rx";
 
 const Map = () => {
   const { mode } = useContext(ThemeContext);
+  const [continents, setContinents] = useState([]);
+  const changeContinent = (e) => {
+    setContinents(e?.target?.value);
+  };
 
   const isHighlighted = (geo) => {
     const continent = geo.properties.CONTINENT;
-    return ["Africa", "Asia"].includes(continent);
+    return continents.includes(continent);
   };
 
   return (
@@ -48,8 +52,14 @@ const Map = () => {
           }
         </Geographies>
       </ComposableMap>
-      <select name="" id="">
-        <option value="">Monthly</option>
+      <select name="" onChange={changeContinent} id="">
+        <option value="Africa">Africa</option>
+        <option value="Antarctica">Antarctica</option>
+        <option value="Asia">Asia</option>
+        <option value="Australia">Australia</option>
+        <option value="Europe">Europe</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
       </select>
       <section className="country_sales">
         <div className="flex justify_between country_sale">

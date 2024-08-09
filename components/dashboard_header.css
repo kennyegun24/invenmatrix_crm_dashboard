@@ -1,7 +1,3 @@
-@import url(./dashboard_card.css);
-@import url(./dashboard_chart.css);
-@import url(./map.css);
-
 .dashboard_header {
   * {
     color: var(--text_color);

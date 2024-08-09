@@ -1,6 +1,6 @@
-import { ThemeContext } from "@/contexts/DarkMode";
+"use client";
 import { chart_date } from "@/utils/chart_data";
-import React, { useContext } from "react";
+import React from "react";
 import {
   AreaChart,
   Area,
@@ -10,6 +10,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import "./dashboard_chart.css";
 
 const Chart = () => {
   return (
