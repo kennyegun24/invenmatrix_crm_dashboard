@@ -1,0 +1,17 @@
+.dashboard_table_component {
+  width: 100%;
+  .dashboard_table {
+    min-height: 400px;
+    height: 500px;
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid var(--light_border);
+    border-radius: 0.5rem;
+  }
+
+  .age-column-cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

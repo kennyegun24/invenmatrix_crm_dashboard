@@ -24,7 +24,7 @@ const HomeProvider = ({ children }) => {
     <HomeContext.Provider value={{ toggle, collapsed }}>
       <div className="flex layout">
         {showNavBar && <NavBar />}
-        <div className="layout">
+        <div className="sub_layout">
           {showNavBar && <TopNav />}
           <div className="layout_content">{children}</div>
         </div>

@@ -3,6 +3,7 @@ import DashboardHeader from "@/components/home/DashboardHeader";
 import DashboardCard from "@/components/home/DashboardCard";
 import DashboardChart from "@/components/home/DashboardChart";
 import Map from "@/components/home/Map";
+import Products from "@/components/home/table/Products";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           <DashboardChart />
           <Map />
         </div>
+        <Products />
       </div>
     </div>
   );

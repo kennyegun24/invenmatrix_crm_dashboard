@@ -22,4 +22,8 @@
   * {
     color: var(--text_color);
   }
+
+  .sub_layout {
+    min-width: 80%;
+  }
 }
