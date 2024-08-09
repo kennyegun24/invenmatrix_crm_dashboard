@@ -1,8 +1,12 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-export const AuthButton = ({ text }) => {
-  return <button className="login_btn">{text}</button>;
+export const AuthButton = ({ text, login }) => {
+  return (
+    <button onClick={login} className="login_btn">
+      {text}
+    </button>
+  );
 };
 
 const GoogleBtn = ({ text }) => {

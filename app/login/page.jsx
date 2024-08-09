@@ -1,9 +1,15 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import RightSide from "@/components/auth/RightSide";
 import GoogleBtn, { AuthButton } from "@/components/auth/GoogleBtn";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
+  const router = useRouter();
+  const login = () => {
+    router.push("/");
+  };
   return (
     <div className="login_page flex">
       <div className="flex sub_auth">
@@ -43,7 +49,7 @@ const Page = () => {
                 id="email"
               />
             </div>
-            <AuthButton text={"Login"} />
+            <AuthButton login={login} text={"Login"} />
             <p className="or">OR</p>
             <GoogleBtn text={"Continue with Google"} />
           </section>

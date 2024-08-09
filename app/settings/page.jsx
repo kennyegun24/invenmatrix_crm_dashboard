@@ -4,12 +4,17 @@ import React, { useContext } from "react";
 import { FaChevronRight } from "react-icons/fa6";
 import "./style.css";
 import { ThemeContext } from "@/contexts/DarkMode";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const { toggle, mode } = useContext(ThemeContext);
-
+  const router = useRouter();
   const onchange = () => {
     toggle();
+  };
+
+  const logout = () => {
+    router.push("/login");
   };
 
   return (
@@ -44,6 +49,16 @@ const Page = () => {
               <FaChevronRight />
             </span>
           </div>
+        </div>
+        <hr />
+        <div
+          onClick={logout}
+          className="flex justify_between align_center pointer"
+        >
+          <p>Logout</p>
+          <span className="settings_arrow_div flex justify_center align_center">
+            <FaChevronRight />
+          </span>
         </div>
       </section>
     </div>
