@@ -3,8 +3,8 @@
     width: 100%;
     height: 100%;
 
-    .sales_bg_chart {
-      height: 600px;
+    .sales_bg_chart,
+    .sales_heat_map_bg_chart {
       border-radius: 0.5rem;
       border: 1px solid var(--light_border);
 
@@ -14,6 +14,21 @@
         border: 1px solid var(--light_border);
       }
     }
+
+    .sales_bg_chart {
+      height: 600px;
+    }
+
+    .sales_heat_map_bg_chart {
+      min-height: 600px;
+
+      .heat_map_component {
+        * {
+          color: #000;
+        }
+      }
+    }
+
     .sales_sm_grid_charts {
       height: 100%;
       display: grid;
@@ -26,7 +41,8 @@
     }
 
     .sales_bg_chart,
-    .sales_sm_grid_charts {
+    .sales_sm_grid_charts,
+    .sales_heat_map_bg_chart {
       width: 100%;
 
       select {

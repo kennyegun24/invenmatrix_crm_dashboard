@@ -6,6 +6,7 @@ import SmChart from "@/components/sales/charts/SmChart";
 import Bar from "@/components/sales/charts/Bar";
 import SingleBar from "@/components/sales/charts/SingleBar";
 import Line from "@/components/sales/charts/Line";
+import HeatChart from "@/components/sales/charts/HeatChart";
 
 const page = () => {
   return (
@@ -30,12 +31,9 @@ const page = () => {
           <div className="sales_sm_chart padding075rem">
             <Line title={"Sales Trend"} />
           </div>
-          <div className="sales_sm_chart padding075rem">
-            <SmChart title={"Sales Distribution Accross Different Regions"} />
-          </div>
-          <div className="sales_sm_chart padding075rem">
-            <SmChart title={"Sales Performance by Region"} />
-          </div>
+        </section>
+        <section className="sales_heat_map_bg_chart padding1rem">
+          <HeatChart title={"Sales Activity Accross the Year"} />
         </section>
       </div>
     </div>
