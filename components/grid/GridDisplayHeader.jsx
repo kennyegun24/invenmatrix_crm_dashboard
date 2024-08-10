@@ -2,8 +2,9 @@ import React from "react";
 import "./style.css";
 import { Button } from "antd";
 import { FaSearch, FaRegCalendarMinus } from "react-icons/fa";
-import { IoGridOutline, IoArrowDownOutline } from "react-icons/io5";
 import GridHeaderControls from "./GridHeaderControls";
+import { MdMenuOpen } from "react-icons/md";
+
 const GridDisplayHeader = ({ text, display }) => {
   return (
     <div className="grid_display_header_component flex gap1rem column">
@@ -21,13 +22,18 @@ const GridDisplayHeader = ({ text, display }) => {
           </Button>
         </section>
       </section>
-      <section className="sales_sub_header_container flex align_center justify_between">
-        <section className="sales_search flex align_center">
-          <input type="search" name="" id="" />
-          <div className="sales_search_icon pointer flex align_center justify_center">
-            <FaSearch />
-          </div>
-        </section>
+      <section className="sales_sub_header_container flex justify_between">
+        <div className="flex align_center gap1rem">
+          <section className="sales_search flex align_center">
+            <input type="search" name="" id="" />
+            <div className="sales_search_icon pointer flex align_center justify_center">
+              <FaSearch />
+            </div>
+          </section>
+          <p className="flex gap05rem align_center grid_menu_option pointer">
+            Menu <MdMenuOpen />
+          </p>
+        </div>
 
         <GridHeaderControls display={display} />
       </section>

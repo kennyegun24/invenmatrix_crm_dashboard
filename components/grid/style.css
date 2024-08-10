@@ -39,5 +39,16 @@
         padding: 0.5rem 0.5rem;
       }
     }
+    .grid_menu_option {
+      height: 100%;
+      background-color: var(--text_color);
+      color: var(--main_bg);
+      padding: 0 0.5rem;
+      border-radius: 0.3rem;
+      * {
+        font-size: 22px;
+        color: var(--main_bg);
+      }
+    }
   }
 }
