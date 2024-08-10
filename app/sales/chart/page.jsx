@@ -1,3 +1,4 @@
+"use client";
 import DashboardHeader from "@/components/DashboardHeader";
 import React from "react";
 import "./page.css";

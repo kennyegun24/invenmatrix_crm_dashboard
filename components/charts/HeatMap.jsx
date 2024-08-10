@@ -1,22 +1,23 @@
 "use client";
+import Loading from "@/app/loading";
 import { ThemeContext } from "@/contexts/DarkMode";
-import React, { useContext, useState } from "react";
-import ReactApexChart from "react-apexcharts";
-
-const generateData = (days, yrange) => {
-  let i = 0;
-  let series = [];
-  while (i < days) {
-    let y =
-      Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-    series.push({ x: `Day ${i + 1}`, y: y });
-    i++;
-  }
-  return series;
-};
+import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
+// import  from "";
+const ReactApexChart = lazy(() => import("react-apexcharts"));
 
 const ApexChart = () => {
   const { mode } = useContext(ThemeContext);
+  const generateData = (days, yrange) => {
+    let i = 0;
+    let series = [];
+    while (i < days) {
+      let y =
+        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+      series.push({ x: `Day ${i + 1}`, y: y });
+      i++;
+    }
+    return series;
+  };
   const [state] = useState({
     series: [
       { name: "Jan", data: generateData(7, { min: -30, max: 55 }) },
@@ -98,41 +99,51 @@ const ApexChart = () => {
     },
   });
 
+  const [win, setWin] = useState(false);
+  useEffect(() => {
+    setWin(true);
+  }, []);
   return (
     <div className="heat_map_component">
       <div id="chart">
-        <ReactApexChart
-          options={{
-            ...state.options,
-            legend: {
-              labels: {
-                colors: mode === "dark" ? "#fff" : "#102A43",
-              },
-            },
-            yaxis: {
-              ...state.options.yaxis,
-              labels: {
-                style: {
-                  colors: mode === "dark" ? "#fff" : "#102A43",
+        {win && (
+          <Suspense
+          // fallback={<Loading />}
+          >
+            <ReactApexChart
+              options={{
+                ...state.options,
+                legend: {
+                  labels: {
+                    colors: mode === "dark" ? "#fff" : "#102A43",
+                  },
                 },
-              },
-            },
-            xaxis: {
-              ...state.options.xaxis,
-              labels: {
-                style: {
-                  colors: mode === "dark" ? "#fff" : "#102A43",
+                yaxis: {
+                  ...state.options.yaxis,
+                  labels: {
+                    style: {
+                      colors: mode === "dark" ? "#fff" : "#102A43",
+                    },
+                  },
                 },
-              },
-            },
-            tooltip: {
-              cssClass: "heat_map_toolkit",
-            },
-          }}
-          series={state.series}
-          type="heatmap"
-          height={500}
-        />
+                xaxis: {
+                  ...state.options.xaxis,
+                  labels: {
+                    style: {
+                      colors: mode === "dark" ? "#fff" : "#102A43",
+                    },
+                  },
+                },
+                tooltip: {
+                  cssClass: "heat_map_toolkit",
+                },
+              }}
+              series={state.series}
+              type="heatmap"
+              height={500}
+            />
+          </Suspense>
+        )}
       </div>
     </div>
   );

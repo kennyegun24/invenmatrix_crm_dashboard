@@ -1,4 +1,3 @@
-"use client";
 import ApexChart from "@/components/charts/HeatMap";
 import React from "react";
 
@@ -16,7 +15,9 @@ const HeatChart = ({ title }) => {
           </select>
         </div>
       </section>
-      {(typeof window !== undefined || typeof window !== null) && <ApexChart />}
+      {(typeof window === "undefined" || typeof window !== null) && (
+        <ApexChart />
+      )}
     </div>
   );
 };
