@@ -56,11 +56,11 @@ const GridMenu = ({ children }) => {
   };
   const content = () => {
     return (
-      <section className="flex column gap15rem grid_menu_component">
+      <section className="flex column gap1rem grid_menu_component">
         {folders.map((folder, _) => (
           <div
             key={_}
-            className={`flex column gap05rem grid_menu_item ${
+            className={`flex column gap05rem grid_menu_item pointer ${
               activeNav === folder.key ? "active" : "non_active"
             }`}
           >
@@ -82,7 +82,7 @@ const GridMenu = ({ children }) => {
               )}
             </div>
             {folder.subfolders && (
-              <div className="flex column gap05rem">
+              <div className="flex column gap05rem grid_menu_sub_folder">
                 {folder.subfolders.map((each, _) => (
                   <div key={_}>
                     <p>{each.name}</p>
@@ -99,7 +99,7 @@ const GridMenu = ({ children }) => {
   return (
     <Popover
       content={content}
-      title="Navigation"
+      // title="Navigation"
       trigger="click"
       open={open}
       onOpenChange={handleOpenChange}

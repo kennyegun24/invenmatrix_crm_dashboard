@@ -1,11 +1,13 @@
 .grid_menu_component {
+  width: 200px;
   .grid_menu_item {
     overflow: hidden;
     transition: max-height 0.3s ease-in-out;
+    position: relative;
   }
 
   .non_active {
-    max-height: 30px;
+    max-height: 20px;
   }
 
   .active {
@@ -14,9 +16,21 @@
 
   .dropdown_icon {
     transition: transform 0.3s ease-in-out;
+    transform: rotate(180deg);
   }
 
   .transform {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .grid_menu_sub_folder {
+    padding: 0.5rem;
+    border-left: 1px solid var(--light_border);
+    margin-left: 0.5rem;
+    font-weight: 600;
   }
 }
