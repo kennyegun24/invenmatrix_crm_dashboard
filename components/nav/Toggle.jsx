@@ -11,9 +11,9 @@ const Toggle = ({ click, collapsed }) => {
         collapsed && "align_center"
       } toggle-theme-btn sticky flex column gap1rem`}
     >
-      <Button className="antd_btn" onClick={toggle}>
+      {/* <Button className="antd_btn" onClick={toggle}>
         {mode === "dark" ? <HiOutlineSun /> : <HiOutlineMoon />}
-      </Button>
+      </Button> */}
       <Button className={"antd_btn"} onClick={click}>
         {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
       </Button>
