@@ -8,12 +8,13 @@ import Bar from "@/components/sales/charts/Bar";
 import SingleBar from "@/components/sales/charts/SingleBar";
 import Line from "@/components/sales/charts/Line";
 import HeatChart from "@/components/sales/charts/HeatChart";
+import { Container } from "@/components/GlobalComponents";
 
 const page = () => {
   return (
-    <div className="flex column container gap1rem">
+    <Container>
+      {" "}
       <DashboardHeader text={"Sales Chart"} />
-
       <div className="sales_charts padding1rem flex column gap1rem">
         <section className="sales_bg_chart padding1rem">
           <BigChart />
@@ -37,7 +38,7 @@ const page = () => {
           <HeatChart title={"Sales Activity Accross the Year"} />
         </section>
       </div>
-    </div>
+    </Container>
   );
 };
 
