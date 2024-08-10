@@ -3,7 +3,10 @@ import React from "react";
 
 const HeatChart = ({ title }) => {
   return (
-    <div style={{ height: "100%" }} className="flex column gap1rem">
+    <div
+      style={{ height: "100%", width: "100%" }}
+      className="flex column gap1rem"
+    >
       <p className="chart_header">{title}</p>
       <section className="flex align_center justify_between sales_chart_prices">
         <div className="flex gap05rem align_center">

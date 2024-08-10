@@ -54,6 +54,26 @@
   }
 }
 
+@media (min-width: 100px) and (max-width: 767px) {
+  .container {
+    .sales_charts {
+      .sales_bg_chart {
+        height: 500px;
+        padding: 0.5rem;
+      }
+
+      .sales_sm_grid_charts {
+        .sales_sm_chart {
+          padding: 0.5rem;
+        }
+      }
+
+      .sales_heat_map_bg_chart {
+        padding: 0.5rem;
+      }
+    }
+  }
+}
 @media (min-width: 100px) and (max-width: 1110px) {
   .container {
     .sales_chart_prices {
@@ -64,6 +84,19 @@
 
       > div {
         flex-wrap: wrap;
+      }
+    }
+
+    .sales_charts {
+      .sales_sm_grid_charts {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+        .sales_sm_chart {
+          height: 450px;
+          border: 1px solid var(--light_border);
+          border-radius: 0.5rem;
+        }
       }
     }
 

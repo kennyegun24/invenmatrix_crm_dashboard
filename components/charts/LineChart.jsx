@@ -10,6 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import CustomToolkit from "../ToolKit";
 
 const data = [
   {
@@ -65,15 +66,15 @@ const LineChartComponent = () => {
         data={data}
         margin={{
           top: 5,
-          right: 30,
-          left: 20,
+          right: 10,
+          left: 10,
           bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
-        <Tooltip />
+        <XAxis angle={-40} dataKey="name" fontSize={12} />
+        <YAxis fontSize={12} />
+        <Tooltip content={<CustomToolkit />} />
         <Legend />
         <Line
           type="monotone"
