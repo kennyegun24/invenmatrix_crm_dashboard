@@ -62,7 +62,7 @@ const SingleBarComponent = () => {
     <ResponsiveContainer width="100%" height="100%">
       <BarChart height={300} data={data}>
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis label={"Months"} angle={-40} dataKey="name" fontSize={12} />
+        <XAxis angle={-40} dataKey="name" fontSize={12} />
         <YAxis fontSize={12} />
         <Tooltip content={<CustomToolkit />} />
         <Legend />
