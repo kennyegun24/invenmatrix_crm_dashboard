@@ -3,7 +3,8 @@ import "./style.css";
 import { Button } from "antd";
 import { FaSearch, FaRegCalendarMinus } from "react-icons/fa";
 import { IoGridOutline, IoArrowDownOutline } from "react-icons/io5";
-const GridDisplayHeader = ({ text }) => {
+import GridHeaderControls from "./GridHeaderControls";
+const GridDisplayHeader = ({ text, display }) => {
   return (
     <div className="grid_display_header_component flex gap1rem column">
       <section className="grid_header flex align_center justify_between">
@@ -28,12 +29,7 @@ const GridDisplayHeader = ({ text }) => {
           </div>
         </section>
 
-        <section className="flex gap15rem align_center sales_sub_head_controls">
-          <button>
-            Updated At <IoArrowDownOutline />
-          </button>
-          <IoGridOutline className="pointer" fontSize={14} />
-        </section>
+        <GridHeaderControls display={display} />
       </section>
     </div>
   );

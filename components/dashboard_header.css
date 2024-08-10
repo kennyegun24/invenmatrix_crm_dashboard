@@ -1,20 +1,20 @@
 .dashboard_header {
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid var(--light_border);
   * {
     color: var(--text_color);
   }
   h2 {
-    padding: 1.5rem 2rem;
-    border-bottom: 2px solid var(--light_border);
     font-size: 28px;
   }
 }
 
 @media (min-width: 100px) and (max-width: 767px) {
   .dashboard_header {
+    padding: 0.5rem 1rem;
+
     h2 {
-      padding: 0.5rem 1rem;
       font-size: 22px;
-      border-bottom: 2px solid var(--light_border);
     }
   }
 }
