@@ -44,13 +44,14 @@ export const ThemeProvider = ({ children }) => {
               subMenuItemBg: mode === "dark" ? "#0c2033" : "#f4f4f4",
             },
             Button: {
-              // defaultColor: mode === "dark" ? "#102a43" : "#fff",
               defaultColor: mode === "dark" ? "#102a43" : "#fff",
+              // defaultColor: mode === "dark" ? "#fff" : "#102a43",
               defaultBg: mode === "dark" ? "#fff" : "#102a43",
-              primaryColor: mode === "dark" ? "#fff" : "#102a43",
+              // primaryColor: mode === "dark" ? "#fff" : "#102a43",
               defaultBorderColor: mode === "dark" ? "#f4f4f4" : "#111",
               defaultHoverBg: mode === "dark" ? "#102a43" : "#fff",
               defaultHoverColor: mode === "dark" ? "#fff" : "#102a43",
+              contentFontSizeSM: 12,
             },
           },
         }}

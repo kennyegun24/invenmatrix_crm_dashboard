@@ -10,8 +10,17 @@ export const HomeContext = createContext();
 
 const HomeProvider = ({ children }) => {
   const routesToIgnore = ["/login", "/register", "/forget_password"];
+  const TopNavRouteToIgnore = [
+    "/login",
+    "/register",
+    "/forget_password",
+    "/sales",
+  ];
   const pathname = usePathname();
   const showNavBar = !routesToIgnore.some((route) =>
+    pathname.startsWith(route)
+  );
+  const showTopNavBar = !TopNavRouteToIgnore.some((route) =>
     pathname.startsWith(route)
   );
   const [collapsed, setCollapsed] = useState(false);
@@ -25,7 +34,7 @@ const HomeProvider = ({ children }) => {
       <div className="flex layout">
         {showNavBar && <NavBar />}
         <div className="sub_layout">
-          {showNavBar && <TopNav />}
+          {showTopNavBar && <TopNav />}
           <div className="layout_content">{children}</div>
         </div>
       </div>

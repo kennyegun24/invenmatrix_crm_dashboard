@@ -3,8 +3,12 @@
   height: 100%;
   .sales_table {
     border: 1px solid var(--light_border);
-    height: 800px;
+    height: 80vh;
     border-radius: 0.5rem;
     padding: 1rem;
   }
+}
+
+.sales_grid_layout {
+  padding: 0 2rem;
 }

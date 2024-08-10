@@ -1,0 +1,30 @@
+.sales_sub_header_container {
+  width: 100%;
+  .sales_search {
+    border-radius: 0.3rem;
+    width: fit-content;
+    border: 1px solid var(--light_border);
+
+    * {
+      color: var(--text_color);
+    }
+    input {
+      background-color: initial;
+      padding: 0.5rem 1rem;
+      border: none;
+      outline: none;
+    }
+    .sales_search_icon {
+      height: auto;
+      padding: 0.5rem 0.5rem;
+    }
+  }
+
+  .sales_sub_head_controls {
+    button {
+      font-size: 12px;
+      border: none;
+      background: transparent;
+    }
+  }
+}

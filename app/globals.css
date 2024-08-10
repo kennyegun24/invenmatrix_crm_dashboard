@@ -46,8 +46,16 @@
 }
 
 .container {
-  /* padding: 1rem; */
-  width: 100%;
   min-height: 90vh;
+}
+
+.sales_container {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.container,
+.sales_container {
   border: 1px solid var(--light_border);
+  width: 100%;
 }
