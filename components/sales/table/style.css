@@ -1,0 +1,5 @@
+.table_component {
+  border: 1px solid var(--light_border);
+  border-radius: 0.5rem;
+  height: 500px;
+}

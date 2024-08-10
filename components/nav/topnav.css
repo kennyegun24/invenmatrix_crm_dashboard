@@ -1,5 +1,5 @@
 .topnav_component {
-  min-height: 7vh;
+  height: 10vh;
   padding: 1rem 2rem;
   top: 0;
   background-color: var(--main_bg);

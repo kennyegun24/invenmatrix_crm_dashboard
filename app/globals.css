@@ -48,6 +48,6 @@
 .container {
   /* padding: 1rem; */
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   border: 1px solid var(--light_border);
 }
