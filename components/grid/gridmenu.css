@@ -1,0 +1,22 @@
+.grid_menu_component {
+  .grid_menu_item {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .non_active {
+    max-height: 30px;
+  }
+
+  .active {
+    max-height: 500px;
+  }
+
+  .dropdown_icon {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .transform {
+    transform: rotate(180deg);
+  }
+}

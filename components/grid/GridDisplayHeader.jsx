@@ -3,7 +3,8 @@ import "./style.css";
 import { Button } from "antd";
 import { FaSearch, FaRegCalendarMinus } from "react-icons/fa";
 import GridHeaderControls from "./GridHeaderControls";
-import { MdMenuOpen } from "react-icons/md";
+import { MdMenuOpen, MdOutlineMenuOpen } from "react-icons/md";
+import GridMenu from "./GridMenu";
 
 const GridDisplayHeader = ({ text, display }) => {
   return (
@@ -30,9 +31,11 @@ const GridDisplayHeader = ({ text, display }) => {
               <FaSearch />
             </div>
           </section>
-          <p className="flex gap05rem align_center grid_menu_option pointer">
-            Menu <MdMenuOpen />
-          </p>
+          <GridMenu>
+            <p className="flex gap05rem align_center grid_menu_option pointer">
+              Menu <MdOutlineMenuOpen />
+            </p>
+          </GridMenu>
         </div>
 
         <GridHeaderControls display={display} />
