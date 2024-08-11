@@ -1,28 +1,13 @@
 import React from "react";
 import "./style.css";
-import { Button } from "antd";
-import { FaSearch, FaRegCalendarMinus } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import GridHeaderControls from "./GridHeaderControls";
-import { MdMenuOpen, MdOutlineMenuOpen } from "react-icons/md";
+import { MdOutlineMenuOpen } from "react-icons/md";
 import GridMenu from "./GridMenu";
 
 const GridDisplayHeader = ({ text, display }) => {
   return (
     <div className="grid_display_header_component flex gap1rem column">
-      <section className="grid_header flex align_center justify_between">
-        <h2 className="flex align_center gap05rem">
-          <FaRegCalendarMinus /> {text}
-        </h2>
-
-        <section className="flex gap05rem">
-          <Button size="small" className="antd_btn" type="default">
-            Add Item
-          </Button>
-          <Button size="small" className="antd_btn" type="default">
-            Add Folder
-          </Button>
-        </section>
-      </section>
       <section className="sales_sub_header_container flex justify_between">
         <div className="flex align_center gap1rem">
           <section className="sales_search flex align_center">
@@ -39,6 +24,12 @@ const GridDisplayHeader = ({ text, display }) => {
         </div>
 
         <GridHeaderControls display={display} />
+      </section>
+      <section className="sales_sub_header_container flex align_center gap1rem">
+        <p>5 Folders</p>
+        <p>12 Items</p>
+        <p>Total Quantities 24 Units</p>
+        <p>Total Value: $13000</p>
       </section>
     </div>
   );

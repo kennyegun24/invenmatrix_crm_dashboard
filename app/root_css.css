@@ -1,5 +1,6 @@
 :root {
   --main_bg: #102a43;
+  --sub_bg: #183a5a;
   --text_color: #fff;
   --border_color: #a8a8a8;
   --light_text: #b9b6b9;
@@ -15,6 +16,7 @@
 
 [color-scheme="dark"] {
   --main_bg: #102a43;
+  --sub_bg: #122a3f;
   --text_color: #fff;
   --border_color: #fff;
   --light_border: #3e607f;
@@ -23,6 +25,7 @@
 
 [color-scheme="light"] {
   --main_bg: #fff;
+  --sub_bg: #f6f6f6;
   --text_color: #393939;
   --light_text: #4e4e4e;
   --light_border: #cccccc;

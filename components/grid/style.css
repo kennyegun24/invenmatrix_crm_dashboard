@@ -1,22 +1,4 @@
 .grid_display_header_component {
-  .grid_header {
-    padding: 1rem 2rem;
-    border-bottom: 1px solid var(--light_border);
-    height: 10vh;
-    width: 100%;
-
-    > h2 {
-      font-size: 16px;
-      font-weight: 400;
-    }
-
-    .antd_btn {
-      * {
-        color: inherit;
-      }
-    }
-  }
-
   .sales_sub_header_container {
     width: 100%;
     padding: 0.5rem 2rem;

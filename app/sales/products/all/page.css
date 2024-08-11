@@ -9,6 +9,27 @@
   }
 }
 
+.grid_header {
+  padding: 1rem 2rem;
+  border-bottom: 1px solid var(--light_border);
+  height: 10vh;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  background-color: var(--main_bg);
+
+  > h2 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .antd_btn {
+    * {
+      color: inherit;
+    }
+  }
+}
+
 .sales_grid_layout {
   padding: 0 2rem;
 }

@@ -1,0 +1,33 @@
+.grid_layout_component {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.grid_item_component {
+  background-color: var(--sub_bg);
+  width: 100%;
+  border-radius: 1rem;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0px 0px 12px 1px rgba(0, 0, 0, 0.2);
+
+  img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .grid_item_content {
+    padding: 0.75rem 1rem;
+  }
+
+  h4 {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+}

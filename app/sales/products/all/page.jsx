@@ -3,12 +3,12 @@ import { SalesContainer } from "@/components/GlobalComponents";
 import React, { Suspense, lazy } from "react";
 import "./page.css";
 const Table = lazy(() => import("@/components/sales/table/Table"));
-const ToggleGrid = lazy(() => import("@/components/ToggleGrid"));
 const GridLayout = lazy(() => import("@/components/sales/grid/GridLayout"));
 import { useSearchParams } from "next/navigation";
 import DashboardHeader from "@/components/DashboardHeader";
 import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridHeaderControls from "@/components/grid/GridHeaderControls";
+import GridMainHeader from "@/components/grid/GridMainHeader";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -29,7 +29,8 @@ const Page = () => {
         </Suspense>
       ) : (
         <Suspense fallback={"Loading..."}>
-          <GridDisplayHeader text={"All Products"} display={display} />
+          <GridMainHeader text={"All Products"} />
+          <GridDisplayHeader display={display} />
           <div className="sales_grid_layout">
             <GridLayout />
           </div>
