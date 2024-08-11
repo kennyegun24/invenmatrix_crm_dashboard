@@ -21,6 +21,9 @@
         padding: 0.5rem 0.5rem;
       }
     }
+    p {
+      font-size: 13px;
+    }
     .grid_menu_option {
       height: 100%;
       background-color: var(--text_color);
