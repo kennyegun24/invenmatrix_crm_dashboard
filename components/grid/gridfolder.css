@@ -1,11 +1,19 @@
 .grid_layout_component {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  display: grid;
-  gap: 1rem;
-  padding-bottom: 1rem;
+  .grid_layout {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    display: grid;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+  .grid_layout_folder_header {
+    width: 100%;
+    border: 2px solid var(--light_border);
+    padding: 0.3rem 0.5rem;
+    margin-bottom: 0.75rem;
+  }
 }
 
-.grid_item_component {
+.grid_folder_component {
   background-color: var(--sub_bg);
   width: 100%;
   border-radius: 1rem;
@@ -19,15 +27,21 @@
     object-fit: cover;
   }
 
-  .grid_item_content {
+  .grid_folder_content {
     padding: 0.75rem 1rem;
   }
 
   h4 {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   p {
-    font-size: 13px;
+    font-size: 12px;
+  }
+}
+
+.grid_folder_component {
+  .grid_item_content {
+    padding: 1rem;
   }
 }
