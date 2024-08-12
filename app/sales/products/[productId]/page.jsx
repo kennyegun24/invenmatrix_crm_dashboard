@@ -24,7 +24,8 @@ const Page = () => {
     width: "35%",
     foneSize: "12px",
     "& .MuiInputBase-input.Mui-disabled": {
-      WebkitTextFillColor: "initial",
+      WebkitTextFillColor: "var(--primary_text_color)",
+      color: "var(--primary_text_color)",
       outlineColor: "red",
       borderColor: "#fff",
       opacity: 0.7,
