@@ -15,7 +15,7 @@ const Page = () => {
   const display = searchParams.get("display");
   return (
     <SalesContainer>
-      {display !== "grid" ? (
+      {display == "table" ? (
         <Suspense fallback={"Loading..."}>
           <DashboardHeader
             text={"All Products"}
@@ -32,7 +32,7 @@ const Page = () => {
           <GridMainHeader text={"All Products"} />
           <GridDisplayHeader display={display} />
           <div className="sales_grid_layout">
-            <GridLayout />
+            <GridLayout folder_number={5} items_number={3} />
           </div>
         </Suspense>
       )}

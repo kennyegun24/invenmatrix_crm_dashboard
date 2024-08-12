@@ -71,3 +71,7 @@
 .green_text {
   color: var(--green_color);
 }
+
+.sales_grid_layout {
+  padding: 0 2rem;
+}

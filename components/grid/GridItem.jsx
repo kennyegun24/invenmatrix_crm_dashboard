@@ -2,12 +2,19 @@ import React from "react";
 import "./gridfolder.css";
 import Image from "next/image";
 import { MdOutlineEdit } from "react-icons/md";
-import { LuFolderInput } from "react-icons/lu";
 import { FaEllipsisV } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
-const GridItem = ({ image }) => {
+const GridItem = ({ image, item }) => {
+  const router = useRouter();
+  const navigateToItem = (param) => {
+    router.push(param);
+  };
   return (
-    <div className="flex column grid_folder_component pointer">
+    <div
+      onClick={() => navigateToItem(`/sales/products/${item.id}`)}
+      className="flex column grid_folder_component pointer"
+    >
       <section className="grid_folder_image_div">
         <Image src={image} />
 
@@ -25,11 +32,11 @@ const GridItem = ({ image }) => {
         </div>
       </section>
       <div className="flex column gap3rem wrap grid_item_content">
-        <h4>Glasses</h4>
+        <h4>{item.productName}</h4>
         <div className="flex gap05rem align_center">
           <p>1 unit</p>
           {"/"}
-          <p>$24.00</p>
+          <p>${item.sellingPrice}</p>
         </div>
       </div>
     </div>

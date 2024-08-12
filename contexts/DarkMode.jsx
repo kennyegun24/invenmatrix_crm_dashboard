@@ -27,6 +27,9 @@ export const ThemeProvider = ({ children }) => {
     <ThemeContext.Provider value={{ toggle, mode }}>
       <ConfigProvider
         theme={{
+          token: {
+            colorText: "var(--primary_text_color)",
+          },
           components: {
             Menu: {
               colorBgContainer: mode === "dark" ? "#102A43" : "#fff",
@@ -47,6 +50,7 @@ export const ThemeProvider = ({ children }) => {
               defaultColor: mode === "dark" ? "#102a43" : "#fff",
               // defaultColor: mode === "dark" ? "#fff" : "#102a43",
               defaultBg: mode === "dark" ? "#fff" : "#102a43",
+              colorPrimaryBg: "var(--opposite_main_bg)",
               // primaryColor: mode === "dark" ? "#fff" : "#102a43",
               defaultBorderColor: mode === "dark" ? "#f4f4f4" : "#111",
               defaultHoverBg: mode === "dark" ? "#102a43" : "#fff",

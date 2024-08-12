@@ -1,6 +1,7 @@
 import React from "react";
 import { FaRegCalendarMinus } from "react-icons/fa";
 import { Button } from "antd";
+import "./grid_main_header.css";
 
 const GridMainHeader = ({ text }) => {
   return (

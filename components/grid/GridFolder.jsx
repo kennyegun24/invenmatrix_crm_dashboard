@@ -6,10 +6,18 @@ import { GoStack } from "react-icons/go";
 import { MdOutlineEdit } from "react-icons/md";
 import { LuFolderInput } from "react-icons/lu";
 import { FaEllipsisV } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
-const GridFolder = ({ image }) => {
+const GridFolder = ({ image, item }) => {
+  const router = useRouter();
+  const navigateToSubFolder = (param) => {
+    router.push(param);
+  };
   return (
-    <div className="flex column grid_folder_component pointer">
+    <div
+      className="flex column grid_folder_component pointer"
+      onClick={() => navigateToSubFolder(`/sales/products/folders/${item.id}`)}
+    >
       <section className="grid_folder_image_div">
         <Image src={image} />
 
@@ -29,9 +37,9 @@ const GridFolder = ({ image }) => {
         </div>
       </section>
       <div className="flex column gap05rem wrap grid_folder_content">
-        <h4>Glasses</h4>
+        <h4>{item.productName}</h4>
         <div className="flex gap05rem align_center">
-          <p>$24.00</p>
+          <p>${item.sellingPrice}</p>
           <p className="flex align_center gap05rem">
             <BsFolder /> 2
           </p>
