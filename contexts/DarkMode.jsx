@@ -57,6 +57,9 @@ export const ThemeProvider = ({ children }) => {
               defaultHoverColor: mode === "dark" ? "#fff" : "#102a43",
               contentFontSizeSM: 12,
             },
+            Popover: {
+              colorBgElevated: "var(--sub_bg)",
+            },
           },
         }}
       >

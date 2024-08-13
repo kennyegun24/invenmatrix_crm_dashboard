@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Drawer, Form, Input, Row, Space } from "antd";
+import BarcodeComponent from "@/components/BARCODE";
 const EditDrawer = ({ open, setOpen }) => {
   const onClose = () => {
     setOpen(false);
@@ -8,6 +9,10 @@ const EditDrawer = ({ open, setOpen }) => {
   const textInputStyle = {
     background: "var(--sub_bg)",
     width: "100%",
+  };
+  const [generate, setGenerate] = useState(null);
+  const generateBarcode = () => {
+    setGenerate(crypto.randomUUID());
   };
   return (
     <>
@@ -174,9 +179,16 @@ const EditDrawer = ({ open, setOpen }) => {
 
         <div className="flex column gap05rem">
           <h3>QR/BARCODES</h3>
-          <Button type="default" style={{ width: "fit-content" }}>
-            Create Barcode
-          </Button>
+          <div className="flex gap1rem column">
+            <Button
+              onClick={generateBarcode}
+              type="default"
+              style={{ width: "fit-content" }}
+            >
+              Create Barcode
+            </Button>
+          </div>
+          {generate && <BarcodeComponent text={generate} />}
         </div>
       </Drawer>
     </>

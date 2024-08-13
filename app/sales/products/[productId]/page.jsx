@@ -2,33 +2,33 @@
 import BarcodeComponent from "@/components/BARCODE";
 import DashboardHeader from "@/components/DashboardHeader";
 import { SalesContainer } from "@/components/GlobalComponents";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "./page.css";
 import Image from "next/image";
 import { products } from "@/utils/prods_data";
 import { TextField } from "@mui/material";
 import { Input, Button } from "antd";
-import { ThemeContext } from "@/contexts/DarkMode";
 import { PlusOutlined } from "@ant-design/icons";
 import EditDrawer from "@/components/sales/product/EditProduct";
 
-const Page = () => {
+const Page = ({ params }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
   };
-  const product = products[0];
+  const { productId } = params;
+  const product = products.find((e) => e.id === productId);
   const { images } = product;
   const style = {
     width: "35%",
-    foneSize: "12px",
     "& .MuiInputBase-input.Mui-disabled": {
       WebkitTextFillColor: "var(--primary_text_color)",
       color: "var(--primary_text_color)",
       outlineColor: "red",
       borderColor: "#fff",
       opacity: 0.7,
+      foneSize: "12px",
     },
     "& label.Mui-disabled": {
       color: "var(--primary_text_color)",
@@ -42,6 +42,9 @@ const Page = () => {
         borderColor: "#fff",
         opacity: 0.7,
       },
+    },
+    "& .MuiInputBase-input": {
+      fontSize: "0.83rem",
     },
   };
 
@@ -131,7 +134,7 @@ const Page = () => {
                 </div>
               </section>
               <div className="flex column gap25rem">
-                <BarcodeComponent />
+                <BarcodeComponent text={product.barcode} />
                 <Input.TextArea
                   rows={4}
                   maxLength={6}

@@ -1,95 +1,68 @@
 import { Popover } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import "./gridmenu.css";
-const folders = [
-  {
-    name: "Folder 1",
-    type: "folder",
-    key: "folder1",
-    subfolders: [],
-  },
-  {
-    name: "Folder 2",
-    type: "folder",
-    key: "folder2",
-    subfolders: [
-      {
-        name: "Subfolder 1",
-        type: "folder",
-        subfolders: [],
-      },
-      {
-        name: "Subfolder 2",
-        type: "folder",
-        subfolders: [],
-      },
-    ],
-  },
-  {
-    name: "Folder 3",
-    type: "folder",
-    key: "folder3",
-    subfolders: [],
-  },
-  {
-    name: "Folder 4",
-    type: "folder",
-    key: "folder4",
-    subfolders: [
-      {
-        name: "Subfolder 1",
-        type: "folder",
-        subfolders: [],
-      },
-    ],
-  },
-];
+
 const GridMenu = ({ children }) => {
   const [open, setOpen] = useState(false);
   const [activeNav, setActiveNav] = useState(null);
-  const handleOpenChange = (newOpen) => {
-    setOpen(newOpen);
-  };
   const toggleNav = (key) => {
     setActiveNav(activeNav === key ? null : key);
   };
+  const [folders, setFolders] = useState([]);
+
+  const handleOpenChange = async (newOpen) => {
+    setOpen(newOpen);
+    if (newOpen && folders.length === 0) {
+      const fetchData = await fetch("/api/folders/structure");
+      const data = await fetchData.json();
+      setFolders(JSON.parse(data?.data));
+    }
+  };
+
+  const renderSubfolders = (subfolders) => {
+    return (
+      <div className="flex column gap05rem grid_menu_sub_folder">
+        {subfolders.map((subfolder, index) => (
+          <div key={index} className="flex column gap05rem">
+            <p>{subfolder.folderName}</p>
+            {subfolder.subfolders?.length > 0 &&
+              renderSubfolders(subfolder.subfolders)}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   const content = () => {
     return (
       <section className="flex column gap1rem grid_menu_component">
-        {folders.map((folder, _) => (
+        {folders?.map((folder, index) => (
           <div
-            key={_}
+            key={index}
             className={`flex column gap05rem grid_menu_item pointer ${
-              activeNav === folder.key ? "active" : "non_active"
+              activeNav === folder.id ? "active" : "non_active"
             }`}
           >
             <div
-              onClick={() => toggleNav(folder.key)}
+              onClick={() => toggleNav(folder.id)}
               className="flex justify_between align_center"
             >
               <h4 className="text_start gap05rem align_center flex">
-                {folder.name}
+                {folder.folderName}
               </h4>
               {folder?.subfolders.length > 0 && (
                 <IoIosArrowDown
                   className={
-                    folder.key === activeNav
+                    folder.id === activeNav
                       ? "dropdown_icon transform"
                       : "dropdown_icon"
                   }
                 />
               )}
             </div>
-            {folder.subfolders && (
-              <div className="flex column gap05rem grid_menu_sub_folder">
-                {folder.subfolders.map((each, _) => (
-                  <div key={_}>
-                    <p>{each.name}</p>
-                  </div>
-                ))}
-              </div>
-            )}
+            {folder.subfolders?.length > 0 &&
+              renderSubfolders(folder.subfolders)}
           </div>
         ))}
       </section>
@@ -99,7 +72,6 @@ const GridMenu = ({ children }) => {
   return (
     <Popover
       content={content}
-      // title="Navigation"
       trigger="click"
       open={open}
       onOpenChange={handleOpenChange}
