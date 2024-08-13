@@ -37,7 +37,7 @@ const GridFolder = ({ image, item }) => {
         </div>
       </section>
       <div className="flex column gap05rem wrap grid_folder_content">
-        <h4>{item.productName}</h4>
+        <h4>{item.folderName}</h4>
         <div className="flex gap05rem align_center">
           <p>${item.sellingPrice}</p>
           <p className="flex align_center gap05rem">

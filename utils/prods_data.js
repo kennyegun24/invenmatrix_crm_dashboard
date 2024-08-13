@@ -646,6 +646,22 @@ export const products = [
     variants: [],
     reviews: 4.5,
   },
+  {
+    id: "z6a7b8c9-0123-x4y5-6789-2672dsd",
+    images: [football_boot],
+    sellingPrice: 50.0,
+    profitMargin: 22.0,
+    stockLevel: 110,
+    productCategory: "Footwear - Shoes",
+    productName: "Beckham Nike",
+    shippingCost: 10,
+    shippingTime: 10,
+    productDescription: "Comfortable and fashionable shoes for all-day wear.",
+    barcode: "UVW-678901",
+    supplierContact: "watches2@example.com",
+    variants: [],
+    reviews: 4.5,
+  },
 ];
 
 export const folders = [
@@ -661,7 +677,7 @@ export const folders = [
     folderName: "Home Decoration",
     parentFolder: "",
     subFolder: ["sgfw-3bjgfw-wery3-qwhrug3", "udajs-lwkb-32jbs-sdiwh"],
-    products: [],
+    products: ["z6a7b8c9-0123-x4y5-6789-0123abcdef2"],
   },
   {
     id: "aod-ewwf-3we4ffs-ejy3",
@@ -848,7 +864,7 @@ export const folders = [
   },
   {
     id: "dojw-srug-dwihsbaf-wirbew",
-    folderName: "",
+    folderName: "Leather Boots",
     parentFolder: "32nj-wkht-32knd-wjrwo",
     subFolder: [],
     products: [

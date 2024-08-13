@@ -3,12 +3,13 @@ import { SalesContainer } from "@/components/GlobalComponents";
 import React, { Suspense, lazy } from "react";
 import "./page.css";
 const Table = lazy(() => import("@/components/sales/table/Table"));
-const GridLayout = lazy(() => import("@/components/sales/grid/GridLayout"));
+// const PageLayout = lazy(() => import("./PageLayout"));
 import { useSearchParams } from "next/navigation";
 import DashboardHeader from "@/components/DashboardHeader";
 import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridHeaderControls from "@/components/grid/GridHeaderControls";
 import GridMainHeader from "@/components/grid/GridMainHeader";
+import PageLayout from "./PageLayout";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -32,7 +33,7 @@ const Page = () => {
           <GridMainHeader text={"All Products"} />
           <GridDisplayHeader display={display} />
           <div className="sales_grid_layout">
-            <GridLayout folder_number={5} items_number={3} />
+            <PageLayout />
           </div>
         </Suspense>
       )}
