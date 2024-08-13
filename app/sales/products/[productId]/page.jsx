@@ -10,12 +10,34 @@ import { TextField } from "@mui/material";
 import { Input, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import EditDrawer from "@/components/sales/product/EditProduct";
+import AddToOrdered from "@/components/sales/AddToOrdered";
+
+const CustomButton = ({ click, text }) => {
+  const buttonStyle = {
+    width: "fit-content",
+  };
+  return (
+    <Button
+      type="default"
+      style={buttonStyle}
+      className="antd_btn"
+      size="small"
+      onClick={click}
+    >
+      {text}
+    </Button>
+  );
+};
 
 const Page = ({ params }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [open, setOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
+  };
+  const showModal = () => {
+    setIsModalOpen(true);
   };
   const { productId } = params;
   const product = products.find((e) => e.id === productId);
@@ -62,7 +84,15 @@ const Page = ({ params }) => {
 
   return (
     <SalesContainer>
-      <DashboardHeader text={"Product name"} />
+      <DashboardHeader
+        text={"Product name"}
+        component={
+          <div className="flex gap05rem justify_start">
+            <CustomButton click={showModal} text={"Add to ordered"} />
+            <CustomButton text={"New Bundle"} />
+          </div>
+        }
+      />
       <div className="padding1rem">
         <section className="product_details_container justify_between padding1rem">
           <section className="flex gap1rem product_details_top">
@@ -165,20 +195,8 @@ const Page = ({ params }) => {
                   ))}
                 </ol>
               </div>
-              <Button
-                type="primary"
-                onClick={showDrawer}
-                icon={<PlusOutlined />}
-                style={{
-                  width: "50%",
-                  margin: "auto",
-                  color: "var(--light_color",
-                  background: "var(--sub_bg)",
-                  borderColor: "var(--light_border)",
-                }}
-              >
-                Edit details
-              </Button>
+
+              <CustomButton click={showDrawer} text={"Edit details"} />
             </div>
             <div className="product_details_image_div flex column justify_between">
               <div className="product_details_image flex justify_center">
@@ -200,7 +218,8 @@ const Page = ({ params }) => {
           </section>
         </section>
       </div>
-      {open && <EditDrawer open={open} setOpen={setOpen} />}
+      <EditDrawer open={open} setOpen={setOpen} />
+      <AddToOrdered isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
     </SalesContainer>
   );
 };

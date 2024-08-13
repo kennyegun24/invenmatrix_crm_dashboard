@@ -7,6 +7,15 @@
   h2 {
     font-size: 28px;
   }
+  .antd_btn {
+    * {
+      color: var(--main_bg);
+
+      &:hover {
+        color: var(--text_color);
+      }
+    }
+  }
 }
 
 @media (min-width: 100px) and (max-width: 767px) {

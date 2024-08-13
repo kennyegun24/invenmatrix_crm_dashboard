@@ -24,13 +24,13 @@
   bottom: 1rem;
   left: 2rem;
 
-  .antd_btn {
-    /* color: green; */
+  /* .antd_btn {
+    color: green;
 
     * {
       color: inherit;
     }
-  }
+  } */
 
   button {
     border-color: 1px solid var(--border_color);

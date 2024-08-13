@@ -60,6 +60,9 @@ export const ThemeProvider = ({ children }) => {
             Popover: {
               colorBgElevated: "var(--sub_bg)",
             },
+            Modal: {
+              colorBgElevated: "var(--sub_bg)",
+            },
           },
         }}
       >

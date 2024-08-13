@@ -75,3 +75,14 @@
 .sales_grid_layout {
   padding: 0 2rem;
 }
+
+.antd_btn {
+  color: var(--main_bg);
+  * {
+    color: var(--main_bg);
+
+    &:hover {
+      color: var(--text_color);
+    }
+  }
+}
