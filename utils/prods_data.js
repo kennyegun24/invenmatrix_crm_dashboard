@@ -714,13 +714,13 @@ export const folders = [
     folderName: "Books",
     parentFolder: "",
     subFolder: ["djfn-342bj-32tji-325uj"],
-    products: [""],
+    products: [],
   },
   {
     id: "djfn-342bj-32tji-325uj",
     folderName: "Fiction",
     parentFolder: "jgke-rwk34n-rwek3-e3rf",
-    subFolder: [""],
+    subFolder: [],
     products: [
       "b2c3d4e5-678f-90a1-2345-67890abcdef1",
       "p6q7r8s9-0123-n4o5-6789-0123abcdef2",
@@ -730,7 +730,7 @@ export const folders = [
     id: "jhsfjfg-2u4jug-21gwfg-214hdi",
     folderName: "Football",
     parentFolder: "dhg-iuewg-ht3yg-3urwfh",
-    subFolder: "",
+    subFolder: [],
     products: [
       "73058fe0-123b-4482-9ce7-096a0e11561f",
       "73058fe0-123b-4482-9ce7-096a0e11561f",
@@ -773,7 +773,7 @@ export const folders = [
     id: "sjbwbf-fdufsb-332jj-dr23",
     folderName: "Glasses",
     parentFolder: "aod-ewwf-3we4ffs-ejy3",
-    subFolder: "",
+    subFolder: [],
     products: [
       "d0eecf87-b499-43ac-b751-96fd106aeb29",
       "d4e5f6g7-8901-b2c3-4567-8901abcdef3",
@@ -784,7 +784,7 @@ export const folders = [
     id: "sjbaas-2k1wg-wqjb-12kj",
     folderName: "Bag",
     parentFolder: "aod-ewwf-3we4ffs-ejy3",
-    subFolder: "",
+    subFolder: [],
     products: [
       "5bc12a89-ce60-4fda-afd9-e1b38e1b4aed",
       "h8i9j0k1-2345-f6g7-8901-2345abcdef7",
@@ -795,7 +795,7 @@ export const folders = [
     id: "aBIA-21WQUW-wwn23-wqkbwq",
     folderName: "Purse",
     parentFolder: "aod-ewwf-3we4ffs-ejy3",
-    subFolder: "",
+    subFolder: [],
     products: [
       "5edfb078-85b1-48ea-a1af-780378aceab5",
       "i9j0k1l2-3456-g7h8-9012-3456abcdef8",

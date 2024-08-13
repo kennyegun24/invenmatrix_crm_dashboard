@@ -39,12 +39,12 @@ const GridFolder = ({ image, item }) => {
       <div className="flex column gap05rem wrap grid_folder_content">
         <h4>{item.folderName}</h4>
         <div className="flex gap05rem align_center">
-          <p>${item.sellingPrice}</p>
+          {/* <p>${item.sellingPrice}</p> */}
           <p className="flex align_center gap05rem">
-            <BsFolder /> 2
+            <BsFolder /> {item?.subFolder?.length}
           </p>
           <p className="flex align_center gap05rem">
-            <GoStack /> 12
+            <GoStack /> {item?.products?.length}
           </p>
         </div>
       </div>

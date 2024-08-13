@@ -25,7 +25,7 @@ const App = ({ display }) => {
         <hr />
         <p
           className={`flex align_center gap05rem pointer ${
-            display !== "grid" ? "green_text" : ""
+            display === "table" ? "green_text" : ""
           }`}
           onClick={() => changeView("table")}
         >
@@ -35,7 +35,7 @@ const App = ({ display }) => {
         <hr />
         <p
           className={`flex align_center gap05rem pointer ${
-            display === "grid" ? "green_text" : ""
+            display !== "table" ? "green_text" : ""
           }`}
           onClick={() => changeView("grid")}
         >
