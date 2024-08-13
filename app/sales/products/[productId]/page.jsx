@@ -149,18 +149,21 @@ const Page = ({ params }) => {
                   value={"This is value"}
                   disabled
                 />
-                <div className="flex gap05rem wrap">
-                  Variants:
+                <ol className="flex gap05rem wrap column">
+                  <h3 style={{ fontSize: 16 }}>Product variants:</h3>
                   {variants.map((variant, index) => (
-                    <div key={index} style={{}}>
+                    <li
+                      key={index}
+                      style={{ marginLeft: "2rem", fontSize: 14 }}
+                    >
                       {Object.keys(variant).map((key) => (
                         <div key={key}>
                           <strong>{key}:</strong> {variant[key]}
                         </div>
                       ))}
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ol>
               </div>
               <Button
                 type="primary"
