@@ -219,7 +219,11 @@ const Page = ({ params }) => {
         </section>
       </div>
       <EditDrawer open={open} setOpen={setOpen} />
-      <AddToOrdered isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+      <AddToOrdered
+        item={product}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
     </SalesContainer>
   );
 };
