@@ -73,6 +73,10 @@
   color: var(--green_color);
 }
 
+.red_text {
+  color: #ff3232;
+}
+
 .sales_grid_layout {
   padding: 0 2rem;
 }

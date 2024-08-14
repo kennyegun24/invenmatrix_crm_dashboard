@@ -4,6 +4,7 @@ import "./globals.css";
 import HomeProvider from "@/contexts/Home";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "@/contexts/DarkMode";
+import DragDropPovider from "@/contexts/DragDrop";
 // import {Appr}
 // import { DataGrid } from "@mui/x-data-grid";
 // import Barcode from "react-barcode";
@@ -24,7 +25,9 @@ export default function RootLayout({ children }) {
       <body className={[inter.className]}>
         <AntdRegistry>
           <ThemeProvider>
-            <HomeProvider>{children}</HomeProvider>
+            <HomeProvider>
+              <DragDropPovider>{children}</DragDropPovider>
+            </HomeProvider>
           </ThemeProvider>
         </AntdRegistry>
         {/* <Barcode value="kenny elias" /> */}
