@@ -11,6 +11,7 @@ import { Input, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
 import EditDrawer from "@/components/sales/product/EditProduct";
 import AddToOrdered from "@/components/sales/AddToOrdered";
+import GridMainHeader from "@/components/grid/GridMainHeader";
 
 const CustomButton = ({ click, text }) => {
   const buttonStyle = {
@@ -84,14 +85,11 @@ const Page = ({ params }) => {
 
   return (
     <SalesContainer>
-      <DashboardHeader
+      <GridMainHeader
         text={"Product name"}
-        component={
-          <div className="flex gap05rem justify_start">
-            <CustomButton click={showModal} text={"Add to ordered"} />
-            <CustomButton text={"New Bundle"} />
-          </div>
-        }
+        first_click={showModal}
+        first_btn_text={"Add to Ordered"}
+        second_btn_text={"New Bundle"}
       />
       <div className="padding1rem">
         <section className="product_details_container justify_between padding1rem">

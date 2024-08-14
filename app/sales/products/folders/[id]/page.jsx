@@ -31,7 +31,11 @@ const Page = ({ params }) => {
 
   return (
     <SalesContainer>
-      <GridMainHeader text={"All Products"} />
+      <GridMainHeader
+        text={"All Products"}
+        first_btn_text={"Add Item"}
+        second_btn_text={"Add Folder"}
+      />
       <GridDisplayHeader display={display} />
       <div className="sales_grid_layout">
         {isLoading ? (

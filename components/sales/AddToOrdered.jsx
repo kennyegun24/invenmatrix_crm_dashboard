@@ -16,6 +16,7 @@ const AddToOrdered = ({ item, isModalOpen, setIsModalOpen }) => {
         title="Record New Order"
         open={isModalOpen}
         onOk={handleOk}
+        okText={"Confirm"}
         onCancel={handleCancel}
         centered
       >
