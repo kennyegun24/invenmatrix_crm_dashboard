@@ -9,6 +9,7 @@ const GridMainHeader = ({
   second_btn_text,
   first_click = () => alert("No functionality yet!"),
   second_click = () => alert("No functionality yet!"),
+  component,
 }) => {
   return (
     <section className="grid_header sticky flex align_center justify_between">
@@ -33,6 +34,7 @@ const GridMainHeader = ({
         >
           {second_btn_text}
         </Button>
+        {component}
       </section>
     </section>
   );

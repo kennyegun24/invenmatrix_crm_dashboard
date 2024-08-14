@@ -1,0 +1,14 @@
+.add_product_left {
+  width: 60%;
+}
+
+.add_product_right {
+  width: 40%;
+}
+
+.form_section_header {
+  background: var(--blend_bg);
+  padding: 1.2rem 1rem;
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+}
