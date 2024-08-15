@@ -15,7 +15,11 @@ export const FieldTitle = ({ title, helper }) => (
     <span className="flex gap05rem align_center">
       {title}
       {
-        <Tooltip title={helper} color={"var(--main_bg)"}>
+        <Tooltip
+          title={helper}
+          color={"var(--main_bg)"}
+          overlayInnerStyle={{ color: "var(--text_color)" }}
+        >
           <FaQuestionCircle size={14} />
         </Tooltip>
       }
