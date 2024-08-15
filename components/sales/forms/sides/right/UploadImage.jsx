@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import FormSectionHeader from "../../FormSectionHeader";
 import { LuUploadCloud } from "react-icons/lu";
 import Image from "next/image";
@@ -6,12 +6,35 @@ import { DragDropContext } from "@/contexts/DragDrop";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Tooltip } from "antd";
 
+const UploadText = ({ isDragging, images, selectFiles }) => (
+  <>
+    <LuUploadCloud size={28} />
+    {!isDragging && images.length < 5 ? (
+      <p className="text_center">
+        <strong role="button" onClick={selectFiles}>
+          Click anywhere to upload images
+        </strong>{" "}
+        or drag and drop images (5. max)
+      </p>
+    ) : isDragging && images.length >= 5 ? (
+      <p className="text_center red_text">You cant add any additional image</p>
+    ) : (
+      <p className="text_center">Drop images here</p>
+    )}
+  </>
+);
+
 const UploadImage = () => {
   const { images, isDragging, fileInputRef, selectFiles, onFileSelect } =
     useContext(DragDropContext);
+  const [showFull, setShowFull] = useState(true);
 
   return (
-    <div className="flex column gap1rem border_all padding1rem add_product_right_component">
+    <div
+      className={`flex column gap1rem add_product_right_component border_all padding1rem optional_feeds ${
+        showFull && "show_full"
+      }`}
+    >
       <FormSectionHeader
         text={"Product Images"}
         component={
@@ -22,26 +45,20 @@ const UploadImage = () => {
             <FaQuestionCircle />
           </Tooltip>
         }
+        setShowFull={setShowFull}
+        showFull={showFull}
       />
       <label
         htmlFor="upload_images"
-        className="border_all padding1rem upload_image_container flex align_center justify_center column gap05rem pointer"
+        className="dashed_lg_border_all padding1rem upload_image_container flex align_center justify_center column gap05rem pointer"
       >
-        <LuUploadCloud size={24} />
-        {!isDragging && images.length < 5 ? (
-          <p className="text_center">
-            <strong role="button" onClick={selectFiles}>
-              Click anywhere to upload images
-            </strong>{" "}
-            or drag and drop images (5. max)
-          </p>
-        ) : isDragging && images.length >= 5 ? (
-          <p className="text_center red_text">
-            You cant add any additional image
-          </p>
-        ) : (
-          <p className="text_center">Drop images here</p>
-        )}
+        <div class="corner-1" />
+        <div class="corner-2" />
+        <UploadText
+          images={images}
+          isDragging={isDragging}
+          selectFiles={selectFiles}
+        />
         <input
           ref={fileInputRef}
           onChange={onFileSelect}

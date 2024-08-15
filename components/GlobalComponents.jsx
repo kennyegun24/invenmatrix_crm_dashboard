@@ -10,8 +10,8 @@ export const SalesContainer = ({ children }) => (
   <div className="flex column sales_container gap1rem">{children}</div>
 );
 
-export const FieldTitle = ({ title, helper }) => (
-  <p className="flex align_center justify_between">
+export const FieldTitle = ({ title, helper, displayBin }) => (
+  <p className="flex align_center justify_between" style={{ fontSize: "13px" }}>
     <span className="flex gap05rem align_center">
       {title}
       {
@@ -20,10 +20,10 @@ export const FieldTitle = ({ title, helper }) => (
           color={"var(--main_bg)"}
           overlayInnerStyle={{ color: "var(--text_color)" }}
         >
-          <FaQuestionCircle size={14} />
+          <FaQuestionCircle size={13} />
         </Tooltip>
       }
     </span>
-    <IoTrashOutline size={18} className="pointer" />
+    {displayBin && <IoTrashOutline size={18} className="pointer" />}
   </p>
 );

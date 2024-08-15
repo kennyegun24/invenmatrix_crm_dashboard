@@ -106,6 +106,50 @@
   border-radius: 0.5rem;
 }
 
+.dashed_lg_border_all {
+  position: relative;
+  border-radius: 0.5rem;
+}
+
+.dashed_lg_border_all::before,
+.dashed_lg_border_all::after,
+.dashed_lg_border_all .corner-1,
+.dashed_lg_border_all .corner-2 {
+  content: "";
+  position: absolute;
+  border: 8px dashed var(--light_border);
+  width: 30px;
+  height: 30px;
+}
+
+.dashed_lg_border_all::before {
+  top: -10px;
+  left: -10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.dashed_lg_border_all::after {
+  bottom: -10px;
+  right: -10px;
+  border-left: none;
+  border-top: none;
+}
+
+.dashed_lg_border_all .corner-1 {
+  top: -10px;
+  right: -10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.dashed_lg_border_all .corner-2 {
+  bottom: -10px;
+  left: -10px;
+  border-right: none;
+  border-top: none;
+}
+
 .main_bg {
   * {
     background-color: var(--main_bg);

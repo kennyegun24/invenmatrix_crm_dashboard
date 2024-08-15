@@ -55,9 +55,14 @@ const Category = () => {
   const removeCategoryField = (id) => {
     setCategories((prev) => prev.filter((cat) => cat.id !== id));
   };
+  const [showFull, setShowFull] = useState(true);
 
   return (
-    <div className="flex column gap1rem border_all padding1rem category_container">
+    <div
+      className={`flex column gap1rem category_container border_all padding1rem optional_feeds ${
+        showFull && "show_full"
+      }`}
+    >
       <FormSectionHeader
         text={"Category"}
         component={
@@ -68,6 +73,8 @@ const Category = () => {
             <FaQuestionCircle />
           </Tooltip>
         }
+        setShowFull={setShowFull}
+        showFull={showFull}
       />
       {categories.map((category, index) => (
         <div key={category.id} className="flex column gap03rem main_bg">

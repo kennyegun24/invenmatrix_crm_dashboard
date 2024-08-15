@@ -88,3 +88,13 @@
     color: #fff;
   }
 }
+
+.optional_feeds {
+  max-height: 5.5rem;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.show_full {
+  max-height: 1000px;
+}

@@ -26,13 +26,19 @@ const Prices = () => {
     userInput?.cost_price,
     userInput?.selling_price,
   ]);
-
+  const [showFull, setShowFull] = useState(true);
   return (
     <form
       onChange={handleChange}
-      className="flex column gap1rem add_product_left_component border_all padding1rem"
+      className={`flex column gap1rem add_product_left_component border_all padding1rem optional_feeds ${
+        showFull && "show_full"
+      }`}
     >
-      <FormSectionHeader text={"Price"} />
+      <FormSectionHeader
+        text={"Price"}
+        setShowFull={setShowFull}
+        showFull={showFull}
+      />
 
       <div className="flex gap1rem sub_inputs main_bg">
         <div className="flex column gap03rem">
