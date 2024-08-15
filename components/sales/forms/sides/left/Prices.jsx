@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FormSectionHeader from "../../FormSectionHeader";
-import { IoTrashOutline } from "react-icons/io5";
 import { calculateProfitMargin } from "./pricesHelper";
+import { FieldTitle } from "@/components/GlobalComponents";
 
 const Prices = () => {
   const [userInput, setUserInput] = useState({});
@@ -36,49 +36,51 @@ const Prices = () => {
 
       <div className="flex gap1rem sub_inputs main_bg">
         <div className="flex column gap03rem">
-          <p className="flex align_center justify_between">
-            Cost Price
-            <IoTrashOutline size={18} className="pointer" />
-          </p>
+          <FieldTitle
+            helper={"How much did you purchase this product...?"}
+            title={"Cost Price"}
+          />
           <input name="cost_price" type="number" />
         </div>
         <div className="flex column gap03rem">
-          <p className="flex align_center justify_between">
-            Selling Price
-            <IoTrashOutline size={18} className="pointer" />
-          </p>
+          <FieldTitle
+            title={"Selling Price"}
+            helper={"How much do you intend to sell this product...?"}
+          />
           <input name="selling_price" type="number" />
         </div>
       </div>
       <div className="flex gap1rem sub_inputs main_bg">
         <div className="flex column gap03rem">
-          <p className="flex align_center justify_between">
-            Shipping Cost
-            <IoTrashOutline size={18} className="pointer" />
-          </p>
+          <FieldTitle
+            title={"Shipping Cost"}
+            helper={"How much did you pay to ship this product...?"}
+          />
           <input name="shipping_cost" type="number" />
         </div>
         <div className="flex column gap03rem">
-          <p className="flex align_center justify_between">
-            Shipping Time
-            <IoTrashOutline size={18} className="pointer" />
-          </p>
+          <FieldTitle
+            title={"Shipping Time"}
+            helper={"How long did it take for this product to arrive...?"}
+          />
           <input name="shipping_time" type="text" />
         </div>
       </div>
       <div className="flex gap1rem sub_inputs main_bg">
         <div className="flex column gap03rem">
-          <p className="flex align_center justify_between">
-            Stock Level
-            <IoTrashOutline size={18} className="pointer" />
-          </p>
+          <FieldTitle
+            title={"Stock Level"}
+            helper={"How many of this product do you have in store...?"}
+          />
           <input name="stock_level" type="text" />
         </div>
         <div className="flex column gap03rem">
-          <p className="flex align_center justify_between">
-            Profit Margin
-            <IoTrashOutline size={18} className="pointer" />
-          </p>
+          <FieldTitle
+            title={"Profit Margin"}
+            helper={
+              "Don't worry, this will be calculated automatically... Only after you fill in values of your shipping cost, selling price and cost price"
+            }
+          />
           <input
             style={{ fontSize: "13px" }}
             type="text"

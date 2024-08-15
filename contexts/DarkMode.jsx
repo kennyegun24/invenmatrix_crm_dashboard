@@ -69,6 +69,9 @@ export const ThemeProvider = ({ children }) => {
               colorBorder: "var(--light_border)",
               colorTextPlaceholder: "var(--text_color)",
             },
+            Tooltip: {
+              fontSize: 12,
+            },
           },
         }}
       >

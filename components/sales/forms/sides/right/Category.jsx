@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import FormSectionHeader from "../../FormSectionHeader";
+import { FaQuestionCircle } from "react-icons/fa";
+import { Tooltip } from "antd";
 
 const Category = () => {
   const [categories, setCategories] = useState([
@@ -56,7 +58,17 @@ const Category = () => {
 
   return (
     <div className="flex column gap1rem border_all padding1rem category_container">
-      <FormSectionHeader text={"Category"} />
+      <FormSectionHeader
+        text={"Category"}
+        component={
+          <Tooltip
+            title="Select one or multiple categories that your product belongs to"
+            color={"var(--main_bg)"}
+          >
+            <FaQuestionCircle />
+          </Tooltip>
+        }
+      />
       {categories.map((category, index) => (
         <div key={category.id} className="flex column gap03rem main_bg">
           <div className="flex gap05rem align_center">

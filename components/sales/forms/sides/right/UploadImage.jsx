@@ -3,6 +3,8 @@ import FormSectionHeader from "../../FormSectionHeader";
 import { LuUploadCloud } from "react-icons/lu";
 import Image from "next/image";
 import { DragDropContext } from "@/contexts/DragDrop";
+import { FaQuestionCircle } from "react-icons/fa";
+import { Tooltip } from "antd";
 
 const UploadImage = () => {
   const { images, isDragging, fileInputRef, selectFiles, onFileSelect } =
@@ -10,7 +12,17 @@ const UploadImage = () => {
 
   return (
     <div className="flex column gap1rem border_all padding1rem add_product_right_component">
-      <FormSectionHeader text={"Product Images"} />
+      <FormSectionHeader
+        text={"Product Images"}
+        component={
+          <Tooltip
+            title="You can upload manually by clicking on the box below, or drag and drop images automatically... Images should not be more than 5"
+            color={"var(--main_bg)"}
+          >
+            <FaQuestionCircle />
+          </Tooltip>
+        }
+      />
       <label
         htmlFor="upload_images"
         className="border_all padding1rem upload_image_container flex align_center justify_center column gap05rem pointer"
