@@ -42,7 +42,7 @@ const UploadImage = () => {
             title="You can upload manually by clicking on the box below, or drag and drop images automatically... Images should not be more than 5"
             color={"var(--main_bg)"}
           >
-            <FaQuestionCircle />
+            <FaQuestionCircle size={13} />
           </Tooltip>
         }
         setShowFull={setShowFull}

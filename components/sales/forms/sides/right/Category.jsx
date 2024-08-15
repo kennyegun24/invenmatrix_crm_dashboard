@@ -70,7 +70,7 @@ const Category = () => {
             title="Select one or multiple categories that your product belongs to"
             color={"var(--main_bg)"}
           >
-            <FaQuestionCircle />
+            <FaQuestionCircle size={13} />
           </Tooltip>
         }
         setShowFull={setShowFull}
