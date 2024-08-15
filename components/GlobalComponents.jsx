@@ -10,7 +10,12 @@ export const SalesContainer = ({ children }) => (
   <div className="flex column sales_container gap1rem">{children}</div>
 );
 
-export const FieldTitle = ({ title, helper, displayBin }) => (
+export const FieldTitle = ({
+  title,
+  helper,
+  displayBin,
+  click = () => alert("Not working"),
+}) => (
   <p className="flex align_center justify_between" style={{ fontSize: "13px" }}>
     <span className="flex gap05rem align_center">
       {title}
@@ -24,6 +29,8 @@ export const FieldTitle = ({ title, helper, displayBin }) => (
         </Tooltip>
       }
     </span>
-    {displayBin && <IoTrashOutline size={18} className="pointer" />}
+    {displayBin && (
+      <IoTrashOutline onClick={() => click()} size={18} className="pointer" />
+    )}
   </p>
 );
