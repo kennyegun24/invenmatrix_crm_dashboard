@@ -63,7 +63,11 @@ const OptionalFields = () => {
 
       <div className="flex gap1rem main_bg wrap" style={widthFull}>
         {options.map((opt, _) => (
-          <div className="flex column gap03rem main_bg" style={widthHalf}>
+          <div
+            key={_}
+            className="flex column gap03rem main_bg"
+            style={widthHalf}
+          >
             <FieldTitle
               title={opt.title}
               helper={"What is the name of this product...?... REQUIRED FIELD."}
