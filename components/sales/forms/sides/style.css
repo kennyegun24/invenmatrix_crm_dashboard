@@ -39,9 +39,6 @@
   width: 100%;
 
   > div:nth-child(2) {
-    /* * {
-      background: var(--main_bg);
-    } */
   }
 
   .sub_inputs {
@@ -56,9 +53,23 @@
     width: 100%;
   }
 
-  select {
+  select,
+  input,
+  button {
     padding: 0.5rem 1rem;
     border-radius: 0.3rem;
+    border: 1px solid var(--light_border);
+  }
+  button {
+    font-size: 14px;
+    background: var(--sub_bg);
+    * {
+      background: var(--sub_bg);
+    }
+  }
+  .add_new_field {
+    width: fit-content;
+    padding: 0.5rem 1rem;
   }
 }
 

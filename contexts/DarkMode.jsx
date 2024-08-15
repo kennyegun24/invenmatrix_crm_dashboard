@@ -63,6 +63,12 @@ export const ThemeProvider = ({ children }) => {
             Modal: {
               colorBgElevated: "var(--sub_bg)",
             },
+            DatePicker: {
+              colorBgElevated: "var(--sub_bg)",
+              colorBgContainer: "var(--main_bg)",
+              colorBorder: "var(--light_border)",
+              colorTextPlaceholder: "var(--text_color)",
+            },
           },
         }}
       >

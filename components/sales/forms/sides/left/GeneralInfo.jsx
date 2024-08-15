@@ -1,8 +1,12 @@
 import React from "react";
 import FormSectionHeader from "../../FormSectionHeader";
 import { IoTrashOutline } from "react-icons/io5";
+import { DatePicker } from "antd";
 
 const GeneralInfo = () => {
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+  };
   return (
     <section className="flex column gap1rem add_product_left_component border_all padding1rem">
       <FormSectionHeader text={"General Information"} />
@@ -37,7 +41,7 @@ const GeneralInfo = () => {
             Date Purchased
             <IoTrashOutline size={18} className="pointer" />
           </p>
-          <input type="text" />
+          <DatePicker onChange={onChange} />
         </div>
         <div className="flex column gap03rem">
           <p className="flex align_center justify_between">
@@ -54,8 +58,9 @@ const GeneralInfo = () => {
             <IoTrashOutline size={18} className="pointer" />
           </p>
           <select type="text">
-            <option value="Active">Active</option>
-            <option value="Active">In-active</option>
+            <option value="Active">In Stock</option>
+            <option value="Active">Out of Stock</option>
+            <option value="Active">Discontinued</option>
           </select>
         </div>
       </div>
