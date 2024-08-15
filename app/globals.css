@@ -155,3 +155,7 @@
     background-color: var(--main_bg);
   }
 }
+
+.width_fit {
+  width: fit-content;
+}

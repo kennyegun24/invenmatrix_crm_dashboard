@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import FormSectionHeader from "../../FormSectionHeader";
-import { IoTrashOutline } from "react-icons/io5";
 import { DatePicker } from "antd";
 import { FieldTitle } from "@/components/GlobalComponents";
+import { Switch } from "antd";
 
 const GeneralInfo = () => {
   const onChange = (date, dateString) => {
@@ -77,20 +77,32 @@ const GeneralInfo = () => {
           <input type="text" />
         </div>
       </div>
-      <div className="flex gap1rem sub_inputs main_bg">
-        <div className="flex column gap03rem">
+      <div className="flex gap1rem sub_inputs">
+        <div className="flex gap1rem main_bg">
+          <div className="flex column gap03rem">
+            <FieldTitle
+              title={"Status"}
+              helper={
+                "Is the product currently available or not?... REQUIRED FIELD."
+              }
+              displayBin={false}
+            />
+            <select type="text">
+              <option value="Active">In Stock</option>
+              <option value="Active">Out of Stock</option>
+              <option value="Active">Discontinued</option>
+            </select>
+          </div>
+        </div>
+        <div className="flex width_fit align_center gap05rem">
           <FieldTitle
-            title={"Status"}
+            title={"Enable Alerts"}
             helper={
-              "Is the product currently available or not?... REQUIRED FIELD."
+              "Do you want to get email alerts when your product is getting out of stock...?"
             }
             displayBin={false}
           />
-          <select type="text">
-            <option value="Active">In Stock</option>
-            <option value="Active">Out of Stock</option>
-            <option value="Active">Discontinued</option>
-          </select>
+          <Switch defaultChecked className="width_fit" />
         </div>
       </div>
     </section>
