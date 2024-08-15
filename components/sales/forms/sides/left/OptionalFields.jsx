@@ -113,4 +113,8 @@ const widthHalf = {
 
 const widthQuarter = {
   width: "25%",
+  borderRadius: "0.4rem",
+  border: "1px solid var(--light_border)",
+  padding: "0.5rem 1rem",
+  fontSize: 14,
 };

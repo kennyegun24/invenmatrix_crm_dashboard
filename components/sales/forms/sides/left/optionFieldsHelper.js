@@ -3,7 +3,7 @@ export const deleteItem = (id, setOptions, options) => {
   setOptions(newOptions);
 };
 
-export const addNewColumn = (e, setOptions, newColumn) => {
+export const addNewColumn = (setOptions, newColumn) => {
   setOptions((prev) => [
     ...prev,
     {
