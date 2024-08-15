@@ -123,29 +123,29 @@
 }
 
 .dashed_lg_border_all::before {
-  top: -10px;
-  left: -10px;
+  top: 5px;
+  left: 5px;
   border-right: none;
   border-bottom: none;
 }
 
 .dashed_lg_border_all::after {
-  bottom: -10px;
-  right: -10px;
+  bottom: 5px;
+  right: 5px;
   border-left: none;
   border-top: none;
 }
 
 .dashed_lg_border_all .corner-1 {
-  top: -10px;
-  right: -10px;
+  top: 5px;
+  right: 5px;
   border-left: none;
   border-bottom: none;
 }
 
 .dashed_lg_border_all .corner-2 {
-  bottom: -10px;
-  left: -10px;
+  bottom: 5px;
+  left: 5px;
   border-right: none;
   border-top: none;
 }

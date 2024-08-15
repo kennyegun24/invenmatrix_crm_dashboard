@@ -38,9 +38,6 @@
 .category_container {
   width: 100%;
 
-  > div:nth-child(2) {
-  }
-
   .sub_inputs {
     width: 100%;
 
@@ -97,4 +94,12 @@
 
 .show_full {
   max-height: 1000px;
+}
+
+.down {
+  transition: transform 0.3s ease-in-out;
+}
+
+.transform {
+  transform: rotate(180deg);
 }

@@ -8,7 +8,7 @@ const FormSectionHeader = ({ text, component, setShowFull, showFull }) => {
         {text} {component}
       </h2>
       <FaChevronDown
-        className="pointer"
+        className={`pointer ${showFull ? "down" : "transform"}`}
         onClick={() => setShowFull((prev) => !prev)}
       />
     </div>
