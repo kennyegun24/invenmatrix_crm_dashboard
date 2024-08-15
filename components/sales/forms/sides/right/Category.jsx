@@ -55,7 +55,7 @@ const Category = () => {
   const removeCategoryField = (id) => {
     setCategories((prev) => prev.filter((cat) => cat.id !== id));
   };
-  const [showFull, setShowFull] = useState(true);
+  const [showFull, setShowFull] = useState(false);
 
   return (
     <div

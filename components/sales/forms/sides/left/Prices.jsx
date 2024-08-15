@@ -26,7 +26,7 @@ const Prices = () => {
     userInput?.cost_price,
     userInput?.selling_price,
   ]);
-  const [showFull, setShowFull] = useState(true);
+  const [showFull, setShowFull] = useState(false);
   return (
     <form
       onChange={handleChange}
