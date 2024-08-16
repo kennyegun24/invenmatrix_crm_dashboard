@@ -4,10 +4,11 @@ import {
   gridSortedRowIdsSelector,
   useGridApiContext,
   gridExpandedSortedRowIdsSelector,
+  gridRowsLookupSelector,
 } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { FaDownload } from "react-icons/fa6";
-import jsPDF from "jspdf";
+import { handleDownloadPDF } from "@/helpers/downloadPDF";
 
 const getRowsFromCurrentPage = ({ apiRef }) =>
   gridPaginatedVisibleSortedGridRowIdsSelector(apiRef);
@@ -17,47 +18,23 @@ const getUnfilteredRows = ({ apiRef }) => gridSortedRowIdsSelector(apiRef);
 const getFilteredRows = ({ apiRef }) =>
   gridExpandedSortedRowIdsSelector(apiRef);
 
+const getRowData = ({ apiRef, rowIds }) => {
+  const allRows = gridRowsLookupSelector(apiRef);
+  return rowIds.map((id) => allRows[id]);
+};
+
 const Toolbar = (props) => {
   const apiRef = useGridApiContext();
   const handleExport = (options) => apiRef.current.exportDataAsCsv(options);
-  const getRowData = (rowIds) => {
-    return rowIds.map((id) => apiRef.current.getRow(id));
-  };
-  const exportToPDF = () => {
-    // const rowIds = getFilteredRows({ apiRef });
-    // const tableRows = getRowData(rowIds);
-
-    // const tableColumn = columns.map((col) => col.headerName);
-    // const tableData = tableRows.map((row) =>
-    //   columns.map((col) => row[col.field])
-    // );
-
-    // const doc = new jsPDF();
-
-    // // Add title
-    // doc.setFontSize(18);
-    // doc.text("Executive Summary", 14, 22);
-
-    // // Add date
-    // const date = new Date();
-    // doc.setFontSize(11);
-    // doc.text(`Report generated on: ${date.toLocaleDateString()}`, 14, 30);
-
-    // // Add table
-    // doc.autoTable({
-    //   head: [tableColumn],
-    //   body: tableData,
-    //   startY: 40,
-    // });
-
-    // doc.save("executive-summary.pdf");
-    console.log(props);
-  };
-
   const buttonBaseProps = {
     color: "primary",
     size: "small",
     startIcon: <FaDownload />,
+  };
+  const handleExportPDF = (getRowsToExport) => {
+    const rowIds = getRowsToExport({ apiRef });
+    const rowData = getRowData({ apiRef, rowIds });
+    handleDownloadPDF(rowData);
   };
   return (
     <GridToolbarContainer {...props}>
@@ -81,9 +58,8 @@ const Toolbar = (props) => {
       >
         Unfiltered rows
       </Button>
-      {/* <Button {...buttonBaseProps} onClick={exportToPDF}>
-        Export as PDF
-      </Button> */}
+      {/* <Button onClick={() => handleDownloadPDF(props?.products)}>PDF</Button> */}
+      <Button onClick={() => handleExportPDF(getFilteredRows)}>PDF</Button>
     </GridToolbarContainer>
   );
 };

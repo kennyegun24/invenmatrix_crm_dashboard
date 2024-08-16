@@ -95,7 +95,8 @@ const Table = () => {
           },
         },
       }}
-      slots={{ toolbar: Toolbar }}
+      // slots={{ toolbar: Toolbar }}
+      slots={{ toolbar: (props) => <Toolbar {...props} products={products} /> }}
     />
   );
 };
