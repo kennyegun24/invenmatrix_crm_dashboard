@@ -1,46 +1,67 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import dayjs from "dayjs";
 
-export const handleDownloadPDF = (products) => {
+export const handleDownloadPDF = (filteredData) => {
   const doc = new jsPDF();
+  const businessName = "Your Business Name";
+  const dateGenerated = dayjs().format("MMMM D, YYYY");
+  const subheading = "Product Summary";
 
-  // Add the big text at the top
-  const businessName = "Blah Blah"; // Replace with your actual business name
-  doc.setFontSize(14); // Set font size for the big text
-  const titleText = `All ${businessName} Products`;
-  doc.setFontSize(22); // Set font size for the big text
-  // Calculate the center position
-  const pageWidth = doc.internal.pageSize.getWidth();
-  const textWidth = doc.getTextWidth(titleText);
-  const textX = (pageWidth - textWidth) / 2;
-  doc.text(titleText, textX, 20); // Centered text
-  doc.setFontSize("8px");
+  doc.setFontSize(18);
+  doc.text(
+    `All ${businessName} Products`,
+    doc.internal.pageSize.getWidth() / 2,
+    20,
+    { align: "center" }
+  );
 
-  const tableColumn = [
-    "Product Name",
-    "Product Category",
-    "Stock Level",
-    "Profit Margin",
-    "Selling Price",
-    "Shipping Cost",
-    "Barcode",
-  ];
-
-  const tableRows = products?.map((product) => [
-    product.productName,
-    product.productCategory,
-    product.stockLevel,
-    `${product.profitMargin}%`,
-    `$${product.sellingPrice}`,
-    `$${product.shippingCost}`,
-    product.barcode,
-  ]);
-
-  doc.autoTable({
-    head: [tableColumn],
-    body: tableRows,
-    startY: 40, // Start table below the title text
+  doc.setFontSize(14);
+  doc.text(subheading, doc.internal.pageSize.getWidth() / 2, 30, {
+    align: "center",
   });
 
-  doc.save("products.pdf");
+  doc.setFontSize(10);
+  doc.text(
+    `Date Generated: ${dateGenerated}`,
+    doc.internal.pageSize.getWidth() - 20,
+    40,
+    { align: "right" }
+  );
+
+  doc.autoTable({
+    head: [
+      [
+        "Product Name",
+        "Category",
+        "Stock Level",
+        "Profit Margin",
+        "Selling Price",
+        "Shipping Cost",
+        "Barcode",
+      ],
+    ],
+    body: filteredData.map((item) => [
+      item.productName,
+      item.productCategory,
+      item.stockLevel,
+      item.profitMargin,
+      item.sellingPrice,
+      item.shippingCost,
+      item.barcode,
+    ]),
+    startY: 50,
+  });
+
+  // const chartImgData = "data:image/png;base64, ...";
+  // doc.addImage(
+  //   chartImgData,
+  //   "PNG",
+  //   15,
+  //   doc.autoTable.previous.finalY + 10,
+  //   180,
+  //   80
+  // );
+
+  doc.save("Products.pdf");
 };
