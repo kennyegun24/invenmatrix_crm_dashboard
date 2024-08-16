@@ -1,3 +1,4 @@
+"use client";
 import { products } from "@/utils/prods_data";
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useContext } from "react";

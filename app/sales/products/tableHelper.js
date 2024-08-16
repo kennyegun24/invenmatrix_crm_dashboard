@@ -53,3 +53,8 @@ export const generateAllProductsColumns = (products) => {
 
   return columns;
 };
+// name
+// house address
+// items ordered
+// email address
+// phone number

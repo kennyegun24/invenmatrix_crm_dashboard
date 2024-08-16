@@ -1,6 +1,7 @@
 @import url(./defaults.css);
 @import url(./root_css.css);
 @import url(./auth.css);
+@import url(../styles/table_styles.css);
 
 .opacity05 {
   opacity: 0.5;

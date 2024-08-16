@@ -15,6 +15,7 @@ const HomeProvider = ({ children }) => {
     "/register",
     "/forget_password",
     "/sales",
+    "/customer",
   ];
   const pathname = usePathname();
   const showNavBar = !routesToIgnore.some((route) =>

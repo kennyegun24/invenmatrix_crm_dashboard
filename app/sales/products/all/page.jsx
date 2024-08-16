@@ -1,7 +1,6 @@
 "use client";
 import { SalesContainer } from "@/components/GlobalComponents";
 import React, { Suspense, lazy } from "react";
-import "./page.css";
 const Table = lazy(() => import("@/components/table/Table"));
 import { useSearchParams } from "next/navigation";
 import DashboardHeader from "@/components/DashboardHeader";
