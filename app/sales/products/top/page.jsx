@@ -3,7 +3,6 @@ import React from "react";
 import "jspdf-autotable";
 import { SalesContainer } from "@/components/GlobalComponents";
 import DashboardHeader from "@/components/DashboardHeader";
-import GridHeaderControls from "@/components/grid/GridHeaderControls";
 import Table from "@/components/sales/table/Table";
 import "../all/page.css";
 

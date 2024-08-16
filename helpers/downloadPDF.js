@@ -1,6 +1,13 @@
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import dayjs from "dayjs";
+import { getRowData } from "./tables/generalTableHelper";
+
+export const handleExportPDF = (apiRef, getRowsToExport) => {
+  const rowIds = getRowsToExport({ apiRef });
+  const rowData = getRowData({ apiRef, rowIds });
+  handleDownloadPDF(rowData);
+};
 
 export const handleDownloadPDF = (filteredData) => {
   const doc = new jsPDF();

@@ -1,27 +1,13 @@
-import {
-  GridToolbarContainer,
-  gridPaginatedVisibleSortedGridRowIdsSelector,
-  gridSortedRowIdsSelector,
-  useGridApiContext,
-  gridExpandedSortedRowIdsSelector,
-  gridRowsLookupSelector,
-} from "@mui/x-data-grid";
+import { GridToolbarContainer, useGridApiContext } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import { FaDownload } from "react-icons/fa6";
-import { handleDownloadPDF } from "@/helpers/downloadPDF";
-
-const getRowsFromCurrentPage = ({ apiRef }) =>
-  gridPaginatedVisibleSortedGridRowIdsSelector(apiRef);
-
-const getUnfilteredRows = ({ apiRef }) => gridSortedRowIdsSelector(apiRef);
-
-const getFilteredRows = ({ apiRef }) =>
-  gridExpandedSortedRowIdsSelector(apiRef);
-
-const getRowData = ({ apiRef, rowIds }) => {
-  const allRows = gridRowsLookupSelector(apiRef);
-  return rowIds.map((id) => allRows[id]);
-};
+import { handleExportPDF } from "@/helpers/downloadPDF";
+import { handleExportJSON } from "@/helpers/downloadJSON";
+import {
+  getFilteredRows,
+  getRowsFromCurrentPage,
+  getUnfilteredRows,
+} from "@/helpers/tables/generalTableHelper";
 
 const Toolbar = (props) => {
   const apiRef = useGridApiContext();
@@ -31,11 +17,7 @@ const Toolbar = (props) => {
     size: "small",
     startIcon: <FaDownload />,
   };
-  const handleExportPDF = (getRowsToExport) => {
-    const rowIds = getRowsToExport({ apiRef });
-    const rowData = getRowData({ apiRef, rowIds });
-    handleDownloadPDF(rowData);
-  };
+
   return (
     <GridToolbarContainer {...props}>
       <Button
@@ -60,9 +42,15 @@ const Toolbar = (props) => {
       </Button>
       <Button
         {...buttonBaseProps}
-        onClick={() => handleExportPDF(getFilteredRows)}
+        onClick={() => handleExportPDF(apiRef, getFilteredRows)}
       >
         PDF
+      </Button>
+      <Button
+        {...buttonBaseProps}
+        onClick={() => handleExportJSON(apiRef, getFilteredRows)}
+      >
+        JSON
       </Button>
     </GridToolbarContainer>
   );
