@@ -160,3 +160,7 @@
 .width_fit {
   width: fit-content;
 }
+
+.width100 {
+  width: 100%;
+}
