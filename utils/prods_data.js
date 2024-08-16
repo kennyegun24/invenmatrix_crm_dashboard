@@ -69,7 +69,7 @@ export const products = [
     reviews: 4.2,
   },
   {
-    id: "73058fe0-123b-4482-9ce7-096a0e11561f",
+    id: "73058fe0-123b-4482-9ce7-3hv3t23y8e",
     images: [basketball, basketball2],
     sellingPrice: 20.0,
     profitMargin: 10.0,
@@ -733,7 +733,7 @@ export const folders = [
     subFolder: [],
     products: [
       "73058fe0-123b-4482-9ce7-096a0e11561f",
-      "73058fe0-123b-4482-9ce7-096a0e11561f",
+      "73058fe0-123b-4482-9ce7-3hv3t23y8e",
       "o5p6q7r8-9012-m3n4-5678-9012abcdef1",
     ],
   },
