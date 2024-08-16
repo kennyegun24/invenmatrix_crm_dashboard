@@ -58,8 +58,12 @@ const Toolbar = (props) => {
       >
         Unfiltered rows
       </Button>
-      {/* <Button onClick={() => handleDownloadPDF(props?.products)}>PDF</Button> */}
-      <Button onClick={() => handleExportPDF(getFilteredRows)}>PDF</Button>
+      <Button
+        {...buttonBaseProps}
+        onClick={() => handleExportPDF(getFilteredRows)}
+      >
+        PDF
+      </Button>
     </GridToolbarContainer>
   );
 };

@@ -32,12 +32,12 @@ export const handleDownloadPDF = (filteredData) => {
   doc.autoTable({
     head: [
       [
-        "Product Name",
+        "Product",
         "Category",
-        "Stock Level",
-        "Profit Margin",
-        "Selling Price",
-        "Shipping Cost",
+        "in-stock",
+        "Profit (%)",
+        "Price ($)",
+        "Shipping ($)",
         "Barcode",
       ],
     ],
