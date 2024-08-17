@@ -16,6 +16,8 @@
   --main_bg: #102a43;
   --sub_bg: #183a5a;
   --blend_bg: #1d4162;
+  --opposite_bg: #f4f4f4;
+  --opposite_text: #102a43;
   --text_color: #fff;
   --border_color: #fff;
   --light_border: #3e607f;
@@ -27,6 +29,8 @@
   --main_bg: #fff;
   --sub_bg: #f6f6f6;
   --blend_bg: #f6f6f6;
+  --opposite_bg: #102a43;
+  --opposite_text: #f4f4f4;
   --text_color: #393939;
   --light_text: #4e4e4e;
   --light_border: #cccccc;

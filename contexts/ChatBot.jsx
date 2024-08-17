@@ -1,6 +1,6 @@
 "use client";
 
-import ChatBotButton from "@/components/chat/Button";
+import ChatBotComponent from "@/components/chat/ChatBotComponent";
 
 const { createContext } = require("react");
 
@@ -9,7 +9,7 @@ export const ChatbotContext = createContext();
 const ChatbotProvider = ({ children }) => {
   return (
     <ChatbotContext.Provider>
-      <ChatBotButton />
+      <ChatBotComponent />
       {children}
     </ChatbotContext.Provider>
   );
