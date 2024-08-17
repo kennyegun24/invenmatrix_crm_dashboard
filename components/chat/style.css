@@ -73,11 +73,14 @@
     width: 320px;
     height: 500px;
     z-index: 999999;
+  }
 
+  .show_over_flow {
     * {
       overflow: initial;
     }
   }
+
   .chat_bot_button {
     width: 3rem;
     height: 3rem;

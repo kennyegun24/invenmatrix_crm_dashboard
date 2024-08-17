@@ -36,6 +36,36 @@ const InitialScreenContent = () => {
         </h3>
         <FaPaperPlane />
       </div>
+      <div className="flex width100 align_center initial_screen_row justify_between">
+        <h3 className="flex align_center gap05rem">
+          <FaRobot size={20} /> Talk to MatriBot
+        </h3>
+        <FaPaperPlane />
+      </div>
+      <div className="flex width100 align_center initial_screen_row justify_between">
+        <h3 className="flex align_center gap05rem">
+          <FaRobot size={20} /> Talk to MatriBot
+        </h3>
+        <FaPaperPlane />
+      </div>
+      <div className="flex width100 align_center initial_screen_row justify_between">
+        <h3 className="flex align_center gap05rem">
+          <FaRobot size={20} /> Talk to MatriBot
+        </h3>
+        <FaPaperPlane />
+      </div>
+      <div className="flex width100 align_center initial_screen_row justify_between">
+        <h3 className="flex align_center gap05rem">
+          <FaRobot size={20} /> Talk to MatriBot
+        </h3>
+        <FaPaperPlane />
+      </div>
+      <div className="flex width100 align_center initial_screen_row justify_between">
+        <h3 className="flex align_center gap05rem">
+          <FaRobot size={20} /> Talk to MatriBot
+        </h3>
+        <FaPaperPlane />
+      </div>
     </div>
   );
 };
