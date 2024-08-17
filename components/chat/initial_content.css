@@ -1,6 +1,6 @@
 .initial_screen_content {
   height: calc(100% - 0.6rem);
-  overflow-y: auto;
+  overflow: auto;
   * {
     color: #f4f4f4;
   }

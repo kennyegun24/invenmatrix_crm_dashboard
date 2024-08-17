@@ -36,11 +36,7 @@ const ChatBotComponent = () => {
 
   return (
     <div ref={chatContainerRef} className="chat_bot_container">
-      <div
-        className={`chat_bot_div ${toggle ? "toggle" : ""} ${
-          showOverflow ? "show_over_flow" : ""
-        }`}
-      >
+      <div className={`chat_bot_div ${toggle ? "toggle" : ""} `}>
         <div
           onClick={() => setToggle(false)}
           className="close_btn_div flex align_center justify_center pointer"
