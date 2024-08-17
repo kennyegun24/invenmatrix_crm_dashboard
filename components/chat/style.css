@@ -33,9 +33,7 @@
         background-color: rgb(29, 65, 98, 0.5);
       }
     }
-    /* * {
-      overflow: hidden;
-    } */
+
     .initial_screen_top_logo {
       padding: 3rem 0.5rem 1rem 0.5rem;
       .bot_welcome_text {
@@ -75,11 +73,17 @@
     z-index: 999999;
   }
 
-  .show_over_flow {
+  .hide_over_flow {
     * {
-      /* overflow: initial; */
+      overflow: hidden;
     }
   }
+
+  /* .show_over_flow {
+    * {
+      overflow: initial;
+    }
+  } */
 
   .chat_bot_button {
     width: 3rem;
