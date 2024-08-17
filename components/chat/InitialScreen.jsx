@@ -12,10 +12,10 @@ const InitialScreen = () => {
         <h2>InvenMatrix</h2>
         <p>All in one Inventory System</p>
         <p className="bot_welcome_text">
-          Hi there! I'm MatriBot, your friendly assistant. I'm here to help you
-          navigate and make the most out of your inventory dashboard. If you
-          have any questions or need assistance, just let me know. Let's make
-          managing your inventory a breeze!
+          Hi there! I&apos;m MatriBot, your friendly assistant. I&apos;m here to
+          help you navigate and make the most out of your inventory dashboard.
+          If you have any questions or need assistance, just let me know.
+          Let&apos;s make managing your inventory a breeze!
         </p>
       </div>
       <div

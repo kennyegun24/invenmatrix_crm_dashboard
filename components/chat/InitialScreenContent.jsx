@@ -26,7 +26,7 @@ const InitialScreenContent = () => {
       </div>
       <div className="flex width100 align_center initial_screen_row justify_between">
         <h3 className="flex align_center gap05rem">
-          <FaQuestion /> What's New
+          <FaQuestion /> What&apos;s New
         </h3>
         <FaAngleRight />
       </div>
