@@ -8,7 +8,7 @@ const ChatBotButton = ({ setToggle, toggle }) => {
       className={`chat_bot_button ${toggle ? "hide_bot" : ""}`}
       onClick={() => setToggle((prev) => !prev)}
     >
-      <BsChatSquareFill size={20} />
+      <BsChatSquareFill size={20} className={toggle ? "hide_bot" : ""} />
     </button>
   );
 };

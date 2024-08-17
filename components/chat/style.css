@@ -20,7 +20,7 @@
     border-radius: 1rem 1rem 0px 1rem;
     width: 0;
     height: 0;
-    overflow-y: hidden;
+    overflow: hidden;
     .close_btn_div {
       width: 40px;
       height: 40px;
@@ -32,6 +32,9 @@
       &:hover {
         background-color: rgb(29, 65, 98, 0.5);
       }
+    }
+    * {
+      overflow: hidden;
     }
     .initial_screen_top_logo {
       padding: 3rem 0.5rem 1rem 0.5rem;
@@ -70,6 +73,10 @@
     width: 320px;
     height: 500px;
     z-index: 999999;
+
+    * {
+      overflow: initial;
+    }
   }
   .chat_bot_button {
     width: 3rem;
@@ -87,7 +94,7 @@
     width: 0;
     height: 0;
     bottom: 50px;
-    right: 50px;
+    right: 60px;
   }
   .img_logo {
     height: 70px;
