@@ -1,0 +1,22 @@
+.initial_screen_content {
+  height: calc(100% - 0.6rem);
+  overflow-y: auto;
+  * {
+    color: #f4f4f4;
+  }
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .initial_screen_row {
+    border-bottom: 1px solid var(--light_border);
+    /* border-top: 1px solid var(--light_border); */
+    padding: 0.75rem 0.5rem;
+
+    h3 {
+      font-weight: 400;
+      font-size: 14px;
+    }
+  }
+}

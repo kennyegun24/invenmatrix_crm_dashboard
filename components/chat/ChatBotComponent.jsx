@@ -30,7 +30,7 @@ const ChatBotComponent = () => {
           onClick={() => setToggle(false)}
           className="close_btn_div flex align_center justify_center pointer"
         >
-          <FaChevronDown className="close_bot_icon" />
+          <FaChevronDown />
         </div>
         <InitialScreen />
       </div>
