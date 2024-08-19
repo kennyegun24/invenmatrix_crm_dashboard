@@ -1,10 +1,10 @@
-const {
+import {
   gridPaginatedVisibleSortedGridRowIdsSelector,
   gridSortedRowIdsSelector,
   gridExpandedSortedRowIdsSelector,
   gridRowsLookupSelector,
   gridColumnDefinitionsSelector,
-} = require("@mui/x-data-grid");
+} from "@mui/x-data-grid";
 
 export const getRowsFromCurrentPage = ({ apiRef }) =>
   gridPaginatedVisibleSortedGridRowIdsSelector(apiRef);

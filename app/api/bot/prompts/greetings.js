@@ -1,4 +1,5 @@
-const greetings = (manager) => {
+// greetings.js
+export function addGreetingDocuments(manager) {
   manager.addDocument("en", "hello", "greeting");
   manager.addDocument("en", "hi", "greeting");
   manager.addDocument("en", "hey there", "greeting");
@@ -15,7 +16,9 @@ const greetings = (manager) => {
   manager.addDocument("en", "yo", "greeting");
   manager.addDocument("en", "sup", "greeting");
   manager.addDocument("en", "what's up gang", "greeting");
-
+}
+// answers.js
+export function addAnswers(manager) {
   manager.addAnswer("en", "greeting", "Good evening! How can I assist you?");
   manager.addAnswer("en", "greeting", "Howdy! What can I help you with?");
   manager.addAnswer("en", "greeting", "What's up? How can I assist you?");
@@ -39,6 +42,11 @@ const greetings = (manager) => {
     "greeting",
     "Good afternoon! What can I do for you today?"
   );
-};
 
-module.exports = greetings;
+  manager.addAnswer(
+    "en",
+    "update_profile",
+    "Navigate to the settings page, then look amongst the options for the 'Edit Profile Button'... Click on it so you will get navigated to the edit profile form page... Update any field you want to change. Thank you!"
+  );
+}
+// module.exports = { addGreetingDocuments, addAnswers };

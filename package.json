@@ -2,6 +2,7 @@
   "name": "akask_crm_dashboard",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -39,6 +40,7 @@
     "react-to-print": "^2.15.1",
     "react-toastify": "^10.0.5",
     "recharts": "^2.12.7",
+    "request": "^2.88.2",
     "swr": "^2.2.5"
   },
   "devDependencies": {

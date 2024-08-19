@@ -97,92 +97,10 @@
           "gang,is,up,what": {
             "intent": "greeting",
             "domain": "default"
-          },
-          "can,edit,how,i,informaiton,my,person": {
-            "intent": "update_profile",
-            "domain": "default"
-          },
-          "can,edit,how,i,my,name": {
-            "intent": "update_profile",
-            "domain": "default"
-          },
-          "can,chang,how,i,inform,my,person": {
-            "intent": "update_profile",
-            "domain": "default"
-          },
-          "can,chang,go,i,my,pictur,profil,to,where": {
-            "intent": "update_profile",
-            "domain": "default"
-          },
-          "do,how,i,inform,my,profil,updat": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "can,chang,i,my,usernam": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "address,do,email,how,i,my,updat": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "can,chang,how,i,my,pictur,profil": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "can,contact,edit,i,inform,my,where": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "do,how,i,my,number,phone,updat": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "can,chang,i,my,password": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "address,do,how,i,my,updat": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "bill,can,i,inform,my,updat,where": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "add,addit,can,i,inform,my,profil,to": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "account,can,i,link,media,my,profil,social,to": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "account,deactiv,do,how,i,my": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "can,i,my,privat,profil,set,to": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "can,i,my,question,secur,updat,where": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "can,chang,i,my,profil,set,visibl": {
-            "intent": "profile_update",
-            "domain": "default"
-          },
-          "do,how,i,languag,my,prefer,updat": {
-            "intent": "profile_update",
-            "domain": "default"
           }
         },
         "intentDict": {
-          "greeting": "default",
-          "update_profile": "default",
-          "profile_update": "default"
+          "greeting": "default"
         },
         "sentences": [
           {
@@ -264,106 +182,6 @@
             "domain": "default",
             "utterance": "what's up gang",
             "intent": "greeting"
-          },
-          {
-            "domain": "default",
-            "utterance": "How can I edit my personal informaiton?",
-            "intent": "update_profile"
-          },
-          {
-            "domain": "default",
-            "utterance": "How can I edit my name?",
-            "intent": "update_profile"
-          },
-          {
-            "domain": "default",
-            "utterance": "How can I change my personal information?",
-            "intent": "update_profile"
-          },
-          {
-            "domain": "default",
-            "utterance": "Where can I go to change my profile picture?",
-            "intent": "update_profile"
-          },
-          {
-            "domain": "default",
-            "utterance": "How do I update my profile information?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Can I change my username?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "How do I update my email address?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "How can I change my profile picture?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Where can I edit my contact information?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "How do I update my phone number?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Can I change my password?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "How do I update my address?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Where can I update my billing information?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Can I add additional information to my profile?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Can I link my social media accounts to my profile?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "How do I deactivate my account?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Can I set my profile to private?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Where can I update my security questions?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "Can I change my profile visibility settings?",
-            "intent": "profile_update"
-          },
-          {
-            "domain": "default",
-            "utterance": "How do I update my language preference?",
-            "intent": "profile_update"
           }
         ],
         "domains": {
@@ -397,51 +215,10 @@
               "greet": 1,
               "yo": 1,
               "sup": 1,
-              "gang": 1,
-              "how": 1,
-              "can": 1,
-              "i": 1,
-              "edit": 1,
-              "my": 1,
-              "person": 1,
-              "informaiton": 1,
-              "name": 1,
-              "chang": 1,
-              "inform": 1,
-              "where": 1,
-              "go": 1,
-              "to": 1,
-              "profil": 1,
-              "pictur": 1,
-              "do": 1,
-              "updat": 1,
-              "usernam": 1,
-              "email": 1,
-              "address": 1,
-              "contact": 1,
-              "phone": 1,
-              "number": 1,
-              "password": 1,
-              "bill": 1,
-              "add": 1,
-              "addit": 1,
-              "link": 1,
-              "social": 1,
-              "media": 1,
-              "account": 1,
-              "deactiv": 1,
-              "set": 1,
-              "privat": 1,
-              "secur": 1,
-              "question": 1,
-              "visibl": 1,
-              "languag": 1,
-              "prefer": 1
+              "gang": 1
             },
             "intents": {
-              "greeting": 1,
-              "update_profile": 1,
-              "profile_update": 1
+              "greeting": 1
             },
             "intentFeatures": {
               "greeting": {
@@ -463,60 +240,6 @@
                 "yo": 1,
                 "sup": 1,
                 "gang": 1
-              },
-              "update_profile": {
-                "how": 1,
-                "can": 1,
-                "i": 1,
-                "edit": 1,
-                "my": 1,
-                "person": 1,
-                "informaiton": 1,
-                "name": 1,
-                "chang": 1,
-                "inform": 1,
-                "where": 1,
-                "go": 1,
-                "to": 1,
-                "profil": 1,
-                "pictur": 1
-              },
-              "profile_update": {
-                "how": 1,
-                "do": 1,
-                "i": 1,
-                "updat": 1,
-                "my": 1,
-                "profil": 1,
-                "inform": 1,
-                "can": 1,
-                "chang": 1,
-                "usernam": 1,
-                "email": 1,
-                "address": 1,
-                "pictur": 1,
-                "where": 1,
-                "edit": 1,
-                "contact": 1,
-                "phone": 1,
-                "number": 1,
-                "password": 1,
-                "bill": 1,
-                "add": 1,
-                "addit": 1,
-                "to": 1,
-                "link": 1,
-                "social": 1,
-                "media": 1,
-                "account": 1,
-                "deactiv": 1,
-                "set": 1,
-                "privat": 1,
-                "secur": 1,
-                "question": 1,
-                "visibl": 1,
-                "languag": 1,
-                "prefer": 1
               }
             },
             "featuresToIntent": {
@@ -573,134 +296,6 @@
               ],
               "gang": [
                 "greeting"
-              ],
-              "how": [
-                "update_profile",
-                "profile_update"
-              ],
-              "can": [
-                "update_profile",
-                "profile_update"
-              ],
-              "i": [
-                "update_profile",
-                "profile_update"
-              ],
-              "edit": [
-                "update_profile",
-                "profile_update"
-              ],
-              "my": [
-                "update_profile",
-                "profile_update"
-              ],
-              "person": [
-                "update_profile"
-              ],
-              "informaiton": [
-                "update_profile"
-              ],
-              "name": [
-                "update_profile"
-              ],
-              "chang": [
-                "update_profile",
-                "profile_update"
-              ],
-              "inform": [
-                "update_profile",
-                "profile_update"
-              ],
-              "where": [
-                "update_profile",
-                "profile_update"
-              ],
-              "go": [
-                "update_profile"
-              ],
-              "to": [
-                "update_profile",
-                "profile_update"
-              ],
-              "profil": [
-                "update_profile",
-                "profile_update"
-              ],
-              "pictur": [
-                "update_profile",
-                "profile_update"
-              ],
-              "do": [
-                "profile_update"
-              ],
-              "updat": [
-                "profile_update"
-              ],
-              "usernam": [
-                "profile_update"
-              ],
-              "email": [
-                "profile_update"
-              ],
-              "address": [
-                "profile_update"
-              ],
-              "contact": [
-                "profile_update"
-              ],
-              "phone": [
-                "profile_update"
-              ],
-              "number": [
-                "profile_update"
-              ],
-              "password": [
-                "profile_update"
-              ],
-              "bill": [
-                "profile_update"
-              ],
-              "add": [
-                "profile_update"
-              ],
-              "addit": [
-                "profile_update"
-              ],
-              "link": [
-                "profile_update"
-              ],
-              "social": [
-                "profile_update"
-              ],
-              "media": [
-                "profile_update"
-              ],
-              "account": [
-                "profile_update"
-              ],
-              "deactiv": [
-                "profile_update"
-              ],
-              "set": [
-                "profile_update"
-              ],
-              "privat": [
-                "profile_update"
-              ],
-              "secur": [
-                "profile_update"
-              ],
-              "question": [
-                "profile_update"
-              ],
-              "visibl": [
-                "profile_update"
-              ],
-              "languag": [
-                "profile_update"
-              ],
-              "prefer": [
-                "profile_update"
               ]
             },
             "neuralNetwork": {
@@ -733,232 +328,32 @@
                 "greet",
                 "yo",
                 "sup",
-                "gang",
-                "how",
-                "can",
-                "i",
-                "edit",
-                "my",
-                "person",
-                "informaiton",
-                "name",
-                "chang",
-                "inform",
-                "where",
-                "go",
-                "to",
-                "profil",
-                "pictur",
-                "do",
-                "updat",
-                "usernam",
-                "email",
-                "address",
-                "contact",
-                "phone",
-                "number",
-                "password",
-                "bill",
-                "add",
-                "addit",
-                "link",
-                "social",
-                "media",
-                "account",
-                "deactiv",
-                "set",
-                "privat",
-                "secur",
-                "question",
-                "visibl",
-                "languag",
-                "prefer"
+                "gang"
               ],
               "intents": [
-                "greeting",
-                "update_profile",
-                "profile_update"
+                "greeting"
               ],
               "perceptrons": [
                 [
-                  2.903718948364258,
-                  2.83514142036438,
-                  2.836134433746338,
-                  0.09119834750890732,
-                  2.3199198246002197,
-                  0.5789197087287903,
-                  0.5797384977340698,
-                  0.5804843902587891,
-                  0.5810412168502808,
-                  2.9186348915100098,
-                  0.9694879055023193,
-                  0.9694879055023193,
-                  0.9694879055023193,
-                  2.909313678741455,
-                  2.9062728881835938,
-                  2.9060888290405273,
-                  2.9022133350372314,
-                  -0.013320899568498135,
-                  -2.3909530639648438,
-                  -2.5975377559661865,
-                  -3.6341307163238525,
-                  -1.0111021995544434,
-                  -3.6341307163238525,
-                  -0.7155020236968994,
-                  -0.43693602085113525,
-                  -0.34132081270217896,
-                  -1.2937370538711548,
-                  -0.5270789861679077,
-                  -0.5034821033477783,
-                  -0.26462215185165405,
-                  -0.531174898147583,
-                  -0.8521567583084106,
-                  -0.26462215185165405,
-                  -1.036545753479004,
-                  -0.8198807835578918,
-                  -0.35000964999198914,
-                  -0.1885601282119751,
-                  -0.23637637495994568,
-                  -0.0012164375511929393,
-                  -0.11725188791751862,
-                  -0.11725188791751862,
-                  -0.22604602575302124,
-                  0,
-                  0,
-                  0,
-                  -0.04631521925330162,
-                  -0.04631521925330162,
-                  -0.04631521925330162,
-                  -0.37489184737205505,
-                  -0.314838707447052,
-                  -0.0682465136051178,
-                  -0.0682465136051178,
-                  -0.0981740728020668,
-                  -0.0981740728020668,
-                  0,
-                  0,
-                  0,
-                  11.385603472952905
-                ],
-                [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  3.8914382457733154,
-                  1.6133086681365967,
-                  -0.6360233426094055,
-                  2.4154865741729736,
-                  -0.6360233426094055,
-                  8.082642555236816,
-                  -0.005300004966557026,
-                  7.844615459442139,
-                  1.9834123849868774,
-                  0.15291282534599304,
-                  2.8311517238616943,
-                  8.700704574584961,
-                  6.382258415222168,
-                  -4.69464111328125,
-                  -1.0907843112945557,
-                  -2.2359049320220947,
-                  -2.6750235557556152,
-                  -2.981945514678955,
-                  -0.808052122592926,
-                  -0.808052122592926,
-                  -5.422090530395508,
-                  -0.0065304250456392765,
-                  -0.0065304250456392765,
-                  -2.007591724395752,
-                  -0.3229341208934784,
-                  -0.9268354177474976,
-                  -0.9268354177474976,
-                  -0.5006335377693176,
-                  -0.5006335377693176,
-                  -0.5006335377693176,
-                  -0.5359189510345459,
-                  -0.02152707614004612,
-                  -0.8808442950248718,
-                  -0.8808442950248718,
-                  -0.12954846024513245,
-                  -0.12954846024513245,
-                  0,
-                  0,
-                  0,
-                  -0.31933451143889385
-                ],
-                [
-                  -0.4494501054286957,
-                  -0.48085668683052063,
-                  -0.489295095205307,
-                  -0.33334729075431824,
-                  -0.6627178192138672,
-                  -0.1660323590040207,
-                  -0.14882850646972656,
-                  -0.13179202377796173,
-                  -0.11584063619375229,
-                  -0.4218626022338867,
-                  -0.2408343404531479,
-                  -0.2408343404531479,
-                  -0.2408343404531479,
-                  -0.4103938639163971,
-                  -0.4045756161212921,
-                  -0.39788714051246643,
-                  -0.3928745687007904,
-                  -0.06255143880844116,
-                  -2.3678383827209473,
-                  2.6254618167877197,
-                  4.973416328430176,
-                  -3.195457935333252,
-                  4.973416328430176,
-                  -9.626296997070312,
-                  -2.4644510746002197,
-                  -7.179633140563965,
-                  -0.9407157301902771,
-                  -0.25093621015548706,
-                  -1.6394548416137695,
-                  -9.966917037963867,
-                  -4.889197826385498,
-                  2.6091344356536865,
-                  2.119154453277588,
-                  2.3410468101501465,
-                  2.19303035736084,
-                  2.692558526992798,
-                  0.7004489898681641,
-                  1.6814826726913452,
-                  6.668881893157959,
-                  1.0839520692825317,
-                  1.0839520692825317,
-                  2.651637077331543,
-                  1.1958932876586914,
-                  1.993449330329895,
-                  1.993449330329895,
-                  0.49355819821357727,
-                  0.49355819821357727,
-                  0.49355819821357727,
-                  2.3097445964813232,
-                  1.8147040605545044,
-                  1.1580017805099487,
-                  2.5947022438049316,
-                  0.46292129158973694,
-                  0.46292129158973694,
-                  -1.4402486085891724,
-                  0.9159178733825684,
-                  0.9159178733825684,
-                  0.29252843969882975
+                  2.514918088912964,
+                  2.41420316696167,
+                  2.432293653488159,
+                  0.323483943939209,
+                  2.1062138080596924,
+                  0.5264477729797363,
+                  0.5289800763130188,
+                  0.5306940674781799,
+                  0.5305333137512207,
+                  2.6676883697509766,
+                  0.8780259490013123,
+                  0.8780259490013123,
+                  0.8780259490013123,
+                  2.6132280826568604,
+                  2.58545184135437,
+                  2.5671885013580322,
+                  2.5380146503448486,
+                  -0.018094394356012344,
+                  11.67354738625204
                 ]
               ]
             }
@@ -1031,86 +426,6 @@
       [
         "en",
         "what's up gang"
-      ],
-      [
-        "en",
-        "How can I edit my personal informaiton?"
-      ],
-      [
-        "en",
-        "How can I edit my name?"
-      ],
-      [
-        "en",
-        "How can I change my personal information?"
-      ],
-      [
-        "en",
-        "Where can I go to change my profile picture?"
-      ],
-      [
-        "en",
-        "How do I update my profile information?"
-      ],
-      [
-        "en",
-        "Can I change my username?"
-      ],
-      [
-        "en",
-        "How do I update my email address?"
-      ],
-      [
-        "en",
-        "How can I change my profile picture?"
-      ],
-      [
-        "en",
-        "Where can I edit my contact information?"
-      ],
-      [
-        "en",
-        "How do I update my phone number?"
-      ],
-      [
-        "en",
-        "Can I change my password?"
-      ],
-      [
-        "en",
-        "How do I update my address?"
-      ],
-      [
-        "en",
-        "Where can I update my billing information?"
-      ],
-      [
-        "en",
-        "Can I add additional information to my profile?"
-      ],
-      [
-        "en",
-        "Can I link my social media accounts to my profile?"
-      ],
-      [
-        "en",
-        "How do I deactivate my account?"
-      ],
-      [
-        "en",
-        "Can I set my profile to private?"
-      ],
-      [
-        "en",
-        "Where can I update my security questions?"
-      ],
-      [
-        "en",
-        "Can I change my profile visibility settings?"
-      ],
-      [
-        "en",
-        "How do I update my language preference?"
       ]
     ]
   },

@@ -2,7 +2,7 @@
 
 import ChatBotComponent from "@/components/chat/ChatBotComponent";
 
-const { createContext } = require("react");
+import { createContext } from "react";
 
 export const ChatbotContext = createContext();
 

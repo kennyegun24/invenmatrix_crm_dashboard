@@ -1,4 +1,4 @@
-const { Avatar, Box } = require("@mui/material");
+import { Avatar, Box } from"@mui/material";
 
 export const generateAllProductsColumns = (products) => {
   const prods = Object.keys(products[0]);

@@ -4,7 +4,7 @@ import NavBar from "@/components/nav/NavBar";
 import TopNav from "@/components/nav/TopNav";
 import { usePathname } from "next/navigation";
 
-const { createContext, useState } = require("react");
+import { createContext, useState } from "react";
 
 export const HomeContext = createContext();
 
