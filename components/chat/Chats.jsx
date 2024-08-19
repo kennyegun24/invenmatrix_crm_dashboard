@@ -35,8 +35,9 @@ const Chats = () => {
     <div className="chat-bot-chat flex column justify_between">
       <ChatBotHeader />
       <div className="flex column gap1rem chat-texts-container">
-        {messages.map((m) => (
+        {messages.map((m, _) => (
           <div
+            key={_}
             className={`chat_text_div flex ${
               m.id === "user" && "chat_reverse"
             }`}

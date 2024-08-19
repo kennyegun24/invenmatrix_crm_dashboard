@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Papa from "papaparse";
-const page = () => {
+const Page = () => {
   const [data, setData] = useState([]);
 
   const handleFileUpload = (e) => {
@@ -21,4 +21,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
