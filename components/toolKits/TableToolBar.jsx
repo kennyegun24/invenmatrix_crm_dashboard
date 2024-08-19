@@ -1,5 +1,6 @@
 import { GridToolbarContainer, useGridApiContext } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
+import { Popover } from "antd";
 import { FaDownload } from "react-icons/fa6";
 import { handleExportPDF } from "@/helpers/downloadPDF";
 import { handleExportJSON } from "@/helpers/downloadJSON";
@@ -8,37 +9,39 @@ import {
   getRowsFromCurrentPage,
   getUnfilteredRows,
 } from "@/helpers/tables/generalTableHelper";
+import { useState } from "react";
 
-const Toolbar = (props) => {
+const buttonBaseProps = {
+  color: "primary",
+  type: "default",
+  size: "small",
+  startIcon: <FaDownload />,
+};
+
+const PoppedTableBtn = () => {
   const apiRef = useGridApiContext();
   const handleExport = (options) => apiRef.current.exportDataAsCsv(options);
-  const buttonBaseProps = {
-    color: "primary",
-    size: "small",
-    startIcon: <FaDownload />,
-  };
-
   return (
-    <GridToolbarContainer {...props}>
+    <div className="flex column gap05rem padding1rem align_start">
       <Button
         {...buttonBaseProps}
         onClick={() =>
           handleExport({ getRowsToExport: getRowsFromCurrentPage })
         }
       >
-        Current page rows
+        Current rows (csv)
       </Button>
       <Button
         {...buttonBaseProps}
         onClick={() => handleExport({ getRowsToExport: getFilteredRows })}
       >
-        Filtered rows
+        Filtered rows (csv)
       </Button>
       <Button
         {...buttonBaseProps}
         onClick={() => handleExport({ getRowsToExport: getUnfilteredRows })}
       >
-        Unfiltered rows
+        Unfiltered (csv)
       </Button>
       <Button
         {...buttonBaseProps}
@@ -52,6 +55,28 @@ const Toolbar = (props) => {
       >
         JSON
       </Button>
+    </div>
+  );
+};
+
+const Toolbar = (props) => {
+  const [open, setOpen] = useState(false);
+  const handleOpenChange = async (newOpen) => {
+    setOpen(newOpen);
+  };
+  return (
+    <GridToolbarContainer {...props}>
+      <Popover
+        placement="leftBottom"
+        content={PoppedTableBtn}
+        trigger="click"
+        open={open}
+        onOpenChange={handleOpenChange}
+      >
+        {/* {children} */}
+        <Button {...buttonBaseProps}>Download</Button>
+        {/* <PoppedTableBtn /> */}
+      </Popover>
     </GridToolbarContainer>
   );
 };

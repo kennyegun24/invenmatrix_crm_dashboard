@@ -9,7 +9,7 @@ import {
   FaRobot,
 } from "react-icons/fa6";
 
-const InitialScreenContent = () => {
+const InitialScreenContent = ({ handleClick }) => {
   return (
     <div className="initial_screen_content flex column gap1rem width100">
       <div className="flex width100 align_center initial_screen_row justify_between">
@@ -30,7 +30,10 @@ const InitialScreenContent = () => {
         </h3>
         <FaAngleRight />
       </div>
-      <div className="flex width100 align_center initial_screen_row justify_between">
+      <div
+        onClick={() => handleClick()}
+        className="flex width100 align_center pointer initial_screen_row justify_between"
+      >
         <h3 className="flex align_center gap05rem">
           <FaRobot size={20} /> Talk to MatriBot
         </h3>

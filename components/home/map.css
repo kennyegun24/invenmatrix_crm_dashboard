@@ -1,8 +1,10 @@
 .map_container {
   width: 40%;
   height: 100%;
-  border: 2px solid var(--light_border);
+  /* border: 2px solid var(--light_border); */
   padding: 1rem;
+  box-shadow: 0px 0px 22px -12px rgba(0, 0, 0, 0.75);
+
   border-radius: 0.5rem;
 
   select {
