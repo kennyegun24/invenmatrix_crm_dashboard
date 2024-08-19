@@ -60,7 +60,7 @@ const PoppedTableBtn = () => {
         {...buttonBaseProps}
         onClick={() => handleExportXML(apiRef, getFilteredRows)}
       >
-        Export as SML
+        Export as XML
       </Button>
     </div>
   );
