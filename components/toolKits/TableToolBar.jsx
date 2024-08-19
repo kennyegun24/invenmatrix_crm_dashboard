@@ -10,6 +10,7 @@ import {
   getUnfilteredRows,
 } from "@/helpers/tables/generalTableHelper";
 import { useState } from "react";
+import { handleExportXML } from "@/helpers/downloadXML";
 
 const buttonBaseProps = {
   color: "primary",
@@ -29,31 +30,37 @@ const PoppedTableBtn = () => {
           handleExport({ getRowsToExport: getRowsFromCurrentPage })
         }
       >
-        Current rows (csv)
+        Export Visible Rows (CSV)
       </Button>
       <Button
         {...buttonBaseProps}
         onClick={() => handleExport({ getRowsToExport: getFilteredRows })}
       >
-        Filtered rows (csv)
+        Export Filtered Data(CSV)
       </Button>
       <Button
         {...buttonBaseProps}
         onClick={() => handleExport({ getRowsToExport: getUnfilteredRows })}
       >
-        Unfiltered (csv)
+        Export All Unfiltered Data (CSV)
       </Button>
       <Button
         {...buttonBaseProps}
         onClick={() => handleExportPDF(apiRef, getFilteredRows)}
       >
-        PDF
+        Export as PDF Document
       </Button>
       <Button
         {...buttonBaseProps}
         onClick={() => handleExportJSON(apiRef, getFilteredRows)}
       >
-        JSON
+        Export as JSON
+      </Button>
+      <Button
+        {...buttonBaseProps}
+        onClick={() => handleExportXML(apiRef, getFilteredRows)}
+      >
+        Export as SML
       </Button>
     </div>
   );

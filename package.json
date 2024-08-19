@@ -41,7 +41,9 @@
     "react-toastify": "^10.0.5",
     "recharts": "^2.12.7",
     "request": "^2.88.2",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "vkbeautify": "^0.99.3",
+    "x2js": "^3.4.4"
   },
   "devDependencies": {
     "eslint": "^8",
