@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./chat.css";
 import ChatBotHeader from "./ChatBotHeader";
+import { FaPaperPlane } from "react-icons/fa6";
 
 const Chats = () => {
+  const [userText, setUserText] = useState("");
   return (
     <div className="chat-bot-chat flex column justify_between">
       <ChatBotHeader />
@@ -50,7 +52,18 @@ const Chats = () => {
           <p className="chat-text">This is a message</p>
         </div>
       </div>
-      <input type="text" placeholder="Type message here..." />
+
+      <div className="flex gap05rem width100 chat_bot_input_div pointer">
+        <input
+          type="text"
+          className="border_all"
+          placeholder="Type message here..."
+        />
+
+        <div className="chat_bot_send_btn flex justify_end align_center">
+          <FaPaperPlane />
+        </div>
+      </div>
     </div>
   );
 };

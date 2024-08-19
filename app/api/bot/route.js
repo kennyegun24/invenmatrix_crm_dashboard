@@ -7,7 +7,8 @@ export const POST = async (req, res) => {
   try {
     const response = await manager.process("en", message);
     return NextResponse.json({
-      message: response.answer || "Can you come again?",
+      message:
+        { message: response.answer, id: "chat-bot" } || "Can you come again?",
     });
   } catch (error) {
     return NextResponse.json("Something went wrong");
