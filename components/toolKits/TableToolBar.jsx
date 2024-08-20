@@ -5,6 +5,7 @@ import { FaDownload } from "react-icons/fa6";
 import { handleExportPDF } from "@/helpers/downloadPDF";
 import { handleExportJSON } from "@/helpers/downloadJSON";
 import {
+  getColumns,
   getFilteredRows,
   getRowsFromCurrentPage,
   getUnfilteredRows,
@@ -46,7 +47,9 @@ const PoppedTableBtn = () => {
       </Button>
       <Button
         {...buttonBaseProps}
-        onClick={() => handleExportPDF(apiRef, getFilteredRows)}
+        onClick={() =>
+          handleExportPDF(apiRef, getFilteredRows, getColumns({ apiRef }))
+        }
       >
         Export as PDF Document
       </Button>

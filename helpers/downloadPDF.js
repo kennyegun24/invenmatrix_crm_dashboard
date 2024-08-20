@@ -3,18 +3,26 @@ import "jspdf-autotable";
 import dayjs from "dayjs";
 import { getRowData } from "./tables/generalTableHelper";
 
-export const handleExportPDF = (apiRef, getRowsToExport) => {
+export const handleExportPDF = (apiRef, getRowsToExport, getColumns) => {
   const rowIds = getRowsToExport({ apiRef });
   const rowData = getRowData({ apiRef, rowIds });
-  handleDownloadPDF(rowData);
+  handleDownloadPDF(rowData, getColumns);
 };
 
-export const handleDownloadPDF = (filteredData) => {
+export const handleDownloadPDF = (filteredData, getColumns) => {
   const doc = new jsPDF();
   const businessName = "Your Business Name";
   const dateGenerated = dayjs().format("MMMM D, YYYY");
   const subheading = "Product Summary";
-
+  const cols = getColumns
+    ?.map((e) => e.headerName)
+    ?.filter((e) => e !== "Images");
+  const getColsField = getColumns
+    ?.map((e) => e.field)
+    ?.filter((e) => e !== "images");
+  const tableFields = filteredData.map((row) =>
+    getColsField.map((col) => row[col])
+  );
   doc.setFontSize(18);
   doc.text(
     `All ${businessName} Products`,
@@ -22,7 +30,6 @@ export const handleDownloadPDF = (filteredData) => {
     20,
     { align: "center" }
   );
-
   doc.setFontSize(14);
   doc.text(subheading, doc.internal.pageSize.getWidth() / 2, 30, {
     align: "center",
@@ -37,27 +44,16 @@ export const handleDownloadPDF = (filteredData) => {
   );
 
   doc.autoTable({
-    head: [
-      [
-        "Product",
-        "Category",
-        "in-stock",
-        "Profit (%)",
-        "Price ($)",
-        "Shipping ($)",
-        "Barcode",
-      ],
-    ],
-    body: filteredData.map((item) => [
-      item.productName,
-      item.productCategory,
-      item.stockLevel,
-      item.profitMargin,
-      item.sellingPrice,
-      item.shippingCost,
-      item.barcode,
-    ]),
+    head: [cols],
+    body: tableFields,
     startY: 50,
+    headStyles: {
+      fontSize: 8, // Font size for header cells
+      width: 100,
+    },
+    styles: {
+      fontSize: 8, // Font size for body cells
+    },
   });
 
   // const chartImgData = "data:image/png;base64, ...";
