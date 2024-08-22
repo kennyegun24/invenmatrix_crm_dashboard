@@ -4,41 +4,71 @@ import {
   verifyTokenAndAuthz,
 } from "@/middlewares/verifyToken";
 import folderSchema from "@/models/folderSchema";
+import Organization from "@/models/organizationSchema"; // Import the Organization model
 import { NextResponse } from "next/server";
 
 export const POST = async (req, res) => {
-  // check to verify the access token is valid
+  // Verify the access token is valid
   const verify = await verifyTokenAndAuthz(req);
   const body = await req.json();
-  const { folderName, userId } = await body;
-  // check to see if user id is thesame as the id stored in the access token
+  const { folderName, organizationId, userId } = body;
+
+  // Check if the user is valid
   const check = checkIfUserIsValid(verify, userId);
-  if (check)
+  if (check) {
     return NextResponse.json(
       { message: check.message },
       { status: check.status }
     );
+  }
+
+  // Connect to MongoDB
   await connectMongoDb();
+
   try {
-    // check to see if user has the folder name existing already... and to check only parent folders
-    const findExistingUserFolder = await folderSchema.findOne({
-      user: userId,
-      folderName: folderName,
-      parentFolders: { $size: false },
+    // Check if the user is an admin in the specified organization
+    const organization = await Organization.findOne({
+      _id: organizationId,
+      users: {
+        $elemMatch: { user: userId, role: { $in: ["admin", "invited_admin"] } },
+      },
     });
-    // if a folder with thesame name exists, don't save
-    if (findExistingUserFolder) {
-      return NextResponse.json({ message: "Folder name already exists" });
+
+    if (!organization) {
+      return NextResponse.json(
+        {
+          message:
+            "User is not authorized to create folders in this organization",
+        },
+        { status: 403 }
+      );
+    }
+
+    // Check if a folder with the same name exists in the organization
+    const findExistingFolder = await folderSchema.findOne({
+      organization: organizationId,
+      folderName: folderName,
+      parentFolders: { $size: 0 }, // Ensure it's a parent folder
+    });
+
+    if (findExistingFolder) {
+      return NextResponse.json(
+        { message: "Folder name already exists" },
+        { status: 400 }
+      );
     } else {
-      // if a folder with thesame name does not exist, save
-      const newFolder = await new folderSchema({
-        user: userId,
+      // Create and save a new folder if it does not exist
+      const newFolder = new folderSchema({
+        organization: organizationId,
         folderName: folderName,
       });
       await newFolder.save();
-      return NextResponse.json({ message: "Folder Created" });
+      return NextResponse.json({ message: "Folder Created" }, { status: 201 });
     }
   } catch (error) {
-    return NextResponse.json({ message: "Something went wrong" });
+    return NextResponse.json(
+      { message: "Something went wrong" },
+      { status: 500 }
+    );
   }
 };

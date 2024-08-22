@@ -4,10 +4,13 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req, res) => {
   const body = await req.json();
-  const { userId, products } = await body;
+  const { organizationId, products } = await body;
   try {
     await connectMongoDb();
-    const newProduct = await new productSchema({ user: userId, ...products });
+    const newProduct = await new productSchema({
+      organization: organizationId,
+      ...products,
+    });
     await newProduct.save();
     return NextResponse.json({ message: "CREATED" });
   } catch (error) {

@@ -2,9 +2,9 @@ const { Schema, SchemaTypes, default: mongoose } = require("mongoose");
 
 const folder = new Schema(
   {
-    user: {
+    organization: {
       type: SchemaTypes.ObjectId,
-      ref: "User",
+      ref: "Organization",
       required: true,
     },
     folderName: {
@@ -35,6 +35,6 @@ const folder = new Schema(
 );
 
 const folderSchema =
-  mongoose.models.Folders || mongoose.model("Folders", folder);
+  mongoose.models.Folders || mongoose.model("Folder", folder);
 
 export default folderSchema;

@@ -2,9 +2,9 @@ const { Schema, SchemaTypes, default: mongoose } = require("mongoose");
 
 const products = new Schema(
   {
-    user: {
+    organization: {
       type: SchemaTypes.ObjectId,
-      ref: "User",
+      ref: "Organizations",
       required: true,
     },
     images: {
@@ -57,6 +57,6 @@ const products = new Schema(
 );
 
 const productSchema =
-  mongoose.models.Products || mongoose.model("Products", products);
+  mongoose.models.Products || mongoose.model("Product", products);
 
 export default productSchema;
