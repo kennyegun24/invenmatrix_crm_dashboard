@@ -37,7 +37,11 @@ const users = new Schema(
         },
       },
     ],
-    subscription_plan: { type: String, default: "free" },
+    subscription_plan: {
+      type: String,
+      default: "free",
+      enum: ["free", "basic", "pro", "gold"],
+    },
     custom_fields: [{ type: Schema.Types.Mixed }],
   },
   { timestamps: true }
