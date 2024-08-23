@@ -22,10 +22,10 @@ export const verifyToken = (req) => {
   });
 };
 
-export const verifyTokenAndAuthz = async (req, res) => {
+export const verifyTokenAndAuthz = async (req, userId) => {
   try {
     await verifyToken(req);
-    if (req?.user?.id === req?.params?.id || req?.user?.is_admin) {
+    if (req?.user?.id === userId || req?.user?.is_admin) {
       return { isValid: true, id: req?.user?.id };
     } else {
       return { isValid: false };

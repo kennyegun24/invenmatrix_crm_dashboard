@@ -7,10 +7,10 @@ import userSchema from "@/models/userSchema";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
-  const verify = await verifyTokenAndAuthz(req);
   const body = await req.json();
   const { userId, organizationName } = body;
-
+  const verify = await verifyTokenAndAuthz(req, userId);
+  console.log(verify);
   // Check if the user is valid
   const check = checkIfUserIsValid(verify, userId);
   if (check) {

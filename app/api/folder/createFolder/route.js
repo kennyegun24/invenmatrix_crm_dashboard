@@ -9,9 +9,9 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req, res) => {
   // Verify the access token is valid
-  const verify = await verifyTokenAndAuthz(req);
   const body = await req.json();
   const { folderName, organizationId, userId } = body;
+  const verify = await verifyTokenAndAuthz(req, userId);
 
   // Check if the user is valid
   const check = checkIfUserIsValid(verify, userId);
@@ -62,8 +62,16 @@ export const POST = async (req, res) => {
         organization: organizationId,
         folderName: folderName,
       });
+      const updateOrganization = await Organization.findByIdAndUpdate(
+        organizationId,
+        { $inc: { no_of_folders: 1 } },
+        { new: true }
+      );
       await newFolder.save();
-      return NextResponse.json({ message: "Folder Created" }, { status: 201 });
+      return NextResponse.json(
+        { message: "Folder Created", data: updateOrganization },
+        { status: 201 }
+      );
     }
   } catch (error) {
     return NextResponse.json(

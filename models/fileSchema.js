@@ -44,6 +44,7 @@ const products = new Schema(
         variantType: {
           type: String,
           default: "text",
+          required: true,
         },
         stock: {
           type: Number,
@@ -57,6 +58,6 @@ const products = new Schema(
 );
 
 const productSchema =
-  mongoose.models.Products || mongoose.model("Product", products);
+  mongoose.models.Product || mongoose.model("Product", products);
 
 export default productSchema;

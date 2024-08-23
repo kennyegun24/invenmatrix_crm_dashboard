@@ -21,7 +21,7 @@ export const POST = async (req, res) => {
         const access_token = jwt.sign(
           {
             id: findUser._id,
-            is_admin: findUser.is_admin,
+            // is_admin: findUser.is_admin,
           },
           process.env.JWT_KEY,
           { expiresIn: "3d" }

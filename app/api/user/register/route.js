@@ -11,7 +11,7 @@ export const POST = async (req, res) => {
     last_name,
     email,
     password: user_password,
-    is_admin,
+    user_name,
   } = await body;
   try {
     connectMongoDb();
@@ -27,14 +27,14 @@ export const POST = async (req, res) => {
           process.env.CRYPTO_JS_SEC
         ).toString(),
         email: email,
-        is_admin: is_admin,
+        user_name: user_name,
       });
       const saveUser = await newUser.save();
       const { password, ...others } = saveUser._doc;
       const access_token = jwt.sign(
         {
           id: saveUser._id,
-          is_admin: saveUser.is_admin,
+          // user_name: saveUser.user_name,
         },
         process.env.JWT_KEY,
         { expiresIn: "3d" }

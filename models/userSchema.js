@@ -5,6 +5,7 @@ const users = new Schema(
     user_name: {
       type: String,
       unique: true,
+      required: true,
     },
     email: {
       type: String,
@@ -16,7 +17,11 @@ const users = new Schema(
     first_name: { type: String, required: true },
     last_name: { type: String, required: true },
     password: { type: String, required: true },
-    profile_picture: { type: String, required: true, default: "" },
+    profile_picture: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/drfqge33t/image/upload/v1684591863/noImage_ynt833.png",
+    },
     phone_number: { type: String, minLength: 10, maxLength: 15 },
     address: { type: String },
     last_login: { type: Date, default: null },
@@ -47,6 +52,6 @@ const users = new Schema(
   { timestamps: true }
 );
 
-const userSchema = mongoose.models.Users || mongoose.model("User", users);
+const userSchema = mongoose.models.User || mongoose.model("User", users);
 
 export default userSchema;

@@ -9,9 +9,9 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req, res) => {
   // Verify the access token is valid
-  const verify = await verifyTokenAndAuthz(req);
   const body = await req.json();
   const { userId, folderId, productId, organizationId } = body;
+  const verify = await verifyTokenAndAuthz(req, userId);
 
   // Check if the user ID is valid
   const check = checkIfUserIsValid(verify, userId);
