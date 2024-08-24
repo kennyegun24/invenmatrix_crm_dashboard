@@ -8,9 +8,12 @@ import folderSchema from "@/models/folderSchema";
 import Organization from "@/models/organizationSchema";
 import { NextResponse } from "next/server";
 
-export const POST = async (req, res) => {
+export const PATCH = async (req, res) => {
   const body = await req.json();
-  const { organizationId, products, userId, folderId } = body;
+  const { organizationId, userId, updatedProduct } = body;
+  console.log(req.nextUrl.searchParams);
+  const searchParams = req.nextUrl.searchParams; // Get the productId from the URL
+  const productId = searchParams.get("productId");
   const verify = await verifyTokenAndAuthz(req, userId);
 
   // Check if the user is valid
@@ -40,44 +43,34 @@ export const POST = async (req, res) => {
       return NextResponse.json(
         {
           message:
-            "User is not authorized to add products to this organization",
+            "User is not authorized to update products in this organization",
         },
         { status: 403 }
       );
     }
 
-    // Create and save the new product
-    const newProduct = new productSchema({
-      organization: organizationId,
-      ...products,
-    });
-    await newProduct.save();
-
-    if (folderId) {
-      await folderSchema.findByIdAndUpdate(
-        folderId,
-        {
-          $push: { products: newProduct?._id },
-        },
-        { new: true }
-      );
-    }
-
-    // Optionally, increment the product count in the organization
-    await Organization.findByIdAndUpdate(
-      organizationId,
-      { $inc: { no_of_items: 1 } }, // Increment product count
+    // Find and update the product
+    const updated = await productSchema.findByIdAndUpdate(
+      productId,
+      { $set: updatedProduct },
       { new: true }
     );
 
+    if (!updated) {
+      return NextResponse.json(
+        { message: "Product not found or update failed" },
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json({
-      message: "Product created successfully",
-      data: newProduct,
+      message: "Product updated successfully",
+      data: updated,
     });
   } catch (error) {
-    console.error("Error creating product:", error);
+    console.error("Error updating product:", error);
     return NextResponse.json(
-      { message: "Error creating product", error },
+      { message: "Error updating product", error },
       { status: 500 }
     );
   }

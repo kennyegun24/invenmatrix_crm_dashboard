@@ -51,7 +51,11 @@ export const POST = async (req) => {
     });
     await createOrganization.save();
     return NextResponse.json(
-      { message: "Organization created" },
+      {
+        message: "Organization created",
+        data: createOrganization,
+        _id: createOrganization?._id,
+      },
       { status: 201 }
     );
   } catch (error) {

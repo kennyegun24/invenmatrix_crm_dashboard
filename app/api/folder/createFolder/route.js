@@ -8,24 +8,24 @@ import Organization from "@/models/organizationSchema"; // Import the Organizati
 import { NextResponse } from "next/server";
 
 export const POST = async (req, res) => {
-  // Verify the access token is valid
-  const body = await req.json();
-  const { folderName, organizationId, userId } = body;
-  const verify = await verifyTokenAndAuthz(req, userId);
-
-  // Check if the user is valid
-  const check = checkIfUserIsValid(verify, userId);
-  if (check) {
-    return NextResponse.json(
-      { message: check.message },
-      { status: check.status }
-    );
-  }
-
   // Connect to MongoDB
   await connectMongoDb();
 
   try {
+    // Verify the access token is valid
+    const body = await req.json();
+    const { folderName, organizationId, userId } = body;
+    const verify = await verifyTokenAndAuthz(req, userId);
+
+    // Check if the user is valid
+    const check = checkIfUserIsValid(verify, userId);
+    if (check) {
+      return NextResponse.json(
+        { message: check.message },
+        { status: check.status }
+      );
+    }
+
     // Check if the user is an admin in the specified organization
     const organization = await Organization.findOne({
       _id: organizationId,
@@ -56,23 +56,26 @@ export const POST = async (req, res) => {
         { message: "Folder name already exists" },
         { status: 400 }
       );
-    } else {
-      // Create and save a new folder if it does not exist
-      const newFolder = new folderSchema({
-        organization: organizationId,
-        folderName: folderName,
-      });
-      const updateOrganization = await Organization.findByIdAndUpdate(
-        organizationId,
-        { $inc: { no_of_folders: 1 } },
-        { new: true }
-      );
-      await newFolder.save();
-      return NextResponse.json(
-        { message: "Folder Created", data: updateOrganization },
-        { status: 201 }
-      );
     }
+    // Create and save a new folder if it does not exist
+    const newFolder = new folderSchema({
+      organization: organizationId,
+      folderName: folderName,
+    });
+    await newFolder.save();
+    const updateOrganization = await Organization.findByIdAndUpdate(
+      organizationId,
+      { $inc: { no_of_folders: 1 } },
+      { new: true }
+    );
+    return NextResponse.json(
+      {
+        message: "Folder Created",
+        data: updateOrganization,
+        _id: newFolder._id,
+      },
+      { status: 201 }
+    );
   } catch (error) {
     return NextResponse.json(
       { message: "Something went wrong" },

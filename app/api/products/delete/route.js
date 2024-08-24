@@ -8,9 +8,10 @@ import folderSchema from "@/models/folderSchema";
 import Organization from "@/models/organizationSchema";
 import { NextResponse } from "next/server";
 
-export const POST = async (req, res) => {
-  const body = await req.json();
-  const { organizationId, products, userId, folderId } = body;
+export const DELETE = async (req, res) => {
+  const searchParams = req.nextUrl.searchParams; // Get the productId from the URL
+  const productId = searchParams.get("productId");
+  const { organizationId, userId } = await req.json();
   const verify = await verifyTokenAndAuthz(req, userId);
 
   // Check if the user is valid
@@ -40,44 +41,45 @@ export const POST = async (req, res) => {
       return NextResponse.json(
         {
           message:
-            "User is not authorized to add products to this organization",
+            "User is not authorized to delete products in this organization",
         },
         { status: 403 }
       );
     }
 
-    // Create and save the new product
-    const newProduct = new productSchema({
-      organization: organizationId,
-      ...products,
-    });
-    await newProduct.save();
+    // Find and delete the product
+    const product = await productSchema.findById(productId);
 
-    if (folderId) {
-      await folderSchema.findByIdAndUpdate(
-        folderId,
-        {
-          $push: { products: newProduct?._id },
-        },
-        { new: true }
+    if (!product) {
+      return NextResponse.json(
+        { message: "Product not found" },
+        { status: 404 }
       );
     }
 
-    // Optionally, increment the product count in the organization
+    // Delete the product
+    await productSchema.findByIdAndDelete(productId);
+
+    // Remove the product ID from all folders that it belongs to
+    await folderSchema.updateMany(
+      { products: productId },
+      { $pull: { products: productId } }
+    );
+
+    // Optionally, decrement tkhe product count in the organization
     await Organization.findByIdAndUpdate(
       organizationId,
-      { $inc: { no_of_items: 1 } }, // Increment product count
+      { $inc: { no_of_items: -1 } }, // Decrement product count
       { new: true }
     );
 
     return NextResponse.json({
-      message: "Product created successfully",
-      data: newProduct,
+      message: "Product deleted successfully",
     });
   } catch (error) {
-    console.error("Error creating product:", error);
+    console.error("Error deleting product:", error);
     return NextResponse.json(
-      { message: "Error creating product", error },
+      { message: "Error deleting product", error },
       { status: 500 }
     );
   }
