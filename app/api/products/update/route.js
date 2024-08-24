@@ -4,19 +4,16 @@ import {
   verifyTokenAndAuthz,
 } from "@/middlewares/verifyToken";
 import productSchema from "@/models/fileSchema";
-import folderSchema from "@/models/folderSchema";
 import Organization from "@/models/organizationSchema";
 import { NextResponse } from "next/server";
 
 export const PATCH = async (req, res) => {
   const body = await req.json();
   const { organizationId, userId, updatedProduct } = body;
-  console.log(req.nextUrl.searchParams);
-  const searchParams = req.nextUrl.searchParams; // Get the productId from the URL
-  const productId = searchParams.get("productId");
-  const verify = await verifyTokenAndAuthz(req, userId);
+  const productId = req.nextUrl.searchParams.get("productId"); // Get the productId from the URL
 
-  // Check if the user is valid
+  // Check if the user is valid and authorized
+  const verify = await verifyTokenAndAuthz(req, userId);
   const check = checkIfUserIsValid(verify, userId);
   if (check) {
     return NextResponse.json(

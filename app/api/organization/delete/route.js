@@ -8,26 +8,27 @@ import Folder from "@/models/folderSchema";
 import Product from "@/models/fileSchema";
 import { NextResponse } from "next/server";
 
-export const DELETE = async (req, res) => {
-  const { organizationId, userId } = await req.json();
-
-  // Verify user authorization
-  const verify = await verifyTokenAndAuthz(req, userId);
-
-  // Check if the user is valid
-  const check = checkIfUserIsValid(verify, userId);
-  if (check) {
-    return NextResponse.json(
-      { message: check.message },
-      { status: check.status }
-    );
-  }
-
+export const DELETE = async (req) => {
   try {
+    // Parse request body for necessary parameters
+    const { organizationId, userId } = await req.json();
+
+    // Verify the access token and user authorization
+    const verify = await verifyTokenAndAuthz(req, userId);
+    const check = checkIfUserIsValid(verify, userId);
+
+    if (check) {
+      return NextResponse.json(
+        { message: check.message },
+        { status: check.status }
+      );
+    }
+
+    // Connect to MongoDB
     await connectMongoDb();
 
-    // Check if the user is an admin in the specified organization
-    const organization = await Organization.findOne({
+    // Check if the user is authorized (admin or invited_admin) in a single query
+    const organization = await Organization.findOneAndDelete({
       _id: organizationId,
       users: {
         $elemMatch: {
@@ -39,25 +40,25 @@ export const DELETE = async (req, res) => {
 
     if (!organization) {
       return NextResponse.json(
-        {
-          message: "User is not authorized to delete this organization",
-        },
+        { message: "User is not authorized to delete this organization" },
         { status: 403 }
       );
     }
 
-    // Find and delete all products associated with the organization
-    await Product.deleteMany({ organization: organizationId });
+    // Delete all associated folders and products using bulk operations
+    const [deletedProducts, deletedFolders] = await Promise.all([
+      Product.deleteMany({ organization: organizationId }),
+      Folder.deleteMany({ organization: organizationId }),
+    ]);
 
-    // Delete all folders in the organization
-    await Folder.deleteMany({ organization: organizationId });
-
-    // Delete the organization itself
-    await Organization.findByIdAndDelete(organizationId);
-
-    return NextResponse.json({
-      message: "Organization and all associated data deleted successfully",
-    });
+    return NextResponse.json(
+      {
+        message: "Organization and all associated data deleted successfully",
+        deletedProducts: deletedProducts.deletedCount,
+        deletedFolders: deletedFolders.deletedCount,
+      },
+      { status: 200 }
+    );
   } catch (error) {
     console.error("Error deleting organization and associated data:", error);
     return NextResponse.json(
