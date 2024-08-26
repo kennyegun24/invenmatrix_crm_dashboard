@@ -8,7 +8,7 @@ import { generateAllProductsColumns } from "@/helpers/tables/productsTablesHelpe
 import { products } from "@/utils/prods_data";
 
 const ExportPDF = () => {
-  const columns = generateAllProductsColumns(products);
+  const { columns, initialState } = generateAllProductsColumns(products);
   return (
     <SalesContainer>
       <DashboardHeader
@@ -17,7 +17,11 @@ const ExportPDF = () => {
       />
       <div className="sales_table_container">
         <div className="sales_table">
-          <Table columns={columns} products={products} />
+          <Table
+            columns={columns}
+            products={products}
+            initialState={initialState}
+          />
         </div>
       </div>
     </SalesContainer>
