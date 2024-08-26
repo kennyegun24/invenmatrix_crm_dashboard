@@ -4,7 +4,7 @@ import { SalesContainer } from "@/components/GlobalComponents";
 import Table from "@/components/table/Table";
 import { users } from "@/utils/users_data";
 import React from "react";
-import { generateCustomersColumns } from "../tableHelper";
+import { generateCustomersColumns } from "@/helpers/tables/customerTablesHelper";
 
 const page = () => {
   const { columns, initialState } = generateCustomersColumns(users);

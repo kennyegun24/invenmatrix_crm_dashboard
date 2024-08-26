@@ -4,7 +4,7 @@ import "jspdf-autotable";
 import { SalesContainer } from "@/components/GlobalComponents";
 import DashboardHeader from "@/components/DashboardHeader";
 import Table from "@/components/table/Table";
-import { generateAllProductsColumns } from "../tableHelper";
+import { generateAllProductsColumns } from "@/helpers/tables/productsTablesHelper";
 import { products } from "@/utils/prods_data";
 
 const ExportPDF = () => {
