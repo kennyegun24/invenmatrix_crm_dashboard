@@ -14,6 +14,7 @@ export const FieldTitle = ({
   title,
   helper,
   displayBin,
+  required,
   click = () => alert("Not working"),
 }) => (
   <p className="flex align_center justify_between" style={{ fontSize: "13px" }}>
@@ -28,6 +29,7 @@ export const FieldTitle = ({
           <FaQuestionCircle size={13} />
         </Tooltip>
       }
+      {required && <span style={{ color: "red" }}>*</span>}
     </span>
     {displayBin && (
       <IoTrashOutline onClick={() => click()} size={18} className="pointer" />

@@ -43,6 +43,7 @@ const Prices = () => {
       <div className="flex gap1rem sub_inputs main_bg">
         <div className="flex column gap03rem">
           <FieldTitle
+            required={true}
             helper={"How much did you purchase this product...?"}
             title={"Cost Price"}
           />
@@ -50,6 +51,7 @@ const Prices = () => {
         </div>
         <div className="flex column gap03rem">
           <FieldTitle
+            required={true}
             title={"Selling Price"}
             helper={"How much do you intend to sell this product...?"}
           />
@@ -76,6 +78,7 @@ const Prices = () => {
         <div className="flex column gap03rem">
           <FieldTitle
             title={"Stock Level"}
+            required={true}
             helper={"How many of this product do you have in store...?"}
           />
           <input name="stock_level" type="text" />
@@ -83,6 +86,7 @@ const Prices = () => {
         <div className="flex column gap03rem">
           <FieldTitle
             title={"Profit Margin"}
+            required={true}
             helper={
               "Don't worry, this will be calculated automatically... Only after you fill in values of your shipping cost, selling price and cost price"
             }

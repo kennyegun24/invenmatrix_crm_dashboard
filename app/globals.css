@@ -48,11 +48,21 @@
 
 .container {
   min-height: 90vh;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    height: 0;
+  }
 }
 
 .sales_container {
   height: 100vh;
   overflow-y: auto;
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0px;
+    height: 0;
+  }
 }
 
 .container,

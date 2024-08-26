@@ -1,17 +1,21 @@
 "use client";
-import { products } from "@/utils/prods_data";
 import { DataGrid } from "@mui/x-data-grid";
 import React, { useContext } from "react";
 import "./style.css";
 import { ThemeContext } from "@/contexts/DarkMode";
 import Toolbar from "@/components/toolKits/TableToolBar";
 
-const Table = ({ columns = [], products = [] }) => {
+const Table = ({ columns = [], products = [], initialState }) => {
   const { mode } = useContext(ThemeContext);
   return (
     <DataGrid
       columns={columns}
       rows={products}
+      initialState={initialState}
+      localeText={{
+        columnMenuSortAsc: "Order Ascending",
+        columnMenuSortDesc: "Order Descending",
+      }}
       sx={{
         ".super-app-theme--header": {
           "*": {

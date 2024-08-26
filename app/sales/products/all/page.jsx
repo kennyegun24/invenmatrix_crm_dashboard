@@ -25,7 +25,13 @@ const Page = () => {
           />
           <div className="sales_table_container">
             <div className="sales_table">
-              <Table columns={columns} products={products} />
+              <Table
+                columns={columns.columns}
+                products={products}
+                initialState={{
+                  ...columns.initialState,
+                }}
+              />
             </div>
           </div>
         </Suspense>

@@ -77,12 +77,24 @@
     padding-bottom: 0.4rem;
   }
   button {
+    cursor: initial;
+  }
+  .generate_barcode_btn {
     padding: 0.5rem 1rem;
-    background-color: var(--green_color);
     width: fit-content;
     margin: auto;
     border-radius: 0.3rem;
     color: #fff;
+  }
+
+  .enable_barcode {
+    cursor: pointer;
+    background-color: var(--green_color);
+  }
+
+  .disable_barcode {
+    background-color: grey;
+    cursor: not-allowed;
   }
 }
 

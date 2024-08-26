@@ -52,8 +52,8 @@ const UploadImage = () => {
         htmlFor="upload_images"
         className="dashed_lg_border_all padding1rem upload_image_container flex align_center justify_center column gap1rem pointer"
       >
-        <div class="corner-1" />
-        <div class="corner-2" />
+        <div className="corner-1" />
+        <div className="corner-2" />
         <UploadText
           images={images}
           isDragging={isDragging}
