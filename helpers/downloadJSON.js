@@ -7,8 +7,8 @@ import {
 export const handleExportJSON = (apiRef, getRowsToExport) => {
   const rowIds = getRowsToExport({ apiRef });
   const rowData = getRowData({ apiRef, rowIds });
-  const columns = getColumns({ apiRef });
-  const mergedData = mergeColumnsAndRows(rowData, columns);
+  const visibleColumns = apiRef.current.getVisibleColumns();
+  const mergedData = mergeColumnsAndRows(rowData, visibleColumns);
 
   downloadJson(mergedData);
 };

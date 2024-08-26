@@ -1,17 +1,15 @@
-import { Avatar, Box } from "@mui/material";
-
 export const generateCustomersColumns = (products) => {
   const prods = Object.keys(products[0]);
-  // const excludedColumns = [
-  //   "shippingTime",
-  //   "productDescription",
-  //   "variants",
-  //   "supplierContact",
-  //   "reviews",
-  // ];
-  const excludedColumns = [];
+  const visibleColumns = [
+    "id",
+    "name",
+    "houseAddress",
+    "amountOrders",
+    "emailAddress",
+    "phoneNumber",
+  ];
   const columns = prods
-    .filter((fil) => !excludedColumns.includes(fil))
+    // .filter((fil) => !excludedColumns.includes(fil))
     .map((key) => {
       let headerName = key
         .replace(/([A-Z])/g, " $1")
@@ -23,8 +21,18 @@ export const generateCustomersColumns = (products) => {
         width: 150,
         editable: true,
         headerClassName: "super-app-theme--header",
+        hide: !visibleColumns.includes(key),
       };
     });
 
-  return columns;
+  const initialState = {
+    columns: {
+      columnVisibilityModel: {},
+    },
+  };
+  prods.forEach((col) => {
+    initialState.columns.columnVisibilityModel[col] =
+      visibleColumns.includes(col);
+  });
+  return { columns, initialState };
 };

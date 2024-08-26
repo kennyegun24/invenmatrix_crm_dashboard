@@ -7,7 +7,7 @@ import React from "react";
 import { generateCustomersColumns } from "../tableHelper";
 
 const page = () => {
-  const columns = generateCustomersColumns(users);
+  const { columns, initialState } = generateCustomersColumns(users);
   return (
     <SalesContainer>
       <DashboardHeader
@@ -16,7 +16,11 @@ const page = () => {
       />
       <div className="sales_table_container">
         <div className="sales_table">
-          <Table columns={columns} products={users} />
+          <Table
+            columns={columns}
+            products={users}
+            initialState={initialState}
+          />
         </div>
       </div>
     </SalesContainer>

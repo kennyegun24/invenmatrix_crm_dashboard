@@ -3,17 +3,19 @@ import "jspdf-autotable";
 import dayjs from "dayjs";
 import { getRowData } from "./tables/generalTableHelper";
 
-export const handleExportPDF = (apiRef, getRowsToExport, getColumns) => {
+export const handleExportPDF = (apiRef, getRowsToExport) => {
+  const visibleColumns = apiRef.current.getVisibleColumns();
   const rowIds = getRowsToExport({ apiRef });
   const rowData = getRowData({ apiRef, rowIds });
-  handleDownloadPDF(rowData, getColumns);
+  handleDownloadPDF(visibleColumns, rowData);
 };
 
-export const handleDownloadPDF = (filteredData, getColumns) => {
+export const handleDownloadPDF = (getColumns, filteredData) => {
   const doc = new jsPDF();
   const businessName = "Your Business Name";
   const dateGenerated = dayjs().format("MMMM D, YYYY");
   const subheading = "Product Summary";
+  console.log(getColumns);
   const cols = getColumns
     ?.map((e) => e.headerName)
     ?.filter((e) => e !== "Images");
