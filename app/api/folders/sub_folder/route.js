@@ -1,6 +1,8 @@
 import { folders, products } from "@/utils/prods_data";
 const { NextResponse } = require("next/server");
 
+export const dynamic = "force-dynamic";
+
 export const GET = async (request) => {
   try {
     const folderId = request.nextUrl.searchParams.get("id");
