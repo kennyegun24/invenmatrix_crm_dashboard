@@ -9,7 +9,7 @@ import GridHeaderControls from "@/components/grid/GridHeaderControls";
 import GridMainHeader from "@/components/grid/GridMainHeader";
 import PageLayout from "./PageLayout";
 import { products } from "@/utils/prods_data";
-import { generateAllProductsColumns } from "../tableHelper";
+import { generateAllProductsColumns } from "@/helpers/tables/productsTablesHelper";
 
 const Page = () => {
   const searchParams = useSearchParams();
