@@ -72,6 +72,9 @@ export const ThemeProvider = ({ children }) => {
             Tooltip: {
               fontSize: 12,
             },
+            Input: {
+              colorTextPlaceholder: "var(--text_color)",
+            },
           },
         }}
       >

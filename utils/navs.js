@@ -12,6 +12,11 @@ export const items = [
     label: "Dashboard",
   },
   {
+    key: "/organization",
+    icon: <TbChartHistogram />,
+    label: "Organization",
+  },
+  {
     key: "/sales",
     icon: <BsBarChart />,
     label: "Sales Performance",

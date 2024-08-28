@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
+import React from "react";
+// { useContext, useState }
+// import { PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Drawer, Form, Input, Row, Space } from "antd";
-import BarcodeComponent from "@/components/BARCODE";
+// import BarcodeComponent from "@/components/BARCODE";
 const EditDrawer = ({ open, setOpen }) => {
   const onClose = () => {
     setOpen(false);
@@ -9,11 +10,14 @@ const EditDrawer = ({ open, setOpen }) => {
   const textInputStyle = {
     background: "var(--sub_bg)",
     width: "100%",
+    "&::placeholder": {
+      color: "red",
+    },
   };
-  const [generate, setGenerate] = useState(null);
-  const generateBarcode = () => {
-    setGenerate(crypto.randomUUID());
-  };
+  // const [generate, setGenerate] = useState(null);
+  // const generateBarcode = () => {
+  //   setGenerate(crypto.randomUUID());
+  // };
   return (
     <>
       <Drawer
@@ -49,7 +53,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Product Name"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "Please enter user name",
                   },
                 ]}
@@ -57,6 +61,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 <Input
                   style={textInputStyle}
                   placeholder="Please enter user name"
+                  className="placeholder_style"
                 />
               </Form.Item>
             </Col>
@@ -66,7 +71,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Category"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "Please enter url",
                   },
                 ]}
@@ -82,7 +87,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Shipping Cost"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "How much did it cost you to ship this product?",
                   },
                 ]}
@@ -96,7 +101,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Shipping time"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "How long is the shipping process?",
                   },
                 ]}
@@ -110,7 +115,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Supplier contact"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "Contact info of your supplier...?",
                   },
                 ]}
@@ -126,7 +131,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Selling Price"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "price of product?",
                   },
                 ]}
@@ -143,7 +148,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Stock Level"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "How many do you have in stock? 1, 2, 3, 4, 5?...",
                   },
                 ]}
@@ -162,7 +167,7 @@ const EditDrawer = ({ open, setOpen }) => {
                 label="Product Description"
                 rules={[
                   {
-                    required: true,
+                    // required: true,
                     message: "Product description?",
                   },
                 ]}
@@ -177,7 +182,7 @@ const EditDrawer = ({ open, setOpen }) => {
           </Row>
         </Form>
 
-        <div className="flex column gap05rem">
+        {/* <div className="flex column gap05rem">
           <h3>QR/BARCODES</h3>
           <div className="flex gap1rem column">
             <Button
@@ -189,7 +194,7 @@ const EditDrawer = ({ open, setOpen }) => {
             </Button>
           </div>
           {generate && <BarcodeComponent text={generate} />}
-        </div>
+        </div> */}
       </Drawer>
     </>
   );

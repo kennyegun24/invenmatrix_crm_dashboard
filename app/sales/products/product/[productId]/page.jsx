@@ -1,6 +1,5 @@
 "use client";
 import BarcodeComponent from "@/components/BARCODE";
-import DashboardHeader from "@/components/DashboardHeader";
 import { SalesContainer } from "@/components/GlobalComponents";
 import React, { useState } from "react";
 import "./page.css";
@@ -8,10 +7,10 @@ import Image from "next/image";
 import { products } from "@/utils/prods_data";
 import { TextField } from "@mui/material";
 import { Input, Button } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
 import EditDrawer from "@/components/sales/product/EditProduct";
 import AddToOrdered from "@/components/sales/AddToOrdered";
 import GridMainHeader from "@/components/grid/GridMainHeader";
+import { formStyles } from "@/components/styles";
 
 const CustomButton = ({ click, text }) => {
   const buttonStyle = {
@@ -43,33 +42,6 @@ const Page = ({ params }) => {
   const { productId } = params;
   const product = products.find((e) => e.id === productId);
   const { images } = product;
-  const style = {
-    width: "35%",
-    "& .MuiInputBase-input.Mui-disabled": {
-      WebkitTextFillColor: "var(--primary_text_color)",
-      color: "var(--primary_text_color)",
-      outlineColor: "red",
-      borderColor: "#fff",
-      opacity: 0.7,
-      foneSize: "12px",
-    },
-    "& label.Mui-disabled": {
-      color: "var(--primary_text_color)",
-      opacity: 0.7,
-    },
-    "& border.Mui-disabled": {
-      borderColor: "red",
-    },
-    "& .MuiOutlinedInput-root": {
-      "&.Mui-disabled fieldset": {
-        borderColor: "#fff",
-        opacity: 0.7,
-      },
-    },
-    "& .MuiInputBase-input": {
-      fontSize: "0.83rem",
-    },
-  };
 
   const variants = [
     {
@@ -103,7 +75,7 @@ const Page = ({ params }) => {
                     label="Product Name"
                     variant="outlined"
                     disabled
-                    sx={style}
+                    sx={formStyles}
                   />
 
                   <TextField
@@ -112,7 +84,7 @@ const Page = ({ params }) => {
                     label="Category"
                     variant="outlined"
                     disabled
-                    sx={style}
+                    sx={formStyles}
                   />
                 </div>
                 <div className="flex gap05rem">
@@ -122,7 +94,7 @@ const Page = ({ params }) => {
                     label="Selling Price"
                     variant="outlined"
                     disabled
-                    sx={style}
+                    sx={formStyles}
                   />
 
                   <TextField
@@ -131,7 +103,7 @@ const Page = ({ params }) => {
                     label="Stock Level"
                     variant="outlined"
                     disabled
-                    sx={style}
+                    sx={formStyles}
                   />
                 </div>
                 <div className="flex gap05rem">
@@ -141,7 +113,7 @@ const Page = ({ params }) => {
                     label="Shipping Cost"
                     variant="outlined"
                     disabled
-                    sx={{ ...style, width: "24%" }}
+                    sx={{ ...formStyles, width: "24%" }}
                   />
                   <TextField
                     value={"Shipping Time"}
@@ -149,7 +121,7 @@ const Page = ({ params }) => {
                     label="Shipping Time"
                     variant="outlined"
                     disabled
-                    sx={{ ...style, width: "24%" }}
+                    sx={{ ...formStyles, width: "24%" }}
                   />
                   <TextField
                     value={"Supplier Contact"}
@@ -157,7 +129,7 @@ const Page = ({ params }) => {
                     label="Supplier Contact"
                     variant="outlined"
                     disabled
-                    sx={{ ...style, width: "24%" }}
+                    sx={{ ...formStyles, width: "24%" }}
                   />
                 </div>
               </section>

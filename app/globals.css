@@ -174,3 +174,10 @@
 .width100 {
   width: 100%;
 }
+
+.placeholder_style {
+  color: red;
+  &::placeholder {
+    color: red;
+  }
+}

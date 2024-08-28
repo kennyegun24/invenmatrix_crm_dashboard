@@ -12,7 +12,7 @@ const GridItem = ({ image, item }) => {
   };
   return (
     <div
-      onClick={() => navigateToItem(`/sales/products/${item.id}`)}
+      onClick={() => navigateToItem(`/sales/products/product/${item.id}`)}
       className="flex column grid_folder_component pointer"
     >
       <section className="grid_folder_image_div">
