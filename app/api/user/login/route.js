@@ -18,6 +18,7 @@ export const POST = async (req, res) => {
       const password = decryptPassword.toString(CryptoJS.enc.Utf8);
       if (password === userPassword) {
         const { password, ...others } = findUser._doc;
+        const expiresIn = 3 * 24 * 60 * 60;
         const access_token = jwt.sign(
           {
             id: findUser._id,
@@ -26,12 +27,25 @@ export const POST = async (req, res) => {
           process.env.JWT_KEY,
           { expiresIn: "3d" }
         );
-        return NextResponse.json({ ...others, access_token });
+        return NextResponse.json(
+          {
+            ...others,
+            access_token,
+            expiresIn: Math.floor(Date.now() / 1000) + 60,
+          },
+          { status: 200 }
+        );
       } else {
-        return NextResponse.json("Wrong creadentials");
+        return NextResponse.json(
+          { error: "Wrong credentials" },
+          { status: 401 }
+        );
       }
     } else {
-      return NextResponse.json("Account does not exist");
+      return NextResponse.json(
+        { error: "Account does not exist" },
+        { status: 401 }
+      );
     }
   } catch (error) {
     console.log(error);

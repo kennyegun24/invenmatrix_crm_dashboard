@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Segmented, Tabs } from "antd";
+import OrganizationTeamTable from "./OrganizationTeamTable";
 const onChange = (key) => {
   console.log(key);
 };
@@ -21,11 +22,16 @@ const items = [
   {
     key: "2",
     label: "Teams",
-    children: "All teams",
+    children: <OrganizationTeamTable />,
   },
   {
     key: "3",
     label: "API Keys",
+    children: <Child />,
+  },
+  {
+    key: "4",
+    label: "Manage Team",
     children: <Child />,
   },
 ];

@@ -28,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
       <ConfigProvider
         theme={{
           token: {
-            colorText: "var(--primary_text_color)",
+            // colorText: "var(--primary_text_color)",
           },
           components: {
             Menu: {
@@ -43,37 +43,51 @@ export const ThemeProvider = ({ children }) => {
               itemSelectedColor: mode === "dark" ? "#fff" : "#000",
               itemHoverColor: "#fff",
               itemTextColor: mode === "dark" ? "#fff" : "#102A43",
-              // popupBg: mode === "dark" ? "red" : "red",
               subMenuItemBg: mode === "dark" ? "#0c2033" : "#f4f4f4",
             },
             Button: {
               defaultColor: mode === "dark" ? "#102a43" : "#fff",
-              // defaultColor: mode === "dark" ? "#fff" : "#102a43",
               defaultBg: mode === "dark" ? "#fff" : "#102a43",
               colorPrimaryBg: "var(--opposite_main_bg)",
-              // primaryColor: mode === "dark" ? "#fff" : "#102a43",
               defaultBorderColor: mode === "dark" ? "#f4f4f4" : "#111",
               defaultHoverBg: mode === "dark" ? "#102a43" : "#fff",
               defaultHoverColor: mode === "dark" ? "#fff" : "#102a43",
               contentFontSizeSM: 12,
+              colorText: "var(--primary_text_color)",
             },
             Popover: {
               colorBgElevated: "var(--sub_bg)",
+              colorText: "var(--primary_text_color)",
             },
             Modal: {
               colorBgElevated: "var(--sub_bg)",
+              colorText: "var(--primary_text_color)",
             },
             DatePicker: {
               colorBgElevated: "var(--sub_bg)",
               colorBgContainer: "var(--main_bg)",
               colorBorder: "var(--light_border)",
               colorTextPlaceholder: "var(--text_color)",
+              colorText: "var(--primary_text_color)",
             },
             Tooltip: {
               fontSize: 12,
+              colorText: "var(--primary_text_color)",
             },
             Input: {
               colorTextPlaceholder: "var(--text_color)",
+              colorText: "var(--primary_text_color)",
+            },
+            Table: {
+              colorBgContainer: "var(--main_bg)",
+              headerColor: "var(--text_color)",
+              rowHoverBg: "var(--sub_bg)",
+              rowSelectedBg: "var(--sub_bg)",
+              borderColor: "var(--light_border)",
+              // colorBgElevated: "var(--main_bg)",
+              headerBg: "var(--sub_bg)",
+              selectionColumnWidth: 75,
+              // colorText: "#fff",
             },
           },
         }}

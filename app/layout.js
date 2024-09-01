@@ -6,6 +6,7 @@ import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { ThemeProvider } from "@/contexts/DarkMode";
 import DragDropPovider from "@/contexts/DragDrop";
 import ChatbotProvider from "@/contexts/ChatBot";
+import SessionWrapper from "@/contexts/Session";
 // import {Appr}
 // import { DataGrid } from "@mui/x-data-grid";
 // import Barcode from "react-barcode";
@@ -24,15 +25,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={[inter.className]}>
-        <AntdRegistry>
-          <ThemeProvider>
-            <HomeProvider>
-              <DragDropPovider>
-                <ChatbotProvider>{children}</ChatbotProvider>
-              </DragDropPovider>
-            </HomeProvider>
-          </ThemeProvider>
-        </AntdRegistry>
+        <SessionWrapper>
+          <AntdRegistry>
+            <ThemeProvider>
+              <HomeProvider>
+                <DragDropPovider>
+                  <ChatbotProvider>{children}</ChatbotProvider>
+                </DragDropPovider>
+              </HomeProvider>
+            </ThemeProvider>
+          </AntdRegistry>
+        </SessionWrapper>
         {/* <Barcode value="kenny elias" /> */}
         {/* <BarcodeScannerComponent
           width={500}

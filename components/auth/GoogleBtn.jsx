@@ -1,9 +1,9 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
 
-export const AuthButton = ({ text, login }) => {
+export const AuthButton = ({ text, login, disable }) => {
   return (
-    <button onClick={login} className="login_btn">
+    <button disabled={disable} onClick={login} className="login_btn">
       {text}
     </button>
   );

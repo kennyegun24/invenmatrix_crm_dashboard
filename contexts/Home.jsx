@@ -17,13 +17,16 @@ const HomeProvider = ({ children }) => {
     "/sales",
     "/customer",
   ];
+
   const pathname = usePathname();
   const showNavBar = !routesToIgnore.some((route) =>
     pathname.startsWith(route)
   );
+
   const showTopNavBar = !TopNavRouteToIgnore.some((route) =>
     pathname.startsWith(route)
   );
+
   const [collapsed, setCollapsed] = useState(false);
 
   const toggle = () => {

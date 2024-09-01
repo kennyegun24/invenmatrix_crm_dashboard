@@ -7,6 +7,7 @@ import Organization from "@/models/organizationSchema";
 import Folder from "@/models/folderSchema";
 import Product from "@/models/fileSchema";
 import { NextResponse } from "next/server";
+import { checkUserRoleInOrganization } from "@/libs/cache/userRoleInOrg";
 
 export const DELETE = async (req) => {
   try {
@@ -27,16 +28,20 @@ export const DELETE = async (req) => {
     // Connect to MongoDB
     await connectMongoDb();
 
+    // const organization = await Organization.findOneAndDelete({
+    //   _id: organizationId,
+    //   users: {
+    //     $elemMatch: {
+    //       user: userId,
+    //       role: { $in: ["admin", "invited_admin"] },
+    //     },
+    //   },
+    // });
     // Check if the user is authorized (admin or invited_admin) in a single query
-    const organization = await Organization.findOneAndDelete({
-      _id: organizationId,
-      users: {
-        $elemMatch: {
-          user: userId,
-          role: { $in: ["admin", "invited_admin"] },
-        },
-      },
-    });
+    const organization = await checkUserRoleInOrganization(
+      organizationId,
+      userId
+    );
 
     if (!organization) {
       return NextResponse.json(

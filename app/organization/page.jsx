@@ -5,7 +5,9 @@ import React from "react";
 const page = () => {
   return (
     <Container>
-      <OrganizationTabs />
+      <div className="padding1rem">
+        <OrganizationTabs />
+      </div>
     </Container>
   );
 };

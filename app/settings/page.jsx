@@ -5,6 +5,7 @@ import { FaChevronRight } from "react-icons/fa6";
 import "./style.css";
 import { ThemeContext } from "@/contexts/DarkMode";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 const Page = () => {
   const { toggle, mode } = useContext(ThemeContext);
@@ -13,9 +14,9 @@ const Page = () => {
     toggle();
   };
 
-  const logout = () => {
-    router.push("/login");
-  };
+  // const logout = () => {
+  //   router.push("/login");
+  // };
 
   return (
     <div className="flex column gap4rem settings_page">
@@ -52,7 +53,9 @@ const Page = () => {
         </div>
         <hr />
         <div
-          onClick={logout}
+          onClick={async () => {
+            await signOut();
+          }}
           className="flex justify_between align_center pointer"
         >
           <p>Logout</p>

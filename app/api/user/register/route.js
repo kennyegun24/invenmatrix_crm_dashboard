@@ -17,32 +17,43 @@ export const POST = async (req, res) => {
     connectMongoDb();
     const findUser = await userSchema.findOne({ email: email });
     if (findUser) {
-      return NextResponse.json({ message: "Email already exist" });
-    } else {
-      const newUser = new userSchema({
-        first_name: first_name,
-        last_name: last_name,
-        password: CryptoJS.AES.encrypt(
-          user_password,
-          process.env.CRYPTO_JS_SEC
-        ).toString(),
-        email: email,
-        user_name: user_name,
-      });
-      const saveUser = await newUser.save();
-      const { password, ...others } = saveUser._doc;
-      const access_token = jwt.sign(
-        {
-          id: saveUser._id,
-          // user_name: saveUser.user_name,
-        },
-        process.env.JWT_KEY,
-        { expiresIn: "3d" }
+      return NextResponse.json(
+        { error: "Email already exist" },
+        { status: 401 }
       );
-      return NextResponse.json({ ...others, access_token });
     }
+    const findUserName = await userSchema.findOne({ user_name: user_name });
+    if (findUserName) {
+      return NextResponse.json(
+        { error: "Username already taken" },
+        { status: 401 }
+      );
+    }
+    const newUser = new userSchema({
+      first_name: first_name,
+      last_name: last_name,
+      password: CryptoJS.AES.encrypt(
+        user_password,
+        process.env.CRYPTO_JS_SEC
+      ).toString(),
+      email: email,
+      user_name: user_name,
+    });
+    const saveUser = await newUser.save();
+    const { password, ...others } = saveUser._doc;
+    const access_token = jwt.sign(
+      {
+        id: saveUser._id,
+      },
+      process.env.JWT_KEY,
+      { expiresIn: "3d" }
+    );
+    return NextResponse.json(
+      { ...others, access_token, message: "Confirmation Mail sent" },
+      { status: 201 }
+    );
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ error });
+    return NextResponse.json({ error }, { status: 500 });
   }
 };

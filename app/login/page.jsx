@@ -1,14 +1,23 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useState, useTransition } from "react";
 import RightSide from "@/components/auth/RightSide";
 import GoogleBtn, { AuthButton } from "@/components/auth/GoogleBtn";
-import { useRouter } from "next/navigation";
+import { login } from "@/actions/login";
+import AuthError from "@/components/auth/AuthError";
 
 const Page = () => {
-  const router = useRouter();
-  const login = () => {
-    router.push("/");
+  const [userInput, setUserInput] = useState({ password: "", email: "" });
+  const [errMessage, setErrMessage] = useState(null);
+  const [isPending, startTransition] = useTransition();
+  const loginUser = async (e) => {
+    e.preventDefault();
+    setErrMessage(null);
+    startTransition(() => {
+      login(userInput).then((err) => {
+        err?.error && setErrMessage(JSON.parse(err?.error));
+      });
+    });
   };
   return (
     <div className="login_page flex">
@@ -24,10 +33,14 @@ const Page = () => {
             </p>
           </section>
 
-          <section className="flex column gap1rem login_form">
+          <form onSubmit={loginUser} className="flex column gap1rem login_form">
             <div className="flex column gap075rem">
               <label htmlFor="email">Email</label>
               <input
+                disabled={isPending}
+                onChange={(e) =>
+                  setUserInput((prev) => ({ ...prev, email: e.target.value }))
+                }
                 placeholder="Email address..."
                 type="email"
                 name="email"
@@ -37,22 +50,30 @@ const Page = () => {
             <div className="flex column gap075rem">
               <label
                 className="flex align_center justify_between"
-                htmlFor="email"
+                htmlFor="password"
               >
                 Password{" "}
                 <Link href={"/forget_password"}>Forgot your password?</Link>
               </label>
               <input
+                disabled={isPending}
+                onChange={(e) =>
+                  setUserInput((prev) => ({
+                    ...prev,
+                    password: e.target.value,
+                  }))
+                }
                 placeholder="Password..."
-                type="email"
-                name="email"
-                id="email"
+                type="password"
+                name="password"
+                id="password"
               />
             </div>
-            <AuthButton login={login} text={"Login"} />
+            <AuthError errMessage={errMessage} />
+            <AuthButton disable={isPending} login={loginUser} text={"Login"} />
             <p className="or">OR</p>
             <GoogleBtn text={"Continue with Google"} />
-          </section>
+          </form>
         </section>
         <RightSide />
       </div>
