@@ -2,6 +2,7 @@ import { AuthError, NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { signInSchema } from "./libs/zod";
 
+const BACKEND_API_ROUTE = process.env.BACKEND_API_ROUTE;
 export default {
   pages: {
     signIn: "/login",
@@ -13,7 +14,7 @@ export default {
       async authorize(credentials) {
         const validatedFields = signInSchema.safeParse(credentials);
         if (validatedFields.success) {
-          const res = await fetch("http://localhost:3000/api/user/login", {
+          const res = await fetch(`${BACKEND_API_ROUTE}/user/login`, {
             method: "POST",
             body: JSON.stringify({
               password: credentials?.password,
@@ -23,7 +24,6 @@ export default {
           });
 
           const user = await res.json();
-          // console.log(user);
           if (res.ok && user) {
             return user;
           }
