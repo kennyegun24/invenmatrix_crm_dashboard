@@ -7,7 +7,7 @@ export const GET = async (req, res) => {
       "verification_id"
     );
     if (verification_code === null || verification_code === undefined) {
-      return Response.json(
+      return NextResponse.json(
         {
           error:
             "Verification code not present in request or something went wrong",
@@ -39,13 +39,14 @@ export const GET = async (req, res) => {
       {
         email_confirm_code: null,
         email_confirm: new Date(),
+        email_confirm_expire: null,
       }
     );
 
     return NextResponse.json({ message: "Email verified" }, { status: 200 });
   } catch (error) {
     return NextResponse.json(
-      { message: "Something went wrong" },
+      { error: "Something went wrong" },
       { status: 500 }
     );
   }
