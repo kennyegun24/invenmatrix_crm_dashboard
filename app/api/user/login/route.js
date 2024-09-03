@@ -21,6 +21,15 @@ export const POST = async (req, res) => {
       if (password === userPassword) {
         const email_confirm_code = crypto.randomBytes(15).toString("hex");
         if (!findUser?.email_confirm) {
+          await userSchema.findOneAndUpdate(
+            {
+              email: email,
+            },
+            {
+              email_confirm_code: email_confirm_code,
+              email_confirm_expire: Date.now() + 30 * 60 * 1000,
+            }
+          );
           await sendConfirmationMailCode({
             user_email: email,
             subject: "Invenmatrix email verification",
