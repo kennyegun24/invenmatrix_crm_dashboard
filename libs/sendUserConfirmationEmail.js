@@ -352,7 +352,7 @@ const confirm_email_code_html = ({ verification_code }) => {
                                       Click or copy and paste this link below
                                     </p>
                                     <a
-                                      href="https://crm-inventory-dashboard.vercel.app/verify_email?verification_id=${verification_code}/"
+                                      href="https://crm-inventory-dashboard.vercel.app/verify_email?verification_id=${verification_code}"
                                       >https://crm-inventory-dashboard.vercel.app/verify_email?verification_id=${verification_code}</a
                                     >
                                     <!-- </div> -->
