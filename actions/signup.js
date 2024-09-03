@@ -26,7 +26,7 @@ export const signUp = async (values) => {
     );
     const data = await signUserUp.json();
     if (signUserUp.ok) {
-      return data.message;
+      return data;
     }
     return { error: JSON.stringify({ message: data?.error }) };
   } catch (error) {

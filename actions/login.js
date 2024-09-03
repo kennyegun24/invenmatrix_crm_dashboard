@@ -14,18 +14,21 @@ export const login = async (values) => {
 
   try {
     const { email, password } = validateFields.data;
-    await signIn("credentials", {
+    const result = await signIn("credentials", {
       email,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirect: false,
     });
+    console.log("resultssssssssssssssssssssssssss");
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
         case "CredentialsSignin":
           return { error: JSON.stringify({ message: "Invalid credentials" }) };
         default:
-          return { error: JSON.stringify({ message: "Something went wrong" }) };
+          return {
+            error: JSON.stringify({ message: error.cause.err.message }),
+          };
       }
     }
     throw error;

@@ -26,9 +26,13 @@ export default {
           const user = await res.json();
           if (res.ok && user) {
             return user;
+          } else {
+            const errorMessage = user?.error || "Unknown error occurred.";
+            throw new Error(errorMessage);
           }
+        } else {
+          throw new Error("Invalid input. Please check your credentials.");
         }
-        return null;
       },
     }),
     Credentials({

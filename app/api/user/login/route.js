@@ -17,6 +17,17 @@ export const POST = async (req, res) => {
       );
       const password = decryptPassword.toString(CryptoJS.enc.Utf8);
       if (password === userPassword) {
+        if (!findUser?.email_confirm) {
+          return NextResponse.json(
+            {
+              error:
+                "Email not yet verified... Verification code sent to your mail!",
+            },
+            {
+              status: 401,
+            }
+          );
+        }
         const { password, ...others } = findUser._doc;
         const expiresIn = 3 * 24 * 60 * 60;
         const access_token = jwt.sign(
@@ -49,6 +60,13 @@ export const POST = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    return NextResponse.json(error);
+    return NextResponse.json(
+      {
+        error: "Something went wrong",
+      },
+      {
+        status: 500,
+      }
+    );
   }
 };

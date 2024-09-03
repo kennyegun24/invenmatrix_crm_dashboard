@@ -6,6 +6,7 @@ import GoogleBtn, { AuthButton } from "@/components/auth/GoogleBtn";
 import Onboarding from "@/components/auth/onboarding/Onboarding";
 import { signUp } from "@/actions/signup";
 import AuthError from "@/components/auth/AuthError";
+import AuthSuccess from "@/components/auth/AuthSuccess";
 
 const Page = () => {
   const [userInput, setUserInput] = useState({
@@ -16,13 +17,16 @@ const Page = () => {
     user_name: "",
   });
   const [errMessage, setErrMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   const [isPending, startTransition] = useTransition();
   const signUpUser = async (e) => {
     e.preventDefault();
     setErrMessage(null);
+    setSuccessMessage(null);
     startTransition(() => {
       signUp(userInput)
         .then((err) => {
+          err?.message && setSuccessMessage(err?.message);
           err?.error && setErrMessage(JSON.parse(err?.error));
         })
         .catch((err) => {
@@ -130,6 +134,7 @@ const Page = () => {
               />
             </div>
             <AuthError errMessage={errMessage} />
+            <AuthSuccess successMessage={successMessage} />
             <AuthButton
               disable={isPending}
               login={signUpUser}

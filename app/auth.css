@@ -63,7 +63,7 @@
 
 .login_btn {
   background: #22ad01;
-  color: #fff;
+  color: var(--opposite_text) !important;
 }
 
 .or {
@@ -98,12 +98,23 @@
 }
 
 .login_with_google {
-  color: var(--opposite_text) !important;
+  color: var(--text_color) !important;
 }
 
 .auth_error_container {
   background-color: rgba(255, 0, 0, 0.4);
   padding: 1rem 0.5rem;
+}
+
+.auth_success_container {
+  background-color: rgba(34, 173, 1, 0.7);
+  padding: 1rem 0.5rem;
+
+  * {
+    /* > svg { */
+    color: var(--opposite_text) !important;
+    /* } */
+  }
 }
 
 @media (min-width: 200px) and (max-width: 650px) {
