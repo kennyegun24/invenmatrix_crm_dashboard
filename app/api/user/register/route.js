@@ -3,6 +3,8 @@ import CryptoJS from "crypto-js";
 import userSchema from "@/models/userSchema";
 import { NextResponse } from "next/server";
 import connectMongoDb from "@/libs/mongodb";
+import crypto from "crypto";
+import { sendConfirmationMailCode } from "@/libs/sendUserConfirmationEmail";
 
 export const POST = async (req, res) => {
   const body = await req.json();
@@ -29,6 +31,7 @@ export const POST = async (req, res) => {
         { status: 401 }
       );
     }
+    const email_confirm_code = crypto.randomBytes(15).toString("hex");
     const newUser = new userSchema({
       first_name: first_name,
       last_name: last_name,
@@ -38,22 +41,33 @@ export const POST = async (req, res) => {
       ).toString(),
       email: email,
       user_name: user_name,
+      email_confirm_code: email_confirm_code,
+      email_confirm_expire: Date.now() + 30 * 60 * 1000,
     });
     const saveUser = await newUser.save();
     const { password, ...others } = saveUser._doc;
-    const access_token = jwt.sign(
-      {
-        id: saveUser._id,
-      },
-      process.env.JWT_KEY,
-      { expiresIn: "3d" }
-    );
+    // const access_token = jwt.sign(
+    //   {
+    //     id: saveUser._id,
+    //   },
+    //   process.env.JWT_KEY,
+    //   { expiresIn: "3d" }
+    // );
+    await sendConfirmationMailCode({
+      user_email: email,
+      subject: "Invenmatrix email verification",
+      code: email_confirm_code,
+    });
     return NextResponse.json(
-      { ...others, access_token, message: "Confirmation Mail sent" },
+      // { ...others, access_token, message: "Confirmation Mail sent" },
+      { message: "Confirmation Mail sent" },
       { status: 201 }
     );
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ error }, { status: 500 });
+    return NextResponse.json(
+      { message: "Something went wrong" },
+      { status: 500 }
+    );
   }
 };

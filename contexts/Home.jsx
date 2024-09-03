@@ -9,13 +9,19 @@ import { createContext, useState } from "react";
 export const HomeContext = createContext();
 
 const HomeProvider = ({ children }) => {
-  const routesToIgnore = ["/login", "/register", "/forget_password"];
+  const routesToIgnore = [
+    "/login",
+    "/register",
+    "/forget_password",
+    "/verify_email",
+  ];
   const TopNavRouteToIgnore = [
     "/login",
     "/register",
     "/forget_password",
     "/sales",
     "/customer",
+    "/verify_email",
   ];
 
   const pathname = usePathname();

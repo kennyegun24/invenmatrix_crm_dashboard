@@ -19,4 +19,4 @@ export const DEFAULT_LOGIN_REDIRECT = "/";
  * PUBLIC ROUTES
  */
 
-export const publicRoutes = [];
+export const publicRoutes = ["/verify_email"];

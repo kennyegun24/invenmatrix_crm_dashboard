@@ -1,0 +1,48 @@
+.verify_email_page {
+  height: 100vh;
+}
+
+.verify_email_sub_page {
+  min-height: 40vh;
+  background: var(--sub_bg);
+  width: 40%;
+  padding: 1.5rem 2rem;
+  position: relative;
+
+  h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-weight: 300;
+    font-size: 14px;
+  }
+
+  > div {
+    * {
+      color: var(--opposite_text) !important;
+    }
+  }
+  .check_center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+  }
+
+  button {
+    background: #ff3434;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    color: var(--opposite_text) !important;
+  }
+
+  .text_red {
+    color: #ff3434;
+  }
+
+  img {
+    object-fit: contain;
+  }
+}

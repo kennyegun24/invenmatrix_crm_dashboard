@@ -31,6 +31,12 @@ const users = new Schema(
       default: "active",
     },
     reset_token: { type: String, required: false },
+    email_confirm: { type: Date, default: null, required: false },
+    email_confirm_code: { type: String, required: false },
+    email_confirm_expire: {
+      type: Date,
+      required: true,
+    },
     reset_expiry: { type: Date, required: false },
     organizations: [
       {
