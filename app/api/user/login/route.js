@@ -3,6 +3,8 @@ import userSchema from "@/models/userSchema";
 import CryptoJS from "crypto-js";
 import { NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
+import crypto from "crypto";
+import { sendConfirmationMailCode } from "@/libs/sendUserConfirmationEmail";
 
 export const POST = async (req, res) => {
   const body = await req.json();
@@ -17,7 +19,13 @@ export const POST = async (req, res) => {
       );
       const password = decryptPassword.toString(CryptoJS.enc.Utf8);
       if (password === userPassword) {
+        const email_confirm_code = crypto.randomBytes(15).toString("hex");
         if (!findUser?.email_confirm) {
+          await sendConfirmationMailCode({
+            user_email: email,
+            subject: "Invenmatrix email verification",
+            code: email_confirm_code,
+          });
           return NextResponse.json(
             {
               error:
