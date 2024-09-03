@@ -48,7 +48,7 @@ export const POST = async (req, res) => {
         );
       } else {
         return NextResponse.json(
-          { error: "Wrong credentials" },
+          { error: "Wrong email or password" },
           { status: 401 }
         );
       }
