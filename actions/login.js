@@ -14,12 +14,11 @@ export const login = async (values) => {
 
   try {
     const { email, password } = validateFields.data;
-    const result = await signIn("credentials", {
+    await signIn("credentials", {
       email,
       password,
-      redirect: DEFAULT_LOGIN_REDIRECT,
+      redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
-    console.log("resultssssssssssssssssssssssssss");
   } catch (error) {
     if (error instanceof AuthError) {
       switch (error.type) {
