@@ -6,7 +6,6 @@ export const GET = async (req, res) => {
     "verification_id"
   );
   if (!verification_code) {
-    console.log("first");
     return NextResponse.json(
       {
         error:

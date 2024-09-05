@@ -57,6 +57,7 @@ const users = new Schema(
   },
   { timestamps: true }
 );
+userSchema.index({ email_confirm_code: 1 });
 
 const userSchema = mongoose.models.User || mongoose.model("User", users);
 
