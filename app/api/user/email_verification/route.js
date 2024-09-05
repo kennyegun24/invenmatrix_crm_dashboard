@@ -1,3 +1,4 @@
+import connectMongoDb from "@/libs/mongodb";
 import userSchema from "@/models/userSchema";
 import { NextResponse } from "next/server";
 
@@ -15,6 +16,7 @@ export const GET = async (req, res) => {
     );
   }
   try {
+    connectMongoDb();
     const getUser = await userSchema.findOne({
       email_confirm_code: verification_code,
     });
