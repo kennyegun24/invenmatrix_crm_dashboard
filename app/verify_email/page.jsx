@@ -9,6 +9,7 @@ import Confetti from "react-confetti";
 import error from "@/public/error.png";
 import Image from "next/image";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 const StillVerifying = () => {
   return (
     <>
@@ -78,6 +79,7 @@ const AlreadyVerified = () => {
 };
 
 const ErrorOccured = ({ message }) => {
+  const redirect = useRouter();
   return (
     <>
       <Image alt="Error icon" height={60} width={50} src={error} />
@@ -88,7 +90,7 @@ const ErrorOccured = ({ message }) => {
         Click to go back to the login page to get a new verification mail sent
         to you...
       </p>
-      <button>Login</button>
+      <button onClick={redirect.push("/login")}>Login</button>
     </>
   );
 };
