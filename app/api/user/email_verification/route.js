@@ -2,19 +2,20 @@ import userSchema from "@/models/userSchema";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, res) => {
-  try {
-    const verification_code = await req?.nextUrl?.searchParams?.get(
-      "verification_id"
+  const verification_code = await req?.nextUrl?.searchParams?.get(
+    "verification_id"
+  );
+  if (!verification_code) {
+    console.log("first");
+    return NextResponse.json(
+      {
+        error:
+          "Verification code not present in request or something went wrong",
+      },
+      { status: 401 }
     );
-    if (verification_code === null || verification_code === undefined) {
-      return NextResponse.json(
-        {
-          error:
-            "Verification code not present in request or something went wrong",
-        },
-        { status: 401 }
-      );
-    }
+  }
+  try {
     const getUser = await userSchema.findOne({
       email_confirm_code: verification_code,
     });
