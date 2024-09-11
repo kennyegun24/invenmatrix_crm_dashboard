@@ -12,11 +12,11 @@ const GridItem = ({ image, item }) => {
   };
   return (
     <div
-      onClick={() => navigateToItem(`/sales/products/product/${item.id}`)}
+      onClick={() => navigateToItem(`/sales/products/product/${item._id}`)}
       className="flex column grid_folder_component pointer"
     >
       <section className="grid_folder_image_div">
-        <Image src={image} />
+        <Image src={image} height={35} width={35} />
 
         <div className="absolute display_on_hover flex justify_between">
           <input type="checkbox" name="" id="" />
@@ -34,7 +34,7 @@ const GridItem = ({ image, item }) => {
       <div className="flex column gap3rem wrap grid_item_content">
         <h4>{item.productName}</h4>
         <div className="flex gap05rem align_center">
-          <p>1 unit</p>
+          <p>{item?.stockLevel} unit</p>
           {"/"}
           <p>${item.sellingPrice}</p>
         </div>

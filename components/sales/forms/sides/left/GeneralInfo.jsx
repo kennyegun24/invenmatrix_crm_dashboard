@@ -4,11 +4,14 @@ import { DatePicker } from "antd";
 import { FieldTitle } from "@/components/GlobalComponents";
 import { Switch } from "antd";
 
-const GeneralInfo = () => {
+const GeneralInfo = ({ setData }) => {
   const onChange = (date, dateString) => {
-    console.log(date, dateString);
+    setData((prev) => ({ ...prev, datePurchased: dateString }));
   };
   const [showFull, setShowFull] = useState(true);
+  const enable = (e) => {
+    setData((prev) => ({ ...prev, enableNotification: e }));
+  };
   return (
     <section
       className={`flex column gap1rem add_product_left_component border_all padding1rem optional_feeds ${
@@ -28,7 +31,7 @@ const GeneralInfo = () => {
           helper={"What is the name of this product...?... REQUIRED FIELD."}
           displayBin={false}
         />
-        <input type="text" name="" id="" />
+        <input type="text" name="productName" id="" />
       </div>
       <div className="flex column gap03rem main_bg">
         <FieldTitle
@@ -37,15 +40,15 @@ const GeneralInfo = () => {
           helper={"Describe the product... REQUIRED FIELD."}
           displayBin={false}
         />
-        <textarea rows={4} name="" id="" />
+        <textarea rows={4} name="productDescription" id="" />
       </div>
       <div className="flex column gap03rem main_bg">
         <FieldTitle
-          title={"Supplier Name"}
-          helper={"The person that supplied you this product name..."}
+          title={"Supplier Email"}
+          helper={"The person that supplied you this product email..."}
           displayBin={true}
         />
-        <input type="email" name="" id="" />
+        <input type="email" name="supplierContact" id="" />
       </div>
       <div className="flex column gap03rem main_bg">
         <FieldTitle
@@ -55,7 +58,7 @@ const GeneralInfo = () => {
           }
           displayBin={true}
         />
-        <textarea rows={4} name="" id="" />
+        <textarea rows={4} name="supplierInformation" id="" />
       </div>
       <div className="flex gap1rem sub_inputs main_bg">
         <div className="flex column gap03rem">
@@ -64,7 +67,7 @@ const GeneralInfo = () => {
             helper={"What day did you buy this item..?"}
             title={"Date Purchased"}
           />
-          <DatePicker onChange={onChange} />
+          <DatePicker onChange={onChange} name="datePurchased" />
         </div>
         <div className="flex column gap03rem">
           <FieldTitle
@@ -75,7 +78,7 @@ const GeneralInfo = () => {
             }
             displayBin={false}
           />
-          <input type="text" />
+          <input type="text" name="location" />
         </div>
       </div>
       <div className="flex gap1rem sub_inputs">
@@ -89,10 +92,10 @@ const GeneralInfo = () => {
               }
               displayBin={false}
             />
-            <select type="text">
-              <option value="Active">In Stock</option>
-              <option value="Active">Out of Stock</option>
-              <option value="Active">Discontinued</option>
+            <select type="text" name="active">
+              <option value="In-stock">In Stock</option>
+              <option value="out-of-stock">Out of Stock</option>
+              <option value="discontinued">Discontinued</option>
             </select>
           </div>
         </div>
@@ -104,7 +107,7 @@ const GeneralInfo = () => {
             }
             displayBin={false}
           />
-          <Switch defaultChecked className="width_fit" />
+          <Switch onChange={enable} defaultChecked className="width_fit" />
         </div>
       </div>
     </section>

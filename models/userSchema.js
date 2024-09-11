@@ -35,7 +35,7 @@ const users = new Schema(
     email_confirm_code: { type: String, required: false },
     email_confirm_expire: {
       type: Date,
-      required: true,
+      required: false,
     },
     reset_expiry: { type: Date, required: false },
     organizations: [

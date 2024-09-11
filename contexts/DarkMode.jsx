@@ -89,6 +89,14 @@ export const ThemeProvider = ({ children }) => {
               selectionColumnWidth: 75,
               // colorText: "#fff",
             },
+            Select: {
+              colorBgElevated: "var(--sub_bg)",
+              colorText: "var(--text_color)",
+              colorBgContainer: "var(--main_bg)",
+              fontSize: 16,
+              optionFontSize: 14,
+              optionSelectedColor: "var(--opposite_text)",
+            },
           },
         }}
       >

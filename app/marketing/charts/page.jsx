@@ -13,7 +13,6 @@ const Page = () => {
       },
     });
   };
-  console.log(data);
   return (
     <div>
       <input type="file" onChange={handleFileUpload} />

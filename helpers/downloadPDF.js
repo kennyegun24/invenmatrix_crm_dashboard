@@ -15,7 +15,6 @@ export const handleDownloadPDF = (getColumns, filteredData) => {
   const businessName = "Your Business Name";
   const dateGenerated = dayjs().format("MMMM D, YYYY");
   const subheading = "Product Summary";
-  console.log(getColumns);
   const cols = getColumns
     ?.map((e) => e.headerName)
     ?.filter((e) => e !== "Images");

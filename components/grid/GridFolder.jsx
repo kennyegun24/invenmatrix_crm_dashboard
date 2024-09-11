@@ -15,11 +15,11 @@ const GridFolder = ({ image, item }) => {
   };
   return (
     <div
-      className="flex column grid_folder_component pointer"
-      onClick={() => navigateToSubFolder(`/sales/products/folders/${item.id}`)}
+      className="flex column grid_folder_component pointer padding05rem"
+      onClick={() => navigateToSubFolder(`/sales/products/folders/${item._id}`)}
     >
       <section className="grid_folder_image_div">
-        <Image src={image} />
+        <Image src={image} height={100} width={100} />
 
         <div className="absolute display_on_hover flex justify_between">
           <input type="checkbox" name="" id="" />
@@ -41,7 +41,7 @@ const GridFolder = ({ image, item }) => {
         <div className="flex gap05rem align_center">
           {/* <p>${item.sellingPrice}</p> */}
           <p className="flex align_center gap05rem">
-            <BsFolder /> {item?.subFolder?.length}
+            <BsFolder /> {item?.subfolders?.length}
           </p>
           <p className="flex align_center gap05rem">
             <GoStack /> {item?.products?.length}

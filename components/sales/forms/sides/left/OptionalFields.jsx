@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import FormSectionHeader from "../../FormSectionHeader";
 import { FieldTitle } from "@/components/GlobalComponents";
 import { addNewColumn, deleteItem } from "./optionFieldsHelper";
+import { convertToCamelCase } from "@/helpers/sanitizeText";
 
-const OptionalFields = () => {
+const OptionalFields = ({ setData, userData }) => {
   const [showFull, setShowFull] = useState(false);
   const [options, setOptions] = useState([
     {
@@ -72,9 +73,18 @@ const OptionalFields = () => {
               title={opt.title}
               helper={"What is the name of this product...?... REQUIRED FIELD."}
               displayBin={true}
-              click={() => deleteItem(opt.id, setOptions, options)}
+              click={() =>
+                deleteItem({
+                  id: opt.id,
+                  setOptions,
+                  options,
+                  setData,
+                  userData,
+                  fieldName: convertToCamelCase(opt.title),
+                })
+              }
             />
-            <input type="text" name="" id="" />
+            <input type="text" name={convertToCamelCase(opt.title)} id="" />
           </div>
         ))}
       </div>
@@ -85,10 +95,10 @@ const OptionalFields = () => {
           placeholder="Add new field"
         />
         <button
-          onClick={() =>
+          onClick={(e) =>
             newColumn.trim().length >= 2
-              ? addNewColumn(setOptions, newColumn)
-              : alert("Not Working")
+              ? [e.preventDefault(), addNewColumn(setOptions, newColumn)]
+              : [e.preventDefault(), alert("Not Working")]
           }
           style={widthQuarter}
         >

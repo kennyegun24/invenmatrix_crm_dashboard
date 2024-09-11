@@ -16,20 +16,16 @@ const Prices = () => {
     setUserInput((prev) => ({
       ...prev,
       profit_margin: calculateProfitMargin(
-        Number(userInput?.shipping_cost),
-        Number(userInput?.cost_price),
-        Number(userInput?.selling_price)
+        Number(userInput?.shippingCost),
+        Number(userInput?.costPrice),
+        Number(userInput?.sellingPrice)
       ),
     }));
-  }, [
-    userInput?.shipping_cost,
-    userInput?.cost_price,
-    userInput?.selling_price,
-  ]);
+  }, [userInput?.shippingCost, userInput?.sellingPrice, userInput?.costPrice]);
   const [showFull, setShowFull] = useState(false);
   return (
-    <form
-      onChange={handleChange}
+    <section
+      // onChange={handleChange}
       className={`flex column gap1rem add_product_left_component border_all padding1rem optional_feeds ${
         showFull && "show_full"
       }`}
@@ -47,7 +43,7 @@ const Prices = () => {
             helper={"How much did you purchase this product...?"}
             title={"Cost Price"}
           />
-          <input name="cost_price" type="number" />
+          <input onChange={handleChange} name="costPrice" type="number" />
         </div>
         <div className="flex column gap03rem">
           <FieldTitle
@@ -55,7 +51,7 @@ const Prices = () => {
             title={"Selling Price"}
             helper={"How much do you intend to sell this product...?"}
           />
-          <input name="selling_price" type="number" />
+          <input onChange={handleChange} name="sellingPrice" type="number" />
         </div>
       </div>
       <div className="flex gap1rem sub_inputs main_bg">
@@ -64,14 +60,14 @@ const Prices = () => {
             title={"Shipping Cost"}
             helper={"How much did you pay to ship this product...?"}
           />
-          <input name="shipping_cost" type="number" />
+          <input onChange={handleChange} name="shippingCost" type="number" />
         </div>
         <div className="flex column gap03rem">
           <FieldTitle
             title={"Shipping Time"}
             helper={"How long did it take for this product to arrive...?"}
           />
-          <input name="shipping_time" type="text" />
+          <input onChange={handleChange} name="shippingTime" type="text" />
         </div>
       </div>
       <div className="flex gap1rem sub_inputs main_bg">
@@ -81,7 +77,7 @@ const Prices = () => {
             required={true}
             helper={"How many of this product do you have in store...?"}
           />
-          <input name="stock_level" type="text" />
+          <input onChange={handleChange} name="stockLevel" type="text" />
         </div>
         <div className="flex column gap03rem">
           <FieldTitle
@@ -95,11 +91,12 @@ const Prices = () => {
             style={{ fontSize: "13px" }}
             type="text"
             disabled
-            value={userInput?.profit_margin}
+            value={`${userInput?.profit_margin}%`}
+            name="profitMargin"
           />
         </div>
       </div>
-    </form>
+    </section>
   );
 };
 

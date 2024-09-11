@@ -23,7 +23,9 @@ const AddToOrdered = ({ item, isModalOpen, setIsModalOpen }) => {
         <div className="flex column gap1rem padding1rem">
           <Image
             style={{ maxHeight: "200px", objectFit: "cover", width: "100%" }}
-            src={item.images[0]}
+            src={item?.images[0]}
+            height={125}
+            width={150}
           />
           <div>
             <h3>Product Name</h3>

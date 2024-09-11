@@ -7,6 +7,8 @@ import { ThemeProvider } from "@/contexts/DarkMode";
 import DragDropPovider from "@/contexts/DragDrop";
 import ChatbotProvider from "@/contexts/ChatBot";
 import SessionWrapper from "@/contexts/Session";
+import { SessionProvider } from "next-auth/react";
+import { auth } from "@/auth";
 // import {Appr}
 // import { DataGrid } from "@mui/x-data-grid";
 // import Barcode from "react-barcode";
@@ -20,12 +22,14 @@ export const metadata = {
   description: "CRM Dashboard",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   // const [data, setData] = useState("Not Found");
+  const session = await auth();
   return (
-    <html lang="en">
-      <body className={[inter.className]}>
-        <SessionWrapper>
+    <SessionProvider session={session}>
+      <html lang="en">
+        <body className={[inter.className]}>
+          {/* <SessionWrapper> */}
           <AntdRegistry>
             <ThemeProvider>
               <HomeProvider>
@@ -35,9 +39,9 @@ export default function RootLayout({ children }) {
               </HomeProvider>
             </ThemeProvider>
           </AntdRegistry>
-        </SessionWrapper>
-        {/* <Barcode value="kenny elias" /> */}
-        {/* <BarcodeScannerComponent
+          {/* </SessionWrapper> */}
+          {/* <Barcode value="kenny elias" /> */}
+          {/* <BarcodeScannerComponent
           width={500}
           height={500}
           onUpdate={(err, result) => {
@@ -45,7 +49,7 @@ export default function RootLayout({ children }) {
             else setData("Not Found");
           }}
         /> */}
-        {/* <BarcodeScanner
+          {/* <BarcodeScanner
           onSuccess={(text) => setData(text)}
           onError={(error) => {
             if (error) {
@@ -56,7 +60,8 @@ export default function RootLayout({ children }) {
           containerStyle={{ width: "100%" }}
         />
         <p>{data}</p> */}
-      </body>
-    </html>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }

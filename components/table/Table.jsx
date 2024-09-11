@@ -5,13 +5,15 @@ import "./style.css";
 import { ThemeContext } from "@/contexts/DarkMode";
 import Toolbar from "@/components/toolKits/TableToolBar";
 
-const Table = ({ columns = [], products = [], initialState }) => {
+const Table = ({ columns = [], products = [], initialState, loading }) => {
   const { mode } = useContext(ThemeContext);
   return (
     <DataGrid
       columns={columns}
       rows={products}
       initialState={initialState}
+      loading={loading}
+      getRowId={(e) => e._id || e.id}
       localeText={{
         columnMenuSortAsc: "Order Ascending",
         columnMenuSortDesc: "Order Descending",

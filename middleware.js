@@ -14,7 +14,6 @@ export default auth((req) => {
   // console.log(auth);
   const { pathname } = nextUrl;
   const isLoggedIn = !!auth;
-  console.log(auth);
   const isApiAuthRoute = authApiPrefixes.some((route) =>
     pathname.startsWith(route)
   );

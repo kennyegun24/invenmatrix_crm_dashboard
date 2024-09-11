@@ -6,7 +6,6 @@ const onChange = (key) => {
   console.log(key);
 };
 const Child = () => {
-  console.log("first");
   return (
     <>
       <p>All keys</p>

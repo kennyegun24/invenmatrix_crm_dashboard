@@ -1,7 +1,7 @@
 import BarcodeComponent from "@/components/BARCODE";
 import React, { useState } from "react";
 
-const BarcodeGenerate = () => {
+const BarcodeGenerate = ({ setData }) => {
   const [generateBarcode, setGenerateBarcode] = useState("");
   return (
     <div className="flex column gap1rem border_all align_center padding1rem generate_barcode">
@@ -17,11 +17,16 @@ const BarcodeGenerate = () => {
           `generate_barcode_btn enable_barcode`
         }
         // disabled={generateBarcode}
-        onClick={() =>
+        onClick={(e) => {
+          const generatedUUID = crypto.randomUUID();
           generateBarcode.trim().length <= 0
-            ? setGenerateBarcode(crypto.randomUUID())
-            : setGenerateBarcode("")
-        }
+            ? [
+                e.preventDefault(),
+                setGenerateBarcode(generatedUUID),
+                setData((prev) => ({ ...prev, barcode: generatedUUID })),
+              ]
+            : [e.preventDefault(), setGenerateBarcode("")];
+        }}
       >
         {generateBarcode.trim().length <= 0
           ? "Generate Barcode"

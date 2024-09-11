@@ -1,30 +1,35 @@
+"use client";
 import React from "react";
 import "./addProduct.css";
 import RightSide from "./sides/RightSide";
 import LeftSide from "./sides/LeftSide";
+import { capitalizeFirstLetters } from "@/helpers/sanitizeText";
 
-const arr = [
-  {
-    header: "General Information",
-  },
-  {
-    header: "Category",
-  },
-  {
-    header: "Price",
-  },
-];
-
-const AddProduct = () => {
+const AddProduct = ({ userData, setUserData, createProduct }) => {
   return (
-    <div className="flex justify_between gap1rem align_start">
-      <section className="add_product_left">
-        <LeftSide />
-      </section>
-      <section className="add_product_right">
-        <RightSide />
-      </section>
-    </div>
+    <form
+      onSubmit={createProduct}
+      onChange={(e) => {
+        const fieldName = e?.target?.name;
+        const fieldValue = e?.target?.value;
+
+        if (fieldName) {
+          setUserData((prev) => ({
+            ...prev,
+            [fieldName]: capitalizeFirstLetters(fieldValue),
+          }));
+        }
+      }}
+    >
+      <div className="flex justify_between align_start width100 gap1rem">
+        <section className="add_product_left">
+          <LeftSide userData={userData} setData={setUserData} />
+        </section>
+        <section className="add_product_right">
+          <RightSide setData={setUserData} />{" "}
+        </section>
+      </div>
+    </form>
   );
 };
 

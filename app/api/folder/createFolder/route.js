@@ -16,6 +16,9 @@ export const POST = async (req, res) => {
     const body = await req.json();
     const { folderName, organizationId, userId } = body;
     const verify = await verifyTokenAndAuthz(req, userId);
+    const header = req.headers?.get("authorization");
+    console.log(header);
+    console.log(body);
 
     // Check if the user is valid
     const check = checkIfUserIsValid(verify, userId);
@@ -37,7 +40,7 @@ export const POST = async (req, res) => {
     if (!organization) {
       return NextResponse.json(
         {
-          message:
+          error:
             "User is not authorized to create folders in this organization",
         },
         { status: 403 }
@@ -53,7 +56,7 @@ export const POST = async (req, res) => {
 
     if (findExistingFolder) {
       return NextResponse.json(
-        { message: "Folder name already exists" },
+        { error: "Folder name already exists" },
         { status: 400 }
       );
     }
@@ -77,8 +80,9 @@ export const POST = async (req, res) => {
       { status: 201 }
     );
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
-      { message: "Something went wrong" },
+      { error: "Something went wrong" },
       { status: 500 }
     );
   }

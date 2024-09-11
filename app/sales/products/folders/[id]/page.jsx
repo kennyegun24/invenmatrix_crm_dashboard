@@ -2,21 +2,37 @@
 import { SalesContainer } from "@/components/GlobalComponents";
 import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridMainHeader from "@/components/grid/GridMainHeader";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
 import GridLayout from "@/components/sales/grid/GridLayout";
 import useSWR from "swr";
 import GridLoader from "@/components/loaders/gridLoader";
+import Empty from "@/components/Empty";
+
+const RenderData = ({ isLoading, error, data, display }) => {
+  if (isLoading) return <GridLoader />;
+  if (data?.folders?.length === 0 && data?.items?.length === 0)
+    return <Empty />;
+  return (
+    <div className="flex column gap1rem">
+      <GridDisplayHeader display={display} />
+      <GridLayout data={data} isLoading={isLoading} error={error} />
+    </div>
+  );
+};
 
 const Page = ({ params }) => {
   const display = useSearchParams().get("display");
   const { id } = params;
+  const router = useRouter();
   const fetcher = async () => {
-    const fetchData = await fetch(`/api/folders/sub_folder?id=${id}`);
+    const fetchData = await fetch(
+      `http://localhost:3000/api/folder/sub_folder?organizationId=66ddf0cad0d31ab0b903bc7d&folderId=${id}`
+    );
     const data = await fetchData.json();
     return {
-      folders: JSON.parse(data?.folders),
-      items: JSON.parse(data.items),
+      folders: data?.folders,
+      items: data.products,
     };
   };
   const key = id;
@@ -32,17 +48,19 @@ const Page = ({ params }) => {
   return (
     <SalesContainer>
       <GridMainHeader
-        text={"All Products"}
+        text={data?.productName}
         first_btn_text={"Add Item"}
         second_btn_text={"Add Folder"}
+        first_click={() => router.push(`/sales/products/new?folderId=${id}`)}
+        id={id}
       />
-      <GridDisplayHeader display={display} />
       <div className="sales_grid_layout">
-        {isLoading ? (
-          <GridLoader />
-        ) : (
-          <GridLayout data={data} isLoading={isLoading} error={error} />
-        )}
+        <RenderData
+          display={display}
+          data={data}
+          error={error}
+          isLoading={isLoading}
+        />
       </div>
     </SalesContainer>
   );

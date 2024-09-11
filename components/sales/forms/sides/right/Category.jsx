@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 import { FaPlus } from "react-icons/fa6";
 import FormSectionHeader from "../../FormSectionHeader";
 import { FaQuestionCircle } from "react-icons/fa";
 import { Tooltip } from "antd";
+import { capitalizeFirstLetters } from "@/helpers/sanitizeText";
+import { toast } from "react-toastify";
 
-const Category = () => {
+const Category = ({ setData }) => {
   const [categories, setCategories] = useState([
     { id: 1, isCustom: false, value: "Medicine and Health" },
   ]);
@@ -30,11 +32,23 @@ const Category = () => {
   ];
 
   const handleCategoryChange = (index, value) => {
-    setCategories((prev) =>
-      prev.map((cat, i) =>
-        i === index ? { ...cat, value, isCustom: false } : cat
-      )
-    );
+    setCategories((prev) => {
+      const isDuplicate = prev.some((cat) => cat.value === value);
+
+      if (isDuplicate) {
+        toast.error("Category already exist", {
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+        return prev;
+      }
+
+      return prev.map((cat, i) => (i === index ? { ...cat, value } : cat));
+    });
   };
 
   const handleCustomChange = (index, value) => {
@@ -55,7 +69,15 @@ const Category = () => {
   const removeCategoryField = (id) => {
     setCategories((prev) => prev.filter((cat) => cat.id !== id));
   };
+
   const [showFull, setShowFull] = useState(false);
+
+  useEffect(() => {
+    setData((prev) => ({
+      ...prev,
+      productCategory: categories.map((e) => e.value),
+    }));
+  }, [categories]);
 
   return (
     <div
@@ -82,8 +104,8 @@ const Category = () => {
             {category.isCustom ? (
               <input
                 type="text"
-                value={category.value}
-                onChange={(e) => handleCustomChange(index, e.target.value)}
+                value={capitalizeFirstLetters(category.value)}
+                onChange={(e) => handleCategoryChange(index, e.target.value)}
               />
             ) : (
               <select
@@ -97,14 +119,22 @@ const Category = () => {
                 ))}
               </select>
             )}
-            <button onClick={() => handleCustomChange(index, "")}>
+            <button
+              onClick={(e) => [
+                e.preventDefault(),
+                handleCustomChange(index, ""),
+              ]}
+            >
               {category.isCustom ? "Options" : "Custom"}
             </button>
             {index > 0 && (
               <IoTrashOutline
                 size={18}
                 className="pointer"
-                onClick={() => removeCategoryField(category.id)}
+                onClick={(e) => [
+                  e.preventDefault(),
+                  removeCategoryField(category.id),
+                ]}
               />
             )}
           </div>
@@ -112,7 +142,7 @@ const Category = () => {
       ))}
       <button
         className="flex gap05rem align_center add_new_field"
-        onClick={addCategoryField}
+        onClick={(e) => [e.preventDefault(), addCategoryField()]}
       >
         <FaPlus color="var(--sub_bg)" /> Add New Field
       </button>

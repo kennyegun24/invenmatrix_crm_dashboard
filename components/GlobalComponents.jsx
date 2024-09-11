@@ -32,7 +32,11 @@ export const FieldTitle = ({
       {required && <span style={{ color: "red" }}>*</span>}
     </span>
     {displayBin && (
-      <IoTrashOutline onClick={() => click()} size={18} className="pointer" />
+      <IoTrashOutline
+        onClick={(e) => [e.preventDefault(), click()]}
+        size={18}
+        className="pointer"
+      />
     )}
   </p>
 );

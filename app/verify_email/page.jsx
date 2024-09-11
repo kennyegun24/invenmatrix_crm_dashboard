@@ -115,18 +115,14 @@ const Page = () => {
       throw new Error(error.message);
     }
   };
-  const { data, error, isLoading } = useSWR(
-    "all_folders_and_products",
-    fetcher,
-    {
-      refreshInterval: null,
-      errorRetryInterval: 5000,
-      revalidateIfStale: false,
-      revalidateOnMount: true,
-      revalidateOnFocus: false,
-      errorRetryCount: 1,
-    }
-  );
+  const { data, error, isLoading } = useSWR("verify_email", fetcher, {
+    refreshInterval: null,
+    errorRetryInterval: 5000,
+    revalidateIfStale: false,
+    revalidateOnMount: true,
+    revalidateOnFocus: false,
+    errorRetryCount: 1,
+  });
   return (
     <div className="flex align_center justify_center width100 verify_email_page">
       <div className="flex column align_center justify_center gap1rem verify_email_sub_page">

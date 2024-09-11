@@ -7,6 +7,7 @@ import Toggle from "./Toggle";
 import MobileNav from "./MobileNav";
 import { items } from "@/utils/navs";
 import { usePathname, useRouter } from "next/navigation";
+import OrgLists from "./OrgLists";
 
 const NavBar = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -45,7 +46,7 @@ const NavBar = () => {
           }}
           className="flex justify_center align_center sticky header"
         >
-          AJLCRM
+          <OrgLists />
         </div>
         <Menu
           onClick={handleMenuClick}

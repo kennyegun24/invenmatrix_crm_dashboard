@@ -2,7 +2,7 @@
  * API endpoints responsible for authentication purposes
  * These should always be open for public auth
  */
-export const authApiPrefixes = ["/api/user", "/api/auth"];
+export const authApiPrefixes = ["/api/user", "/api/auth", "/api"];
 
 /**
  * Authentication routes for user authentication.

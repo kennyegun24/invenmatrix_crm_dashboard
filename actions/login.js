@@ -18,6 +18,7 @@ export const login = async (values) => {
       email,
       password,
       redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirect: true,
     });
   } catch (error) {
     if (error instanceof AuthError) {

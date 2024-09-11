@@ -1,9 +1,6 @@
 import React from "react";
 
 const CustomToolkit = ({ payload, active, label }) => {
-  console.log(payload, "payload");
-  console.log(active, "active");
-  console.log(label, "label");
   if (payload && active) {
     return (
       <div>

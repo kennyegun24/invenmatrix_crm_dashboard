@@ -46,7 +46,7 @@ export const POST = async (req, res) => {
           );
         }
         const { password, ...others } = findUser._doc;
-        const expiresIn = 3 * 24 * 60 * 60;
+        const expiresIn = Date.now() + 3 * 24 * 60 * 60 * 1000;
         const access_token = jwt.sign(
           {
             id: findUser._id,
@@ -59,7 +59,7 @@ export const POST = async (req, res) => {
           {
             ...others,
             access_token,
-            expiresIn: Math.floor(Date.now() / 1000) + 60,
+            expiresIn: expiresIn,
           },
           { status: 200 }
         );

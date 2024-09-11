@@ -1,7 +1,7 @@
 .grid_header {
   padding: 1rem 2rem;
   border-bottom: 1px solid var(--light_border);
-  height: 10vh;
+  /* height: 5vh; */
   width: 100%;
   top: 0;
   z-index: 999;

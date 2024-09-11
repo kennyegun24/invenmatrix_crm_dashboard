@@ -5,6 +5,8 @@ import TopNav from "@/components/nav/TopNav";
 import { usePathname } from "next/navigation";
 
 import { createContext, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const HomeContext = createContext();
 
@@ -22,6 +24,7 @@ const HomeProvider = ({ children }) => {
     "/sales",
     "/customer",
     "/verify_email",
+    "/organization",
   ];
 
   const pathname = usePathname();
@@ -41,6 +44,7 @@ const HomeProvider = ({ children }) => {
 
   return (
     <HomeContext.Provider value={{ toggle, collapsed }}>
+      <ToastContainer position="bottom-right" />
       <div className="flex layout">
         {showNavBar && <NavBar />}
         <div className="sub_layout">

@@ -5,7 +5,7 @@ export const generateAllProductsColumns = (products) => {
 
   // Columns that should be visible by default
   const visibleColumns = [
-    "id",
+    "_id",
     "images",
     "sellingPrice",
     "profitMargin",
@@ -41,6 +41,45 @@ export const generateAllProductsColumns = (products) => {
         editable: true,
         headerClassName: "super-app-theme--header super-app-image",
         headerAlign: "center",
+      };
+    }
+
+    if (key === "_id") {
+      return {
+        field: key,
+        headerName: "Id",
+        width: 150,
+        editable: true,
+        headerClassName: "super-app-theme--header",
+        hide: !visibleColumns.includes(key), // Hide columns that are not in visibleColumns
+      };
+    }
+
+    if (key === "variants") {
+      return {
+        renderCell: (params) => {
+          return (
+            <Box
+              sx={{
+                display: "flex",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <p>
+                {params?.formattedValue
+                  ?.map((e) => e?.variantName)
+                  ?.join(", ") || "Variant error"}
+              </p>
+            </Box>
+          );
+        },
+        field: key,
+        headerName: "Variant",
+        width: 150,
+        editable: true,
+        headerClassName: "super-app-theme--header",
+        hide: !visibleColumns.includes(key), // Hide columns that are not in visibleColumns
       };
     }
 

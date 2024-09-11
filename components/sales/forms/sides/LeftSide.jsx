@@ -4,12 +4,12 @@ import PricesForm from "./left/Prices";
 import GeneralInfo from "./left/GeneralInfo";
 import OptionalFields from "./left/OptionalFields";
 
-const LeftSide = () => {
+const LeftSide = ({ setData, userData }) => {
   return (
     <div className="flex column gap1rem">
-      <GeneralInfo />
+      <GeneralInfo setData={setData} />
       <PricesForm />
-      <OptionalFields />
+      <OptionalFields setData={setData} userData={userData} />
     </div>
   );
 };

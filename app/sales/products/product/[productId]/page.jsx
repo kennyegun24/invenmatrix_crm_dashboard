@@ -4,13 +4,15 @@ import { SalesContainer } from "@/components/GlobalComponents";
 import React, { useState } from "react";
 import "./page.css";
 import Image from "next/image";
-import { products } from "@/utils/prods_data";
 import { TextField } from "@mui/material";
 import { Input, Button } from "antd";
 import EditDrawer from "@/components/sales/product/EditProduct";
 import AddToOrdered from "@/components/sales/AddToOrdered";
 import GridMainHeader from "@/components/grid/GridMainHeader";
 import { formStyles } from "@/components/styles";
+import useSWR from "swr";
+import { useSession } from "next-auth/react";
+import { getUserSession } from "@/libs/getUserSession";
 
 const CustomButton = ({ click, text }) => {
   const buttonStyle = {
@@ -40,25 +42,31 @@ const Page = ({ params }) => {
     setIsModalOpen(true);
   };
   const { productId } = params;
-  const product = products.find((e) => e.id === productId);
-  const { images } = product;
-
-  const variants = [
-    {
-      size: 12,
-      color: "blue",
-    },
-    {
-      size: 12,
-      color: "green",
-      material: "wood",
-    },
-  ];
+  const fetcher = async () => {
+    const { user } = await getUserSession();
+    const fetchData = await fetch(
+      `http://localhost:3000/api/products/findOne?organizationId=${user?.organization?.value}&productId=${productId}`
+      // {
+      //   method: "GET",
+      //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGEyYTNlMzI5YjRhNGEwMjJmOTJkZiIsImlhdCI6MTcyNTYwMjg3NiwiZXhwIjoxNzI1ODYyMDc2fQ.MR5hRWvlHTwyNFH4JPTL44vP46N8herK32cM8n6wGNA`,
+      // }
+    );
+    const data = await fetchData.json();
+    return data?.product;
+  };
+  const { data, error, isLoading } = useSWR("get_product", fetcher, {
+    refreshInterval: null,
+    errorRetryInterval: 5000,
+    revalidateIfStale: false,
+    revalidateOnMount: true,
+    revalidateOnFocus: false,
+    errorRetryCount: 1,
+  });
 
   return (
     <SalesContainer>
       <GridMainHeader
-        text={"Product name"}
+        text={data?.productName}
         first_click={showModal}
         first_btn_text={"Add to Ordered"}
         second_btn_text={"New Bundle"}
@@ -70,18 +78,19 @@ const Page = ({ params }) => {
               <section className="flex column gap2rem">
                 <div className="flex gap05rem">
                   <TextField
-                    value={"Product Name"}
+                    value={data?.productName}
                     id="outlined-basic"
-                    label="Product Name"
+                    placeholder="Product Name"
                     variant="outlined"
                     disabled
                     sx={formStyles}
                   />
 
                   <TextField
-                    value={"Category"}
+                    value={data?.productCategory?.join(", ")}
                     id="outlined-basic"
-                    label="Category"
+                    // placeholder="Category"
+                    placeholder="Category"
                     variant="outlined"
                     disabled
                     sx={formStyles}
@@ -89,18 +98,18 @@ const Page = ({ params }) => {
                 </div>
                 <div className="flex gap05rem">
                   <TextField
-                    value={"Selling Price"}
+                    value={data?.sellingPrice}
                     id="outlined-basic"
-                    label="Selling Price"
+                    placeholder="Selling Price"
                     variant="outlined"
                     disabled
                     sx={formStyles}
                   />
 
                   <TextField
-                    value={"Stock Level"}
+                    value={data?.stockLevel}
                     id="outlined-basic"
-                    label="Stock Level"
+                    placeholder="Stock Level"
                     variant="outlined"
                     disabled
                     sx={formStyles}
@@ -108,25 +117,25 @@ const Page = ({ params }) => {
                 </div>
                 <div className="flex gap05rem">
                   <TextField
-                    value={"Shipping Cost"}
+                    value={data?.shippingCost}
                     id="outlined-basic"
-                    label="Shipping Cost"
+                    placeholder="Shipping Cost"
                     variant="outlined"
                     disabled
                     sx={{ ...formStyles, width: "24%" }}
                   />
                   <TextField
-                    value={"Shipping Time"}
+                    value={data?.shippingTime}
                     id="outlined-basic"
-                    label="Shipping Time"
+                    placeholder="Shipping Time"
                     variant="outlined"
                     disabled
                     sx={{ ...formStyles, width: "24%" }}
                   />
                   <TextField
-                    value={"Supplier Contact"}
+                    value={data?.supplierContact}
                     id="outlined-basic"
-                    label="Supplier Contact"
+                    placeholder="Supplier Contact"
                     variant="outlined"
                     disabled
                     sx={{ ...formStyles, width: "24%" }}
@@ -134,7 +143,7 @@ const Page = ({ params }) => {
                 </div>
               </section>
               <div className="flex column gap25rem">
-                <BarcodeComponent text={product.barcode} />
+                <BarcodeComponent text={data?.barcode} />
                 <Input.TextArea
                   rows={4}
                   maxLength={6}
@@ -146,12 +155,12 @@ const Page = ({ params }) => {
                       color: "red",
                     },
                   }}
-                  value={"This is value"}
+                  value={data?.productDescription}
                   disabled
                 />
                 <ol className="flex gap05rem wrap column">
                   <h3 style={{ fontSize: 16 }}>Product variants:</h3>
-                  {variants.map((variant, index) => (
+                  {data?.variants.map((variant, index) => (
                     <li
                       key={index}
                       style={{ marginLeft: "2rem", fontSize: 14 }}
@@ -170,11 +179,17 @@ const Page = ({ params }) => {
             </div>
             <div className="product_details_image_div flex column justify_between">
               <div className="product_details_image flex justify_center">
-                <Image src={images[currentImageIndex]} />
+                <Image
+                  width={100}
+                  height={100}
+                  src={data?.images[currentImageIndex]}
+                />
               </div>
               <div className="product_details_images flex gap05rem align_center">
-                {images?.map((image, _) => (
+                {data?.images?.map((image, _) => (
                   <Image
+                    width={50}
+                    height={50}
                     src={image}
                     key={_}
                     className={`pointer ${
@@ -190,7 +205,7 @@ const Page = ({ params }) => {
       </div>
       <EditDrawer open={open} setOpen={setOpen} />
       <AddToOrdered
-        item={product}
+        item={data}
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
       />

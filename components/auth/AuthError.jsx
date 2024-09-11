@@ -1,7 +1,6 @@
 import React from "react";
 import { LuAlertTriangle } from "react-icons/lu";
 const AuthError = ({ errMessage }) => {
-  console.log(errMessage);
   if (!errMessage) {
     return null;
   }

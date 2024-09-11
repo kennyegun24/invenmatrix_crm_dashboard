@@ -53,8 +53,12 @@ const products = new Schema(
         },
       },
     ],
+    customFields: {
+      type: SchemaTypes.Mixed,
+      default: {},
+    },
   },
-  { timestamps: true }
+  { timestamps: true, strict: false }
 );
 
 const productSchema =

@@ -1,9 +1,13 @@
 .add_product_left {
   width: 60%;
+  /* background: green; */
+  /* height: 50vh; */
 }
 
 .add_product_right {
   width: 40%;
+  /* background: blue; */
+  /* height: 50vh; */
 }
 
 .form_section_header {
@@ -11,4 +15,9 @@
   padding: 1.2rem 1rem;
   font-size: 0.8rem;
   border-radius: 0.4rem;
+}
+
+.add_product_main_sub_page_container {
+  width: 100%;
+  background: red;
 }
