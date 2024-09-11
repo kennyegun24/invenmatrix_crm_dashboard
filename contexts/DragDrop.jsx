@@ -5,6 +5,7 @@ export const DragDropContext = createContext();
 
 const DragDropPovider = ({ children }) => {
   const [images, setImages] = useState([]);
+  const [selectedImages, setSelectedImages] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef();
   const selectFiles = () => {
@@ -15,6 +16,7 @@ const DragDropPovider = ({ children }) => {
     if (files?.length === 0) return;
     const remainingSlots = 5 - images.length;
     const filesToUpload = Array.from(files).slice(0, remainingSlots);
+    setSelectedImages(filesToUpload);
     const newImages = filesToUpload.reduce((acc, file) => {
       if (
         file.type.split("/")[0] === "image" &&
@@ -38,6 +40,7 @@ const DragDropPovider = ({ children }) => {
   const dragLeave = (e) => {
     e.preventDefault();
     setIsDragging(false);
+    setSelectedImages([]);
   };
   const drop = (e) => {
     e.preventDefault();
@@ -46,6 +49,8 @@ const DragDropPovider = ({ children }) => {
     if (files?.length === 0) return;
     const remainingSlots = 5 - images.length;
     const filesToUpload = Array.from(files).slice(0, remainingSlots);
+    console.log(filesToUpload);
+    setSelectedImages(filesToUpload);
     const newImages = filesToUpload.reduce((acc, file) => {
       if (
         file.type.split("/")[0] === "image" &&
@@ -62,7 +67,14 @@ const DragDropPovider = ({ children }) => {
   };
   return (
     <DragDropContext.Provider
-      value={{ images, isDragging, fileInputRef, selectFiles, onFileSelect }}
+      value={{
+        images,
+        isDragging,
+        fileInputRef,
+        selectedImages,
+        selectFiles,
+        onFileSelect,
+      }}
     >
       <div onDragOver={dragOver} onDragLeave={dragLeave} onDrop={drop}>
         {/* {isDragging && (
