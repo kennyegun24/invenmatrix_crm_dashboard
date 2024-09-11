@@ -10,7 +10,7 @@ import { Button } from "antd";
 import { calculateProfitMargin } from "@/components/sales/forms/sides/left/pricesHelper";
 import { restructureProductData } from "@/helpers/restructureProductsFormat";
 
-const page = () => {
+const Page = () => {
   const folderId = useSearchParams().get("folderId");
   const session = useSession();
   const [userData, setUserData] = useState({
@@ -94,4 +94,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
