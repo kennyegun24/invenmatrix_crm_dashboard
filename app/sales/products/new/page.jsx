@@ -5,7 +5,6 @@ import AddProductForm from "@/components/sales/forms/AddProduct";
 import React, { useContext, useState } from "react";
 import "./style.css";
 import { useSearchParams } from "next/navigation";
-import { useSession } from "next-auth/react";
 import { Button } from "antd";
 import { calculateProfitMargin } from "@/components/sales/forms/sides/left/pricesHelper";
 import { restructureProductData } from "@/helpers/restructureProductsFormat";
@@ -14,10 +13,10 @@ import { DragDropContext } from "@/contexts/DragDrop";
 import Resizer from "react-image-file-resizer";
 import { createAxios } from "@/axios";
 import { toastError, toastSuccess } from "@/libs/toast";
+import { getUserSession } from "@/libs/getUserSession";
 
 const Page = () => {
   const folderId = useSearchParams().get("folderId");
-  const session = useSession();
   const [userData, setUserData] = useState({
     images: [],
     sellingPrice: null,
@@ -41,12 +40,13 @@ const Page = () => {
   const createProduct = async (e) => {
     e.preventDefault();
     try {
-      const access_token = await session?.data?.user?.access_token;
-      const userId = await session?.data?.user?.id;
+      const { user } = await getUserSession();
+      const access_token = await user?.access_token;
+      const userId = user?.id;
       const imagesUrl = await uploadImages(selectedImages, Resizer);
       const req = await createAxios(access_token).post("/products/new", {
         folderId: folderId?.trim()?.length > 21 ? folderId : null,
-        organizationId: "66ddf0cad0d31ab0b903bc7d",
+        organizationId: user?.organization?.value,
         userId: userId,
         products: restructureProductData({
           ...userData,

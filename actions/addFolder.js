@@ -14,7 +14,7 @@ export const createFolderAction = async (folderName) => {
       },
       body: JSON.stringify({
         userId: id,
-        organizationId: "66ddf0cad0d31ab0b903bc7d",
+        organizationId: organizationId,
         folderName,
       }),
     });
@@ -41,7 +41,7 @@ export const createSubFolderAction = async (folderName, folderId) => {
         },
         body: JSON.stringify({
           userId: id,
-          organizationId: "66ddf0cad0d31ab0b903bc7d",
+          organizationId: organizationId,
           folderName,
           folderId: folderId,
         }),
