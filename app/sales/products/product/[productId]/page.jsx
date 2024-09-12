@@ -32,6 +32,7 @@ const CustomButton = ({ click, text }) => {
 };
 
 const Page = ({ params }) => {
+  const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,7 +46,7 @@ const Page = ({ params }) => {
   const fetcher = async () => {
     const { user } = await getUserSession();
     const fetchData = await fetch(
-      `http://localhost:3000/api/products/findOne?organizationId=${user?.organization?.value}&productId=${productId}`
+      `${BACKEND_API_ROUTE}/products/findOne?organizationId=${user?.organization?.value}&productId=${productId}`
       // {
       //   method: "GET",
       //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGEyYTNlMzI5YjRhNGEwMjJmOTJkZiIsImlhdCI6MTcyNTYwMjg3NiwiZXhwIjoxNzI1ODYyMDc2fQ.MR5hRWvlHTwyNFH4JPTL44vP46N8herK32cM8n6wGNA`,

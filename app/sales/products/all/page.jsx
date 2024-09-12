@@ -8,9 +8,7 @@ import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridHeaderControls from "@/components/grid/GridHeaderControls";
 import GridMainHeader from "@/components/grid/GridMainHeader";
 import PageLayout from "./PageLayout";
-import { products } from "@/utils/prods_data";
 import { generateAllProductsColumns } from "@/helpers/tables/productsTablesHelper";
-import useSWR from "swr";
 import { fetchTableProducts } from "@/actions/fetchProductsTableData";
 
 const Page = () => {

@@ -41,7 +41,7 @@ export default {
       async authorize(credentials) {
         const validatedFields = signInSchema.safeParse(credentials);
         if (validatedFields.success) {
-          const res = await fetch("http://localhost:3000/api/user/register", {
+          const res = await fetch(`${BACKEND_API_ROUTE}/user/register`, {
             method: "POST",
             body: JSON.stringify({
               password: credentials?.password,

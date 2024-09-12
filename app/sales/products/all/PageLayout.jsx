@@ -7,11 +7,12 @@ import { getUserSession } from "@/libs/getUserSession";
 import React from "react";
 import useSWR from "swr";
 
+const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
 const PageLayout = ({ display }) => {
   const fetcher = async () => {
-    const user = await getUserSession();
+    const { user } = await getUserSession();
     const fetchData = await fetch(
-      `http://localhost:3000/api/folder/all?organizationId=${user?.organization?.value}`
+      `${BACKEND_API_ROUTE}/folder/all?organizationId=${user?.organization?.value}`
       // {
       //   method: "GET",
       //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGEyYTNlMzI5YjRhNGEwMjJmOTJkZiIsImlhdCI6MTcyNTYwMjg3NiwiZXhwIjoxNzI1ODYyMDc2fQ.MR5hRWvlHTwyNFH4JPTL44vP46N8herK32cM8n6wGNA`,

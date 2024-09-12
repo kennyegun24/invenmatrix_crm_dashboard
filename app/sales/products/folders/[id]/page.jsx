@@ -23,13 +23,14 @@ const RenderData = ({ isLoading, error, data, display }) => {
 };
 
 const Page = ({ params }) => {
+  const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
   const display = useSearchParams().get("display");
   const { id } = params;
   const router = useRouter();
   const fetcher = async () => {
     const { user } = await getUserSession();
     const fetchData = await fetch(
-      `http://localhost:3000/api/folder/sub_folder?organizationId=${user?.organization?.value}&folderId=${id}`
+      `${BACKEND_API_ROUTE}/folder/sub_folder?organizationId=${user?.organization?.value}&folderId=${id}`
     );
     const data = await fetchData.json();
     return {
