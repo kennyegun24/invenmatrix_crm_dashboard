@@ -31,10 +31,7 @@ const Page = () => {
     supplierContact: null,
     variants: [],
     sellingPrice: null,
-    images: [
-      "https://res.cloudinary.com/drfqge33t/image/upload/v1713945603/lyhbrylko3msfdforqep.png",
-      "https://res.cloudinary.com/drfqge33t/image/upload/v1713979643/qm2cygozopmur9ijrxet.png",
-    ],
+    images: [],
   });
   const { selectedImages } = useContext(DragDropContext);
   const createProduct = async (e) => {
