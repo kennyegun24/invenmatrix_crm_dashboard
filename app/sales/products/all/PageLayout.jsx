@@ -3,14 +3,15 @@ import Empty from "@/components/Empty";
 import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridLoader from "@/components/loaders/gridLoader";
 import GridLayout from "@/components/sales/grid/GridLayout";
+import { getUserSession } from "@/libs/getUserSession";
 import React from "react";
 import useSWR from "swr";
 
 const PageLayout = ({ display }) => {
   const fetcher = async () => {
-    console.log("fetching start");
+    const user = await getUserSession();
     const fetchData = await fetch(
-      `http://localhost:3000/api/folder/all?organizationId=66ddf0cad0d31ab0b903bc7d`
+      `http://localhost:3000/api/folder/all?organizationId=${user?.organization?.value}`
       // {
       //   method: "GET",
       //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGEyYTNlMzI5YjRhNGEwMjJmOTJkZiIsImlhdCI6MTcyNTYwMjg3NiwiZXhwIjoxNzI1ODYyMDc2fQ.MR5hRWvlHTwyNFH4JPTL44vP46N8herK32cM8n6wGNA`,

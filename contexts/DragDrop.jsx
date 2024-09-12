@@ -49,7 +49,6 @@ const DragDropPovider = ({ children }) => {
     if (files?.length === 0) return;
     const remainingSlots = 5 - images.length;
     const filesToUpload = Array.from(files).slice(0, remainingSlots);
-    console.log(filesToUpload);
     setSelectedImages(filesToUpload);
     const newImages = filesToUpload.reduce((acc, file) => {
       if (

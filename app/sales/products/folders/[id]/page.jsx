@@ -8,6 +8,7 @@ import GridLayout from "@/components/sales/grid/GridLayout";
 import useSWR from "swr";
 import GridLoader from "@/components/loaders/gridLoader";
 import Empty from "@/components/Empty";
+import { getUserSession } from "@/libs/getUserSession";
 
 const RenderData = ({ isLoading, error, data, display }) => {
   if (isLoading) return <GridLoader />;
@@ -26,8 +27,9 @@ const Page = ({ params }) => {
   const { id } = params;
   const router = useRouter();
   const fetcher = async () => {
+    const { user } = await getUserSession();
     const fetchData = await fetch(
-      `http://localhost:3000/api/folder/sub_folder?organizationId=66ddf0cad0d31ab0b903bc7d&folderId=${id}`
+      `http://localhost:3000/api/folder/sub_folder?organizationId=${user?.organization?.value}&folderId=${id}`
     );
     const data = await fetchData.json();
     return {

@@ -44,8 +44,6 @@ const Page = () => {
       const access_token = await session?.data?.user?.access_token;
       const userId = await session?.data?.user?.id;
       const imagesUrl = await uploadImages(selectedImages, Resizer);
-      console.log(imagesUrl);
-      // console.log(imagesUrl);
       const req = await createAxios(access_token).post("/products/new", {
         folderId: folderId?.trim()?.length > 21 ? folderId : null,
         organizationId: "66ddf0cad0d31ab0b903bc7d",

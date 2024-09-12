@@ -12,7 +12,6 @@ export const handleExportXML = (apiRef, getRowsToExport) => {
   const rowData = getRowData({ apiRef, rowIds });
   const columns = getColumns({ apiRef });
   const mergedData = mergeColumnsAndRows(rowData, columns);
-  // console.log(JSON.stringify(mergedData));
   var x2js = new X2JS();
   var doc = x2js.js2xml(mergedData);
   const xml = vkbeautify.xml(doc);
@@ -23,5 +22,4 @@ export const handleExportXML = (apiRef, getRowsToExport) => {
   document.body.appendChild(a);
   a.click();
   a.remove();
-  // console.log(xml);
 };

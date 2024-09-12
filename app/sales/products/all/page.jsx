@@ -19,41 +19,6 @@ const Page = () => {
   const display = searchParams.get("display");
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState(null);
-  // const fetcher = async () => {
-  //   console.log("fetch table data");
-  //   const fetchData = await fetch(
-  //     `http://localhost:3000/api/products/all?organizationId=66ddf0cad0d31ab0b903bc7d`
-  //     // {
-  //     //   method: "GET",
-  //     //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGEyYTNlMzI5YjRhNGEwMjJmOTJkZiIsImlhdCI6MTcyNTYwMjg3NiwiZXhwIjoxNzI1ODYyMDc2fQ.MR5hRWvlHTwyNFH4JPTL44vP46N8herK32cM8n6wGNA`,
-  //     // }
-  //   );
-  //   const data = await fetchData.json();
-  //   // console.log(data?.products);
-  //   const mergedProducts = data?.products.map((product) => ({
-  //     ...product,
-  //     ...product.customFields,
-  //     customFields: undefined,
-  //   }));
-
-  //   return {
-  //     products: mergedProducts,
-  //   };
-  // };
-  // console.log(display);
-  // const { data, error, isLoading } = useSWR(
-  //   "all_products_table",
-
-  //   display === "table" && fetcher,
-  //   {
-  //     refreshInterval: null,
-  //     errorRetryInterval: 5000,
-  //     revalidateIfStale: false,
-  //     revalidateOnMount: true,
-  //     revalidateOnFocus: false,
-  //     errorRetryCount: 1,
-  //   }
-  // );
 
   const fetchData = async () => {
     try {
@@ -70,8 +35,6 @@ const Page = () => {
     display === "table" && fetchData();
   }, [display]);
 
-  console.log(data);
-  console.log(isLoading);
   return (
     <SalesContainer>
       {display == "table" ? (
@@ -81,7 +44,6 @@ const Page = () => {
             !isLoading && data
               ? generateAllProductsColumns(data?.products)
               : [];
-          // console.log(columns);
           return (
             <Suspense fallback={"Loading..."}>
               <DashboardHeader

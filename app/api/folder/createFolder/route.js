@@ -16,9 +16,6 @@ export const POST = async (req, res) => {
     const body = await req.json();
     const { folderName, organizationId, userId } = body;
     const verify = await verifyTokenAndAuthz(req, userId);
-    const header = req.headers?.get("authorization");
-    console.log(header);
-    console.log(body);
 
     // Check if the user is valid
     const check = checkIfUserIsValid(verify, userId);

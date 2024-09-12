@@ -32,7 +32,6 @@ export const uploadImages = async (selectedImages, Resizer) => {
                 formData
               );
               const imageUrl = postCloudinary.data.secure_url;
-              console.log(imageUrl);
               uploadedImageUrls.push(imageUrl);
               resolve();
             } catch (error) {
@@ -49,6 +48,5 @@ export const uploadImages = async (selectedImages, Resizer) => {
   });
 
   await Promise.all(promises);
-  console.log(uploadedImageUrls, "uploadedImages");
   return uploadedImageUrls;
 };

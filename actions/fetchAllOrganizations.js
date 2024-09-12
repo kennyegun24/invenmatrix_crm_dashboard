@@ -34,7 +34,7 @@ export const createOrganizationAction = async (organizationName) => {
     const organizationId = session?.user?.organizationId;
     const req = await createAxios(token).post(`/organization/create`, {
       userId: id,
-      organizationId: "66ddf0cad0d31ab0b903bc7d",
+      organizationId: organizationId,
       organizationName,
     });
     const data = await req.data;
