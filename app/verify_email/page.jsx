@@ -9,7 +9,7 @@ import Confetti from "react-confetti";
 import error from "@/public/error.png";
 import Image from "next/image";
 import useSWR from "swr";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 const StillVerifying = () => {
   return (
     <>
