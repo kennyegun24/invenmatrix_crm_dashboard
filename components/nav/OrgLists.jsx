@@ -4,9 +4,11 @@ import { fetchOrganizationsList } from "@/actions/fetchAllOrganizations";
 import { toastError } from "@/libs/toast";
 import { updateUserSession } from "@/actions/updateSession";
 import { getUserSession } from "@/libs/getUserSession";
+import { useRouter } from "next/navigation";
 
 const OrgLists = () => {
   const [userSession, setUserSession] = useState(null);
+  const router = useRouter();
   const [initValue, setInitValue] = useState([
     { value: "Value", label: "Label" },
   ]);
@@ -47,7 +49,12 @@ const OrgLists = () => {
       label: _.label,
       value: value,
     };
-    await updateUserSession(organization);
+    try {
+      await updateUserSession(organization);
+      console.log("updated");
+      // router.push();
+      document.location.reload();
+    } catch (error) {}
   };
 
   useEffect(() => {
