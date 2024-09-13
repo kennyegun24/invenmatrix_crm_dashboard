@@ -9,6 +9,7 @@ import ChatbotProvider from "@/contexts/ChatBot";
 import SessionWrapper from "@/contexts/Session";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
+import RequestSpinnerProvider from "@/contexts/RequestSpinner";
 // import {Appr}
 // import { DataGrid } from "@mui/x-data-grid";
 // import Barcode from "react-barcode";
@@ -33,9 +34,11 @@ export default async function RootLayout({ children }) {
           <AntdRegistry>
             <ThemeProvider>
               <HomeProvider>
-                <DragDropPovider>
-                  <ChatbotProvider>{children}</ChatbotProvider>
-                </DragDropPovider>
+                <RequestSpinnerProvider>
+                  <DragDropPovider>
+                    <ChatbotProvider>{children}</ChatbotProvider>
+                  </DragDropPovider>
+                </RequestSpinnerProvider>
               </HomeProvider>
             </ThemeProvider>
           </AntdRegistry>

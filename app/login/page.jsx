@@ -1,21 +1,25 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useTransition } from "react";
+import React, { useContext, useState, useTransition } from "react";
 import RightSide from "@/components/auth/RightSide";
 import GoogleBtn, { AuthButton } from "@/components/auth/GoogleBtn";
 import { login } from "@/actions/login";
 import AuthError from "@/components/auth/AuthError";
+import { RequestSpinnerContext } from "@/contexts/RequestSpinner";
 
 const Page = () => {
   const [userInput, setUserInput] = useState({ password: "", email: "" });
   const [errMessage, setErrMessage] = useState(null);
   const [isPending, startTransition] = useTransition();
+  const { setRequested } = useContext(RequestSpinnerContext);
   const loginUser = async (e) => {
+    setRequested(true);
     e.preventDefault();
     setErrMessage(null);
     startTransition(() => {
       login(userInput).then((err) => {
         err?.error && setErrMessage(JSON.parse(err?.error));
+        setRequested(false);
       });
     });
   };

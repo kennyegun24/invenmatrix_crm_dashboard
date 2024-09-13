@@ -14,6 +14,7 @@ import Resizer from "react-image-file-resizer";
 import { createAxios } from "@/axios";
 import { toastError, toastSuccess } from "@/libs/toast";
 import { getUserSession } from "@/libs/getUserSession";
+import { RequestSpinnerContext } from "@/contexts/RequestSpinner";
 
 const Page = () => {
   const folderId = useSearchParams().get("folderId");
@@ -34,7 +35,9 @@ const Page = () => {
     images: [],
   });
   const { selectedImages } = useContext(DragDropContext);
+  const { setRequested } = useContext(RequestSpinnerContext);
   const createProduct = async (e) => {
+    setRequested(true);
     e.preventDefault();
     try {
       const { user } = await getUserSession();
@@ -56,8 +59,10 @@ const Page = () => {
         }),
       });
       const data = await req.data;
+      setRequested(false);
       toastSuccess("Product successfully uploaded");
     } catch (error) {
+      setRequested(false);
       toastError("Product not uploaded");
       console.log(error);
     }
