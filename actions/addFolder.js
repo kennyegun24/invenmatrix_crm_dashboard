@@ -7,7 +7,7 @@ export const createFolderAction = async (folderName) => {
   try {
     const token = await session?.user?.access_token;
     const id = session?.user?.id;
-    const organizationId = session?.user?.organizationId;
+    const organizationId = session?.user?.organization?.value;
     const req = await fetch(`${BACKEND_API_ROUTE}/folder/createFolder`, {
       method: "POST",
       headers: {
