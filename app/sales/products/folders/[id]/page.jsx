@@ -3,7 +3,7 @@ import { SalesContainer } from "@/components/GlobalComponents";
 import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridMainHeader from "@/components/grid/GridMainHeader";
 import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import GridLayout from "@/components/sales/grid/GridLayout";
 import useSWR from "swr";
 import GridLoader from "@/components/loaders/gridLoader";
@@ -11,13 +11,27 @@ import Empty from "@/components/Empty";
 import { getUserSession } from "@/libs/getUserSession";
 
 const RenderData = ({ isLoading, error, data, display }) => {
+  const [searchInput, setSearchInput] = useState("");
   if (isLoading) return <GridLoader />;
   if (data?.folders?.length === 0 && data?.items?.length === 0)
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader display={display} />
-      <GridLayout data={data} isLoading={isLoading} error={error} />
+      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
+      <GridLayout
+        searchInput={searchInput}
+        data={data}
+        folder={data?.folders?.filter((e) =>
+          searchInput
+            ? e?.folderName?.toLowerCase().includes(searchInput?.toLowerCase())
+            : []
+        )}
+        products={data?.items?.filter((e) =>
+          searchInput
+            ? e?.productName?.toLowerCase().includes(searchInput?.toLowerCase())
+            : []
+        )}
+      />
     </div>
   );
 };

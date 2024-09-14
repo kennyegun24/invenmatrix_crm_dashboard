@@ -4,19 +4,16 @@ import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridLoader from "@/components/loaders/gridLoader";
 import GridLayout from "@/components/sales/grid/GridLayout";
 import { getUserSession } from "@/libs/getUserSession";
-import React from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 
 const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
 const PageLayout = ({ display }) => {
+  const [searchInput, setSearchInput] = useState("");
   const fetcher = async () => {
     const { user } = await getUserSession();
     const fetchData = await fetch(
       `${BACKEND_API_ROUTE}/folder/all?organizationId=${user?.organization?.value}`
-      // {
-      //   method: "GET",
-      //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGEyYTNlMzI5YjRhNGEwMjJmOTJkZiIsImlhdCI6MTcyNTYwMjg3NiwiZXhwIjoxNzI1ODYyMDc2fQ.MR5hRWvlHTwyNFH4JPTL44vP46N8herK32cM8n6wGNA`,
-      // }
     );
     const data = await fetchData.json();
     return {
@@ -42,8 +39,20 @@ const PageLayout = ({ display }) => {
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader display={display} />
-      <GridLayout data={data} isLoading={isLoading} error={error} />
+      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
+      <GridLayout
+        folder={data?.folders?.filter((e) =>
+          searchInput
+            ? e?.folderName?.toLowerCase().includes(searchInput?.toLowerCase())
+            : []
+        )}
+        products={data?.items?.filter((e) =>
+          searchInput
+            ? e?.productName?.toLowerCase().includes(searchInput?.toLowerCase())
+            : []
+        )}
+        searchInput={searchInput}
+      />
     </div>
   );
 };

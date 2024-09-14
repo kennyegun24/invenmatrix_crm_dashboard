@@ -5,13 +5,18 @@ import GridHeaderControls from "./GridHeaderControls";
 import { MdOutlineMenuOpen } from "react-icons/md";
 import GridMenu from "./GridMenu";
 
-const GridDisplayHeader = ({ text, display }) => {
+const GridDisplayHeader = ({ text, display, setSearchInput }) => {
   return (
     <div className="grid_display_header_component flex gap1rem column">
       <section className="sales_sub_header_container flex justify_between">
         <div className="flex align_center gap1rem">
           <section className="sales_search flex align_center">
-            <input type="search" name="" id="" />
+            <input
+              onChange={(e) => setSearchInput(e.target.value)}
+              type="search"
+              name=""
+              id=""
+            />
             <div className="sales_search_icon pointer flex align_center justify_center">
               <FaSearch />
             </div>
