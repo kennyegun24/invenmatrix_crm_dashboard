@@ -80,6 +80,18 @@
   }
 }
 
+.grid_filter_options_component {
+  width: 250px;
+  .grid_filter_options_sub_component {
+    overflow-y: auto;
+    max-height: 500px;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+  }
+}
+
 .green_text {
   color: var(--green_color);
 }

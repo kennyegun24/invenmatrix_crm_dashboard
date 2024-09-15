@@ -9,28 +9,34 @@ import useSWR from "swr";
 import GridLoader from "@/components/loaders/gridLoader";
 import Empty from "@/components/Empty";
 import { getUserSession } from "@/libs/getUserSession";
+import { filterProducts } from "@/components/grid/sortOptions";
 
 const RenderData = ({ isLoading, error, data, display }) => {
   const [searchInput, setSearchInput] = useState("");
+  const [filterOptions, setFilterOptions] = useState({
+    createdAt: null,
+    updatedAt: null,
+    alphabetical: null,
+    productCount: null,
+    folderCount: null,
+  });
+
   if (isLoading) return <GridLoader />;
   if (data?.folders?.length === 0 && data?.items?.length === 0)
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
+      <GridDisplayHeader
+        filterOptions={filterOptions}
+        setFilterOptions={setFilterOptions}
+        setSearchInput={setSearchInput}
+        display={display}
+      />
       <GridLayout
         searchInput={searchInput}
         data={data}
-        folder={data?.folders?.filter((e) =>
-          searchInput
-            ? e?.folderName?.toLowerCase().includes(searchInput?.toLowerCase())
-            : []
-        )}
-        products={data?.items?.filter((e) =>
-          searchInput
-            ? e?.productName?.toLowerCase().includes(searchInput?.toLowerCase())
-            : []
-        )}
+        folder={filterProducts(data?.folders, filterOptions)}
+        products={filterProducts(data?.items, filterOptions)}
       />
     </div>
   );

@@ -30,7 +30,7 @@ export const GET = async (req) => {
           organization: orgObjectId,
           parentFolders: { $elemMatch: { $eq: folderObjectId } },
         })
-        .select("folderName products subfolders")
+        .select("folderName products subfolders createdAt updatedAt")
         .lean(),
 
       folderSchema.aggregate([
@@ -60,7 +60,7 @@ export const GET = async (req) => {
         _id: { $in: allProductIds },
         organization: orgObjectId,
       })
-      .select("productName sellingPrice images stockLevel")
+      .select("productName sellingPrice images stockLevel createdAt updatedAt")
       .lean();
     return NextResponse.json({
       folders: subfolders,

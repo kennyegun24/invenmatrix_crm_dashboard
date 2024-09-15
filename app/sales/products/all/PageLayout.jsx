@@ -10,6 +10,13 @@ import useSWR from "swr";
 const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
 const PageLayout = ({ display }) => {
   const [searchInput, setSearchInput] = useState("");
+  const [filterOptions, setFilterOptions] = useState({
+    createdAtFilter: null,
+    updatedAtFilter: null,
+    alphabeticalFilter: null,
+    productCountFilter: null,
+    folderCountFilter: null,
+  });
   const fetcher = async () => {
     const { user } = await getUserSession();
     const fetchData = await fetch(
@@ -39,7 +46,12 @@ const PageLayout = ({ display }) => {
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
+      <GridDisplayHeader
+        filterOptions={filterOptions}
+        setFilterOptions={setFilterOptions}
+        setSearchInput={setSearchInput}
+        display={display}
+      />
       <GridLayout
         folder={data?.folders?.filter((e) =>
           searchInput

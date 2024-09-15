@@ -97,6 +97,9 @@ export const ThemeProvider = ({ children }) => {
               optionFontSize: 14,
               optionSelectedColor: "var(--opposite_text)",
             },
+            Radio: {
+              fontSize: 12,
+            },
           },
         }}
       >
