@@ -5,13 +5,7 @@ import GridHeaderControls from "./GridHeaderControls";
 import { MdOutlineMenuOpen } from "react-icons/md";
 import GridMenu from "./GridMenu";
 
-const GridDisplayHeader = ({
-  text,
-  display,
-  setSearchInput,
-  filterOptions,
-  setFilterOptions,
-}) => {
+const GridDisplayHeader = ({ text, display, setSearchInput }) => {
   return (
     <div className="grid_display_header_component flex gap1rem column">
       <section className="sales_sub_header_container flex justify_between">
@@ -34,11 +28,7 @@ const GridDisplayHeader = ({
           </GridMenu>
         </div>
 
-        <GridHeaderControls
-          filterOptions={filterOptions}
-          setFilterOptions={setFilterOptions}
-          display={display}
-        />
+        <GridHeaderControls display={display} />
       </section>
       <section className="sales_sub_header_container flex align_center gap1rem">
         <p>5 Folders</p>

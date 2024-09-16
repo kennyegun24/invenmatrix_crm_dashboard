@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IoGridOutline } from "react-icons/io5";
 import { Button, Popover, Radio, Space } from "antd";
 import { FaFilter, FaTable } from "react-icons/fa6";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { filters } from "./sortOptions";
 
 const App = ({ display }) => {
@@ -64,26 +64,28 @@ const App = ({ display }) => {
   );
 };
 
-const Filter = ({ setFilterOptions, filterOptions }) => {
+const Filter = () => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => setOpen(newOpen);
-
-  const onResetOptions = () => {
-    setFilterOptions({
-      createdAt: null,
-      updatedAt: null,
-      alphabetical: null,
-      productCount: null,
-      folderCount: null,
-    });
-  };
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  console.log(searchParams);
 
   const handleFilterChange = (e) => {
-    setFilterOptions((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const { name, value } = e.target;
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) {
+      params.set(name, value);
+    } else {
+      params.delete(name);
+    }
+    router.push(`?${params.toString()}`);
   };
+
+  const onResetOptions = () => {
+    router.push(window.location.pathname); // Resets to the base URL, removing all query params
+  };
+
   const content = (
     <div className="flex column gap05rem grid_filter_options_component">
       <Button onClick={onResetOptions}>Reset filter</Button>
@@ -96,23 +98,27 @@ const Filter = ({ setFilterOptions, filterOptions }) => {
               <Radio.Group
                 name={option.name}
                 onChange={handleFilterChange}
-                value={filterOptions[option.name]}
+                value={searchParams.get(option.name)}
               >
                 <Space direction="vertical">
-                  {option.options.map((e, _) => (
-                    <Radio
-                      key={_}
-                      value={e.value}
-                      style={{
-                        color:
-                          filterOptions[option.name] === e.value
-                            ? "#1b8ee0"
-                            : "initial",
-                      }}
-                    >
-                      {e.label}
-                    </Radio>
-                  ))}
+                  {option.options.map((e, _) => {
+                    const isChecked = searchParams.get(option.name) === e.value;
+                    console.log(e.value);
+                    return (
+                      <Radio
+                        key={_}
+                        value={e.value}
+                        // checked={searchParams.get(option.name) === e.value}
+                        // checked={e.value === "asc"}
+                        // checked
+                        style={{
+                          color: isChecked ? "#1b8ee0" : "initial",
+                        }}
+                      >
+                        {e.label}
+                      </Radio>
+                    );
+                  })}
                 </Space>
               </Radio.Group>
             </div>
@@ -138,15 +144,10 @@ const Filter = ({ setFilterOptions, filterOptions }) => {
   );
 };
 
-const GridHeaderControls = ({ display, filterOptions, setFilterOptions }) => {
+const GridHeaderControls = ({ display }) => {
   return (
     <section className="flex gap15rem align_center sales_sub_head_controls">
-      {display?.toLowerCase() !== "table" && (
-        <Filter
-          filterOptions={filterOptions}
-          setFilterOptions={setFilterOptions}
-        />
-      )}
+      {display?.toLowerCase() !== "table" && <Filter />}
       <App display={display} />
     </section>
   );

@@ -29,7 +29,7 @@ export const filters = [
   },
   {
     label: "Sort alphabetically",
-    name: "alphabetical",
+    name: "name",
     options: [
       {
         label: "Alphabetical Asc A - Z",
@@ -71,37 +71,42 @@ export const filters = [
   },
 ];
 
-export const filterProducts = (array, filterOptions) => {
-  let arr = [...array];
+// export const filterProducts = (array, filterOptions) => {
+//   let arr = [...array];
 
-  arr.sort((a, b) => {
-    for (const key in filterOptions) {
-      if (filterOptions[key] === null || filterOptions[key] === undefined)
-        continue;
+//   arr.sort((a, b) => {
+//     for (const key in filterOptions) {
+//       if (filterOptions[key] === null || filterOptions[key] === undefined)
+//         continue;
 
-      let result = 0;
+//       let result = 0;
 
-      if (key === "createdAt" || key === "updatedAt") {
-        console.log(new Date(a[key]) - new Date(b[key]));
-        result = new Date(a[key]) - new Date(b[key]);
-      } else if (typeof a[key] === "string") {
-        result = a[key].localeCompare(b[key]);
-      } else {
-        result = a[key] - b[key];
-      }
+//       if (key === "createdAt" || key === "updatedAt") {
+//         result = new Date(a[key]) - new Date(b[key]);
+//       }
+//       if (typeof a[key] === "string") {
+//         result = a[key].localeCompare(b[key]);
+//       } else {
+//         result = a[key] - b[key];
+//       }
 
-      if (filterOptions[key] === "asc") {
-        if (result !== 0) return result;
-      } else if (filterOptions[key] === "desc") {
-        if (result !== 0) return -result;
-      }
-    }
+//       if (filterOptions[key] === "asc") {
+//         if (result !== 0) {
+//           console.log(result);
 
-    return 0;
-  });
-  console.log(arr);
-  return arr;
-};
+//           return result;
+//         }
+//       } else if (filterOptions[key] === "dsc") {
+//         if (result !== 0) {
+//           console.log(-result);
+//           return -result;
+//         }
+//       }
+//     }
+//     return 0;
+//   });
+//   return arr;
+// };
 
 // before the christian era
 // christian era

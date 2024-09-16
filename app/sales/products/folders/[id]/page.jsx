@@ -9,34 +9,20 @@ import useSWR from "swr";
 import GridLoader from "@/components/loaders/gridLoader";
 import Empty from "@/components/Empty";
 import { getUserSession } from "@/libs/getUserSession";
-import { filterProducts } from "@/components/grid/sortOptions";
 
 const RenderData = ({ isLoading, error, data, display }) => {
   const [searchInput, setSearchInput] = useState("");
-  const [filterOptions, setFilterOptions] = useState({
-    createdAt: null,
-    updatedAt: null,
-    alphabetical: null,
-    productCount: null,
-    folderCount: null,
-  });
-
   if (isLoading) return <GridLoader />;
   if (data?.folders?.length === 0 && data?.items?.length === 0)
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader
-        filterOptions={filterOptions}
-        setFilterOptions={setFilterOptions}
-        setSearchInput={setSearchInput}
-        display={display}
-      />
+      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
       <GridLayout
         searchInput={searchInput}
         data={data}
-        folder={filterProducts(data?.folders, filterOptions)}
-        products={filterProducts(data?.items, filterOptions)}
+        folder={data?.folders}
+        products={data?.items}
       />
     </div>
   );
@@ -45,20 +31,71 @@ const RenderData = ({ isLoading, error, data, display }) => {
 const Page = ({ params }) => {
   const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
   const display = useSearchParams().get("display");
+  const createdAt = useSearchParams().get("createdAt");
+  const updatedAt = useSearchParams().get("updatedAt");
+  const name = useSearchParams().get("name");
+  const productCount = useSearchParams().get("productCount");
+  const folderCount = useSearchParams().get("folderCount");
   const { id } = params;
   const router = useRouter();
   const fetcher = async () => {
     const { user } = await getUserSession();
+    const params = new URLSearchParams();
+
+    if (user?.organization?.value) {
+      params.append("organizationId", user.organization.value);
+    }
+    if (id) {
+      params.append("folderId", id);
+    }
+    if (name) {
+      params.append("name", name);
+    }
+    if (createdAt) {
+      params.append("createdAt", createdAt);
+    }
+    if (updatedAt) {
+      params.append("updatedAt", updatedAt);
+    }
+    if (folderCount) {
+      params.append("folderCount", folderCount);
+    }
+    if (productCount) {
+      params.append("productCount", productCount);
+    }
+
     const fetchData = await fetch(
-      `${BACKEND_API_ROUTE}/folder/sub_folder?organizationId=${user?.organization?.value}&folderId=${id}`
+      `${BACKEND_API_ROUTE}/folder/sub_folder?${params.toString()}`
     );
+
+    // const fetchData = await fetch(
+    //   `${BACKEND_API_ROUTE}/folder/sub_folder?organizationId=${
+    //     user?.organization?.value
+    //   }&${
+    //     "folderId=" +
+    //     id +
+    //     "&name=" +
+    //     name +
+    //     "&createdAt=" +
+    //     createdAt +
+    //     "&updatedAt=" +
+    //     updatedAt +
+    //     "&folderCount=" +
+    //     folderCount +
+    //     "&productCount=" +
+    //     productCount
+    //   }`
+    // );
     const data = await fetchData.json();
     return {
       folders: data?.folders,
       items: data.products,
     };
   };
-  const key = id;
+  // const key = id;
+  const key = [id, name, createdAt, updatedAt, folderCount, productCount].join(
+    "|"
+  );
   const { data, error, isLoading } = useSWR(key, fetcher, {
     refreshInterval: null,
     errorRetryInterval: 5000,
