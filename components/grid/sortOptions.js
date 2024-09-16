@@ -55,20 +55,6 @@ export const filters = [
       },
     ],
   },
-  {
-    label: "Folders Count",
-    name: "folderCount",
-    options: [
-      {
-        label: "Ascending",
-        value: "asc",
-      },
-      {
-        label: "Descending",
-        value: "dsc",
-      },
-    ],
-  },
 ];
 
 // export const filterProducts = (array, filterOptions) => {

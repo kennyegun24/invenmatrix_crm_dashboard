@@ -16,7 +16,6 @@ export const GET = async (req) => {
   const updatedAt = query.get("updatedAt");
   const _name = query.get("name");
   const productCount = query.get("productCount");
-  const folderCount = query.get("folderCount");
   if (!folderId) {
     return NextResponse.json(
       { error: "Folder ID is required" },
@@ -42,10 +41,7 @@ export const GET = async (req) => {
       sortedProductData.productName = _name === "asc" ? 1 : -1;
     }
     if (productCount) {
-      sortedData.productCount = productCount === "asc" ? 1 : -1;
-    }
-    if (folderCount) {
-      sortedData.folderCount = folderCount === "asc" ? 1 : -1;
+      sortedProductData.stockLevel = productCount === "asc" ? 1 : -1;
     }
 
     const [subfolders, folderProducts] = await Promise.all([

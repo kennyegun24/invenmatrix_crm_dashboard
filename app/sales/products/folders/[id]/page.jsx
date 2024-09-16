@@ -57,9 +57,6 @@ const Page = ({ params }) => {
     if (updatedAt) {
       params.append("updatedAt", updatedAt);
     }
-    if (folderCount) {
-      params.append("folderCount", folderCount);
-    }
     if (productCount) {
       params.append("productCount", productCount);
     }
