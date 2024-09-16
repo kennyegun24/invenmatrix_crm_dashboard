@@ -4,23 +4,42 @@ import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridLoader from "@/components/loaders/gridLoader";
 import GridLayout from "@/components/sales/grid/GridLayout";
 import { getUserSession } from "@/libs/getUserSession";
+import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import useSWR from "swr";
 
 const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
 const PageLayout = ({ display }) => {
   const [searchInput, setSearchInput] = useState("");
-  const [filterOptions, setFilterOptions] = useState({
-    createdAtFilter: null,
-    updatedAtFilter: null,
-    alphabeticalFilter: null,
-    productCountFilter: null,
-    folderCountFilter: null,
-  });
+  const createdAt = useSearchParams().get("createdAt");
+  const updatedAt = useSearchParams().get("updatedAt");
+  const name = useSearchParams().get("name");
+  const productCount = useSearchParams().get("productCount");
+  const folderCount = useSearchParams().get("folderCount");
   const fetcher = async () => {
     const { user } = await getUserSession();
+    const params = new URLSearchParams();
+
+    if (user?.organization?.value) {
+      params.append("organizationId", user.organization.value);
+    }
+    if (name) {
+      params.append("name", name);
+    }
+    if (createdAt) {
+      params.append("createdAt", createdAt);
+    }
+    if (updatedAt) {
+      params.append("updatedAt", updatedAt);
+    }
+    if (folderCount) {
+      params.append("folderCount", folderCount);
+    }
+    if (productCount) {
+      params.append("productCount", productCount);
+    }
     const fetchData = await fetch(
-      `${BACKEND_API_ROUTE}/folder/all?organizationId=${user?.organization?.value}`
+      `${BACKEND_API_ROUTE}/folder/all?${params.toString()}`
     );
     const data = await fetchData.json();
     return {
@@ -28,8 +47,9 @@ const PageLayout = ({ display }) => {
       items: data?.products || [],
     };
   };
+  const key = [name, createdAt, updatedAt, folderCount, productCount].join("|");
   const { data, error, isLoading } = useSWR(
-    "all_folders_and_products",
+    `all_folders_and_products, ${key}`,
     fetcher,
     {
       refreshInterval: null,
@@ -46,12 +66,7 @@ const PageLayout = ({ display }) => {
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader
-        filterOptions={filterOptions}
-        setFilterOptions={setFilterOptions}
-        setSearchInput={setSearchInput}
-        display={display}
-      />
+      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
       <GridLayout
         folder={data?.folders?.filter((e) =>
           searchInput

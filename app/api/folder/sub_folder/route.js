@@ -17,7 +17,6 @@ export const GET = async (req) => {
   const _name = query.get("name");
   const productCount = query.get("productCount");
   const folderCount = query.get("folderCount");
-  // console.log(req.nextUrl.searchParams.getAll());
   if (!folderId) {
     return NextResponse.json(
       { error: "Folder ID is required" },

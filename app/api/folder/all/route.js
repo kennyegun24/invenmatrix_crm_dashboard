@@ -9,8 +9,13 @@ const {
 } = mongoose;
 
 export const GET = async (req) => {
-  const orgId = req.nextUrl.searchParams.get("organizationId");
-
+  const query = req.nextUrl.searchParams;
+  const orgId = query.get("organizationId");
+  const createdAt = query.get("createdAt");
+  const updatedAt = query.get("updatedAt");
+  const _name = query.get("name");
+  const productCount = query.get("productCount");
+  const folderCount = query.get("folderCount");
   if (!orgId) {
     return NextResponse.json(
       { error: "Organization ID is required" },
@@ -21,6 +26,25 @@ export const GET = async (req) => {
   try {
     await connectMongoDb();
     const orgObjectId = new ObjectId(orgId);
+    let sortedData = {};
+    let sortedFolderData = {};
+    let sortedProductData = {};
+    if (createdAt) {
+      sortedData.createdAt = createdAt === "asc" ? 1 : -1;
+    }
+    if (updatedAt) {
+      sortedData.updatedAt = updatedAt === "asc" ? 1 : -1;
+    }
+    if (_name) {
+      sortedFolderData.folderName = _name === "asc" ? 1 : -1;
+      sortedProductData.productName = _name === "asc" ? 1 : -1;
+    }
+    if (productCount) {
+      sortedData.productCount = productCount === "asc" ? 1 : -1;
+    }
+    if (folderCount) {
+      sortedData.folderCount = folderCount === "asc" ? 1 : -1;
+    }
 
     const [folders, folderProducts] = await Promise.all([
       folderSchema
@@ -29,6 +53,7 @@ export const GET = async (req) => {
           parentFolders: { $size: 0 },
         })
         .select("folderName products subfolders createdAt updatedAt")
+        .sort({ ...sortedData, ...sortedFolderData })
         .lean(),
       folderSchema.aggregate([
         { $match: { organization: orgObjectId } },
@@ -48,6 +73,7 @@ export const GET = async (req) => {
         organization: orgObjectId,
       })
       .select("productName sellingPrice images stockLevel createdAt updatedAt")
+      .sort({ ...sortedData, ...sortedProductData })
       .lean();
 
     return NextResponse.json({

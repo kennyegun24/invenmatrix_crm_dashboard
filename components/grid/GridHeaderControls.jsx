@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IoGridOutline } from "react-icons/io5";
-import { Button, Popover, Radio, Space } from "antd";
+import { Button, Popover, Radio, Space, Checkbox } from "antd";
 import { FaFilter, FaTable } from "react-icons/fa6";
 import { useRouter, useSearchParams } from "next/navigation";
 import { filters } from "./sortOptions";
@@ -69,13 +69,14 @@ const Filter = () => {
   const handleOpenChange = (newOpen) => setOpen(newOpen);
   const searchParams = useSearchParams();
   const router = useRouter();
-  console.log(searchParams);
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
+  const handleFilterChange = (e, _) => {
+    const { name, value, checked } = e.target;
     const params = new URLSearchParams(searchParams.toString());
-    if (value) {
-      params.set(name, value);
+    if (checked) {
+      if (value) {
+        params.set(name, value);
+      }
     } else {
       params.delete(name);
     }
@@ -83,7 +84,7 @@ const Filter = () => {
   };
 
   const onResetOptions = () => {
-    router.push(window.location.pathname); // Resets to the base URL, removing all query params
+    router.push(window.location.pathname);
   };
 
   const content = (
@@ -95,9 +96,9 @@ const Filter = () => {
           <div key={index}>
             <p className="font14">{option.label}</p>
             <div>
-              <Radio.Group
+              <Checkbox.Group
                 name={option.name}
-                onChange={handleFilterChange}
+                // onChange={handleFilterChange}
                 value={searchParams.get(option.name)}
               >
                 <Space direction="vertical">
@@ -105,22 +106,21 @@ const Filter = () => {
                     const isChecked = searchParams.get(option.name) === e.value;
                     console.log(e.value);
                     return (
-                      <Radio
+                      <Checkbox
+                        onChange={handleFilterChange}
+                        name={option.name}
                         key={_}
                         value={e.value}
-                        // checked={searchParams.get(option.name) === e.value}
-                        // checked={e.value === "asc"}
-                        // checked
                         style={{
                           color: isChecked ? "#1b8ee0" : "initial",
                         }}
                       >
                         {e.label}
-                      </Radio>
+                      </Checkbox>
                     );
                   })}
                 </Space>
-              </Radio.Group>
+              </Checkbox.Group>
             </div>
           </div>
         </div>
