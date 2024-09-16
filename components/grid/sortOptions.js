@@ -2,56 +2,68 @@ export const filters = [
   {
     label: "Sort by date of creation",
     name: "createdAt",
+    id: 1,
     options: [
       {
         label: "Created (dsc)",
         value: "dsc",
+        id: 10,
       },
       {
         label: "Created (asc)",
         value: "asc",
+        id: 20,
       },
     ],
   },
   {
     label: "Sort by date of update",
     name: "updatedAt",
+    id: 2,
     options: [
       {
         label: "Updated (dsc)",
         value: "dsc",
+        id: 30,
       },
       {
         label: "Updated (asc)",
         value: "asc",
+        id: 40,
       },
     ],
   },
   {
     label: "Sort alphabetically",
     name: "name",
+    id: 3,
     options: [
       {
         label: "Alphabetical Asc A - Z",
         value: "asc",
+        id: 50,
       },
       {
         label: "Alphabetical Dsc Z - A",
         value: "dsc",
+        id: 60,
       },
     ],
   },
   {
     label: "Products Count",
     name: "productCount",
+    id: 4,
     options: [
       {
         label: "Ascending",
         value: "asc",
+        id: 70,
       },
       {
         label: "Descending",
         value: "dsc",
+        id: 80,
       },
     ],
   },

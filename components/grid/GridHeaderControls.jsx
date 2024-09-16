@@ -91,20 +91,21 @@ const Filter = () => {
     <div className="flex column gap05rem grid_filter_options_component">
       <Button onClick={onResetOptions}>Reset filter</Button>
       {filters.map((option, index) => (
-        <div className="grid_filter_options_sub_component flex column gap05rem">
+        <div
+          key={option.label}
+          className="grid_filter_options_sub_component flex column gap05rem"
+        >
           {index !== 0 && <hr />}
-          <div key={index}>
+          <div key={option.id}>
             <p className="font14">{option.label}</p>
             <div>
               <Checkbox.Group
                 name={option.name}
-                // onChange={handleFilterChange}
                 value={searchParams.get(option.name)}
               >
                 <Space direction="vertical">
                   {option.options.map((e, _) => {
                     const isChecked = searchParams.get(option.name) === e.value;
-                    console.log(e.value);
                     return (
                       <Checkbox
                         onChange={handleFilterChange}
