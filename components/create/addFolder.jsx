@@ -57,6 +57,7 @@ const AddFolder = ({ children, params }) => {
       open={open}
       onOpenChange={handleOpenChange}
       placement={"bottomLeft"}
+      className="popover"
     >
       {children}
     </Popover>

@@ -12,6 +12,13 @@
     font-weight: 400;
   }
 
+  * {
+    /* display: none; */
+    .ant-popover-inner {
+      /* padding: 12px; */
+      display: block !important;
+    }
+  }
   /* .antd_btn {
     * {
       color: inherit;

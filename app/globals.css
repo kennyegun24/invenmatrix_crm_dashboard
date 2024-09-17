@@ -105,11 +105,12 @@
 }
 
 .antd_btn {
-  color: var(--main_bg);
+  /* color: var(--main_bg); */
   * {
     color: var(--main_bg);
-
-    &:hover {
+  }
+  &:hover {
+    * {
       color: var(--text_color);
     }
   }

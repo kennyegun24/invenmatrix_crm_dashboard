@@ -58,6 +58,10 @@ export const ThemeProvider = ({ children }) => {
             Popover: {
               colorBgElevated: "var(--sub_bg)",
               colorText: "var(--primary_text_color)",
+              colorTextHeading: "var(--light_text",
+              fontSize: 16,
+              fontWeightStrong: 700,
+              titleMinWidth: 250,
             },
             Modal: {
               colorBgElevated: "var(--sub_bg)",
