@@ -13,7 +13,7 @@ const GridFolder = ({ image, item }) => {
   };
   return (
     <div className="grid_item_folder_component">
-      <div className="absolute display_on_hover flex justify_between">
+      <div className="absolute display_on_hover flex justify_between width100">
         <input type="checkbox" name="" id="" />
         <GridFolderOptions />
       </div>

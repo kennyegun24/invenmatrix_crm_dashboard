@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Popover } from "antd";
 import { FaEllipsisV } from "react-icons/fa";
-export const GridProductOptions = () => {
+import { FaAngleRight } from "react-icons/fa6";
+export const GridProductOptions = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => {
     setOpen(newOpen);
@@ -11,8 +12,12 @@ export const GridProductOptions = () => {
       <div className="flex column gap05rem options_pop_up">
         <div className="flex column">
           <p className="font14 pointer">Edit product</p>
-          <p className="font14 pointer">Move to folder</p>
-          <p className="font14 pointer">Copy to folder</p>
+          <p className="font14 pointer flex align_center justify_between">
+            Move to folder <FaAngleRight />
+          </p>
+          <p className="font14 pointer flex align_center justify_between">
+            Copy to folder <FaAngleRight />
+          </p>
         </div>
         <hr className="horizontal_line" />
         <div>
@@ -30,15 +35,13 @@ export const GridProductOptions = () => {
     <Popover
       content={content}
       title="Product Actions"
-      trigger="hover"
+      trigger="contextMenu"
       open={open}
       onOpenChange={handleOpenChange}
       placement="right"
       arrow={false}
     >
-      <Button className="antd_btn2" type="text">
-        <FaEllipsisV />
-      </Button>
+      {children}
     </Popover>
   );
 };
@@ -53,8 +56,12 @@ export const GridFolderOptions = () => {
       <div className="flex column gap05rem options_pop_up">
         <div className="flex column">
           <p className="font14 pointer">Edit folder</p>
-          <p className="font14 pointer">Move to folder</p>
-          <p className="font14 pointer">Move as root folder</p>
+          <p className="font14 pointer flex align_center justify_between">
+            Move to folder <FaAngleRight />
+          </p>
+          <p className="font14 pointer flex align_center justify_between">
+            Move as root folder <FaAngleRight />
+          </p>
         </div>
         <hr className="horizontal_line" />
         <div>

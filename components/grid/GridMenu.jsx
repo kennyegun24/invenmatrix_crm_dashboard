@@ -2,6 +2,7 @@ import { Popover } from "antd";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import "./gridmenu.css";
+import { getUserSession } from "@/libs/getUserSession";
 
 const GridMenu = ({ children }) => {
   const [open, setOpen] = useState(false);
@@ -13,10 +14,14 @@ const GridMenu = ({ children }) => {
 
   const handleOpenChange = async (newOpen) => {
     setOpen(newOpen);
+    const { user } = await getUserSession();
     if (newOpen && folders.length === 0) {
-      const fetchData = await fetch("/api/folders/structure");
+      const fetchData = await fetch(
+        `/api/folder/structure?organizationId=${user?.organization?.value}`
+      );
       const data = await fetchData.json();
-      setFolders(JSON.parse(data?.data));
+      console.log(data);
+      setFolders(data?.data);
     }
   };
 
@@ -41,11 +46,11 @@ const GridMenu = ({ children }) => {
           <div
             key={index}
             className={`flex column gap05rem grid_menu_item pointer ${
-              activeNav === folder.id ? "active" : "non_active"
+              activeNav === folder._id ? "active" : "non_active"
             }`}
           >
             <div
-              onClick={() => toggleNav(folder.id)}
+              onClick={() => toggleNav(folder._id)}
               className="flex justify_between align_center"
             >
               <h4 className="text_start gap05rem align_center flex">
@@ -54,7 +59,7 @@ const GridMenu = ({ children }) => {
               {folder?.subfolders.length > 0 && (
                 <IoIosArrowDown
                   className={
-                    folder.id === activeNav
+                    folder._id === activeNav
                       ? "dropdown_icon transform"
                       : "dropdown_icon"
                   }

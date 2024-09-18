@@ -179,6 +179,7 @@ a {
 }
 
 .antd_btn2 {
+  z-index: 9999;
   * {
     color: #fff !important;
   }
