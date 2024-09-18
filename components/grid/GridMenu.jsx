@@ -3,27 +3,38 @@ import React, { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import "./gridmenu.css";
 import { getUserSession } from "@/libs/getUserSession";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFolderStructure } from "@/redux/folderStructure";
 
 const GridMenu = ({ children }) => {
+  const dispatch = useDispatch();
+  const { folders } = useSelector((state) => state.folderStructure);
+  useEffect(() => {
+    dispatch(fetchFolderStructure());
+  }, []);
   const [open, setOpen] = useState(false);
   const [activeNav, setActiveNav] = useState(null);
   const toggleNav = (key) => {
     setActiveNav(activeNav === key ? null : key);
   };
-  const [folders, setFolders] = useState([]);
+  // const [folders, setFolders] = useState([]);
 
   const handleOpenChange = async (newOpen) => {
     setOpen(newOpen);
-    const { user } = await getUserSession();
-    if (newOpen && folders.length === 0) {
-      const fetchData = await fetch(
-        `/api/folder/structure?organizationId=${user?.organization?.value}`
-      );
-      const data = await fetchData.json();
-      console.log(data);
-      setFolders(data?.data);
-    }
   };
+
+  // const handleOpenChange = async (newOpen) => {
+  //   setOpen(newOpen);
+  //   const { user } = await getUserSession();
+  //   if (newOpen && folders.length === 0) {
+  //     const fetchData = await fetch(
+  //       `/api/folder/structure?organizationId=${user?.organization?.value}`
+  //     );
+  //     const data = await fetchData.json();
+  //     console.log(data);
+  //     setFolders(data?.data);
+  //   }
+  // };
 
   const renderSubfolders = (subfolders) => {
     return (

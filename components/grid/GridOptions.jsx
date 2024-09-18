@@ -2,22 +2,30 @@ import React, { useState } from "react";
 import { Button, Popover } from "antd";
 import { FaEllipsisV } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa6";
+import { ChadcnDropdownMenu } from "../shadcn/DropDown";
+import { useSelector } from "react-redux";
 export const GridProductOptions = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => {
     setOpen(newOpen);
   };
+  const { folders, loading } = useSelector((state) => state.folderStructure);
+
   const content = () => {
     return (
       <div className="flex column gap05rem options_pop_up">
         <div className="flex column">
           <p className="font14 pointer">Edit product</p>
-          <p className="font14 pointer flex align_center justify_between">
-            Move to folder <FaAngleRight />
-          </p>
-          <p className="font14 pointer flex align_center justify_between">
-            Copy to folder <FaAngleRight />
-          </p>
+          <ChadcnDropdownMenu
+            text={`Move to folder`}
+            isLoading={loading}
+            folders={folders}
+          />
+          <ChadcnDropdownMenu
+            text={"Copy to folder"}
+            isLoading={loading}
+            folders={folders}
+          />
         </div>
         <hr className="horizontal_line" />
         <div>

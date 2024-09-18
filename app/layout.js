@@ -10,6 +10,7 @@ import SessionWrapper from "@/contexts/Session";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import RequestSpinnerProvider from "@/contexts/RequestSpinner";
+import ReduxProvider from "@/contexts/ReduxProvider";
 // import {Appr}
 // import { DataGrid } from "@mui/x-data-grid";
 // import Barcode from "react-barcode";
@@ -30,21 +31,22 @@ export default async function RootLayout({ children }) {
     <SessionProvider session={session}>
       <html lang="en">
         <body className={[inter.className]}>
-          {/* <SessionWrapper> */}
-          <AntdRegistry>
-            <ThemeProvider>
-              <HomeProvider>
-                <RequestSpinnerProvider>
-                  <DragDropPovider>
-                    <ChatbotProvider>{children}</ChatbotProvider>
-                  </DragDropPovider>
-                </RequestSpinnerProvider>
-              </HomeProvider>
-            </ThemeProvider>
-          </AntdRegistry>
-          {/* </SessionWrapper> */}
-          {/* <Barcode value="kenny elias" /> */}
-          {/* <BarcodeScannerComponent
+          <ReduxProvider>
+            {/* <SessionWrapper> */}
+            <AntdRegistry>
+              <ThemeProvider>
+                <HomeProvider>
+                  <RequestSpinnerProvider>
+                    <DragDropPovider>
+                      <ChatbotProvider>{children}</ChatbotProvider>
+                    </DragDropPovider>
+                  </RequestSpinnerProvider>
+                </HomeProvider>
+              </ThemeProvider>
+            </AntdRegistry>
+            {/* </SessionWrapper> */}
+            {/* <Barcode value="kenny elias" /> */}
+            {/* <BarcodeScannerComponent
           width={500}
           height={500}
           onUpdate={(err, result) => {
@@ -52,7 +54,7 @@ export default async function RootLayout({ children }) {
             else setData("Not Found");
           }}
         /> */}
-          {/* <BarcodeScanner
+            {/* <BarcodeScanner
           onSuccess={(text) => setData(text)}
           onError={(error) => {
             if (error) {
@@ -63,6 +65,7 @@ export default async function RootLayout({ children }) {
           containerStyle={{ width: "100%" }}
         />
         <p>{data}</p> */}
+          </ReduxProvider>
         </body>
       </html>
     </SessionProvider>
