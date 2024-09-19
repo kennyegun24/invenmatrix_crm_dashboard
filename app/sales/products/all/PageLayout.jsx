@@ -4,12 +4,15 @@ import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridLoader from "@/components/loaders/gridLoader";
 import GridLayout from "@/components/sales/grid/GridLayout";
 import { getUserSession } from "@/libs/getUserSession";
+import { fetchFolderStructure } from "@/redux/folderStructure";
 import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import useSWR from "swr";
 
 const BACKEND_API_ROUTE = process.env.NEXT_PUBLIC_BACKEND_API_ROUTE;
 const PageLayout = ({ display }) => {
+  const dispatch = useDispatch();
   const [searchInput, setSearchInput] = useState("");
   const createdAt = useSearchParams().get("createdAt");
   const updatedAt = useSearchParams().get("updatedAt");
@@ -60,7 +63,9 @@ const PageLayout = ({ display }) => {
       errorRetryCount: 1,
     }
   );
-
+  useEffect(() => {
+    dispatch(fetchFolderStructure());
+  }, []);
   if (isLoading) return <GridLoader />;
   if (data?.folders?.length === 0 && data?.items?.length === 0)
     return <Empty />;
