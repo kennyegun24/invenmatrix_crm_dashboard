@@ -7,7 +7,7 @@ import folderImg from "@/public/empty.png";
 const GridLayout = ({ folder, products }) => {
   return (
     <div className="grid_layout_component flex column gap2rem">
-      {folder.length > 0 && (
+      {folder?.length > 0 && (
         <div>
           <h3 className="grid_layout_folder_header">Folders</h3>
           <section className="grid_layout">
@@ -17,7 +17,7 @@ const GridLayout = ({ folder, products }) => {
           </section>
         </div>
       )}
-      {products.length > 0 && (
+      {products?.length > 0 && (
         <div>
           <h3 className="grid_layout_folder_header">Items</h3>
           <section className="grid_layout">

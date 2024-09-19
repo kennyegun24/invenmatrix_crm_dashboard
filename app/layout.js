@@ -32,7 +32,6 @@ export default async function RootLayout({ children }) {
       <html lang="en">
         <body className={[inter.className]}>
           <ReduxProvider>
-            {/* <SessionWrapper> */}
             <AntdRegistry>
               <ThemeProvider>
                 <HomeProvider>
@@ -44,27 +43,6 @@ export default async function RootLayout({ children }) {
                 </HomeProvider>
               </ThemeProvider>
             </AntdRegistry>
-            {/* </SessionWrapper> */}
-            {/* <Barcode value="kenny elias" /> */}
-            {/* <BarcodeScannerComponent
-          width={500}
-          height={500}
-          onUpdate={(err, result) => {
-            if (result) setData(result.text);
-            else setData("Not Found");
-          }}
-        /> */}
-            {/* <BarcodeScanner
-          onSuccess={(text) => setData(text)}
-          onError={(error) => {
-            if (error) {
-              console.error(error.message);
-            }
-          }}
-          onLoad={() => console.log("Video feed has loaded!")}
-          containerStyle={{ width: "100%" }}
-        />
-        <p>{data}</p> */}
           </ReduxProvider>
         </body>
       </html>

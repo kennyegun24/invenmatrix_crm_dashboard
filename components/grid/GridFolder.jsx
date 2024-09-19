@@ -3,25 +3,27 @@ import "./gridfolder.css";
 import Image from "next/image";
 import { BsFolder } from "react-icons/bs";
 import { GoStack } from "react-icons/go";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { GridFolderOptions } from "./GridOptions";
 
 const GridFolder = ({ image, item }) => {
   const router = useRouter();
+  const pathname = usePathname();
+  const form = pathname
+    .split("/")
+    .filter((e) => e !== "sales")
+    .filter((e) => e !== "products")
+    .filter((e) => e !== "folders")
+    .filter((e) => e !== "all")
+    .filter((e) => e);
   const navigateToSubFolder = (param) => {
-    router.push(param);
+    router.push(`/sales/products/folders/${form}/${param}`);
   };
   return (
-    <div className="grid_item_folder_component">
-      <div className="absolute display_on_hover flex justify_between width100">
-        <input type="checkbox" name="" id="" />
-        <GridFolderOptions />
-      </div>
+    <GridFolderOptions>
       <div
-        className="flex column grid_folder_component pointer padding05rem"
-        onClick={() =>
-          navigateToSubFolder(`/sales/products/folders/${item._id}`)
-        }
+        onClick={() => navigateToSubFolder(`${item._id}`)}
+        className="flex column grid_folder_component1 pointer"
       >
         <section className="grid_folder_image_div">
           <Image src={image} height={100} width={100} />
@@ -29,7 +31,6 @@ const GridFolder = ({ image, item }) => {
         <div className="flex column gap05rem wrap grid_folder_content">
           <h4>{item.folderName}</h4>
           <div className="flex gap05rem align_center">
-            {/* <p>${item.sellingPrice}</p> */}
             <p className="flex align_center gap05rem">
               <BsFolder /> {item?.subfolders?.length}
             </p>
@@ -39,7 +40,7 @@ const GridFolder = ({ image, item }) => {
           </div>
         </div>
       </div>
-    </div>
+    </GridFolderOptions>
   );
 };
 

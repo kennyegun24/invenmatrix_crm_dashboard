@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import { Button, Popover } from "antd";
-import { FaEllipsisV } from "react-icons/fa";
-import { FaAngleRight } from "react-icons/fa6";
+import React, { useEffect, useState } from "react";
+import { Popover } from "antd";
 import { ChadcnDropdownMenu } from "../shadcn/DropDown";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { storeFolders } from "@/redux/Breadcrumbs";
 export const GridProductOptions = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => {
     setOpen(newOpen);
   };
   const { folders, loading } = useSelector((state) => state.folderStructure);
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(storeFolders(folders));
+  }, []);
   const content = () => {
     return (
       <div className="flex column gap05rem options_pop_up">
@@ -54,22 +56,31 @@ export const GridProductOptions = ({ children }) => {
   );
 };
 
-export const GridFolderOptions = () => {
+export const GridFolderOptions = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => {
     setOpen(newOpen);
   };
+  const { folders, loading } = useSelector((state) => state.folderStructure);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(storeFolders(folders));
+  }, []);
   const content = () => {
     return (
       <div className="flex column gap05rem options_pop_up">
         <div className="flex column">
           <p className="font14 pointer">Edit folder</p>
-          <p className="font14 pointer flex align_center justify_between">
-            Move to folder <FaAngleRight />
-          </p>
-          <p className="font14 pointer flex align_center justify_between">
-            Move as root folder <FaAngleRight />
-          </p>
+          <ChadcnDropdownMenu
+            text={`Move to folder`}
+            isLoading={loading}
+            folders={folders}
+          />
+          <ChadcnDropdownMenu
+            text={"Copy to folder"}
+            isLoading={loading}
+            folders={folders}
+          />
         </div>
         <hr className="horizontal_line" />
         <div>
@@ -82,15 +93,13 @@ export const GridFolderOptions = () => {
     <Popover
       content={content}
       title="Folder Actions"
-      trigger="hover"
+      trigger="contextMenu"
       arrow={false}
       placement="right"
       open={open}
       onOpenChange={handleOpenChange}
     >
-      <Button className="antd_btn2" type="text">
-        <FaEllipsisV />
-      </Button>
+      {children}
     </Popover>
   );
 };

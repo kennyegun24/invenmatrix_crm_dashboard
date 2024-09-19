@@ -2,13 +2,16 @@
 import { SalesContainer } from "@/components/GlobalComponents";
 import GridDisplayHeader from "@/components/grid/GridDisplayHeader";
 import GridMainHeader from "@/components/grid/GridMainHeader";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import GridLayout from "@/components/sales/grid/GridLayout";
 import useSWR from "swr";
 import GridLoader from "@/components/loaders/gridLoader";
 import Empty from "@/components/Empty";
 import { getUserSession } from "@/libs/getUserSession";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getBreadcrumbs } from "@/redux/Breadcrumbs";
 
 const RenderData = ({ isLoading, error, data, display }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -17,7 +20,11 @@ const RenderData = ({ isLoading, error, data, display }) => {
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
+      <GridDisplayHeader
+        breadcrumbs={true}
+        setSearchInput={setSearchInput}
+        display={display}
+      />
       <GridLayout
         searchInput={searchInput}
         data={data}
@@ -37,6 +44,7 @@ const Page = ({ params }) => {
   const productCount = useSearchParams().get("productCount");
   const folderCount = useSearchParams().get("folderCount");
   const { id } = params;
+  const folderId = id[id?.length - 1];
   const router = useRouter();
   const fetcher = async () => {
     const { user } = await getUserSession();
@@ -45,8 +53,8 @@ const Page = ({ params }) => {
     if (user?.organization?.value) {
       params.append("organizationId", user.organization.value);
     }
-    if (id) {
-      params.append("folderId", id);
+    if (folderId) {
+      params.append("folderId", folderId);
     }
     if (name) {
       params.append("name", name);
@@ -60,36 +68,20 @@ const Page = ({ params }) => {
     if (productCount) {
       params.append("productCount", productCount);
     }
+    try {
+      const fetchData = await axios.get(
+        `${BACKEND_API_ROUTE}/folder/sub_folder?${params.toString()}`
+      );
 
-    const fetchData = await fetch(
-      `${BACKEND_API_ROUTE}/folder/sub_folder?${params.toString()}`
-    );
-
-    // const fetchData = await fetch(
-    //   `${BACKEND_API_ROUTE}/folder/sub_folder?organizationId=${
-    //     user?.organization?.value
-    //   }&${
-    //     "folderId=" +
-    //     id +
-    //     "&name=" +
-    //     name +
-    //     "&createdAt=" +
-    //     createdAt +
-    //     "&updatedAt=" +
-    //     updatedAt +
-    //     "&folderCount=" +
-    //     folderCount +
-    //     "&productCount=" +
-    //     productCount
-    //   }`
-    // );
-    const data = await fetchData.json();
-    return {
-      folders: data?.folders,
-      items: data.products,
-    };
+      const data = await fetchData.data;
+      return {
+        folders: data?.folders,
+        items: data.products,
+      };
+    } catch (error) {
+      return error;
+    }
   };
-  // const key = id;
   const key = [id, name, createdAt, updatedAt, folderCount, productCount].join(
     "|"
   );

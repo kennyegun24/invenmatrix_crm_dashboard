@@ -66,7 +66,11 @@ const PageLayout = ({ display }) => {
     return <Empty />;
   return (
     <div className="flex column gap1rem">
-      <GridDisplayHeader setSearchInput={setSearchInput} display={display} />
+      <GridDisplayHeader
+        breadcrumbs={false}
+        setSearchInput={setSearchInput}
+        display={display}
+      />
       <GridLayout
         folder={data?.folders?.filter((e) =>
           searchInput
