@@ -1,4 +1,5 @@
 "use client";
+import AppLoader from "@/components/loaders/AppLoader";
 import { store } from "@/redux/store";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
@@ -9,7 +10,7 @@ const persistor = typeof window !== null ? persistStore(store) : null;
 const ReduxProvider = ({ children }) => {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={<AppLoader />} persistor={persistor}>
         {children}
       </PersistGate>
     </Provider>
