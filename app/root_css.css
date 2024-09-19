@@ -37,3 +37,14 @@
   --border_color: #8c8c8c;
   --primary_text_color: #000;
 }
+
+.dropdown-hover:hover {
+  color: var(--hover_text_color);
+  background-color: var(--hover_background_color);
+}
+
+.dropdown_default_bg {
+  background-color: var(--sub_bg);
+  color: var(--text_color);
+  border: var(--light_border);
+}

@@ -6,7 +6,6 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
@@ -17,16 +16,28 @@ import { useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
 
 const FolderItem = ({ folder }) => {
-  if (folder.subfolders && folder.subfolders.length > 0) {
+  if (folder?.subfolders && folder?.subfolders?.length > 0) {
     return (
       <DropdownMenuSub>
-        <DropdownMenuSubTrigger>
+        <DropdownMenuSubTrigger
+          style={{
+            "--hover_text_color": "var(--opposite_text)",
+          }}
+          className="dropdown-hover"
+        >
           <Folder className="mr-2 h-4 w-4" />
           {folder.folderName}
         </DropdownMenuSubTrigger>
         <DropdownMenuPortal>
-          <DropdownMenuSubContent>
-            {folder.subfolders.map((subfolder) => (
+          <DropdownMenuSubContent
+            style={{
+              backgroundColor: "var(--sub_bg)",
+              color: "var(--text_color)",
+              border: "var(--light_border)",
+              "--hover_text_color": "var(--opposite_text)",
+            }}
+          >
+            {folder?.subfolders?.map((subfolder) => (
               <FolderItem key={subfolder._id} folder={subfolder} />
             ))}
           </DropdownMenuSubContent>
@@ -36,9 +47,9 @@ const FolderItem = ({ folder }) => {
   }
 
   return (
-    <DropdownMenuItem>
+    <DropdownMenuItem className="dropdown-hover">
       <Folder className="mr-2 h-4 w-4" />
-      {folder.folderName}
+      {folder?.folderName}
     </DropdownMenuItem>
   );
 };
@@ -63,11 +74,17 @@ export const NestedFolderDropdown = ({ folders, isLoading, text }) => {
         align="center"
         side="right"
         className="w-56"
+        style={{
+          backgroundColor: "var(--sub_bg)",
+          color: "var(--text_color)",
+          border: "var(--light_border)",
+          "--hover_text_color": "var(--opposite_text)",
+        }}
       >
         <DropdownMenuLabel>Folder Structure</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          {folders.map((folder) => (
+          {folders?.map((folder) => (
             <FolderItem key={folder._id} folder={folder} />
           ))}
         </DropdownMenuGroup>
