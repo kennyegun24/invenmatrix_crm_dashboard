@@ -7,10 +7,10 @@ import {
 } from "@/components/ui/breadcrumb";
 
 export function BreadcrumbDemo({ structure }) {
-  if (structure.length === 0) return;
+  if (structure?.length === 0) return;
   const formatPreviousLinks = (link) => {
     let selected = [];
-    let linkIndex = structure?.map((e) => e._id).indexOf(link);
+    let linkIndex = structure?.map((e) => e?._id).indexOf(link);
     selected = structure
       ?.slice(0, linkIndex + 1)
       ?.map((e) => e?._id)
