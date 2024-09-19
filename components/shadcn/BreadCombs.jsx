@@ -10,12 +10,16 @@ export function BreadcrumbDemo({ structure }) {
   if (structure?.length === 0) return;
   const formatPreviousLinks = (link) => {
     let selected = [];
-    let linkIndex = structure?.map((e) => e?._id).indexOf(link);
-    selected = structure
-      ?.slice(0, linkIndex + 1)
-      ?.map((e) => e?._id)
-      .join("/");
-    return selected;
+    structure?.every((e) => {
+      if (e?._id === link) {
+        selected.push(e?._id);
+        return false;
+      } else {
+        selected.push(e?._id);
+        return true;
+      }
+    });
+    return selected.join("/");
   };
   return (
     <Breadcrumb>
