@@ -26,7 +26,7 @@ const AddFolder = ({ children, params }) => {
   const createSubFolder = async () => {
     try {
       setRequested(true);
-      await createSubFolderAction(folderName, params);
+      await createSubFolderAction(folderName, params[params.length - 1]);
       setRequested(false);
       return toastSuccess("Folder Created");
     } catch (error) {

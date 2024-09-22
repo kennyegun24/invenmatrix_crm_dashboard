@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Popover } from "antd";
 import { ChadcnDropdownMenu } from "../shadcn/DropDown";
 import { useDispatch, useSelector } from "react-redux";
 import { storeFolders } from "@/redux/Breadcrumbs";
+import { usePathname } from "next/navigation";
+import AlertDialogDemo from "../shadcn/FolderActionDialogue";
+import { confirmMoveFolder, confirmCopyFolder } from "../shadcn/helper";
+import { RequestSpinnerContext } from "@/contexts/RequestSpinner";
 export const GridProductOptions = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => {
@@ -18,11 +22,6 @@ export const GridProductOptions = ({ children }) => {
       <div className="flex column gap05rem options_pop_up">
         <div className="flex column">
           <p className="font14 pointer">Edit product</p>
-          <ChadcnDropdownMenu
-            text={`Move to folder`}
-            isLoading={loading}
-            folders={folders}
-          />
           <ChadcnDropdownMenu
             text={"Copy to folder"}
             isLoading={loading}
@@ -56,16 +55,46 @@ export const GridProductOptions = ({ children }) => {
   );
 };
 
-export const GridFolderOptions = ({ children }) => {
+export const GridFolderOptions = ({ children, _id, folderName }) => {
   const [open, setOpen] = useState(false);
+  const [isMoveDialogOpen, setIsMoveDialogOpen] = useState(false);
+  const [isCopyDialogOpen, setIsCopyDialogOpen] = useState(false);
+  const { setRequested } = useContext(RequestSpinnerContext);
+  const pathname = usePathname();
+  const pathArray = pathname.split("/");
+  const oldFolder = pathArray[pathArray.length - 1];
+
+  const [folderDetails, setFolderDetails] = useState({
+    folderName: folderName,
+    newParentFolderId: null,
+    folderId: _id,
+    oldParentFolderId: pathArray.includes("all") ? null : oldFolder,
+  });
+
+  const { folders, loading } = useSelector((state) => state.folderStructure);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(storeFolders(folders));
+  }, [dispatch, folders]);
+
   const handleOpenChange = (newOpen) => {
     setOpen(newOpen);
   };
-  const { folders, loading } = useSelector((state) => state.folderStructure);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(storeFolders(folders));
-  }, []);
+
+  const onSelectFolder = async (param, actionType) => {
+    if (actionType === "move") {
+      setIsMoveDialogOpen(true);
+    } else if (actionType === "copy") {
+      setIsCopyDialogOpen(true);
+    }
+
+    setFolderDetails((prev) => ({
+      ...prev,
+      newParentFolderId: param,
+    }));
+  };
+
   const content = () => {
     return (
       <div className="flex column gap05rem options_pop_up">
@@ -75,12 +104,21 @@ export const GridFolderOptions = ({ children }) => {
             text={`Move to folder`}
             isLoading={loading}
             folders={folders}
+            onClick={(param) => onSelectFolder(param, "move")}
           />
-          <ChadcnDropdownMenu
-            text={"Copy to folder"}
-            isLoading={loading}
-            folders={folders}
-          />
+          {!pathname.includes("all") && (
+            <>
+              <ChadcnDropdownMenu
+                text={"Copy to folder"}
+                isLoading={loading}
+                folders={folders}
+                onClick={(param) => onSelectFolder(param, "copy")}
+              />
+              <div>
+                <p className="font14 pointer">Remove from folder</p>
+              </div>
+            </>
+          )}
         </div>
         <hr className="horizontal_line" />
         <div>
@@ -89,6 +127,7 @@ export const GridFolderOptions = ({ children }) => {
       </div>
     );
   };
+
   return (
     <Popover
       content={content}
@@ -99,6 +138,18 @@ export const GridFolderOptions = ({ children }) => {
       open={open}
       onOpenChange={handleOpenChange}
     >
+      <AlertDialogDemo
+        text={"move"}
+        isDialogOpen={isMoveDialogOpen}
+        setIsDialogOpen={setIsMoveDialogOpen}
+        onConfirm={() => confirmMoveFolder(folderDetails, setRequested)}
+      />
+      <AlertDialogDemo
+        text={"copy"}
+        isDialogOpen={isCopyDialogOpen}
+        setIsDialogOpen={setIsCopyDialogOpen}
+        onConfirm={() => confirmCopyFolder(folderDetails, setRequested)}
+      />
       {children}
     </Popover>
   );

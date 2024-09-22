@@ -20,7 +20,7 @@ const GridFolder = ({ image, item }) => {
     router.push(`/sales/products/folders/${form}/${param}`);
   };
   return (
-    <GridFolderOptions>
+    <GridFolderOptions _id={item?._id} folderName={item?.folderName}>
       <div
         onClick={() => navigateToSubFolder(`${item._id}`)}
         className="flex column grid_folder_component1 pointer"
