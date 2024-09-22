@@ -39,7 +39,7 @@
 }
 
 .dropdown-hover:hover {
-  color: var(--hover_text_color);
+  color: #000;
   background-color: var(--hover_background_color);
 }
 
