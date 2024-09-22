@@ -30,6 +30,7 @@ const folder = new Schema(
         default: null,
       },
     ],
+    path: [{ type: SchemaTypes.ObjectId, ref: "Folder" }],
   },
   { timestamps: true }
 );
