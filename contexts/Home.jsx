@@ -2,6 +2,7 @@
 
 import NavBar from "@/components/nav/NavBar";
 import TopNav from "@/components/nav/TopNav";
+import { Toaster } from "@/components/ui/sonner";
 import { usePathname } from "next/navigation";
 
 import { createContext, useState } from "react";
@@ -45,6 +46,7 @@ const HomeProvider = ({ children }) => {
   return (
     <HomeContext.Provider value={{ toggle, collapsed }}>
       <ToastContainer position="bottom-right" />
+      <Toaster />
       <div className="flex layout">
         {showNavBar && <NavBar />}
         <div className="sub_layout">

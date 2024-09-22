@@ -15,7 +15,7 @@ import { Folder } from "lucide-react";
 import { useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
 
-const FolderItem = ({ folder }) => {
+const FolderItem = ({ folder, onClick }) => {
   if (folder?.subfolders && folder?.subfolders?.length > 0) {
     return (
       <DropdownMenuSub>
@@ -24,6 +24,7 @@ const FolderItem = ({ folder }) => {
             "--hover_text_color": "var(--opposite_text)",
           }}
           className="dropdown-hover"
+          onClick={() => onClick(folder?._id)}
         >
           <Folder className="mr-2 h-4 w-4" />
           {folder.folderName}
@@ -38,7 +39,11 @@ const FolderItem = ({ folder }) => {
             }}
           >
             {folder?.subfolders?.map((subfolder) => (
-              <FolderItem key={subfolder._id} folder={subfolder} />
+              <FolderItem
+                onClick={onClick}
+                key={subfolder._id}
+                folder={subfolder}
+              />
             ))}
           </DropdownMenuSubContent>
         </DropdownMenuPortal>
@@ -47,14 +52,17 @@ const FolderItem = ({ folder }) => {
   }
 
   return (
-    <DropdownMenuItem className="dropdown-hover">
+    <DropdownMenuItem
+      onClick={() => onClick(folder?._id)}
+      className="dropdown-hover"
+    >
       <Folder className="mr-2 h-4 w-4" />
       {folder?.folderName}
     </DropdownMenuItem>
   );
 };
 
-export const NestedFolderDropdown = ({ folders, isLoading, text }) => {
+export const NestedFolderDropdown = ({ folders, isLoading, text, onClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <DropdownMenu onOpenChange={setIsOpen} open={isOpen}>
@@ -85,7 +93,7 @@ export const NestedFolderDropdown = ({ folders, isLoading, text }) => {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           {folders?.map((folder) => (
-            <FolderItem key={folder._id} folder={folder} />
+            <FolderItem onClick={onClick} key={folder._id} folder={folder} />
           ))}
         </DropdownMenuGroup>
       </DropdownMenuContent>
@@ -93,8 +101,13 @@ export const NestedFolderDropdown = ({ folders, isLoading, text }) => {
   );
 };
 
-export function ChadcnDropdownMenu({ text, folders, isLoading }) {
+export function ChadcnDropdownMenu({ text, folders, isLoading, onClick }) {
   return (
-    <NestedFolderDropdown folders={folders} text={text} isLoading={isLoading} />
+    <NestedFolderDropdown
+      onClick={onClick}
+      folders={folders}
+      text={text}
+      isLoading={isLoading}
+    />
   );
 }
