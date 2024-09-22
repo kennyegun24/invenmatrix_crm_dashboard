@@ -35,6 +35,7 @@ export const POST = async (req, res) => {
     });
 
     if (!organization) {
+      console.log("error org");
       return NextResponse.json(
         {
           message:
@@ -75,13 +76,16 @@ export const POST = async (req, res) => {
     }
 
     // Create and save the new subfolder
+    console.log(findUserExistingFolder, "path");
     const newFolder = new folderSchema({
       organization: organizationId,
       folderName: folderName,
       parentFolders: [folderId],
+      path: [],
     });
     await newFolder.save();
-
+    newFolder.path = [...findUserExistingFolder.path, newFolder._id];
+    await newFolder.save();
     // Update the parent folder to include the new subfolder
     await folderSchema.findByIdAndUpdate(folderId, {
       $push: { subfolders: newFolder._id },
@@ -89,7 +93,7 @@ export const POST = async (req, res) => {
 
     return NextResponse.json({ message: "Subfolder Created" }, { status: 201 });
   } catch (error) {
-    console.error(error); // Log the error for debugging
+    // console.error(error); // Log the error for debugging
     return NextResponse.json(
       { message: "Something went wrong" },
       { status: 500 }

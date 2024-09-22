@@ -61,6 +61,7 @@ export const POST = async (req, res) => {
     const newFolder = new folderSchema({
       organization: organizationId,
       folderName: folderName,
+      path: [],
     });
     await newFolder.save();
     const updateOrganization = await Organization.findByIdAndUpdate(
