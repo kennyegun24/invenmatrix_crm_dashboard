@@ -22,7 +22,8 @@ export const GET = async () => {
     const rootFolderStructure = buildFolderStructure(folders);
     return NextResponse.json({
       message: "Success",
-      data: JSON.stringify(rootFolderStructure),
+      // data: JSON.stringify(rootFolderStructure, null, 2),
+      data: rootFolderStructure,
     });
   } catch (error) {
     return NextResponse.json({ message: "Error" });

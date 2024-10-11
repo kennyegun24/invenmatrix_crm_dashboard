@@ -46,7 +46,7 @@ const HomeProvider = ({ children }) => {
   return (
     <HomeContext.Provider value={{ toggle, collapsed }}>
       <ToastContainer position="bottom-right" />
-      <Toaster />
+      <Toaster richColors />
       <div className="flex layout">
         {showNavBar && <NavBar />}
         <div className="sub_layout">

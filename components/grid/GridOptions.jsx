@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import AlertDialogDemo from "../shadcn/FolderActionDialogue";
 import { confirmMoveFolder, confirmCopyFolder } from "../shadcn/helper";
 import { RequestSpinnerContext } from "@/contexts/RequestSpinner";
+import NewBundleDialogue from "../shadcn/NewBundle";
 export const GridProductOptions = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => {
@@ -30,7 +31,9 @@ export const GridProductOptions = ({ children }) => {
         </div>
         <hr className="horizontal_line" />
         <div>
-          <p className="font14 pointer">Create a bundle with this product</p>
+          <NewBundleDialogue>
+            <p className="font14 pointer">Create a bundle with this product</p>
+          </NewBundleDialogue>
           <p className="font14 pointer">Create a kit</p>
         </div>
         <hr className="horizontal_line" />

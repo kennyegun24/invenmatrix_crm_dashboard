@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100vh; /* Makes sure that both html and body cover the full height of the viewport */
+  margin: 0; /* Removes any default margin */
+  padding: 0; /* Removes any default padding */
+  /* background: green; */
+}
+
 .flex {
   display: flex;
 }
@@ -192,4 +200,14 @@ a {
 
 .grid_menu_component {
   padding: 0 0.5rem;
+}
+
+[data-sonner-toaster][data-rich-colors="true"][data-type="error"] {
+  background: #8b0000;
+  border: 1px solid #8b0000;
+  color: #fff;
+}
+
+.hide_scroll::-webkit-scrollbar {
+  width: 0;
 }

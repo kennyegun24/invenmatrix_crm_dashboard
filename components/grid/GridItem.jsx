@@ -7,8 +7,8 @@ import { GridProductOptions } from "./GridOptions";
 const GridItem = ({ image, item }) => {
   const router = useRouter();
   const navigateToItem = (param) => {
-    // router.push(param);
-    console.log(param);
+    router.push(param);
+    // console.log(param);
   };
   return (
     // <div className="grid_item_folder_component">
@@ -25,7 +25,7 @@ const GridItem = ({ image, item }) => {
         className="flex column grid_folder_component1 pointer"
       >
         <section className="grid_folder_image_div">
-          <Image src={image} height={35} width={35} />
+          <Image src={image} height={100} width={200} />
         </section>
         <div className="flex column gap3rem wrap grid_item_content">
           <h4>{item.productName}</h4>

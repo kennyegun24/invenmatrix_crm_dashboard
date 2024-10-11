@@ -107,7 +107,7 @@ export const ThemeProvider = ({ children }) => {
           },
         }}
       >
-        <div>{children}</div>
+        <div className="">{children}</div>
       </ConfigProvider>
     </ThemeContext.Provider>
   );

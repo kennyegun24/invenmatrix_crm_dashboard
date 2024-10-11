@@ -27,6 +27,26 @@ const GridLayout = ({ folder, products }) => {
           </section>
         </div>
       )}
+      {products?.length > 0 && (
+        <div>
+          <h3 className="grid_layout_folder_header">Bundle Deals</h3>
+          <section className="grid_layout">
+            {products.map((each, _) => (
+              <GridItem key={_} item={each} image={each.images[0]} />
+            ))}
+          </section>
+        </div>
+      )}
+      {products?.length > 0 && (
+        <div>
+          <h3 className="grid_layout_folder_header">Kit Deals</h3>
+          <section className="grid_layout">
+            {products.map((each, _) => (
+              <GridItem key={_} item={each} image={each.images[0]} />
+            ))}
+          </section>
+        </div>
+      )}
     </div>
   );
 };

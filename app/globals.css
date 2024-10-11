@@ -30,10 +30,16 @@
   padding: 1rem;
 }
 
+.theme_prov_main_container {
+  min-height: 100%;
+  /* background: green; */
+}
+
 .layout {
-  min-height: 100vh;
+  min-height: 100%;
+  /* min-height: 100vh; */
   width: 100%;
-  background: var(--main_bg);
+  /* background: var(--main_bg); */
 
   * {
     color: var(--text_color);
@@ -85,6 +91,7 @@
 
 .grid_filter_options_component {
   width: 250px;
+  padding: 0.5rem;
   .grid_filter_options_sub_component {
     overflow-y: auto;
     max-height: 500px;

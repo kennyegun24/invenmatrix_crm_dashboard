@@ -12,6 +12,7 @@ export const fetchFolderStructure = createAsyncThunk(
       `${API_URL}/folder/structure?organizationId=${user?.organization?.value}`
     );
     const data = await req.data;
+    console.log(data.data);
     return data?.data;
   }
 );

@@ -8,7 +8,7 @@ export const {
   signOut,
   unstable_update,
 } = NextAuth({
-  session: { strategy: "jwt", maxAge: 3600 },
+  session: { strategy: "jwt" },
   callbacks: {
     async session({ session, token }) {
       if (token?.expiresIn) {

@@ -7,26 +7,19 @@ const bundles = new Schema(
     },
     organization: {
       type: SchemaTypes.ObjectId,
-      ref: "Organization",
+      ref: "Organizations",
       required: true,
     },
-    discountedSellingPrice: {
+    sellingPrice: {
       type: Number,
       required: true,
       default: 0,
     },
+    profitMargin: { type: Number, required: true, default: 0 },
     stockLevel: { type: Number, required: true, default: 1 },
     barcode: { type: String, required: false },
-    products: [
-      {
-        productsId: {
-          type: SchemaTypes.ObjectId,
-          required: true,
-          ref: "Product",
-        },
-        discountedPrice: { type: Number, required: true },
-      },
-    ],
+    productsId: { type: [SchemaTypes.ObjectId], required: true },
+    orginalPrice: { type: Number, required: true },
   },
   { timestamps: true }
 );
