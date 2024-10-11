@@ -1,4 +1,4 @@
-import bundleSchema from "@/models/bundles";
+import bundleSchema from "@/models/bundleSchema";
 import productSchema from "@/models/fileSchema";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";

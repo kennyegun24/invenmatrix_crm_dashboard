@@ -1,6 +1,6 @@
 // import Bundle from "./models/bundleSchema"; // Assuming your schema is in this path
 
-const { default: bundleSchema } = require("@/models/bundles");
+const { default: bundleSchema } = require("@/models/bundleSchema");
 
 export const GET = async (req, res) => {
   const { body } = await req.json();

@@ -1,4 +1,4 @@
-import bundleSchema from "@/models/bundles";
+import bundleSchema from "@/models/bundleSchema";
 import { NextResponse } from "next/server";
 
 export const POST = async (res) => {

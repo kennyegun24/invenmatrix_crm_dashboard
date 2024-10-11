@@ -1,5 +1,5 @@
 import connectMongoDb from "@/libs/mongodb";
-import bundleSchema from "@/models/bundles";
+import bundleSchema from "@/models/bundleSchema";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
