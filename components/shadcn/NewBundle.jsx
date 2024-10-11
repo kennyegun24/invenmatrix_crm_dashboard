@@ -59,7 +59,7 @@ export default function DialogDemo({ children }) {
             Create a new bundle by merging two or more products together to sell
             as one.
             <br />
-            Don't forget to add prices for each of the product.
+            Don&apos;t forget to add prices for each of the product.
           </DialogDescription>
         </DialogHeader>
         <Form onFinish={handleSubmit} className="grid gap-4 py-4 w-full">

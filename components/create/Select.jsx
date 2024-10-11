@@ -46,6 +46,7 @@ const SelectDialog = ({ text, onChange, value }) => {
             <SelectContent>
               {prods.map((e, _) => (
                 <SelectItem
+                  key={_}
                   value={`${e?._id},${e?.sellingPrice},${e.stockLevel}`}
                 >
                   {e.productName}

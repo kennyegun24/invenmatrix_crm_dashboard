@@ -3,6 +3,7 @@ import "./style.css";
 import GridFolder from "@/components/grid/GridFolder";
 import GridItem from "@/components/grid/GridItem";
 import folderImg from "@/public/empty.png";
+import bundleImg from "@/public/bundle3.png";
 
 const GridLayout = ({ folder, products }) => {
   return (
@@ -32,7 +33,7 @@ const GridLayout = ({ folder, products }) => {
           <h3 className="grid_layout_folder_header">Bundle Deals</h3>
           <section className="grid_layout">
             {products.map((each, _) => (
-              <GridItem key={_} item={each} image={each.images[0]} />
+              <GridItem key={_} item={each} image={bundleImg} />
             ))}
           </section>
         </div>
