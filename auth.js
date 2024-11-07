@@ -11,6 +11,13 @@ export const {
   session: { strategy: "jwt" },
   callbacks: {
     async session({ session, token }) {
+      console.log(token, "token");
+      console.log(token?.expiresIn, "expires in");
+      console.log(Math.floor(Date.now()), "present date");
+      console.log(
+        token?.expiresIn > Math.floor(Date.now()),
+        "expires > present"
+      );
       if (token?.expiresIn > Math.floor(Date.now())) {
         session.user.expiresIn = token?.expiresIn;
         session.user.id = token?.id;
