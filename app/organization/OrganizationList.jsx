@@ -19,7 +19,7 @@ const OrganizationList = () => {
           <div className="flex column gap1rem width100">
             <h4 className="text-[24px] font-[700]">{e.category}</h4>
             {e.children.map((e, _) => (
-              <>
+              <div key={_} className="flex column gap1rem width100">
                 <Link
                   href={e.link}
                   className="flex align_center justify_between width100"
@@ -31,7 +31,7 @@ const OrganizationList = () => {
                   <FaAngleRight size={24} />
                 </Link>
                 <hr />
-              </>
+              </div>
             ))}
           </div>
           // </div>
