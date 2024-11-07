@@ -9,6 +9,7 @@ export default {
     // newUser: "/register",
     error: "/login",
   },
+  // trustHost: true,
   providers: [
     Credentials({
       async authorize(credentials) {

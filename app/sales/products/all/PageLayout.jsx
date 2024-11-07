@@ -45,9 +45,11 @@ const PageLayout = ({ display }) => {
       `${BACKEND_API_ROUTE}/folder/all?${params.toString()}`
     );
     const data = await fetchData.json();
+    console.log(data);
     return {
       folders: data?.folders || [],
       items: data?.products || [],
+      bundles: data?.bundles || [],
     };
   };
   const key = [name, createdAt, updatedAt, folderCount, productCount].join("|");
@@ -66,9 +68,15 @@ const PageLayout = ({ display }) => {
   useEffect(() => {
     dispatch(fetchFolderStructure());
   }, []);
+  console.log(data);
   if (isLoading) return <GridLoader />;
-  if (data?.folders?.length === 0 && data?.items?.length === 0)
+  if (
+    data?.folders?.length === 0 &&
+    data?.items?.length === 0 &&
+    data?.bundles?.length === 0
+  )
     return <Empty />;
+  console.log(data);
   return (
     <div className="flex column gap1rem">
       <GridDisplayHeader
@@ -83,6 +91,11 @@ const PageLayout = ({ display }) => {
             : []
         )}
         products={data?.items?.filter((e) =>
+          searchInput
+            ? e?.productName?.toLowerCase().includes(searchInput?.toLowerCase())
+            : []
+        )}
+        bundles={data?.bundles?.filter((e) =>
           searchInput
             ? e?.productName?.toLowerCase().includes(searchInput?.toLowerCase())
             : []

@@ -25,10 +25,10 @@ export default function HoverCardComponent({
       </HoverCardTrigger>
       <HoverCardContent side={"left"} className="w-80">
         <div className="flex justify-between space-x-4">
-          <Avatar>
+          {/* <Avatar>
             <AvatarImage src="https://github.com/vercel.png" />
             <AvatarFallback>VC</AvatarFallback>
-          </Avatar>
+          </Avatar> */}
           <div className="space-y-1">
             <h4 className="text-sm font-semibold">@newbundle</h4>
             {disable ? (

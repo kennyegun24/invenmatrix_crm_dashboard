@@ -5,7 +5,7 @@ import GridItem from "@/components/grid/GridItem";
 import folderImg from "@/public/empty.png";
 import bundleImg from "@/public/bundle3.png";
 
-const GridLayout = ({ folder, products }) => {
+const GridLayout = ({ folder, products, bundles }) => {
   return (
     <div className="grid_layout_component flex column gap2rem">
       {folder?.length > 0 && (
@@ -28,11 +28,11 @@ const GridLayout = ({ folder, products }) => {
           </section>
         </div>
       )}
-      {products?.length > 0 && (
+      {bundles?.length > 0 && (
         <div>
           <h3 className="grid_layout_folder_header">Bundle Deals</h3>
           <section className="grid_layout">
-            {products.map((each, _) => (
+            {bundles.map((each, _) => (
               <GridItem key={_} item={each} image={bundleImg} />
             ))}
           </section>

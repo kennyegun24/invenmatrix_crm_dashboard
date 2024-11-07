@@ -1,6 +1,7 @@
 "use server";
 
 import { getUserSession } from "@/libs/getUserSession";
+import { log } from "@grpc/grpc-js/build/src/logging";
 
 const BACKEND_API_ROUTE = process.env.BACKEND_API_ROUTE;
 export const fetchTableProducts = async () => {
@@ -15,6 +16,7 @@ export const fetchTableProducts = async () => {
       ...product.customFields,
       customFields: undefined,
     }));
+    // console.log(mergedProducts, "merge");
 
     return {
       products: mergedProducts,

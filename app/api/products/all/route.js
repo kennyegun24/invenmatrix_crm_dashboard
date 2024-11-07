@@ -29,6 +29,7 @@ export const GET = async (req) => {
       products,
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }

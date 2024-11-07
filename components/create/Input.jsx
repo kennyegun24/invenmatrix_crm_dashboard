@@ -14,14 +14,18 @@ const InputDialog = ({
 }) => {
   return (
     <div className="flex flex-col items-start gap-4 w-full">
-      <Label htmlFor="interests" className="text-right">
+      <Label
+        htmlFor="interests"
+        className="text-right"
+        style={{ color: "var(--light_text)" }}
+      >
         {text}
       </Label>
       <div className="col-span-3 w-full">
         <Input
           disabled={disable}
           type="number"
-          style={{ color: "#000" }}
+          style={{ color: "var(--light_text)", background: "transparent" }}
           value={value}
           onChange={onChange}
         />

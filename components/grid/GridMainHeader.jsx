@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { FaRegCalendarMinus } from "react-icons/fa";
 import { Button } from "antd";

@@ -19,27 +19,37 @@ const SelectDialog = ({ text, onChange, value }) => {
     const fetchProducts = async () => {
       try {
         const fetchProds = await fetchTableProducts();
+        // console.log(fetchProds, "fetchProds");
         setProds(fetchProds.products);
         setLoading(false);
       } catch (error) {
         setLoading(false);
       }
     };
+    fetchProducts();
     return () => {
       fetchProducts();
     };
   }, []);
-
+  // console.log(prods, "prods");
   return (
     <div className="flex flex-col items-start gap-4 w-full">
-      <Label htmlFor="interests" className="text-right">
+      <Label
+        htmlFor="interests"
+        className="text-right"
+        style={{ color: "var(--light_text)" }}
+      >
         {text}
       </Label>
       <div className="col-span-3 w-full">
         {loading ? (
           <Skeleton className="w-full h-10" />
         ) : (
-          <Select onValueChange={onChange} value={value}>
+          <Select
+            onValueChange={onChange}
+            value={value}
+            style={{ background: "transparent" }}
+          >
             <SelectTrigger>
               <SelectValue placeholder="Select product" />
             </SelectTrigger>

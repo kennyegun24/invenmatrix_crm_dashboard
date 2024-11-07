@@ -94,7 +94,7 @@ const prods = [
   },
 ];
 
-export const createBundle = async (e, products, barcode) => {
+export const createBundle = async (e, products, barcode, bundleName) => {
   const toastId = toast.loading("Processing...");
   try {
     const prices = prods?.reduce((a, n) => a + parseInt(n.price), 0);
@@ -102,12 +102,14 @@ export const createBundle = async (e, products, barcode) => {
       barcode,
       variants: "",
       discountedSellingPrice: prices,
+      bundleName: bundleName,
       stockLevel: Math.min(...products?.map((e) => e.stockLevel)),
       products: products?.map((e) => ({
         productsId: e.product,
         discountedPrice: e.price,
       })),
     };
+    console.log(data);
     const result = await createBundleAction(data);
     if (result.error) {
       return toast.error(result.error, {
@@ -115,11 +117,11 @@ export const createBundle = async (e, products, barcode) => {
         icon: <MdOutlineError />,
       });
     }
-    return toast.success(result.success, {
+    return toast.success(result.success || "Successful", {
       id: toastId,
     });
   } catch (error) {
-    return toast.error(error.error, {
+    return toast.error(error.error || "Something went wrong", {
       id: toastId,
       icon: <MdOutlineError />,
     });

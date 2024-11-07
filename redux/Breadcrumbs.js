@@ -32,7 +32,6 @@ const breadCrumbsReducer = createSlice({
     getBreadcrumbs(state, action) {
       const this_state = state;
       console.log(action.payload);
-
       const foldersIds = action.payload;
       const findFolderById = (id) => {
         console.log(id);

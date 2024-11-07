@@ -1,0 +1,34 @@
+.organization_page {
+  .organization_page_list {
+    /* min-height: 45vh; */
+    height: 55vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .org_image_header {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+  }
+
+  .organization_sub_pages {
+    /* min-height: 50vh; */
+    height: 65vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .sticky {
+      margin: 0;
+      top: 0;
+      position: sticky;
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 0;
+    }
+  }
+}
+
+.organization_page_list::-webkit-scrollbar,
+.organization_sub_pages::-webkit-scrollbar {
+  width: 5px;
+}

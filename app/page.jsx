@@ -7,6 +7,7 @@ import Map from "@/components/home/Map";
 import Products from "@/components/home/table/Products";
 
 export default function Home() {
+  console.log(process.env.NEXTAUTH_URL);
   return (
     <Container>
       <DashboardHeader text={"Dashboard"} />

@@ -22,13 +22,17 @@ import {
 } from "./bundleHelper";
 import { Form, message } from "antd";
 import HoverCardComponent from "./HoverCard";
+import { Input } from "../ui/input";
 
 export default function DialogDemo({ children }) {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([
     { product: "", price: 0, stockLevel: 0, oPrice: 0, oStock: 0 },
   ]);
-  const [barcode, setBarcode] = useState(null);
+  const [extraDetails, setExtraDetails] = useState({
+    barcode: null,
+    extraDetails: null,
+  });
 
   // Custom validation before creating bundle
   const validateBundle = () => {
@@ -43,7 +47,12 @@ export default function DialogDemo({ children }) {
   // Modified createBundle function to include validation
   const handleSubmit = (e) => {
     if (validateBundle()) {
-      createBundle(e, products, barcode); // Proceed to create the bundle if validation passes
+      createBundle(
+        e,
+        products,
+        extraDetails?.barcode,
+        extraDetails?.bundleName
+      ); // Proceed to create the bundle if validation passes
     }
   };
   return (
@@ -52,7 +61,7 @@ export default function DialogDemo({ children }) {
       onOpenChange={(e) => handleOpenChange(e, setOpen, setProducts)}
     >
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="sm:max-w-[45%]">
+      <DialogContent className="w-[45%]">
         <DialogHeader>
           <DialogTitle>Create new bundle</DialogTitle>
           <DialogDescription>
@@ -161,7 +170,23 @@ export default function DialogDemo({ children }) {
             </div>
           ))}
           <DialogFooter>
-            <BarcodeDialog setBarcode={setBarcode} barcode={barcode} />
+            <BarcodeDialog
+              setExtraDetails={setExtraDetails}
+              extraDetails={extraDetails}
+            />
+            <Input
+              onChange={(e) =>
+                setExtraDetails((prev) => ({
+                  ...prev,
+                  bundleName: e.target.value,
+                }))
+              }
+              className="bg-transparent"
+              // style={{color:}}
+              style={{ color: "var(--light_text)" }}
+              // https://x.com/sheni_coker/status/1848647695746892238
+              placeholder="Enter bundle name..."
+            />
             <Button
               type="button"
               onClick={() => addProduct(setProducts, products)}

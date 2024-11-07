@@ -8,6 +8,7 @@ import AlertDialogDemo from "../shadcn/FolderActionDialogue";
 import { confirmMoveFolder, confirmCopyFolder } from "../shadcn/helper";
 import { RequestSpinnerContext } from "@/contexts/RequestSpinner";
 import NewBundleDialogue from "../shadcn/NewBundle";
+import { MoveFolderDialog } from "../shadcn/Dialogue";
 export const GridProductOptions = ({ children }) => {
   const [open, setOpen] = useState(false);
   const handleOpenChange = (newOpen) => {
@@ -97,17 +98,18 @@ export const GridFolderOptions = ({ children, _id, folderName }) => {
       newParentFolderId: param,
     }));
   };
-
+  // console.log(folderDetails);
   const content = () => {
     return (
       <div className="flex column gap05rem options_pop_up">
         <div className="flex column">
           <p className="font14 pointer">Edit folder</p>
-          <ChadcnDropdownMenu
+          <MoveFolderDialog
             text={`Move to folder`}
             isLoading={loading}
             folders={folders}
             onClick={(param) => onSelectFolder(param, "move")}
+            _id={_id}
           />
           {!pathname.includes("all") && (
             <>

@@ -17,7 +17,7 @@ const GridFolder = ({ image, item }) => {
     .filter((e) => e !== "all")
     .filter((e) => e);
   const navigateToSubFolder = (param) => {
-    router.push(`/sales/products/folders/${form}/${param}`);
+    router.push(`/sales/products/folders/${form.join("/")}/${param}`);
   };
   return (
     <GridFolderOptions _id={item?._id} folderName={item?.folderName}>

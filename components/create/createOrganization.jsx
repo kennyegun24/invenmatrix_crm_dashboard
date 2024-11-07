@@ -1,3 +1,4 @@
+"use client";
 import { Popover } from "antd";
 import React, { useContext, useState } from "react";
 import "./style.css";

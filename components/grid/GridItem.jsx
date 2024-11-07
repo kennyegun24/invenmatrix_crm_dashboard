@@ -10,6 +10,9 @@ const GridItem = ({ image, item }) => {
     router.push(param);
     // console.log(param);
   };
+  const amount = item?.sellingPrice
+    ? parseInt(item?.sellingPrice)?.toFixed(2)
+    : parseInt(item?.discountedSellingPrice)?.toFixed(2);
   return (
     // <div className="grid_item_folder_component">
     // {/* <div className="absolute display_on_hover flex justify_between">
@@ -28,10 +31,10 @@ const GridItem = ({ image, item }) => {
           <Image src={image} height={100} width={200} />
         </section>
         <div className="flex column gap3rem wrap grid_item_content">
-          <h4>{item.productName}</h4>
+          <h4>{item.productName || item.bundleName}</h4>
           <div className="flex gap05rem align_center">
             <p>{item?.stockLevel} unit</p>
-            <p>${item.sellingPrice}</p>
+            <p>${amount}</p>
           </div>
         </div>
       </div>

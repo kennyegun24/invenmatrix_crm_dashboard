@@ -10,6 +10,7 @@
   --primary_text_color: #fff;
   --white_color: #fff;
   --green_color: #22ad01;
+  --red_color: #ff4e4e;
 }
 
 [color-scheme="dark"] {
@@ -21,8 +22,10 @@
   --text_color: #fff;
   --border_color: #fff;
   --light_border: #3e607f;
-  --light_text: #b9b6b9;
+  --light_text: #cecece;
   --primary_text_color: #fff;
+  --overlay: rgba(0, 10, 20, 0.3);
+  --shadow: #0f3f6c;
 }
 
 [color-scheme="light"] {
@@ -36,6 +39,8 @@
   --light_border: #cccccc;
   --border_color: #8c8c8c;
   --primary_text_color: #000;
+  --overlay: rgba(72, 72, 72, 0.3);
+  --shadow: #cccccc;
 }
 
 .dropdown-hover:hover {
@@ -47,4 +52,5 @@
   background-color: var(--sub_bg);
   color: var(--text_color);
   border: var(--light_border);
+  /* filter: blur(1px); */
 }

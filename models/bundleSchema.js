@@ -17,6 +17,7 @@ const bundles = new Schema(
     },
     stockLevel: { type: Number, required: true, default: 1 },
     barcode: { type: String, required: false },
+    bundleName: { type: String, required: false, default: "Bundle" },
     products: [
       {
         productsId: {

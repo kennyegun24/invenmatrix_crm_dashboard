@@ -3,6 +3,7 @@ import folderSchema from "@/models/folderSchema";
 import productSchema from "@/models/fileSchema";
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
+import bundleSchema from "@/models/bundleSchema";
 
 const {
   Types: { ObjectId },
@@ -76,11 +77,25 @@ export const GET = async (req) => {
       .sort({ ...sortedData, ...sortedProductData })
       .lean();
 
+    const bundles = await bundleSchema
+      .find({
+        organization: orgObjectId,
+      })
+      .sort({ ...sortedData, ...sortedProductData })
+      .populate({
+        path: "products.productsId",
+        model: "Product",
+        select: "productName",
+      })
+      .lean();
+    console.log(JSON.stringify(bundles, null, 2));
     return NextResponse.json({
       folders,
       products: unassignedProducts,
+      bundles,
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Something went wrong" },
       { status: 500 }
