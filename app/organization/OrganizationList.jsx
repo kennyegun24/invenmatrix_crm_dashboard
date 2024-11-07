@@ -16,7 +16,7 @@ const OrganizationList = () => {
       <section className="organization_page_list width100 flex column gap3rem">
         {org_lists.map((e, _) => (
           // <div className="flex align_center justify_between">
-          <div className="flex column gap1rem width100">
+          <div className="flex column gap1rem width100" key={_}>
             <h4 className="text-[24px] font-[700]">{e.category}</h4>
             {e.children.map((e, _) => (
               <div key={_} className="flex column gap1rem width100">
