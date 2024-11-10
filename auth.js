@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import authConfig from "./auth.config";
+import { signout } from "./actions/signout";
 
 export const {
   handlers: { GET, POST },
@@ -27,7 +28,7 @@ export const {
         return session;
       }
       try {
-        signOut();
+        await signout();
       } catch (error) {
         console.log("signout error in session");
       }
@@ -50,7 +51,7 @@ export const {
         return token;
       }
       try {
-        signOut();
+        await signout();
       } catch (error) {
         console.log("signout error in jwt");
       }
