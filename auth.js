@@ -20,11 +20,13 @@ export const {
       );
       if (token?.expiresIn > Math.floor(Date.now())) {
         session.user.expiresIn = token?.expiresIn;
+        session.expires = token?.expiresIn;
         session.user.id = token?.id;
         session.user.access_token = token?.access_token;
         session.user.organization = token?.organization;
         return session;
       }
+      await signOut();
       return null;
     },
     async jwt({ token, user, trigger, session }) {
@@ -41,6 +43,7 @@ export const {
         }
         return token;
       }
+      signOut();
       return null;
     },
   },
