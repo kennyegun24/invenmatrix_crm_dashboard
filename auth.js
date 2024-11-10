@@ -37,9 +37,9 @@ export const {
     async jwt({ token, user, trigger, session }) {
       console.log("first");
       if (user) {
-        token.expiresIn = user?.expiresIn;
+        token.expiresIn = Date.now() + 5 * 60 * 1000;
         token.id = user?._id;
-        token.exp = user?.expiresIn;
+        token.exp = Date.now() + 5 * 60 * 1000;
         token.access_token = user?.access_token;
         token.organization = null;
         return token;
