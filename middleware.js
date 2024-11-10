@@ -11,7 +11,7 @@ const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
   const { auth, nextUrl } = req;
-  // console.log(auth);
+  console.log(auth);
   const { pathname } = nextUrl;
   const isLoggedIn = !!auth;
   const isApiAuthRoute = authApiPrefixes.some((route) =>
