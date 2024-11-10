@@ -26,7 +26,11 @@ export const {
         session.user.organization = token?.organization;
         return session;
       }
-      await signOut();
+      try {
+        signOut();
+      } catch (error) {
+        console.log("signout error in session");
+      }
       return null;
     },
     async jwt({ token, user, trigger, session }) {
@@ -34,6 +38,7 @@ export const {
       if (user) {
         token.expiresIn = user?.expiresIn;
         token.id = user?._id;
+        token.exp = user?.expiresIn;
         token.access_token = user?.access_token;
         token.organization = null;
         return token;
@@ -44,7 +49,11 @@ export const {
         }
         return token;
       }
-      signOut();
+      try {
+        signOut();
+      } catch (error) {
+        console.log("signout error in jwt");
+      }
       return null;
     },
   },
