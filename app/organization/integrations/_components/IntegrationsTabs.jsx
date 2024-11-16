@@ -5,9 +5,7 @@ import {
   ecommerce_completed_integration_list,
   ecommerce_integration_list,
 } from "../integrations";
-// const onChange = (key) => {
-//   console.log(key);
-// };
+
 const items = [
   {
     key: "1",
@@ -22,6 +20,9 @@ const items = [
     ),
   },
 ];
+const onChange = () => {
+  console.log("click");
+};
 const IntegrationsTabs = () => (
   <div className="h-[87vh]">
     <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
