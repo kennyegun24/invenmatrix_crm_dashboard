@@ -109,7 +109,7 @@ export const createBundle = async (e, products, barcode, bundleName) => {
         discountedPrice: e.price,
       })),
     };
-    console.log(data);
+    // console.log(data);
     const result = await createBundleAction(data);
     if (result.error) {
       return toast.error(result.error, {

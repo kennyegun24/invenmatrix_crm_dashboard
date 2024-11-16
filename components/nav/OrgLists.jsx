@@ -51,7 +51,7 @@ const OrgLists = () => {
     };
     try {
       await updateUserSession(organization);
-      console.log("updated");
+      // console.log("updated");
       // router.push();
       document.location.reload();
     } catch (error) {}

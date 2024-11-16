@@ -230,6 +230,12 @@
   }
 }
 
+.overflow_small {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+}
+
 hr {
   border: 0.5px solid var(--light_border);
 }

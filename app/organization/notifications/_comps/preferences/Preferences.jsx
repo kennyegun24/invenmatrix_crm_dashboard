@@ -4,12 +4,11 @@ import TimeZonePickerDemo from "./SelectTimeZone";
 
 const Preferences = () => {
   return (
-    <div className="flex column gap15rem">
+    <div className="flex column gap15rem organization_list_item">
       <div className="flex column gap03rem">
         <h3 className="text-[20px] font-[700] text-[--light_text]">
           Preferences
         </h3>
-        <hr className="hr" />
       </div>
       <div className="flex column gap1rem">
         {/* <TimeZoneComponent /> */}

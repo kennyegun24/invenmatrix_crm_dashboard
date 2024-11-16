@@ -9,6 +9,7 @@ import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import RequestSpinnerProvider from "@/contexts/RequestSpinner";
 import ReduxProvider from "@/contexts/ReduxProvider";
+import TeamRolesProvider from "@/contexts/TeamRolesPop";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +30,9 @@ export default async function RootLayout({ children }) {
                 <HomeProvider>
                   <RequestSpinnerProvider>
                     <DragDropPovider>
-                      <ChatbotProvider>{children}</ChatbotProvider>
+                      <TeamRolesProvider>
+                        <ChatbotProvider>{children}</ChatbotProvider>
+                      </TeamRolesProvider>
                     </DragDropPovider>
                   </RequestSpinnerProvider>
                 </HomeProvider>

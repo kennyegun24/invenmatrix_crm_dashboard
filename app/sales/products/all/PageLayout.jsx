@@ -45,7 +45,7 @@ const PageLayout = ({ display }) => {
       `${BACKEND_API_ROUTE}/folder/all?${params.toString()}`
     );
     const data = await fetchData.json();
-    console.log(data);
+    // console.log(data);
     return {
       folders: data?.folders || [],
       items: data?.products || [],
@@ -68,7 +68,7 @@ const PageLayout = ({ display }) => {
   useEffect(() => {
     dispatch(fetchFolderStructure());
   }, []);
-  console.log(data);
+  // console.log(data);
   if (isLoading) return <GridLoader />;
   if (
     data?.folders?.length === 0 &&
@@ -76,7 +76,7 @@ const PageLayout = ({ display }) => {
     data?.bundles?.length === 0
   )
     return <Empty />;
-  console.log(data);
+  // console.log(data);
   return (
     <div className="flex column gap1rem">
       <GridDisplayHeader

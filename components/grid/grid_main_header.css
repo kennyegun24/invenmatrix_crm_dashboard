@@ -1,11 +1,12 @@
 .grid_header {
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   border-bottom: 1px solid var(--light_border);
-  /* height: 5vh; */
+  min-height: 6vh;
   width: 100%;
   top: 0;
   z-index: 999;
   background-color: var(--main_bg);
+  max-height: 10vh;
 
   > h2 {
     font-size: 16px;

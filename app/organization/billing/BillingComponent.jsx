@@ -444,9 +444,9 @@ const bills = [
 
 const BillingRowsComponent = () => {
   return (
-    <div className="organization_page_list flex column gap1rem">
+    <div className="flex column gap1rem small_scroll w-[60%] margin_auto overflow-auto">
       <section className="flex column sticky top-0">
-        <div className="flex align_center bg-[--blend_bg] p-2">
+        <div className="flex align_center p-2">
           {headers.map((header) => (
             <h4
               key={header.key}
@@ -458,7 +458,7 @@ const BillingRowsComponent = () => {
         </div>
         <hr className="hr" />
       </section>
-      <div className="flex column gap2rem">
+      <div className="flex column gap15rem">
         {bills.map((bill) => {
           const status =
             bill.status === "Successful"
@@ -469,10 +469,10 @@ const BillingRowsComponent = () => {
           return (
             <div key={bill.key} className="flex column gap05rem">
               <div key={bill.key} className="flex align_center">
-                <p className="flex-1 text-[18px]">{bill.date}</p>
-                <p className="flex-1 text-[18px]">{bill.amount}</p>
-                <p className="flex-1 text-[18px]">{bill.package}</p>
-                <p className={`flex-1 text-[18px] ${status} font-[600]`}>
+                <p className="flex-1 text-[16px]">{bill.date}</p>
+                <p className="flex-1 text-[16px]">{bill.amount}</p>
+                <p className="flex-1 text-[16px]">{bill.package}</p>
+                <p className={`flex-1 text-[16px] ${status} font-[600]`}>
                   {bill.status}
                 </p>
               </div>

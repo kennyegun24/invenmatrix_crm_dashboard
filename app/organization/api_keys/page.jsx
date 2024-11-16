@@ -6,7 +6,7 @@ import { Button } from "antd";
 const page = () => {
   const arr = Array.from({ length: 4 });
   return (
-    <div className="organization_sub_pages flex column gap2rem relative">
+    <div className="flex column gap2rem relative width50 small_scroll margin_auto overflow-auto h-[85vh]">
       <div className="z-50 sticky flex column gap1rem">
         <h3 className="text-[20px] font-[700] flex align_center gap05rem">
           Secret API Key <GoKey size={16} />

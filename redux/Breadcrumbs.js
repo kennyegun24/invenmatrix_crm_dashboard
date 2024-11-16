@@ -31,10 +31,10 @@ const breadCrumbsReducer = createSlice({
     },
     getBreadcrumbs(state, action) {
       const this_state = state;
-      console.log(action.payload);
+      // console.log(action.payload);
       const foldersIds = action.payload;
       const findFolderById = (id) => {
-        console.log(id);
+        // console.log(id);
         let foundFolders = [];
         id?.forEach((element) => {
           const foundFolder = state.folders.find((e) => element === e._id);

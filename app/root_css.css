@@ -18,29 +18,39 @@
   --sub_bg: #183a5a;
   --blend_bg: #1d4162;
   --opposite_bg: #f4f4f4;
-  --opposite_text: #102a43;
+  --opposite_text: #12304c;
   --text_color: #fff;
   --border_color: #fff;
+  --secondary_border: #3e607f;
   --light_border: #3e607f;
   --light_text: #cecece;
   --primary_text_color: #fff;
   --overlay: rgba(0, 10, 20, 0.3);
   --shadow: #0f3f6c;
+  --selectTextActiveColor: var(--text_color);
+  --selectTextActiveBg: #91caff;
+  --selectTextHoverBg: rgb(93, 119, 128);
+  --shadow_bg: rgba(28, 109, 184, 0.2);
 }
 
 [color-scheme="light"] {
-  --main_bg: #fff;
+  --main_bg: #f4f4f4;
   --sub_bg: #f6f6f6;
   --blend_bg: #f6f6f6;
   --opposite_bg: #102a43;
-  --opposite_text: #f4f4f4;
+  --opposite_text: #fff;
   --text_color: #393939;
   --light_text: #4e4e4e;
   --light_border: #cccccc;
+  --secondary_border: #000;
   --border_color: #8c8c8c;
   --primary_text_color: #000;
   --overlay: rgba(72, 72, 72, 0.3);
   --shadow: #cccccc;
+  --selectTextActiveColor: #fff;
+  --selectTextActiveBg: #000;
+  --selectTextHoverBg: rgb(212, 212, 212);
+  --shadow_bg: rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-hover:hover {

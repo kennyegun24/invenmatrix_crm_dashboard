@@ -7,7 +7,7 @@ const SettingItemComponent = ({ desc, title, link_to }) => {
       {link_to ? (
         <Link
           href={link_to}
-          className={`flex justify_between align_center pointer hover:bg-[--sub_bg] py-2 pl-4`}
+          className={`flex justify_between align_center pointer hover:bg-[--sub_bg] pl-2`}
         >
           <div>
             <h5 className="font-[600] text-[17px]">{title}</h5>
@@ -17,7 +17,7 @@ const SettingItemComponent = ({ desc, title, link_to }) => {
       ) : (
         <div
           // href={link_to}
-          className={`flex justify_between align_center pointer hover:bg-[--sub_bg] py-2 pl-4`}
+          className={`flex justify_between align_center pointer hover:bg-[--sub_bg] pl-2`}
         >
           <div>
             <h5 className="font-[600] text-[17px]">{title}</h5>

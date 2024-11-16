@@ -12,13 +12,13 @@ export const {
   session: { strategy: "jwt" },
   callbacks: {
     async session({ session, token }) {
-      console.log(token, "token");
-      console.log(token?.expiresIn, "expires in");
-      console.log(Math.floor(Date.now()), "present date");
-      console.log(
-        token?.expiresIn > Math.floor(Date.now()),
-        "expires > present"
-      );
+      // console.log(token, "token");
+      // console.log(token?.expiresIn, "expires in");
+      // console.log(Math.floor(Date.now()), "present date");
+      // console.log(
+      //   token?.expiresIn > Math.floor(Date.now()),
+      //   "expires > present"
+      // );
       if (token?.expiresIn > Math.floor(Date.now())) {
         session.user.expiresIn = token?.expiresIn;
         session.expires = token?.expiresIn;
@@ -35,11 +35,11 @@ export const {
       return null;
     },
     async jwt({ token, user, trigger, session }) {
-      console.log("first");
+      // console.log("first");
       if (user) {
-        token.expiresIn = Date.now() + 5 * 60 * 1000;
+        token.expiresIn = user?.expiresIn;
         token.id = user?._id;
-        token.exp = Date.now() + 5 * 60 * 1000;
+        token.exp = user?.expiresIn;
         token.access_token = user?.access_token;
         token.organization = null;
         return token;

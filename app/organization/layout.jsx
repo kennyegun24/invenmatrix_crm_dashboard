@@ -6,14 +6,15 @@ import "./style.css";
 
 const layout = ({ children }) => {
   return (
-    <SalesContainer>
+    <SalesContainer classname={"overflow-hidden"}>
       <GridMainHeader
         text={"Organization"}
         component={<CreateOrganization />}
       />
-      <div className="padding1rem width50 margin_auto">
-        <div className="padding2rem shadow_ organization_page">{children}</div>
-      </div>
+      {/* <div className="width60 margin_auto"> */}
+      {/* <div className="padding2rem shadow_ organization_page">{children}</div> */}
+      <div className="py-4 px-8">{children}</div>
+      {/* </div> */}
     </SalesContainer>
   );
 };

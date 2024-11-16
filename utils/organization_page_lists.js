@@ -14,12 +14,12 @@ export const org_lists = [
     children: [
       {
         name: "Business Details",
-        link: "/business_details",
+        link: "/organization/business_details",
         icon: <IoBusinessSharp size={24} />,
       },
       {
         name: "Company Branding",
-        link: "",
+        link: "/organization/company_branding",
         icon: <GoOrganization size={24} />,
       },
     ],
@@ -27,11 +27,11 @@ export const org_lists = [
   {
     category: "Payments",
     children: [
-      {
-        name: "Subscription Plan",
-        link: "",
-        icon: <MdPayments size={24} />,
-      },
+      // {
+      //   name: "Subscription Plan",
+      //   link: "",
+      //   icon: <MdPayments size={24} />,
+      // },
       {
         name: "Billing Details",
         link: "/organization/billing",
@@ -44,7 +44,7 @@ export const org_lists = [
     children: [
       {
         name: "Team Management",
-        link: "",
+        link: "/organization/team_management",
         icon: <GiOrganigram size={24} />,
       },
       {
@@ -67,11 +67,11 @@ export const org_lists = [
   {
     category: "Account Settings",
     children: [
-      {
-        name: "Edit Business Details",
-        link: "",
-        icon: <FaPlus size={24} />,
-      },
+      // {
+      //   name: "Edit Business Details",
+      //   link: "",
+      //   icon: <FaPlus size={24} />,
+      // },
       {
         name: "New Api Key",
         link: "/organization/api_keys/new",
