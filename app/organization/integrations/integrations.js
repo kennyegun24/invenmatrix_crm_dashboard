@@ -62,20 +62,6 @@ export const ecommerce_integration_list = [
     id: 9,
     status: true,
   },
-  {
-    image: "/wix.png",
-    title: "Wix Integration",
-    body: "Connect InvenMatrix with your Wix store to synchronize inventory, track orders seamlessly, and manage product data efficiently.",
-    id: 9,
-    status: true,
-  },
-  {
-    image: "/wix.png",
-    title: "Wix Integration",
-    body: "Connect InvenMatrix with your Wix store to synchronize inventory, track orders seamlessly, and manage product data efficiently.",
-    id: 9,
-    status: true,
-  },
 ];
 export const ecommerce_completed_integration_list = [
   {
